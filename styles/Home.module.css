@@ -157,6 +157,73 @@
   transform: translateZ(0);
 }
 
+
+.button {
+  padding: 12px 25px;
+  border-radius: 0px;
+  background-color: #1a1b1f;
+  transition: background-color 400ms ease, opacity 400ms ease, color 400ms ease;
+  color: #fff;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.button:hover {
+  background-color: #32343a;
+  color: #fff;
+}
+
+.button:active {
+  background-color: #43464d;
+}
+
+.button.cc_jumbo_button {
+  padding: 16px 35px;
+  font-size: 14px;
+  line-height: 26px;
+}
+
+.button.cc_jumbo_button.cc_jumbo_white {
+  background-color: #fff;
+  color: #000;
+}
+
+.button.cc_jumbo_button.cc_jumbo_white:hover {
+  background-color: #f1f1f1;
+}
+
+.button.cc_jumbo_button.cc_jumbo_white:active {
+  background-color: #e1e1e1;
+}
+
+.button.cc_contact_us {
+  position: relative;
+  z-index: 5;
+}
+
+.button.cc_white_button {
+  padding: 16px 35px;
+  background-color: #fff;
+  color: #202020;
+  font-size: 14px;
+  line-height: 26px;
+}
+
+.w_inline_block {
+  max-width: 100%;
+  display: inline-block;
+}
+.button.cc_white_button:hover {
+  background-color: hsla(0, 0%, 100%, 0.8);
+}
+
+.button.cc_white_button:active {
+  background-color: hsla(0, 0%, 100%, 0.9);
+}
+
 .logo,
 .thirteen {
   position: relative;
