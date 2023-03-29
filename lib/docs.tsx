@@ -6,7 +6,7 @@ import html from 'remark-html';
 
 
 const postsDirectory = path.join(process.cwd(), 'documentation/guides');
-interface PostData {
+export interface PostData {
 	id: string;
 	date: string;
 	title: string;
