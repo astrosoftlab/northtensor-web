@@ -5,7 +5,7 @@ import { remark } from 'remark';
 import html from 'remark-html';
 import remarkHeadingId from 'remark-heading-id';
 
-
+const miscDirectory = path.join(process.cwd(), 'documentation/misc');
 const postsDirectory = path.join(process.cwd(), 'documentation/guides');
 export interface PostData {
 	id: string;
@@ -86,6 +86,25 @@ export async function getPostData(id: string): Promise<PostData & { contentHtml:
 	const contentHtml = processedContent.toString();
 
 	// Combine the data with the id and contentHtml
+	return {
+		id,
+		contentHtml,
+		...matterResult.data,
+	} as PostData & { contentHtml: string };
+}
+
+export async function getMiscPage(id: string): Promise<PostData & { contentHtml: string }> {
+	const fullPath = path.join(miscDirectory, `${id}.md`);
+	const fileContents = await fs.promises.readFile(fullPath, 'utf8');
+
+	const matterResult = matter(fileContents);
+
+	const processedContent = await remark()
+		.use(remarkHeadingId)
+		.use(html)
+		.process(matterResult.content);
+	const contentHtml = processedContent.toString();
+
 	return {
 		id,
 		contentHtml,

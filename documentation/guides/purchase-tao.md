@@ -1,6 +1,6 @@
 ---
 title: 'Purchase and stake TAO'
-date: '2020-01-02'
+date: '2023-03-29'
 ---
 
 To purchase TAO and use it you will need `talisman.xyz` wallet. You can download it from [here](https://talisman.xyz/).
