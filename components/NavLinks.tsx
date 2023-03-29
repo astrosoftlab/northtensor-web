@@ -17,6 +17,7 @@ const NavLinks: React.FC = () => (
   <ul>
     <NavLink href="/resources" text="Resources" />
     <NavLink href="/" text="Home" />
+    <NavLink href="/roadmap" text="Roadmap" />
   </ul>
 );
 
