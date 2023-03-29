@@ -7,3 +7,14 @@
 	margin-right: auto;
 	display: block;
 }
+
+.article ul {
+	list-style-type: disc;
+	padding-left: 1.5em;
+	margin: none;
+	padding-bottom: 0.5em;
+}
+
+.article ol {
+	margin-left: 2em;
+}

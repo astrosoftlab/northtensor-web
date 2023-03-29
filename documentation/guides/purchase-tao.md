@@ -15,10 +15,20 @@ We will be purchasing TAO using USDT (since it's the only market they offer) fro
 # Overview:
 <!-- link to headers -->
 1. Get USDT by doing one of the two below:
-  *	[Deposit and or Convert existing crypto to USDT to buy TAO](#user-content-deposit-convert-crypto-usdt)
-  * [Purchase USDT with a credit card](#user-content-credit-card-usdt)
-2. 
-
+	*	[Deposit and or Convert existing crypto to USDT to buy TAO](#user-content-deposit-convert-crypto-usdt)
+	* [Purchase USDT with a credit card](#user-content-credit-card-usdt)
+2. [Buy TAO](#user-content-buy-tao)
+3. [Withdraw TAO to your `talisman.xyz` wallet](#user-content-withdrawing-tao-to-stake-it)
+4. [Get your withdrawal TAO address from your `talisman.xyz` wallet](#user-content-get-withdrawal-address)
+   * [Open up copy address page](#user-content-open-address-page)
+   * [Find and copy your bittensor address](#user-content-find-copy-bittensor-address)
+5. [Start withdrawal process in MEXC and paste your address](#user-content-begin-withdrawal)
+6. [Paste address and withdraw](#user-content-paste-address-and-withdraw)
+   <!-- * [Begin withdrawal](#user-content-begin-withdrawal) -->
+7. [Staking](#user-content-staking)
+	* [Verify non malicious transaction](#user-content-verify-non-malicious-transaction)
+ 
+&nbsp;
 &nbsp;
 ## If you want to deposit and convert your existing crypto to TAO follow this--if not skip to the next section: {#deposit-convert-crypto-usdt}
 After registering if you already own crypto and want to convert it to TAO go to Mexc's wallet tab then follow this guide to deposit it: [https://support.mexc.com/hc/en-001/articles/360030441272-How-to-Deposit-Crypto-to-MEXC-Spot-Account-Web-](https://support.mexc.com/hc/en-001/articles/360030441272-How-to-Deposit-Crypto-to-MEXC-Spot-Account-Web-) 
@@ -48,7 +58,7 @@ Go to [https://otc.mexc.com/creditCard](https://otc.mexc.com/creditCard) and fol
 &nbsp;
 &nbsp;
 
-## Buy TAO
+## Buy TAO {#buy-tao}
 Go to [https://www.mexc.com/exchange/TAO_USDT](https://www.mexc.com/exchange/TAO_USDT) and follow the images below to input how much TAO you want to purchase and click the Green "Buy TAO" button.
 ![image_info](/images/guides/mexc/3-MEXC-TAO-Purchase.png)
 ![image_info](/images/guides/mexc/4-TAO-Purchase.png)
@@ -59,26 +69,64 @@ Go to [https://www.mexc.com/exchange/TAO_USDT](https://www.mexc.com/exchange/TAO
 Go to [https://www.mexc.com/en-US/assets](https://www.mexc.com/en-US/assets) and follow the images below to withdraw to your `talisman.xyz` wallet.
 &nbsp;
 
-### Start withdrawal process in MEXC then after you will have to get the withdrawal address from your `talisman.xyz` to complete the process (guide below these two images). 
-![image_info](/images/guides/mexc/5-Account-Overview.png)
-![image_info](/images/guides/mexc/6-Withdrawal-disclaimer.png)
+### Get your TAO address from your `talisman.xyz` wallet. {#get-withdrawal-address}
 
 &nbsp;
 
-### Get your TAO address from your `talisman.xyz` wallet.
+#### Open up copy address page. {#open-address-page}
 
 &nbsp;
-#### Open up copy address page.
-&nbsp;
+
 ![image_info](/images/guides/mexc/7-Copy-Wallet-Address.png)
 &nbsp;
-#### search for bittensor and copy the address by clicking the copy copy icon on the far-right of the row (highlighted in green in the image below).
+#### search for bittensor and copy the address by clicking the copy copy icon on the far-right of the row (highlighted in green in the image below). {#find-copy-bittensor-address} 
 &nbsp;
 ![image_info](/images/guides/mexc/8-Select-your-Bittensor-Address.png)
 
+
 &nbsp;
-#### Once you've coied the address, go back to MEXC and paste it into `Address` as highlighted in the image below then click `Submit`.
+### Start withdrawal process in MEXC and paste your address. {#begin-withdrawal}
+![image_info](/images/guides/mexc/5-Account-Overview.png)
+![image_info](/images/guides/mexc/6-Withdrawal-disclaimer.png)
+
+#### Once you've coied the address, go back to MEXC and paste it into `Address` as highlighted in the image below then click `Submit`. {#paste-address-and-withdraw}
 ![image_info](/images/guides/mexc/9-Paste-Wallet-Address-and-submit.png)
 
 
-### Staking
+&nbsp;
+
+
+## Staking {#staking}
+Go to [https://app.mnrv.ai](https://app.mnrv.ai) and follow the images below to stake your TAO.
+On first connection the page will ask you to connect your wallet. Select the appropriate wallet and then click `Connect 1`.
+![image_info](/images/guides/mexc/10-mnrv-website-first-connection.png)
+
+&nbsp;
+
+After that, sepcify the amount you want to stake out of the amount available on the top right.
+The image below highlights the important parts.
+
+&nbsp;
+![image_info](/images/guides/mexc/11-mnrv-website-stake.png)
+
+&nbsp;
+
+Follow these steps to approve the tranaction and VERIFY that it is the correct operation
+and we have not been hacked.
+
+&nbsp;
+![image_info](/images/guides/mexc/12-Talisman-Approval-1.png)
+
+&nbsp;
+
+## verify non malicious transaction. {#verify-non-malicious-transaction}
+
+&nbsp;
+
+![image_info](/images/guides/mexc/12-Talisman-Approval-2.png)
+
+&nbsp;
+
+## Completed Stake. {#verify-stake}
+You will have to refresh the page and once the transaction is propogated through the network the amount you've staked will showup in the highlighted area below.
+![image_info](/images/guides/mexc/13-mnrv-website-stake-verified.png)
