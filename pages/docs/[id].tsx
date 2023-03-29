@@ -5,6 +5,7 @@ import Date from '../../components/date';
 import utilStyles from '../../styles/utils.module.css';
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
+import article_style from '@/styles/article.module.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -28,7 +29,7 @@ export default function Post({ postData }: { postData: PostData & { contentHtml:
         <div className={utilStyles.lightText}>
           <Date dateString={postData.date} />
         </div>
-        <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+        <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }}  className={article_style.article} />
       </article>
       </main>
     </>

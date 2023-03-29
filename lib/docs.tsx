@@ -3,6 +3,7 @@ import path from 'path';
 import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
+import remarkHeadingId from 'remark-heading-id';
 
 
 const postsDirectory = path.join(process.cwd(), 'documentation/guides');
@@ -79,6 +80,7 @@ export async function getPostData(id: string): Promise<PostData & { contentHtml:
 
 	// Use remark to convert markdown into HTML string
 	const processedContent = await remark()
+		.use(remarkHeadingId)
 		.use(html)
 		.process(matterResult.content);
 	const contentHtml = processedContent.toString();
