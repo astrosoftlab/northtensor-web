@@ -1,0 +1,29 @@
+{
+  "APP_NAME": "MNRV_Staking",
+  "CUSTOM_RPC_METHODS": {
+    "delegateInfo": {
+      "getDelegates": {
+        "description": "Always returns 7",
+        "params": [],
+        "type": "(Vec<u8>)"
+      },
+      "getDelegate": {
+        "description": "Always returns 7",
+        "params": [],
+        "type": "RpcResult<Vec<u8>>"
+      },
+      "getDelegated": {
+        "description": "Always returns 7",
+        "params": [
+          {
+            "name": "val",
+            "type": "Vec<u8>"
+          }
+        ],
+        "type": "RpcResult<Vec<u8>>"
+      }
+    }
+  },
+  "MNRVHOTKEY": "5Fq5v71D4LX8Db1xsmRSy6udQThcZ8sFDqxQFwnUZ1BuqY5A",
+  "MNRVCOLDKEY": "5HNm3YyV2y7cU778tFWjXVwvSXHMz8UJzGR9ZjYHyM7KR4Yv"
+}
