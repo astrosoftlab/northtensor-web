@@ -1,5 +1,5 @@
 ---
-title: 'Purchase and stake TAO'
+title: 'How to Purchase TAO on MEXC'
 date: '2023-03-29'
 ---
 
@@ -28,7 +28,6 @@ We will be purchasing TAO using USDT (since it's the only market they offer) fro
 6. [Paste address and withdraw](#user-content-paste-address-and-withdraw)
    <!-- * [Begin withdrawal](#user-content-begin-withdrawal) -->
 7. [Staking](#user-content-staking)
-	* [Verify non malicious transaction](#user-content-verify-non-malicious-transaction)
  
 &nbsp;
 &nbsp;
@@ -97,38 +96,6 @@ Go to [https://www.mexc.com/en-US/assets](https://www.mexc.com/en-US/assets) and
 
 &nbsp;
 
-
 ## Staking {#staking}
-Go to [https://app.mnrv.ai](https://app.mnrv.ai) and follow the images below to stake your TAO.
-On first connection the page will ask you to connect your wallet. Select the appropriate wallet and then click `Connect 1`.
-![image_info](/images/guides/mexc/10-mnrv-website-first-connection.png)
 
-&nbsp;
-
-After that, specify the amount you want to stake out of the amount available on the top right.
-The image below highlights the important parts.
-
-&nbsp;
-![image_info](/images/guides/mexc/11-mnrv-website-stake.png)
-
-&nbsp;
-
-Follow these steps to approve the tranaction and VERIFY that it is the correct operation
-and we have not been hacked.
-
-&nbsp;
-![image_info](/images/guides/mexc/12-Talisman-Approval-1.png)
-
-&nbsp;
-
-## verify non malicious transaction. {#verify-non-malicious-transaction}
-
-&nbsp;
-
-![image_info](/images/guides/mexc/12-Talisman-Approval-2.png)
-
-&nbsp;
-
-## Completed Stake. {#verify-stake}
-Once the transaction has been propogated through the network, the amount you've staked should show up in the highlighted area. When in doubt, refresh the page. 
-![image_info](/images/guides/mexc/13-mnrv-website-stake-verified.png)
+Go to [https://www.mnrv.ai/docs/staking](/docs/staking) and follow the instructions to stake your TAO.
