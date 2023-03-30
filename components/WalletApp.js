@@ -26,6 +26,8 @@ import Paper from '@mui/material/Paper';
 // import Events from './Events'
 import Navigations from './Navigations'
 
+import styles from '../styles/navbar.module.css';
+
 // import TemplateModule from './TemplateModule'
 
 function Main() {

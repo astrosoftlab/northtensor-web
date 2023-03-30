@@ -28,6 +28,14 @@
   margin-left: auto;
 }
 
+.center_text {
+  width: 80%;
+  margin-right: auto;
+  margin-bottom: 35px;
+  margin-left: auto;
+  text-align: center;
+}
+
 .description {
   display: inherit;
   justify-content: inherit;

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Form, Input, Grid,  Label, Icon } from 'semantic-ui-react'
 import { TxButton } from '../lib/substrate-lib/components'
 import { useSubstrateState } from '../lib/substrate-lib'
+import styles from '@/styles/Home.module.css'
 
 export default function Main(props) {
   const [status, setStatus] = useState(null)
@@ -80,7 +81,7 @@ export default function Main(props) {
     <Grid.Column width={8}>
       <Grid.Row>
         
-        <h1>Delegated Staking</h1>
+        <h1 className={styles.center_text} >Delegated Staking</h1>
       <Label basic color="green" position="right" style={{ marginLeft: 0, marginBottom: '.5em' }}>
           <Icon name="money" />Balance Staked: {amountCurrentlyStakedTao} Tao&nbsp;
         </Label></Grid.Row>
@@ -129,6 +130,7 @@ export default function Main(props) {
             }}
           /> 
           {stakeType === "addStake" ? <TxButton
+            className={styles.code}
             label="Stake All"
             type="SIGNED-TX"
             setStatus={setStatus}
@@ -152,7 +154,7 @@ export default function Main(props) {
         </Form.Field>
         <div style={{ overflowWrap: 'break-word' }}>{status}</div>
       </Form>
-      <Form>
+      <Form className={styles.code}>
         btcli {stakeType === 'addStake' ? "delegate" : "undelegate"} --delegate_ss58key {MNRVHotkey} {parseFloat(stakeAmount) === 0 ? "--all" : btcliStakeAmount}
       </Form>
     </Grid.Column>
