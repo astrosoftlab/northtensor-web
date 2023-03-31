@@ -9,6 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@mui/material": "^5.11.15",
+    "@polkadot/api": "^10.2.1",
+    "@polkadot/extension-dapp": "^0.45.4",
+    "@polkadot/types": "^10.2.1",
+    "@polkadot/ui-keyring": "^3.1.3",
+    "@polkadot/util-crypto": "^11.1.2",
     "@types/node": "18.15.11",
     "@types/react": "18.0.31",
     "@types/react-dom": "18.0.11",
@@ -18,10 +26,13 @@
     "gray-matter": "^4.0.3",
     "next": "13.2.4",
     "react": "18.2.0",
+    "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "18.2.0",
     "remark": "^14.0.2",
     "remark-heading-id": "^1.0.0",
     "remark-html": "^15.0.2",
+    "semantic-ui-react": "^2.1.4",
+    "store": "^2.0.12",
     "typescript": "5.0.3"
   }
 }
