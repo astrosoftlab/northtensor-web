@@ -26,28 +26,28 @@ function Main(props) {
     <Segment>
       <Grid>
         <Grid.Row >
-          <Menu pointing secondary vertical className={navstyles.nav}>
+          <Menu pointing secondary vertical className={[styles.tab_bar, navstyles.nav].join(" ")}>
             <Menu.Item
               name='Stake'
-              className={styles.card}
+              className={activeItem === 'Stake' ? [styles.tab, styles.active].join(" ") : styles.tab}
               active={activeItem === 'Stake'} 
               onClick={ () => onClickHandler(({value: 'Stake'}))}
               />
             <Menu.Item
               name='Transfer'
-              className={styles.card}
+              className={activeItem === 'Transfer' ? [styles.tab, styles.active].join(" ") : styles.tab}
               active={activeItem === 'Transfer'} 
               onClick={ () => onClickHandler(({value: 'Transfer'}))}
               />
             <Menu.Item
               name='Stake Info'
-              className={styles.card}
+              className={activeItem === 'Stake Info' ? [styles.tab, styles.active].join(" ") : styles.tab}
               active={activeItem === 'Stake Info'} 
               onClick={ () => onClickHandler(({value: 'Stake Info'}))}
               />
             <Menu.Item
               name='Tip'
-              className={styles.card}
+              className={activeItem === 'Tip' ? [styles.tab, styles.active].join(" ") : styles.tab}
               active={activeItem === 'Tip'} 
               onClick={ () => onClickHandler(({value: 'Tip'}))}
               />
