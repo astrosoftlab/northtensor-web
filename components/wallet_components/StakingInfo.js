@@ -1,7 +1,7 @@
 import React, { useState, useEffect  } from 'react'
 import {  Grid } from 'semantic-ui-react'
 // import { TxButton } from './substrate-lib/components'
-import { useSubstrateState } from '../lib/substrate-lib'
+import { useSubstrateState } from '../../lib/substrate-lib'
 // import { u8aUnwrapBytes} from '@polkadot/util'
 
 export default function Main(props) {

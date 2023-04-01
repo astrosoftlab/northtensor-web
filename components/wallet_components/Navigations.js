@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import navstyles from '../styles/navbar.module.css';
+import navstyles from '../../styles/navbar.module.css';
 import styles from '@/styles/Home.module.css'
 
 import {

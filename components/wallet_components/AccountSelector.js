@@ -4,6 +4,8 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Stack from "@mui/material/Stack"
 import Typography from "@mui/material/Typography"
+import Identicon from "@polkadot/react-identicon";
+import AccountCard from './AccountCard'
 
 
 
@@ -19,7 +21,7 @@ import {
 } from 'semantic-ui-react'
 
 // import HeaderPathing from './HeaderPathing'
-import { useSubstrate, useSubstrateState } from '../lib/substrate-lib'
+import { useSubstrate, useSubstrateState } from '../../lib/substrate-lib'
 
 const CHROME_EXT_URL =
   'https://chrome.google.com/webstore/detail/polkadot%7Bjs%7D-extension/mopnmbcafieddcagagdcbnhejhlodfdd'
@@ -45,10 +47,16 @@ function Main(props) {
 
   const initialAddress =
     keyringOptions.length > 0 ? keyringOptions[0].value : ''
+  console.log("keyringOptions", keyringOptions)
+  console.log("Current Account-1", currentAccount)
+  console.log("initialAddress", initialAddress)
+  console.log("leninitialAddress", initialAddress.length)
+  console.log("logic", initialAddress.length > 0)
+  console.log("logic2", !currentAccount)
+  console.log(keyring.getPair(initialAddress))
 
   // Set the initial address
   useEffect(() => {
-    // `setCurrentAccount()` is called only when currentAccount is null (uninitialized)
     !currentAccount &&
       initialAddress.length > 0 &&
       setCurrentAccount(keyring.getPair(initialAddress))
@@ -88,8 +96,9 @@ function Main(props) {
       }}
     >
       <Paper >
-      <Stack spacing={2} direction="column" justifyContent="center">
-          <Typography variant="body2">Finding Accounts</Typography>
+      <Stack spacing={2} direction="row" justifyContent="center">
+          <AccountCard account={currentAccount}/>
+
         </Stack>
     </Paper>
     </Box>

@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { Form, Input, Grid, Label, Icon} from 'semantic-ui-react'
-import { TxButton } from '../lib/substrate-lib/components'
-import { useSubstrateState } from '../lib/substrate-lib'
+
+import { TxButton } from '../../lib/substrate-lib/components'
+import { useSubstrateState } from '../../lib/substrate-lib'
 import styles from '@/styles/Home.module.css'
 
 export default function Main(props) {
