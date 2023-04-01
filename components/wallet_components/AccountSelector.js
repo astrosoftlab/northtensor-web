@@ -5,7 +5,7 @@ import Paper from '@mui/material/Paper';
 import Stack from "@mui/material/Stack"
 import Typography from "@mui/material/Typography"
 import Identicon from "@polkadot/react-identicon";
-import AccountCard from ./AccountCard
+import AccountCard from './AccountCard'
 
 
 
