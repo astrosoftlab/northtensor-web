@@ -254,7 +254,7 @@ export default function Main(props) {
   // const delegateStakeCLI = "btcli delegate --delegate_ss58key "
   return (
     <Grid.Column width={8}>
-      "2"
+      &quot;2&quot;
     </Grid.Column>
 
   )

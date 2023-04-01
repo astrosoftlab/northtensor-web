@@ -7,6 +7,30 @@
   min-height: 100vh;
 }
 
+.tab_bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tab {
+  background-color: #ccc;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+
+.tab.active {
+  background-color: #333;
+  color: #fff;
+}
+
+.tab.active a:hover {
+  color: #ccc;
+}
+
 .hero {
   display: flex;
   height: 600px;
@@ -26,6 +50,14 @@
   margin-right: auto;
   margin-bottom: 35px;
   margin-left: auto;
+}
+
+.center_text {
+  width: 80%;
+  margin-right: auto;
+  margin-bottom: 35px;
+  margin-left: auto;
+  text-align: center;
 }
 
 .description {

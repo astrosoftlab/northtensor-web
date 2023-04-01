@@ -1,7 +1,13 @@
 import React, { useState } from 'react'
 import { Form, Input, Grid, Label, Icon, Dropdown } from 'semantic-ui-react'
+<<<<<<< HEAD:components/wallet_components/Transfer.js
 import { TxButton } from '../../lib/substrate-lib/components'
 import { useSubstrateState } from '../../lib/substrate-lib'
+=======
+import { TxButton } from '../lib/substrate-lib/components'
+import { useSubstrateState } from '../lib/substrate-lib'
+import styles from '@/styles/Home.module.css'
+>>>>>>> main:components/Transfer.js
 
 export default function Main(props) {
   const [status, setStatus] = useState(null)
@@ -26,7 +32,7 @@ export default function Main(props) {
 
   return (
     <Grid.Column width={8}>
-      <h1>Transfer</h1>
+      <h1 className={styles.center_text}>Transfer</h1>
       <Form>
         <Form.Field>
           <Label basic color="teal">
@@ -82,7 +88,7 @@ export default function Main(props) {
         </Form.Field>
         <div style={{ overflowWrap: 'break-word' }}>{status}</div>
       </Form>
-      <Form>
+      <Form className={styles.code}>
         btcli transfer --dest {addressTo === '' ? "DESTINATION_WALLET_KEY" : addressTo} --amount {amount}
       </Form>
     </Grid.Column>
