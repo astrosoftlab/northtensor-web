@@ -6,10 +6,17 @@ import Stack from "@mui/material/Stack"
 import Typography from "@mui/material/Typography"
 import Identicon from "@polkadot/react-identicon";
 
+
+
 function AccountCard({ account }) {
   return (
-    // {!account ? "asd" : "none"}
-    <h1>STUFF</h1>
+    (!account ? (<h1>No Active Account</h1>) : (<><Identicon
+      size={32}
+      theme="polkadot"
+      value={account.address}
+      onCopy={() => {
+        CopyToClipboard(account.address);
+      } } /><h1>{account.text}</h1></>))
   );
 }
 
