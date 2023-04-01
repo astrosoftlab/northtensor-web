@@ -8,9 +8,8 @@ import Identicon from "@polkadot/react-identicon";
 
 function AccountCard({ account }) {
   return (
-    if (!account) {
-    	
-    }
+    // {!account ? "asd" : "none"}
+    <h1>STUFF</h1>
   );
 }
 

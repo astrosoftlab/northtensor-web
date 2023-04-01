@@ -97,7 +97,7 @@ function Main(props) {
     >
       <Paper >
       <Stack spacing={2} direction="row" justifyContent="center">
-          <AccountCard account={account}/>
+          <AccountCard account={currentAccount}/>
 
         </Stack>
     </Paper>
