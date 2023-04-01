@@ -12,7 +12,7 @@ import {
 import { SubstrateContextProvider, useSubstrateState } from '../lib/substrate-lib'
 // import { DeveloperConsole } from './substrate-lib/components'
 
-import AccountSelector from './AccountSelector'
+import AccountSelector from './wallet_components/AccountSelector'
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 
@@ -24,12 +24,13 @@ import Paper from '@mui/material/Paper';
 // import MNRVTip from './MNRVTip'
 // import Transfer from './Transfer'
 // import Events from './Events'
-import Navigations from './Navigations'
+import Navigations from './wallet_components/Navigations'
 
 // import TemplateModule from './TemplateModule'
 
 function Main() {
   const { apiState, apiError, keyringState } = useSubstrateState()
+  console.log('err', apiError)
   const loader = text => (
     <Dimmer active>
       <Loader size="small">{text}</Loader>

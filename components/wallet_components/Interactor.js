@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Grid, Form, Dropdown, Input, Label } from 'semantic-ui-react'
 
-import { useSubstrateState } from '../lib/substrate-lib'
-import { TxButton, TxGroupButton } from '../lib/substrate-lib/components'
+import { useSubstrateState } from '../../lib/substrate-lib'
+import { TxButton, TxGroupButton } from '../../lib/substrate-lib/components'
 
 const argIsOptional = arg => arg.type.toString().startsWith('Option<')
 
