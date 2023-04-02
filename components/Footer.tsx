@@ -18,15 +18,36 @@ const NavLink: React.FC<NavLinkProps> = ({ href, text }) => (
 
 
 const Footer: React.FC = () => (
-  <nav className={styles.nav}>
-    <Image src={logo} alt="mnrv.ai logo" className={styles.toplogo} />
-    <ul>
-      <NavLink href="/resources" text="Resources" />
-      <NavLink href="/" text="Home" />
-      <NavLink href="/roadmap" text="Roadmap" />
-    </ul>
-  </nav>
+  <footer className="bg-gray-900 text-gray-400 py-8">
+    <div className="max-w-screen-xl mx-auto px-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="mb-4">
+          <h3 className="text-lg font-bold mb-2 text-center">Resources</h3>
+            <ul className="text-sm">
+              <li className="text-sm text-center"><a href="mailto:sample@mnrv.ai">sample@mnrv.ai</a></li>
+          </ul>
+        </div>
+        <div className="mb-4">
+          <h3 className="text-lg font-bold mb-2 text-center">Resources</h3>
+          <ul className="text-sm">
+          <li className="mb-2 text-center"><a href="docs/introduction-to-bittensor">Introduction to Bittensor</a></li>
+          <li className="mb-2 text-center"><a href="docs/purchase-tao">Purchasing Tao</a></li>
+          <li className="mb-2 text-center"><a href="docs/introduction-to-staking">Introduction to Staking</a></li>
+          <li className="mb-2 text-center"><a href="docs/staking">Staking Tao</a></li>
+          </ul>
+        </div>
+        <div className="mb-4">
+          <h3 className="text-lg font-bold mb-2 text-center">Follow Us</h3>
+          <ul className="text-sm">
+            <li className="mb-2 text-center"><a href="https://twitter.com/mnrv_ai">Twitter</a></li>
+            <li className="mb-2 text-center"><a href="https://discordapp.com/channels/1086368192521318472/1087797623924195408">Discord</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
 );
+
 
 export default Footer;
 

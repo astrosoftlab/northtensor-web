@@ -18,7 +18,7 @@ export default function Home() {
       <main>
         <div className="relative bg-[url('../public/images/wallpaperflare.com_wallpaper.jpg')] px-4 py-32 sm:px-6 lg:flex  lg:items-center ">
         <div className="w-4/5 mx-auto mb-8">
-          <div className="text-3xl font-extrabold sm:text-5xl text-gray-100">
+          <div className="text-3xl sm:text-5xl text-gray-100 font-thin">
             MNRV.AI
           </div>
           <br />
@@ -28,15 +28,16 @@ export default function Home() {
           <p className="mb-4 opacity-100 text-lg leading-8 font-normal text-gray-100">
             Check out our introductory guides
           </p>
-          <Link href="/docs/introduction-to-bittensor" className="leading-relaxed whitespace-nowrap block w-1/6 h-11 rounded tracking-wide text-2xl bg-white px-10 text-gray-800 shadow active:text-gray-500 " >
-          <div>Getting Started</div>
+          <Link href="/docs/introduction-to-bittensor" className="bg-gray-500 hover:bg-gray-700 text-gray-100 font-bold py-2 px-4 rounded">
+          Getting Started
           </Link>
+          <br />
           <br />
           <p className="mb-4 opacity-100 text-lg leading-8 font-normal text-gray-100">
             Or, just start Staking
           </p>
-          <Link href="https://app.mnrv.ai" className="leading-relaxed block w-1/6 h-11 rounded tracking-wide text-2xl bg-white px-16 text-gray-800 shadow active:text-gray-500 ">
-          <div>Stake Tao</div>
+          <Link href="https://app.mnrv.ai" className="bg-gray-500 hover:bg-gray-700 text-gray-100 font-bold py-2 px-4 rounded">
+          Stake Tao
           </ Link>
         </div>
         </div>
@@ -44,12 +45,16 @@ export default function Home() {
         <div className="container mx-auto flex flex-wrap items-start my-16">
           <Link
             href="/docs/introduction-to-bittensor"
-            className="bg-gray-200 rounded-xl p-6 lg:w-1/5 w-full lg:pr-3 container mx-auto flex flex-wrap items-start my-16"
+            className="bg-gray-200 rounded-xl p-6 lg:w-1/5 w-full lg:pr-3 container mx-auto flex flex-wrap items-start my-16 hover:bg-gray-300"
             target="_self"
             rel="noopener noreferrer">
-            <h2 className="text-2xl font-bold mb-2">
-              Developers <span>-&gt;</span>
-            </h2>
+            <h2 class="text-2xl font-bold mb-2 mr-2">Developers</h2>
+              <svg class="h-8 w-8 text-gray-900" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z"/>
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <line x1="13" y1="18" x2="19" y2="12" />
+              <line x1="13" y1="6" x2="19" y2="12" />
+              </svg>
             <p className="tagline italic font-bold">
               A Bittensor backend is just the start for building AI solutions.
             </p>
@@ -63,12 +68,16 @@ export default function Home() {
             </ Link>
           <Link
             href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="bg-gray-200 rounded-xl p-6 lg:w-1/4 w-full lg:pr-3 container mx-auto flex flex-wrap items-start my-16"
+            className="bg-gray-200 rounded-xl p-6 lg:w-1/5 w-full lg:pr-3 container mx-auto flex flex-wrap items-start my-16 hover:bg-gray-300"
             target="_blank"
             rel="noopener noreferrer" >
-            <h2 className="text-2xl font-bold mb-2">
-              Users <span>-&gt;</span>
-            </h2>
+            <h2 class="text-2xl font-bold mb-2 mr-2">Users</h2>
+              <svg class="h-8 w-8 text-gray-900" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z"/>
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <line x1="13" y1="18" x2="19" y2="12" />
+              <line x1="13" y1="6" x2="19" y2="12" />
+              </svg>
             <p className="tagline italic font-bold">
               AI can be used for more than you think.
             </p>
@@ -83,13 +92,17 @@ export default function Home() {
 
           <Link
             href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="bg-gray-200 rounded-xl p-6 lg:w-1/4 w-full lg:pr-3 container mx-auto flex flex-wrap items-start my-16"
+            className="bg-gray-200 rounded-xl p-6 lg:w-1/5 w-full lg:pr-3 container mx-auto flex flex-wrap items-start my-16 hover:bg-gray-300"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <h2 className="text-2xl font-bold mb-2">
-              Stakers <span>-&gt;</span>
-            </h2>
+            <h2 class="text-2xl font-bold mb-2 mr-2">Stakers</h2>
+              <svg class="h-8 w-8 text-gray-900" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z"/>
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <line x1="13" y1="18" x2="19" y2="12" />
+              <line x1="13" y1="6" x2="19" y2="12" />
+              </svg>
             <p className="tagline italic font-bold">
               Your Tao can do good for both you and the rest of the world.
             </p>
@@ -107,13 +120,17 @@ export default function Home() {
 
           <a
             href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="bg-gray-200 rounded-xl p-6 lg:w-1/4 w-full lg:pr-3 container mx-auto flex flex-wrap items-start my-16"
+            className="bg-gray-200 rounded-xl p-6 lg:w-1/5 w-full lg:pr-3 container mx-auto flex flex-wrap items-start my-16 hover:bg-gray-300"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <h2 className="text-2xl font-bold mb-2">
-              Miners <span>-&gt;</span>
-            </h2>
+            <h2 class="text-2xl font-bold mb-2 mr-2">Miners</h2>
+              <svg class="h-8 w-8 text-gray-900" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z"/>
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <line x1="13" y1="18" x2="19" y2="12" />
+              <line x1="13" y1="6" x2="19" y2="12" />
+              </svg>
             <p className="tagline italic font-bold">
               You can help mine, no matter your skill level.
             </p>
