@@ -16,24 +16,24 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
+      <main className="flex flex-col justify-between items-center py-24 min-h-screen">
         <div className={styles.hero}>
-        <div className={styles.intro_text}>
-          <div className={styles.heading_jumbo}>
+        <div className="w-4/5 mx-auto mb-8">
+          <div className="mt-4 mb-4 transition-opacity duration-200 text-6xl font-serif leading-20 uppercase">
             MNRV.AI
           </div>
           <br />
-          <p className={styles.paragraph_bigger}>
+          <p className="mb-4 opacity-100 text-lg leading-8 font-normal">
             We are a Bittensor-first AI Firm aiming to utilize the inevitable union of economic efficiencies provided through cryptocurrency technologies. Our focus is to create infrastructure required to scale and support basic transformer driven data extraction to Artificial General Intelligence.
           </p>
-          <p className={styles.paragraph_bigger}>
+          <p className="mb-4 opacity-100 text-lg leading-8 font-normal">
             Check out our introductory guides
           </p>
           <Link href="/docs/introduction-to-bittensor" className={[styles.button, styles.cc_jumbo_button, styles.cc_jumbo_white, styles.w_inline_block].join(" ")} >
           <div>Getting Started</div>
           </Link>
           <br />
-          <p className={styles.paragraph_bigger}>
+          <p className="mb-4 opacity-100 text-lg leading-8 font-normal">
             Or, just start Staking
           </p>
           <Link href="https://app.mnrv.ai" className={[styles.button, styles.cc_jumbo_button, styles.cc_jumbo_white, styles.w_inline_block].join(" ")} >
@@ -42,7 +42,7 @@ export default function Home() {
         </div>
         </div>
 
-        <div className={styles.grid}>
+        <div className="grid grid-cols-1 mb-24 max-w-xs mx-auto text-center">
           <Link
             href="/docs/introduction-to-bittensor"
             className={styles.card}
@@ -51,7 +51,7 @@ export default function Home() {
             <h2 className={inter.className}>
               Developers <span>-&gt;</span>
             </h2>
-            <p className={styles.tagline}>
+            <p className="tagline italic font-bold">
               A Bittensor backend is just the start for building AI solutions.
             </p>
             <br />
@@ -70,7 +70,7 @@ export default function Home() {
             <h2 className={inter.className}>
               Users <span>-&gt;</span>
             </h2>
-            <p className={styles.tagline}>
+            <p className="tagline italic font-bold">
               AI can be used for more than you think.
             </p>
             <br />
@@ -91,7 +91,7 @@ export default function Home() {
             <h2 className={inter.className}>
               Stakers <span>-&gt;</span>
             </h2>
-            <p className={styles.tagline}>
+            <p className="tagline italic font-bold">
               Your Tao can do good for both you and the rest of the world.
             </p>
             <br />
