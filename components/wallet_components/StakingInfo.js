@@ -6,6 +6,8 @@ import { useSubstrateState } from '../../lib/substrate-lib'
 
 export default function Main(props) {
   // const [status, setStatus] = useState(null)
+
+  return (<h1>Coming Soon</h1>)
   
   const { api, keyring, currentAccount} = useSubstrateState()
 

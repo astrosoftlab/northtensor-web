@@ -31,11 +31,6 @@ export default function Main(props) {
       <h1 className={styles.center_text}>Tip MNRV</h1>
       <Form>
         <Form.Field>
-          <Label basic color="teal">
-            <Icon name="info" />Wallets Must Retain 0.000,001 Tao To Remain Active (Existential Amount)&nbsp;;
-          </Label>
-        </Form.Field>
-        <Form.Field>
           <Input
             fluid
             label="Amount"
