@@ -43,7 +43,7 @@ const Navbar: React.FC = () => (
       <NavLink href="/resources" text="Blog" />
     </div>
     <div>
-      <a href="#" className="inline-block text-sm px-4 py-2 leading-none border rounded text-gray-100 border-gray-100 hover:border-transparent hover:text-gray-100 hover:bg-gray-500 mt-4 lg:mt-0">Wallet</a>
+      <a href="/wallet" className="inline-block text-sm px-4 py-2 leading-none border rounded text-gray-100 border-gray-100 hover:border-transparent hover:text-gray-100 hover:bg-gray-500 mt-4 lg:mt-0">Wallet</a>
     </div>
   </div>
 </nav>

@@ -10,9 +10,10 @@ import {
 } from 'semantic-ui-react'
 
 import Transfer from './Transfer'
-import WalletStake from './WalletStake'
+import Stake from './Stake'
 import MNRVTip from './MNRVTip'
 import StakingInfo from './StakingInfo'
+
 
 function Main(props) {
   
@@ -53,7 +54,7 @@ function Main(props) {
               />
           </Menu>
           <Container>
-          {activeItem === 'Stake' ? <WalletStake /> : null}
+          {activeItem === 'Stake' ? <Stake /> : null}
           {activeItem === 'Transfer' ? <Transfer /> : null}
           {activeItem === 'Tip' ? <MNRVTip /> : null}
           {activeItem === 'Stake Info' ? <StakingInfo /> : null}
