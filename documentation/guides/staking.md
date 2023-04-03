@@ -26,7 +26,7 @@ and we have not been hacked.
 
 &nbsp;
 
-## verify non malicious transaction. {#verify-non-malicious-transaction}
+## Verify Non-Malicious Transaction. {#verify-non-malicious-transaction}
 
 &nbsp;
 
