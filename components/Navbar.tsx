@@ -10,7 +10,7 @@ interface NavLinkProps {
 
 const NavLink: React.FC<NavLinkProps> = ({ href, text }) => (
   <li className="mr-4">
-    <Link className="block mt-4 lg:inline-block lg:mt-0 text-gray-500 hover:text-white mr-4" href={href}>
+    <Link className="block mt-4 lg:inline-block lg:mt-0 text-gray-100 hover:text-gray-400 mr-4" href={href}>
       {text}
     </Link>
   </li>
@@ -36,11 +36,11 @@ const Navbar: React.FC = () => {
   const session = useSession()
   const supabase = useSupabaseClient()
   return (
-<nav className="flex items-center justify-between flex-wrap bg-gray-900 p-6">
+<nav className="flex items-center justify-between flex-wrap bg-gray-700 p-6">
   <div className="flex items-center flex-shrink-0 text-white mr-6">
-    <a href="/">
+    <Link href="/">
       <Image src={logo} alt="mnrv.ai logo" className="text-xl font-bold h-10 object-contain w-auto"/>
-    </a>
+    </Link>
   </div>
   <div className="w-full flex-grow lg:flex lg:items-center lg:w-auto flex flex-row">
     <div className="w-full flex-grow lg:flex lg:items-center lg:w-auto flex flex-row list-none">
@@ -49,11 +49,11 @@ const Navbar: React.FC = () => {
       <NavLink href="/resources" text="Blog" />
     </div>
     <div>
-      <a href="#" className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Wallet</a>
+      <a href="#" className="inline-block text-sm px-4 py-2 leading-none border rounded text-gray-100 border-gray-100 hover:border-transparent hover:text-gray-100 hover:bg-gray-500 mt-4 lg:mt-0">Wallet</a>
       {!session ? (
-        <a href="/profile" className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Login</a>
+        <a href="/profile" className="inline-block text-sm px-4 py-2 leading-none border rounded text-gray-100 border-gray-100 hover:border-transparent hover:text-gray-100 hover:bg-gray-500 mt-4 lg:mt-0">Log In</a>
       ) : (
-        <a href="/profile" className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Account</a>
+        <a href="/profile" className="inline-block text-sm px-4 py-2 leading-none border rounded text-gray-100 border-gray-100 hover:border-transparent hover:text-gray-100 hover:bg-gray-500 mt-4 lg:mt-0">Account</a>
 
       )}
     </div>
