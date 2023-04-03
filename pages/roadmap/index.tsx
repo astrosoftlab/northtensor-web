@@ -11,8 +11,8 @@ export default function Post({ postData }: { postData: PostData & { contentHtml:
         <title>{postData.title}</title>
       </Head>
       <main className="flex flex-col justify-between items-center px-20 py-10 min-h-screen">
-      <article className="prose prose-lg">
-        <h1>{postData.title}</h1>
+      <article className="prose prose-lg dark:text-gray-200">
+        <h1 className="dark:text-gray-200">{postData.title}</h1>
         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }}/>
       </article>
       </main>
