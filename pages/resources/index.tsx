@@ -16,8 +16,9 @@ export default function Home({ postData }: { postData: PostData[] }) {
       </Head>
       <main className={styles.main}>
       <article>
-        <h1 className={inter.className}>Resources</h1>
-		<ul className={utilStyles.list}>
+        <h1 className="text-3xl sm:text-5xl dark:text-gray-100 font-thin">Resources</h1>
+        <br/ >
+		<ul className="dark:text-gray-100">
 		  {postData.map(({ id, date, title }) => (
 			<li className={utilStyles.listItem} key={id}>
 			  <a href={`/docs/${id}`}>{title}</a>
