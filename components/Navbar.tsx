@@ -46,10 +46,10 @@ const Navbar: React.FC = () => {
     <div className="w-full flex-grow lg:flex lg:items-center lg:w-auto flex flex-row list-none">
       <NavLink href="/resources" text="Resources" />
       <NavLink href="/resources" text="Tools" />
-      <NavLink href="/resources" text="Blog" />
+      <NavLink href="/roadmap" text="Roadmap" />
     </div>
     <div>
-      <a href="#" className="inline-block text-sm px-4 py-2 leading-none border rounded text-gray-100 border-gray-100 hover:border-transparent hover:text-gray-100 hover:bg-gray-500 mt-4 lg:mt-0">Wallet</a>
+       <a href="/wallet" className="inline-block text-sm px-4 py-2 leading-none border rounded text-gray-100 border-gray-100 hover:border-transparent hover:text-gray-100 hover:bg-gray-500 mt-4 lg:mt-0">Wallet</a>
       {!session ? (
         <a href="/profile" className="inline-block text-sm px-4 py-2 leading-none border rounded text-gray-100 border-gray-100 hover:border-transparent hover:text-gray-100 hover:bg-gray-500 mt-4 lg:mt-0">Log In</a>
       ) : (

@@ -8,34 +8,29 @@ import Identicon from "@polkadot/react-identicon";
 
 // import HeaderPathing from './HeaderPathing'
 
-function AccountCard({ account }) {
+function AccountIdenticon({ account }) {
   
   // console.log("card acccount", account.meta.name)
   // console.log('curracc', account.address.substring(0, 6))
   return (
     (!account ? 
       (
-        <h1>
-          No Active Account
-        </h1>
+        <></>
       ) : 
       (
-      <Stack direction="row">
-        {/* <Identicon
-          size={32}
-          theme="polkadot"
-          value={account.address}
-          onCopy={() => {
+        <Box component="span" >
+        <Identicon
+            size={40}
+            theme="polkadot"
+            value={account.address}
+            onCopy={() => {
             CopyToClipboard(account.address);
             } 
-          } 
-        /> */}
-        <Stack direction="column">
-          <h1>{account.meta.name}</h1>
-          <p>{account.address.substring(0, 10)}...</p>
-        </Stack>
-      </Stack>))
+            } 
+        />
+        </Box>
+      ))
   );
 }
 
-export default AccountCard;
+export default AccountIdenticon;
