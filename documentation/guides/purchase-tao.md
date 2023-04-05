@@ -98,4 +98,4 @@ Go to [https://www.mexc.com/en-US/assets](https://www.mexc.com/en-US/assets) and
 
 ## Staking {#staking}
 
-Go to [https://www.mnrv.ai/docs/staking](/docs/staking) and follow the instructions to stake your TAO.
+Go to [https://www.northtensor.com/docs/staking](/docs/staking) and follow the instructions to stake your TAO.

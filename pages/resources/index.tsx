@@ -14,7 +14,7 @@ export default function Home({ postData }: { postData: PostData[] }) {
       <Head>
         <title> Resources </title>
       </Head>
-      <main className={styles.main}>
+      <main className="main flex flex-col justify-between items-center p-24 min-h-screen">
       <article>
         <h1 className="text-3xl sm:text-5xl dark:text-gray-100 font-thin">Resources</h1>
         <br/ >

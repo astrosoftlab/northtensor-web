@@ -9,8 +9,8 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>MNRV.AI</title>
-        <meta name="description" content="mnrv.ai Front Page" />
+        <title>North Tensor</title>
+        <meta name="description" content="North Tensor Front Page" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -19,7 +19,7 @@ export default function Home() {
         <div className="relative bg-[url('../public/images/wallpaperflare.com_wallpaper.jpg')] px-4 py-32 sm:px-6 lg:flex  lg:items-center">
         <div className="w-4/5 mx-auto mb-8">
           <div className="text-3xl sm:text-5xl text-gray-100 font-thin">
-            MNRV.AI
+            North Tensor
           </div>
           <br />
           <p className="mb-4 opacity-100 text-lg leading-8 font-normal text-gray-100">

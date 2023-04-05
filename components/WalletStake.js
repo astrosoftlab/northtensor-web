@@ -81,7 +81,7 @@ export default function Main(props) {
     <Grid.Column width={8}>
       <Grid.Row>
         
-        <h1 className={styles.center_text} >Delegated Staking</h1>
+        <h1 className="text-center dark:invert ">Delegated Staking</h1>
       <Label basic color="green" position="right" style={{ marginLeft: 0, marginBottom: '.5em' }}>
           <Icon name="money" />Balance Staked: {amountCurrentlyStakedTao} Tao&nbsp;
         </Label></Grid.Row>
