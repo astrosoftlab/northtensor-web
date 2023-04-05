@@ -11,7 +11,7 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
   return (
     <>
-      <main className={styles.main}>
+      <main className="main flex flex-col justify-between items-center p-24 min-h-screen">
         <WalletApp />
       </main>
     </>

@@ -1,5 +1,5 @@
 ---
-title: 'How to Stake TAO on MNRV.AI'
+title: 'How to Stake TAO on North Tensor'
 date: '2023-03-29'
 ---
 
