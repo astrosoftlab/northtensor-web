@@ -1,26 +1,78 @@
 {
   "APP_NAME": "MNRV_Staking",
   "CUSTOM_RPC_METHODS": {
-    "delegateInfo": {
-      "getDelegates": {
-        "description": "Always returns 7",
-        "params": [],
-        "type": "(Vec<u8>)"
-      },
-      "getDelegate": {
-        "description": "Always returns 7",
-        "params": [],
-        "type": "RpcResult<Vec<u8>>"
-      },
-      "getDelegated": {
-        "description": "Always returns 7",
+    "neuronInfo": {
+      "getNeuronsLite": {
+        "description": "Get neurons lite",
         "params": [
           {
-            "name": "val",
-            "type": "Vec<u8>"
+            "name": "netuid",
+            "type": "u16"
           }
         ],
-        "type": "RpcResult<Vec<u8>>"
+        "type": "Vec<u8>"
+      },
+      "getNeuronLite": {
+        "description": "Get neuron lite",
+        "params": [
+          {
+            "name": "netuid",
+            "type": "u16"
+          },
+          {
+            "name": "uid",
+            "type": "u16"
+          }
+        ],
+        "type": "Vec<u8>"
+      },
+      "getNeurons": {
+        "description": "Get neurons",
+        "params": [
+          {
+            "name": "netuid",
+            "type": "u16"
+          }
+        ],
+        "type": "Vec<u8>"
+      },
+      "getNeuron": {
+        "description": "Get neuron",
+        "params": [
+          {
+            "name": "netuid",
+            "type": "u16"
+          },
+          {
+            "name": "uid",
+            "type": "u16"
+          }
+        ],
+        "type": "Vec<u8>"
+      }
+    },
+    "delegateInfo": {
+      "getDelegates": {
+        "description": "Get delegates info",
+        "params": [],
+        "type": "Vec<u8>"
+      }
+    },
+    "subnetInfo": {
+      "getSubnetsInfo": {
+        "description": "Get subnets info",
+        "params": [],
+        "type": "Vec<u8>"
+      },
+      "getSubnetInfo": {
+        "description": "Get subnet info",
+        "params": [
+          {
+            "name": "netuid",
+            "type": "u16"
+          }
+        ],
+        "type": "Vec<u8>"
       }
     }
   },
