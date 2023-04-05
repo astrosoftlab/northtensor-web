@@ -5,8 +5,8 @@ import Paper from '@mui/material/Paper';
 import Stack from "@mui/material/Stack"
 import Typography from "@mui/material/Typography"
 import Identicon from "@polkadot/react-identicon";
-import AccountCard from './AccountCard'
-import AccountIdenticon from './AccountIdenticon'
+import AccountSelector from './AccountSelector'
+import AccountBasicInfo from './AccountBasicInfo'
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 
@@ -84,30 +84,22 @@ function Main(props) {
   }, [api.rpc.system])
 
   return (
-      <Stack spacing={2} alignItems="center" direction="row" justifyContent="center">
-          <AccountIdenticon account={currentAccount}/>
-          {(keyringOptions && currentAccount) ?
-            <Select 
-              labelId="account-selection-label"
-              id="account-selection"
-              value={currentAccount.address}
-              // label="Active Account"
-              onChange={onChange}
-            >
-              {keyringOptions.map(temp_account => {
-                return (
-                <MenuItem key={temp_account.key} value={temp_account.key}>
-                   <AccountCard account={keyring.getPair(temp_account.key)}/>
-                </MenuItem>
-                );
-              })}
-              {/* <MenuItem key={"Coldkey"} value={"Coldkey"}>Coldkey</MenuItem> */}
-            </Select>
-            :
-            <h1>No Accounts Detected</h1>
-          }
-
+    <Box
+      sx={{
+        display: 'flex-width',
+        flexWrap: 'wrap',
+        '& > :not(style)': {
+          // height: 64,
+        },
+      }}
+    >
+        <Paper >
+        <Stack spacing={2} direction="row" justifyContent="space-between">
+            <AccountSelector/>
+            <AccountBasicInfo/>
         </Stack>
+    </Paper>
+    </Box>
   )
 }
 
@@ -142,7 +134,7 @@ function BalanceAnnotation(props) {
   ) : null
 }
 
-export default function AccountSelector(props) {
+export default function WalletHeader(props) {
   const { api, keyring } = useSubstrateState()
   return keyring.getPairs && api.query ? <Main {...props} /> : null
 }

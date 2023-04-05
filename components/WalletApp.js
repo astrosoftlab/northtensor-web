@@ -12,7 +12,7 @@ import {
 import { SubstrateContextProvider, useSubstrateState } from '../lib/substrate-lib'
 // import { DeveloperConsole } from './substrate-lib/components'
 
-import AccountSelector from './wallet_components/AccountSelector'
+import WalletHeader from './wallet_components/WalletHeader'
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 
@@ -76,18 +76,12 @@ function Main() {
       }}
     >
       
-      <Paper variant="outlined" elevation={3}>
+      <Paper variant="outlined">
             <div ref={contextRef}>
             <Sticky context={contextRef}>
-                <AccountSelector />
+                <WalletHeader />
             </Sticky>
             <Navigations />
-            {/* <Container>
-            <Grid.Row>
-                    <Interactor />
-                    <Events />
-                </Grid.Row>
-            </Container> */}
             </div>
       </Paper>
     </Box>

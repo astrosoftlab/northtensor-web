@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Form, Input, Grid,  Label, Icon } from 'semantic-ui-react'
-import { TxButton } from '../lib/substrate-lib/components'
-import { useSubstrateState } from '../lib/substrate-lib'
-import styles from '@/styles/Home.module.css'
+import { TxButton } from '../../lib/substrate-lib/components'
+import { useSubstrateState } from '../../lib/substrate-lib'
 
 export default function Main(props) {
   const [status, setStatus] = useState(null)
@@ -32,7 +31,7 @@ export default function Main(props) {
 
   //Convert AccountBalance to Tao
   // const accountBalanceTao = parseFloat(accountBalance.toString().replace(/,/g, '')) / 10**9
-  const fullStakeAmount = parseFloat(accountBalance.toString().replace(/,/g, '')) - 1000
+  const fullStakeAmount = parseFloat(accountBalance.toString().replace(/,/g, ''))
   // const fullStakeAmountTao = fullStakeAmount / 10**9
   const [stakeAmount, setStakeAmount] = useState(0)
   const [stakeType, setStakeType] = useState('addStake')
@@ -105,9 +104,6 @@ export default function Main(props) {
             onChange={onStakeTypeChange}
           />
         </Form.Group>
-        <Label basic color="teal" style={{ marginLeft: 0, marginBottom: '.5em' }}>
-          <Icon name="info" />Wallets Must Retain 0.000,001 Tao To Remain Active (Existential Amount)&nbsp;
-        </Label>
         <Form.Field>
           <Input
             defaultValue={0}
@@ -130,7 +126,6 @@ export default function Main(props) {
             }}
           /> 
           {stakeType === "addStake" ? <TxButton
-            className={styles.code}
             label="Stake All"
             type="SIGNED-TX"
             setStatus={setStatus}
@@ -154,7 +149,7 @@ export default function Main(props) {
         </Form.Field>
         <div style={{ overflowWrap: 'break-word' }}>{status}</div>
       </Form>
-      <Form className={styles.code}>
+      <Form>
         btcli {stakeType === 'addStake' ? "delegate" : "undelegate"} --delegate_ss58key {MNRVHotkey} {parseFloat(stakeAmount) === 0 ? "--all" : btcliStakeAmount}
       </Form>
     </Grid.Column>

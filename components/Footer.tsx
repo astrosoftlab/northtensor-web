@@ -24,23 +24,23 @@ const Footer: React.FC = () => (
         <div className="mb-4">
           <h3 className="text-lg font-bold mb-2 text-center">Contact Us</h3>
             <ul className="text-sm">
-              <li className="text-sm text-center"><a href="mailto:sample@northtensor.ai">sample@northtensor.com</a></li>
+
           </ul>
         </div>
-        <div className="mb-4">
-          <h3 className="text-lg font-bold mb-2 text-center">Resources</h3>
+        <div className="mb-4 text-center">
+          <h3 className="text-lg font-bold mb-2">Resources</h3>
           <ul className="text-sm">
-          <li className="mb-2 text-center"><a href="docs/introduction-to-bittensor">Introduction to Bittensor</a></li>
-          <li className="mb-2 text-center"><a href="docs/purchase-tao">Purchasing Tao</a></li>
-          <li className="mb-2 text-center"><a href="docs/introduction-to-staking">Introduction to Staking</a></li>
-          <li className="mb-2 text-center"><a href="docs/staking">Staking Tao</a></li>
+            <NavLink href="/docs/introduction-to-bittensor" text="Introduction to Bittensor" />
+            <NavLink href="/docs/purchase-tao" text="Purchasing Tao" />
+            <NavLink href="/docs/introduction-to-staking" text="Guide to Staking" />
+            <NavLink href="/docs/staking" text="Staking Tao" />
           </ul>
         </div>
-        <div className="mb-4">
-          <h3 className="text-lg font-bold mb-2 text-center">Follow Us</h3>
+        <div className="mb-4 text-center">
+          <h3 className="text-lg font-bold mb-2">Follow Us</h3>
           <ul className="text-sm">
-            <li className="mb-2 text-center"><a href="https://twitter.com/mnrv_ai">Twitter</a></li>
-            <li className="mb-2 text-center"><a href="https://discordapp.com/channels/1086368192521318472/1087797623924195408">Discord</a></li>
+            <NavLink href="https://twitter.com/mnrv_ai" text="Twitter" />
+            <NavLink href="https://discordapp.com/channels/1086368192521318472/1087797623924195408" text="Discord" />
           </ul>
         </div>
       </div>
