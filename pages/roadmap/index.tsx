@@ -12,7 +12,7 @@ export default function Post({ postData }: { postData: PostData & { contentHtml:
       </Head>
       <main className="flex flex-col justify-between items-center px-20 py-10 min-h-screen dark:invert">
       <article className="prose prose-lg">
-        <h1>{postData.title}</h1>
+        <h1 className="text-3xl sm:text-5xl font-thin">{postData.title}</h1>
         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }}/>
       </article>
       </main>
