@@ -31,7 +31,7 @@ export default function Main(props) {
 
   //Convert AccountBalance to Tao
   // const accountBalanceTao = parseFloat(accountBalance.toString().replace(/,/g, '')) / 10**9
-  const fullStakeAmount = parseFloat(accountBalance.toString().replace(/,/g, '')) - 1000
+  const fullStakeAmount = parseFloat(accountBalance.toString().replace(/,/g, ''))
   // const fullStakeAmountTao = fullStakeAmount / 10**9
   const [stakeAmount, setStakeAmount] = useState(0)
   const [stakeType, setStakeType] = useState('addStake')
@@ -81,9 +81,7 @@ export default function Main(props) {
       <Grid.Row>
         
         <h1>Delegated Staking</h1>
-      <Label basic color="green" position="right" style={{ marginLeft: 0, marginBottom: '.5em' }}>
-          <Icon name="money" />Balance Staked: {amountCurrentlyStakedTao} Tao&nbsp;
-        </Label></Grid.Row>
+</Grid.Row>
       
       
       <Form>
@@ -104,9 +102,6 @@ export default function Main(props) {
             onChange={onStakeTypeChange}
           />
         </Form.Group>
-        <Label basic color="teal" style={{ marginLeft: 0, marginBottom: '.5em' }}>
-          <Icon name="info" />Wallets Must Retain 0.000,001 Tao To Remain Active (Existential Amount)&nbsp;
-        </Label>
         <Form.Field>
           <Input
             defaultValue={0}

@@ -30,12 +30,6 @@ export default function Main(props) {
     <Grid.Column width={8}>
       <h1 className={styles.center_text}>Transfer</h1>
       <Form>
-        <Form.Field>
-          <Label basic color="teal">
-            <Icon name="info" />Wallets Must Retain 0.000,001 Tao To Remain Active (Existential Amount)&nbsp;
-          </Label>
-          
-        </Form.Field>
 
         <Form.Field>
           <Dropdown
