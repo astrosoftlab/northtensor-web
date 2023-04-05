@@ -16,54 +16,74 @@ import StakingInfo from './StakingInfo'
 
 
 function Main(props) {
-  
-  const [activeItem, setActiveItem] = useState('Stake')
-  const onClickHandler = (data) => {
-    setActiveItem(data.value)
-  }
+  const [activeItem, setActiveItem] = useState('Stake');
 
+  const onClickHandler = (data) => {
+    setActiveItem(data.value);
+  };
 
   return (
-    <Segment>
-      <Grid>
-        <Grid.Row >
-          <Menu pointing secondary vertical className={[styles.tab_bar, navstyles.nav].join(" ")}>
-            <Menu.Item
-              name='Stake'
-              className={activeItem === 'Stake' ? [styles.tab, styles.active].join(" ") : styles.tab}
-              active={activeItem === 'Stake'} 
-              onClick={ () => onClickHandler(({value: 'Stake'}))}
-              />
-            <Menu.Item
-              name='Transfer'
-              className={activeItem === 'Transfer' ? [styles.tab, styles.active].join(" ") : styles.tab}
-              active={activeItem === 'Transfer'} 
-              onClick={ () => onClickHandler(({value: 'Transfer'}))}
-              />
-            <Menu.Item
-              name='Stake Info'
-              className={activeItem === 'Stake Info' ? [styles.tab, styles.active].join(" ") : styles.tab}
-              active={activeItem === 'Stake Info'} 
-              onClick={ () => onClickHandler(({value: 'Stake Info'}))}
-              />
-            <Menu.Item
-              name='Tip'
-              className={activeItem === 'Tip' ? [styles.tab, styles.active].join(" ") : styles.tab}
-              active={activeItem === 'Tip'} 
-              onClick={ () => onClickHandler(({value: 'Tip'}))}
-              />
-          </Menu>
-          <Container>
-          {activeItem === 'Stake' ? <Stake /> : null}
-          {activeItem === 'Transfer' ? <Transfer /> : null}
-          {activeItem === 'Tip' ? <MNRVTip /> : null}
-          {activeItem === 'Stake Info' ? <StakingInfo /> : null}
-          </Container>
-        </Grid.Row>
-      </Grid>
-    </Segment>
-  )
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-700">
+      <div className="py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="lg:text-center">
+          </div>
+          <div className="mt-10" style={{ width: '1200px' }}>
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              <button
+                className={`${
+                  activeItem === 'Stake'
+                    ? 'bg-gray-700 text-white'
+                    : 'bg-white border border-gray-300'
+                } rounded-md shadow-sm py-2 px-4 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-600`}
+                onClick={() => onClickHandler({ value: 'Stake' })}
+              >
+                Stake
+              </button>
+              <button
+                className={`${
+                  activeItem === 'Transfer'
+                    ? 'bg-gray-700 text-white'
+                    : 'bg-white border border-gray-300'
+                } rounded-md shadow-sm py-2 px-4 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-600`}
+                onClick={() => onClickHandler({ value: 'Transfer' })}
+              >
+                Transfer
+              </button>
+              <button
+                className={`${
+                  activeItem === 'Stake Info'
+                    ? 'bg-gray-700 text-white'
+                    : 'bg-white border border-gray-300'
+                } rounded-md shadow-sm py-2 px-4 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-600`}
+                onClick={() => onClickHandler({ value: 'Stake Info' })}
+              >
+                Stake Info
+              </button>
+              <button
+                className={`${
+                  activeItem === 'Tip'
+                    ? 'bg-gray-700 text-white'
+                    : 'bg-white border border-gray-300'
+                } rounded-md shadow-sm py-2 px-4 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-600`}
+                onClick={() => onClickHandler({ value: 'Tip' })}
+              >
+                Tip
+              </button>
+            </div>
+          </div>
+          <div className="mt-10" style={{ width: '600px' }}>
+            {activeItem === 'Stake' ? <Stake /> : null}
+            {activeItem === 'Transfer' ? <Transfer /> : null}
+            {activeItem === 'Tip' ? <MNRVTip /> : null}
+            {activeItem === 'Stake Info' ? <StakingInfo /> : null}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
+
 
 
 export default function Navigation(props) {
