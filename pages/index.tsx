@@ -44,8 +44,8 @@ export default function Home() {
 
         <div className="grid grid-cols-4 gap-4 py-6 px-6 dark:bg-gray-800">
           <Link
-            href="/docs/introduction-to-bittensor"
-            className="py-4 px-4 rounded-lg bg-transparent border border-transparent transition-colors duration-200 hover:bg-white hover:border-gray-300 dark:bg-gray-900 dark:hover:bg-gray-600"
+            href="docs/developer-intro"
+            className="py-4 px-4 rounded-lg bg-transparent border border-transparent transition-colors duration-200 hover:bg-white hover:border-gray-300 dark:hover:bg-gray-500"
             target="_self"
             rel="noopener noreferrer">
             <h2 className="text-2xl font-bold mb-2 mr-2">Developers <span className="font-bold"> &rarr; </span></h2>
@@ -61,8 +61,8 @@ export default function Home() {
             </p>
             </ Link>
           <Link
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="py-4 px-4 rounded-lg bg-transparent border border-transparent transition-colors duration-200 hover:bg-white hover:border-gray-300 dark:bg-gray-900 dark:hover:bg-gray-600"
+            href="docs/client-intro"
+            className="py-4 px-4 rounded-lg bg-transparent border border-transparent transition-colors duration-200 hover:bg-white hover:border-gray-300"
             target="_blank"
             rel="noopener noreferrer" >
             <h2 className="text-2xl font-bold mb-2 mr-2">Clients <span className="font-bold"> &rarr; </span></h2>
@@ -79,8 +79,8 @@ export default function Home() {
           </Link>
 
           <Link
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="py-4 px-4 rounded-lg bg-transparent border border-transparent transition-colors duration-200 hover:bg-white hover:border-gray-300 dark:bg-gray-900 dark:hover:bg-gray-600"
+            href="docs/staker-intro"
+            className="py-4 px-4 rounded-lg bg-transparent border border-transparent transition-colors duration-200 hover:bg-white hover:border-gray-300"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -101,8 +101,9 @@ export default function Home() {
           </Link>
 
           <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="py-4 px-4 rounded-lg bg-transparent border border-transparent transition-colors duration-200 hover:bg-white hover:border-gray-300 dark:bg-gray-900 dark:hover:bg-gray-600"
+            href="docs/miner-intro"
+            className="py-4 px-4 rounded-lg bg-transparent border border-transparent transition-colors duration-200 hover:bg-white hover:border-gray-300"
+
             target="_blank"
             rel="noopener noreferrer"
           >
