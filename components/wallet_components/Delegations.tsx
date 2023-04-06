@@ -64,7 +64,7 @@ export default function Main(_props: any) {
   };
 
   const handleChange = (event: ChangeEvent<unknown>, newValue: number) => {
-    if (newValue === 3 && !loaded) {
+    if (!loaded && delegateInfo.length == 0) {
       // refresh the page when the tab is clicked
       // but only do this once
       refreshMeta();
@@ -75,6 +75,8 @@ export default function Main(_props: any) {
     }
     setValue(newValue);
   };
+
+  
 
   const [meta, setMeta] = useState<Metagraph>({});
   const [stakeData, setStakeData] = useState<StakeData>({});
@@ -262,6 +264,20 @@ export default function Main(_props: any) {
     mountedRef.current && prepareDelegateRows(delegateInfo, delegatesExtras, currentAccount.address);
 
   }, [currentAccount, mountedRef, delegateInfo, delegatesExtras]);
+
+  const firstLoad = () => {
+    if (!loaded && delegateInfo.length == 0) {
+      // refresh the page when the tab is clicked
+      // but only do this once
+      refreshMeta();
+      getDelegateInfo().then((delegateInfo: DelegateInfo[]) => {
+        setDelegateInfo(delegateInfo);
+      });
+      setLoaded(true);
+    }
+  };
+
+  firstLoad()
 
   console.log("Current account", currentAccount);
   console.log("delegateInfo", delegateInfo);
