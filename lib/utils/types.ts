@@ -161,6 +161,7 @@ export interface DelegateInfoRow {
   total_stake: number
   take: number
   stake: number
+  personal_state: number
 }
 
 export interface Neuron {
@@ -233,6 +234,7 @@ export interface DelegateInfo {
   nominators: Array<[string, number]>,
   owner_ss58: string,
   total_stake: number,
+  personal_stake: Promise<number>,
 }
 
 export interface NeuronInfo {
