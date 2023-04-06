@@ -161,7 +161,7 @@ export interface DelegateInfoRow {
   total_stake: number
   take: number
   stake: number
-  personal_state: number
+  personal_stake: Promise<number>
 }
 
 export interface Neuron {

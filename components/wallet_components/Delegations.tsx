@@ -10,6 +10,11 @@ import { Option } from "@polkadot/types";
 import { Codec } from "@polkadot/types/types";
 import { AccountId } from "@polkadot/types/interfaces";
 import { useApi } from "../../lib/hooks";
+import Stack from "@mui/material/Stack"
+import Typography from '@mui/material/Typography';
+import Pagination from "@mui/material/Pagination"
+import List from "@mui/material/List"
+import DelegateRow from "./DelegateRow"
 
 
 import {
@@ -23,6 +28,7 @@ import {
   DelegateInfo,
   DelegateInfoRaw,
   DelegateExtras,
+  DelegateColumn,
   DelegateExtra,
   ApiCtx,
 } from "../../lib/utils/types";
@@ -30,7 +36,7 @@ import {
 export default function Main(_props: any) {
   // const [status, setStatus] = useState(null)
 
-  // return (<h1>Coming Soon</h1>)
+  // return (<h1 className="dark:text-gray-200 text-gray-800 text-3xl sm:text-3xl font-thin">Coming Soon</h1>)
   
   const { api, keyring, currentAccount} = useSubstrateState()
 
@@ -41,8 +47,21 @@ export default function Main(_props: any) {
   const mountedRef = useIsMountedRef();
   // for first load of page
   const [loaded, setLoaded] = useState(false);
+  const [page, setPage] = useState(1);
+  // const balanceArr = useBalance(account?.accountAddress || "")
+  // const unit = balanceArr[3]
+
+
 
   // const apiCtx = useApi();
+
+  const handlePanelChange = (panel: string) => {
+    setExpanded(expanded === panel ? false : panel);
+  };
+
+  const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
+    setPage(value);
+  };
 
   const handleChange = (event: ChangeEvent<unknown>, newValue: number) => {
     if (newValue === 3 && !loaded) {
@@ -250,15 +269,55 @@ export default function Main(_props: any) {
   console.log("delegateRows", delegateRows);
   console.log("personalDelegateRows", personalDelegateRows);
 
+  const delegateInfoColumns: DelegateColumn[] = [
+    { id: "delegate_ss58", label: "Delegate Hotkey", width: 160 },
+    { id: "owner_ss58", label: "Owner Coldkey", width: 160 },
+    { id: "nominators", label: "Nominators" },
+    { id: "total_stake", label: "Total Stake" },
+    { id: "take", label: "Take" },
+    { id: "stake", label: "Stake" }
+  ]
+
+  const [expanded, setExpanded] = React.useState<string | false>(false);
+  const [expandedDelegate, setExpandedDelegate] = React.useState<boolean>(false);
+
+
   return (
     <>
     <Grid.Column width={8}>
       <button onClick={refreshMeta}>Refresh</button>
     </Grid.Column>
-      {/* (delegateInfo.length > 0 && delegateInfo.map((delegate) => {
-        return (<h3>{delegate.delegate_ss58}</h3>)
-      }
-      )) */}
+    {!!delegateInfo.length && 
+            <Stack direction="column" spacing={1} alignItems="center" marginTop="2em" >
+              
+              <Typography variant="body2" sx={{
+                    fontWeight: 'bold',
+                  }} >
+                    Delegates
+              </Typography>
+              <List sx={{
+                minHeight: "400px",
+                padding: "0.5em",
+              }} >
+                  {delegateInfo.slice((page-1)*10, page*10).map((delegate) => {
+                    return (
+                      <DelegateRow 
+                        coldkey_ss58={currentAccount.address}
+                        refreshMeta={refreshMeta}
+                        expanded={expanded}
+                        onChange={() => handlePanelChange(delegate.delegate_ss58)}
+                        // unit={unit}
+                        key={`row-${delegate.delegate_ss58}`}
+                        delegate={delegate}
+                        columns={delegateInfoColumns}
+                        delegateExtra={delegatesExtras[delegate.delegate_ss58]}
+                      />
+                    )
+                  })}
+              </List>
+              <Pagination count={Math.ceil(delegateInfo.length/5)} shape="rounded" onChange={handlePageChange} page={page} />
+            </Stack>
+          }
       </>
 
   )
