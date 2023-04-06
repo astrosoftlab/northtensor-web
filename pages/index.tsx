@@ -16,8 +16,8 @@ export default function Home() {
       </Head>
 
       <main>
-        <div className="relative bg-[url('../public/images/wallpaperflare.com_wallpaper.jpg')] px-4 py-32 sm:px-6 lg:flex  lg:items-center">
-        <div className="w-4/5 mx-auto mb-8">
+        <div className="relative bg-[url('../public/images/wallpaperflare.com_wallpaper.jpg')] px-4 py-32 sm:px-6 md:py-34 lg:flex  lg:items-center">
+        <div className="w-4/5 mx-auto mb-5">
           <div className="text-3xl sm:text-5xl text-gray-100 font-thin">
             North Tensor
           </div>
@@ -42,7 +42,7 @@ export default function Home() {
         </div>
         </div>
 
-        <div className="grid grid-cols-4 gap-4 py-6 px-6 dark:bg-gray-800">
+        <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 py-6 px-6 dark:bg-gray-800">
           <Link
             href="docs/developer-intro"
             className="py-4 px-4 rounded-lg bg-transparent border border-transparent transition-colors duration-200 hover:bg-white hover:border-gray-300 dark:hover:bg-gray-500"
