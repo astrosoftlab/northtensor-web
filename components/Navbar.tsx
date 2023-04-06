@@ -44,7 +44,7 @@ const Navbar: React.FC = () => {
   const session = useSession()
   const supabase = useSupabaseClient()
   return (
-<nav className="flex items-center justify-between flex-wrap bg-gray-700 p-6">
+<nav className="flex items-center justify-between bg-gray-700 p-6">
   <div className="flex items-center flex-shrink-0 text-white mr-6">
   <div className="sm:hidden flex-1">
     <button
