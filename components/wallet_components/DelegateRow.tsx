@@ -100,7 +100,7 @@ export default function DelegateRow({columns, unit, delegate, expanded, onChange
                                 return (
                                 <React.Fragment key={column.id}>
                                     <Stack direction="row" alignItems="center">
-                                        <Typography  >Total Stake:</Typography>
+                                        <Typography  >Total Stake: </Typography>
                                         <h1>{value}</h1>
                                     </Stack>
                                 </React.Fragment>
@@ -114,8 +114,8 @@ export default function DelegateRow({columns, unit, delegate, expanded, onChange
                                 return (
                                 <React.Fragment key={column.id}>
                                     <Stack direction="row" alignItems="center" >
-                                        <Typography >Your Stake:</Typography>
-                                        <h1>{value}</h1>
+                                        <Typography >Your Stake: </Typography>
+                                        <h1>{parseInt(value.toString()) / 10**9}</h1>
                                     </Stack>
                                 </React.Fragment>
                                 )
@@ -157,7 +157,7 @@ export default function DelegateRow({columns, unit, delegate, expanded, onChange
                                         <Stack direction="row" justifyContent="space-between" alignItems="center" width="100%" >
                                             <Typography style={{
                                                 fontWeight: "bold",
-                                            }} >Nominators:</Typography>
+                                            }} >Nominators: </Typography>
                                             <Typography>{value.toString() }</Typography>
                                         </Stack>
                                     </React.Fragment>
@@ -168,8 +168,8 @@ export default function DelegateRow({columns, unit, delegate, expanded, onChange
                                         <Stack direction="row" justifyContent="space-between" alignItems="center" width="100%" >
                                             <Typography style={{
                                                 fontWeight: "bold",
-                                            }} >Your Stake:</Typography>
-                                            <h1>{value}</h1>
+                                            }} >Your Stake: </Typography>
+                                            <h1>{parseInt(value.toString()) / 10**9}</h1>
                                         </Stack>
                                     </React.Fragment>
                                 )}

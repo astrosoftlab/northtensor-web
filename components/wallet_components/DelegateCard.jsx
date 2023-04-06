@@ -20,7 +20,7 @@ function DelegateCard({ accountName, accountAddress }) {
         
         return (
             <>
-              <Button onClick={handleClick}>Delegate Hotkey</Button>
+              <Button onClick={handleClick}>Copy Address</Button>
               <Snackbar
                 open={open}
                 onClose={() => setOpen(false)}
