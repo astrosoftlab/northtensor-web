@@ -1,4 +1,5 @@
 import AccountCard from "./AccountCard"
+import DelegateCard from "./DelegateCard"
 import { DelegateColumn, DelegateInfo, DelegateInfoRow, DelegateExtra } from "../../lib/utils/types"
 import { BN } from "@polkadot/util"
 import { Balance } from "@polkadot/types/interfaces"
@@ -82,9 +83,10 @@ export default function DelegateRow({columns, unit, delegate, expanded, onChange
                             return (
                             <React.Fragment key={column.id}>
                                 {column.id === "delegate_ss58" && (
+                                <DelegateCard accountName={delegateExtra?.name || ""} accountAddress={value.toString()} />
                                 // <AccountCard account={{ address: value.toString(), name: delegateExtra?.name || ""  }}  />
                                 // <AccountCard account={keyring.getPair(value.toString())}  />
-                                <h1>{value.toString()} - {delegateExtra?.name || ""}</h1>
+                                // <h1>{value.toString()} - {delegateExtra?.name || ""}</h1>
                                 )}
                             </React.Fragment>
                             )
@@ -132,7 +134,8 @@ export default function DelegateRow({columns, unit, delegate, expanded, onChange
                             <React.Fragment key={column.id}>
                                 {column.id === "owner_ss58" && (
                                 <Box flex={3} >
-                                    <h1>{value.toString()} - {"Delegate Coldkey"}</h1>
+                                    <DelegateCard accountName={"Delegate Coldkey"} accountAddress={value.toString()} />
+                                    {/* <h1>{value.toString()} - {"Delegate Coldkey"}</h1> */}
                                     {/* <AccountCard account={keyring.getPair(value.toString())}  /> */}
                                     {/* <AccountCard account={{ address: value.toString(), name: "Delegate Coldkey" }} /> */}
                                 </Box>

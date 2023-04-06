@@ -133,6 +133,7 @@ export default function Main(_props: any) {
         total_stake += staked;
         nominators.push([nominator[0].toString(), staked]);
       }
+      total_stake = total_stake / 10**9;
       return {
         take: delegate.take / (2**16 - 1), // Normalize take, which is a u16
         delegate_ss58: delegate.delegate_ss58.toString(),
@@ -300,16 +301,14 @@ export default function Main(_props: any) {
 
   return (
     <>
-    <Grid.Column width={8}>
-      <button onClick={refreshMeta}>Refresh</button>
-    </Grid.Column>
     {!!delegateInfo.length && 
-            <Stack direction="column" spacing={1} alignItems="center" marginTop="2em" >
+            <Stack direction="column" spacing={1} alignItems="center" marginTop="2em">
               
               <Typography variant="body2" sx={{
                     fontWeight: 'bold',
                   }} >
-                    Delegates
+                    Delegates - 
+                    <button onClick={refreshMeta}>Refresh</button>
               </Typography>
               <List sx={{
                 minHeight: "400px",
