@@ -9,12 +9,14 @@ const Home = () => {
   const supabase = useSupabaseClient()
 
   return (
-    <div className="container dark:text-gray-200 text-gray-800 text-3xl sm:text-3xl font-thin" style={{ padding: '50px 0 100px 0' }}>
-      {!session ? (
-        <Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} theme="dark" />
-      ) : (
-        <Account session={session} />
-      )}
+    <div className="leading-loose text-3xl sm:text-3xl font-thin flex justify-center items-start h-screen bg-gray-200">
+      <div className="leading-loose max-w-4xl w-full mx-4 sm:mx-auto mt-8 p-8 bg-gray-100 shadow-md rounded-lg">
+        {!session ? (
+          <Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} theme="dark" />
+        ) : (
+          <Account session={session} />
+        )}
+      </div>
     </div>
   )
 }
