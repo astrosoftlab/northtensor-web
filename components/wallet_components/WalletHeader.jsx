@@ -128,7 +128,7 @@ function BalanceAnnotation(props) {
 
   return currentAccount ? (
     <Label pointing="left" color="blue">
-      {"Available Tao: "} 
+      {"Available Tao:    "} 
       {accountBalanceTao}
     </Label>
   ) : null

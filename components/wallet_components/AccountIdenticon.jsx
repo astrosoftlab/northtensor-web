@@ -18,7 +18,7 @@ function AccountIdenticon({ account }) {
         <></>
       ) : 
       (
-        <Box component="span" >
+        <Box component="span" className="px-4">
         <Identicon
             size={40}
             theme="polkadot"
