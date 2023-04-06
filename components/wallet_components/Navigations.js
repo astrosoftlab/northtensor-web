@@ -24,18 +24,18 @@ function Main(props) {
 
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-700">
-      <div className="py-12">
+      <div className="py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="lg:text-center">
           </div>
-          <div className="mt-10" style={{ width: '1200px' }}>
+          <div style={{ width: '1200px' }}>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
               <button
                 className={`${
                   activeItem === 'Stake'
-                    ? 'bg-gray-700 text-white'
+                    ? 'bg-gray-500 text-white'
                     : 'bg-white border border-gray-300'
-                } rounded-md shadow-sm py-2 px-4 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-600`}
+                } rounded-md shadow-sm py-2 px-4 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-600 dark:focus:ring-gray-700`}
                 onClick={() => onClickHandler({ value: 'Stake' })}
               >
                 Stake
@@ -43,9 +43,9 @@ function Main(props) {
               <button
                 className={`${
                   activeItem === 'Transfer'
-                    ? 'bg-gray-700 text-white'
+                    ? 'bg-gray-500 text-white'
                     : 'bg-white border border-gray-300'
-                } rounded-md shadow-sm py-2 px-4 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-600`}
+                } rounded-md shadow-sm py-2 px-4 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-600 dark:focus:ring-gray-700`}
                 onClick={() => onClickHandler({ value: 'Transfer' })}
               >
                 Transfer
@@ -53,9 +53,9 @@ function Main(props) {
               <button
                 className={`${
                   activeItem === 'Stake Info'
-                    ? 'bg-gray-700 text-white'
+                    ? 'bg-gray-500 text-white'
                     : 'bg-white border border-gray-300'
-                } rounded-md shadow-sm py-2 px-4 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-600`}
+                } rounded-md shadow-sm py-2 px-4 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-600 dark:focus:ring-gray-700`}
                 onClick={() => onClickHandler({ value: 'Stake Info' })}
               >
                 Stake Info
@@ -63,9 +63,9 @@ function Main(props) {
               <button
                 className={`${
                   activeItem === 'Tip'
-                    ? 'bg-gray-700 text-white'
+                    ? 'bg-gray-500 text-white'
                     : 'bg-white border border-gray-300'
-                } rounded-md shadow-sm py-2 px-4 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-600`}
+                } rounded-md shadow-sm py-2 px-4 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-600 dark:focus:ring-gray-700`}
                 onClick={() => onClickHandler({ value: 'Tip' })}
               >
                 Tip

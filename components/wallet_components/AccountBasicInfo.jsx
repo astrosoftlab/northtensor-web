@@ -77,9 +77,9 @@ function Main(props) {
     
 
   return (
-      <Stack spacing={2} alignItems="center" direction="column" justifyContent="center">
+      <Stack spacing={1} alignItems="center" direction="column" justifyContent="center">
           <h1>{"Available Balance: "} {accountBalanceTao}{" Tao"}</h1>
-          <h1>{"MNRV.AI Stake: "}{mnrvStakeTao}{" Tao"}</h1>
+          <h1 className="px-4">{"North Tensor Stake: "}{mnrvStakeTao}{" Tao "}</h1>
         </Stack>
   )
 }

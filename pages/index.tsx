@@ -62,7 +62,7 @@ export default function Home() {
             </ Link>
           <Link
             href="docs/client-intro"
-            className="py-4 px-4 rounded-lg bg-transparent border border-transparent transition-colors duration-200 hover:bg-white hover:border-gray-300"
+            className="py-4 px-4 rounded-lg bg-transparent border border-transparent transition-colors duration-200 hover:bg-white hover:border-gray-300 dark:hover:bg-gray-500"
             target="_blank"
             rel="noopener noreferrer" >
             <h2 className="text-2xl font-bold mb-2 mr-2">Clients <span className="font-bold"> &rarr; </span></h2>
@@ -80,7 +80,7 @@ export default function Home() {
 
           <Link
             href="docs/staker-intro"
-            className="py-4 px-4 rounded-lg bg-transparent border border-transparent transition-colors duration-200 hover:bg-white hover:border-gray-300"
+            className="py-4 px-4 rounded-lg bg-transparent border border-transparent transition-colors duration-200 hover:bg-white hover:border-gray-300 dark:hover:bg-gray-500"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -102,7 +102,7 @@ export default function Home() {
 
           <a
             href="docs/miner-intro"
-            className="py-4 px-4 rounded-lg bg-transparent border border-transparent transition-colors duration-200 hover:bg-white hover:border-gray-300"
+            className="py-4 px-4 rounded-lg bg-transparent border border-transparent transition-colors duration-200 hover:bg-white hover:border-gray-300 dark:hover:bg-gray-500"
 
             target="_blank"
             rel="noopener noreferrer"
