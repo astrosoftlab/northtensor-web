@@ -1,5 +1,14 @@
 import React, { useState } from 'react'
-import { Form, Input, Grid, Label, Icon, Dropdown } from 'semantic-ui-react'
+// import { Form, Input, Grid, Label, Icon, Dropdown } from 'semantic-ui-react'
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import FormControl from '@mui/material/FormControl';
+import Input from '@mui/material/Input';
+import InputLabel from '@mui/material/InputLabel';
+import InputAdornment from '@mui/material/InputAdornment';
+
 
 import { TxButton } from '../../lib/substrate-lib/components'
 import { useSubstrateState } from '../../lib/substrate-lib'
@@ -7,42 +16,108 @@ import styles from '@/styles/Home.module.css'
 
 export default function Main(props) {
   const [status, setStatus] = useState(null)
-  const [formState, setFormState] = useState({ addressTo: '', amount: 0 })
+  const [sendToAddress, setSendToAddress] = useState('')
+  const [sendAmount, setSendAmount] = useState(0)
 
-  const onChange = (_, data) =>
-    setFormState(prev => ({ ...prev, [data.state]: data.value }))
+  const onAddressChange = (event) => {
+    setSendToAddress(event.target.value)
+  }
 
-  const { addressTo, amount } = formState
+  const onAmountChange = (event) => {
+    setSendAmount(event.target.value)
+  }
 
-  const { keyring } = useSubstrateState()
+  const onKnownAddressChange = (event) => {
+    if (event.target.value != "Custom") {
+      setSendToAddress(event.target.value)
+    }
+    
+  }
+  
+
+  // const { addressTo, amount } = formState
+
+  const { keyring, currentAccount } = useSubstrateState()
   const accounts = keyring.getPairs()
+  console.log(accounts)
 
   const availableAccounts = []
   accounts.map(account => {
-    return availableAccounts.push({
-      key: account.meta.name,
-      text: account.meta.name,
-      value: account.address,
-    })
+    if (account.meta.name != currentAccount.meta.name) {
+      return availableAccounts.push({
+        key: account.meta.name,
+        text: account.meta.name,
+        value: account.address,
+      })
+    }
   })
+  console.log("Available accounts", availableAccounts)
 
   return (
-    <Grid.Column width={8}>
+    <>
+ {/* <Grid.Column width={8}> */}
       <h1 className="dark:text-gray-200 text-gray-800 text-3xl sm:text-3xl font-thin">Transfer</h1>
-      <Form>
+      <Box
+      component="form"
+      sx={{
+        '& .MuiTextField-root': { m: 1, width: '25ch' },
+      }}
+      noValidate
+      autoComplete="off"
+    >
+      <div>
+      <TextField
+          id="send-to-account"
+          select
+          label="Connected Accounts"
+          defaultValue="Custom"
+          onChange={onKnownAddressChange}
+          value={sendToAddress}
+          helperText="Please choose which known account you want to send to, or choose custom"
+        >
+          {availableAccounts.map((option) => (
+            <MenuItem key={option.key} value={option.value}>
+              {option.text}
+            </MenuItem>
+          ))}
+          <MenuItem key={"Custom"} value={"Custom"}> {"Custom"}</MenuItem>
+        </TextField>
+        <FormControl variant="standard">
+        <InputLabel htmlFor="input-with-icon-adornment">
+          With a start adornment
+        </InputLabel>
+        <Input fullWidth 
+          id="input-with-icon-adornment"
+          value={sendToAddress}
+          onChange={onAddressChange}
+          startAdornment={
+            <InputAdornment position="start">
+              {/* <AccountCircle /> */}
+              {"ICON"}
+            </InputAdornment>
+          }
+        />
+      </FormControl>
+      </div>
+      <div>
+      <TextField
+          id="standard-number"
+          label="Number"
+          type="number"
+          value={sendAmount}
+          onChange={onAmountChange}
+          InputLabelProps={{
+            shrink: true,
+          }}
+          variant="standard"
+        />
+      </div>
+    </Box>
+      
+      {/* <Form>
 
-        <Form.Field className="dark:text-gray-200 text-gray-800 text-3xl sm:text-3xl font-thin">
-          <Dropdown
-            placeholder="Select from available addresses"
-            fluid
-            selection
-            search
-            options={availableAccounts}
-            state="addressTo"
-            onChange={onChange}
-          />
-        </Form.Field>
-
+      {(availableAccounts.length > 0 && currentAccount) ?
+      <
         <Form.Field className="dark:text-gray-200 text-gray-800 text-3xl sm:text-3xl font-thin">
           <Input
             fluid
@@ -81,6 +156,7 @@ export default function Main(props) {
       <Form className={styles.code}>
         btcli transfer --dest {addressTo === '' ? "DESTINATION_WALLET_KEY" : addressTo} --amount {amount}
       </Form>
-    </Grid.Column>
-  )
+    </Grid.Column> */}
+  </>)
+  
 }
