@@ -12,7 +12,7 @@ import {
 import Transfer from './Transfer'
 import Stake from './Stake'
 import MNRVTip from './MNRVTip'
-import StakingInfo from './StakingInfo'
+import Delegations from './Delegations'
 
 
 function Main(props) {
@@ -52,13 +52,13 @@ function Main(props) {
               </button>
               <button
                 className={`${
-                  activeItem === 'Stake Info'
-                    ? 'bg-gray-500 text-white'
+                  activeItem === 'Delegations'
+                    ? 'bg-gray-700 text-white'
                     : 'bg-white border border-gray-300'
-                } rounded-md shadow-sm py-2 px-4 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-600 dark:focus:ring-gray-700`}
-                onClick={() => onClickHandler({ value: 'Stake Info' })}
+                } rounded-md shadow-sm py-2 px-4 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-600`}
+                onClick={() => onClickHandler({ value: 'Delegations' })}
               >
-                Stake Info
+                Delegations
               </button>
               <button
                 className={`${
@@ -76,7 +76,7 @@ function Main(props) {
             {activeItem === 'Stake' ? <Stake /> : null}
             {activeItem === 'Transfer' ? <Transfer /> : null}
             {activeItem === 'Tip' ? <MNRVTip /> : null}
-            {activeItem === 'Stake Info' ? <StakingInfo /> : null}
+            {activeItem === 'Delegations' ? <Delegations /> : null}
           </div>
         </div>
       </div>
