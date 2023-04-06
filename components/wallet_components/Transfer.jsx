@@ -73,7 +73,6 @@ export default function Main(props) {
           defaultValue="Custom"
           onChange={onKnownAddressChange}
           value={sendToAddress}
-          helperText="Please choose which known account you want to send to, or choose custom"
         >
           {availableAccounts.map((option) => (
             <MenuItem key={option.key} value={option.value}>
@@ -83,26 +82,26 @@ export default function Main(props) {
           <MenuItem key={"Custom"} value={"Custom"}> {"Custom"}</MenuItem>
         </TextField>
         <FormControl variant="standard">
-        <InputLabel htmlFor="input-with-icon-adornment">
-          With a start adornment
+        <InputLabel htmlFor="destination-wallet-address">
+          Destination Wallet Address
         </InputLabel>
         <Input fullWidth 
-          id="input-with-icon-adornment"
+          id="destination-wallet-address"
           value={sendToAddress}
           onChange={onAddressChange}
-          startAdornment={
-            <InputAdornment position="start">
-              {/* <AccountCircle /> */}
-              {"ICON"}
-            </InputAdornment>
-          }
+          // startAdornment={
+          //   <InputAdornment position="start">
+          //     {/* <AccountCircle /> */}
+          //     {"ICON"}
+          //   </InputAdornment>
+          // }
         />
       </FormControl>
       </div>
       <div>
       <TextField
           id="standard-number"
-          label="Number"
+          label="Amount of Tao to send"
           type="number"
           value={sendAmount}
           onChange={onAmountChange}
