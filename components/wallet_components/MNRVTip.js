@@ -28,9 +28,9 @@ export default function Main(props) {
 
   return (
     <Grid.Column width={8}>
-      <h1 className={styles.center_text}>Tip MNRV</h1>
+      <h1 className="dark:text-gray-200 text-gray-800 text-3xl sm:text-3xl font-thin">Tip North Tensor</h1>
       <Form>
-        <Form.Field>
+        <Form.Field className="dark:text-gray-200 text-gray-800 text-3xl sm:text-3xl font-thin">
           <Input
             fluid
             label="Amount"
@@ -39,7 +39,7 @@ export default function Main(props) {
             onChange={onChange}
           />
         </Form.Field>
-        <Form.Field style={{ textAlign: 'center' }}>
+        <Form.Field className="dark:text-gray-200 text-gray-800 text-3xl sm:text-3xl font-thin">
           <TxButton
             label="Tip"
             type="SIGNED-TX"
