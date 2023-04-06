@@ -80,17 +80,17 @@ export default function Main(props) {
     <Grid.Column width={8}>
       <Grid.Row>
         
-        <h1 className="text-center dark:invert ">Delegated Staking</h1>
-      <Label basic color="green" position="right" style={{ marginLeft: 0, marginBottom: '.5em' }}>
+        <h1 className="dark:text-gray-200 text-gray-800 text-3xl sm:text-3xl font-thin">Delegated Staking</h1>
+      <Label className="dark:text-gray-200 text-gray-800 text-3xl sm:text-2xl font-semibold">
           <Icon name="money" />Balance Staked: {amountCurrentlyStakedTao} Tao&nbsp;
         </Label></Grid.Row>
       
       
       <Form>
       
-      <Form.Group style={{ overflowX: 'auto' }} inline>
-          <Form.Radio
-            label="Stake"
+      <Form.Group style={{ overflowX: 'auto' }} inline className="dark:text-gray-200 text-gray-800 text-3xl sm:text-2xl font-thin">
+          <Form.Radio 
+            label ="Stake"
             name="stakeType"
             value='addStake'
             checked={stakeType === 'addStake'}
@@ -104,7 +104,7 @@ export default function Main(props) {
             onChange={onStakeTypeChange}
           />
         </Form.Group>
-        <Form.Field>
+        <Form.Field className="dark:text-gray-200 text-gray-800 text-3xl sm:text-2xl font-thin">
           <Input
             defaultValue={0}
             label="Amount"
@@ -113,7 +113,7 @@ export default function Main(props) {
             onChange={onStakeAmountChange}
           />
         </Form.Field>
-        <Form.Field style={{ textAlign: 'center' }}>
+        <Form.Field className="dark:text-gray-200 text-gray-800 text-3xl sm:text-2xl font-thin">
           <TxButton
             label= {stakeType === 'addStake' ? 'Stake' : 'Un-Stake'}
             type="SIGNED-TX"

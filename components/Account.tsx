@@ -78,11 +78,11 @@ export default function Account({ session }: { session: Session }) {
   return (
     <div className="form-widget">
       <div>
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email">Email:   </label>
         <input id="email" type="text" value={session.user.email} disabled />
       </div>
       <div>
-        <label htmlFor="username">Username</label>
+        <label htmlFor="username">Username:   </label>
         <input
           id="username"
           type="text"
@@ -91,7 +91,7 @@ export default function Account({ session }: { session: Session }) {
         />
       </div>
       <div>
-        <label htmlFor="website">Website</label>
+        <label htmlFor="website">Website:   </label>
         <input
           id="website"
           type="website"
@@ -102,7 +102,7 @@ export default function Account({ session }: { session: Session }) {
 
       <div>
         <button
-          className="button primary block"
+          className="bg-gray-500 hover:bg-gray-700 text-gray-100 text-3xl sm:text-3xl font-thin py-2 px-4 rounded"
           onClick={() => updateProfile({ username, website, avatar_url })}
           disabled={loading}
         >
@@ -111,7 +111,7 @@ export default function Account({ session }: { session: Session }) {
       </div>
 
       <div>
-        <button className="button block" onClick={() => supabase.auth.signOut()}>
+        <button className="bg-gray-500 hover:bg-gray-700 text-gray-100 text-3xl sm:text-3xl font-thin py-2 px-4 rounded" onClick={() => supabase.auth.signOut()}>
           Sign Out
         </button>
       </div>
