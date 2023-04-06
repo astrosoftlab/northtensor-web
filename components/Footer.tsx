@@ -24,7 +24,7 @@ const Footer: React.FC = () => (
         <div className="mb-4">
           <h3 className="text-lg font-bold mb-2 text-center">Contact Us</h3>
             <ul className="text-sm">
-              <li className="text-sm text-center"><a href="mailto:sample@northtensor.ai">sample@northtensor.ai</a></li>
+
           </ul>
         </div>
         <div className="mb-4 text-center">
