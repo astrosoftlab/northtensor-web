@@ -62,6 +62,8 @@ export default function Main(_props: any) {
   const [loader, setLoader] = useState<boolean>(true);
   const [delegateInfo, setDelegateInfo] = useState<DelegateInfo[]>([]);
   const [delegateRows, setDelegateRows] = useState<DelegateInfo[]>([]);
+  const [personalDelegateRows, setPersonalDelegateRows] = useState<DelegateInfo[]>([]);
+
   const [delegatesExtras, setDelegatesExtras] = useState<DelegateExtras>({});
   
 
@@ -86,6 +88,15 @@ export default function Main(_props: any) {
     });
   };
 
+  const acctAddr = (acct: { address: any; }) => (acct ? acct.address : '')
+  
+  async function getPersonalStakeOnDelegate(delegate_ss58: any) {
+    const res = await api.query.subtensorModule.stake(delegate_ss58, acctAddr(currentAccount));
+    const valueStr = res.toString();
+    const value = parseFloat(valueStr);
+    return value / 10**9;
+}
+
   const getDelegateInfo = async (): Promise<DelegateInfo[]> => {
     const result_bytes = await (api.rpc as any).delegateInfo.getDelegates();
     const result = api.createType("Vec<DelegateInfo>", result_bytes);
@@ -93,6 +104,7 @@ export default function Main(_props: any) {
     console.log("delegate_info_raw", delegate_info_raw)
     const delegate_info = delegate_info_raw.map((delegate: DelegateInfoRaw) => {
       let nominators: [string, number][] = [];
+      let personal_stake = getPersonalStakeOnDelegate(delegate.delegate_ss58);
       let total_stake = 0;
       for (let i = 0; i < delegate.nominators.length; i++) {
         const nominator = delegate.nominators[i];
@@ -106,6 +118,7 @@ export default function Main(_props: any) {
         owner_ss58: delegate.owner_ss58.toString(),
         nominators,
         total_stake,
+        personal_stake,
       };
     });
 
@@ -215,7 +228,7 @@ export default function Main(_props: any) {
         return amt_b - amt_a || b.total_stake - a.total_stake;
       });
       delegateInfo.find((delegate, index) => {
-        if (delegatesExtras[delegate.delegate_ss58]?.name === "Vune") {
+        if (delegatesExtras[delegate.delegate_ss58]?.name === "mnrv.ai") {
           // Put at top
           delegateInfo.splice(index, 1);
           delegateInfo.unshift(delegate);
@@ -235,6 +248,7 @@ export default function Main(_props: any) {
   console.log("delegateInfo", delegateInfo);
   console.log("delegateExtras", delegatesExtras);
   console.log("delegateRows", delegateRows);
+  console.log("personalDelegateRows", personalDelegateRows);
 
   return (
     <>
