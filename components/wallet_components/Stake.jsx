@@ -80,23 +80,23 @@ export default function Main(props) {
     <Grid.Column width={8}>
       <Grid.Row>
         
-        <h1 className="dark:text-gray-200 text-gray-800 text-3xl sm:text-3xl font-thin">Delegated Staking</h1>
-      <Label className="dark:text-gray-200 text-gray-800 text-3xl sm:text-2xl font-semibold">
+        <h1 className="lg:px-12 dark:text-gray-200 text-gray-800 text-3xl sm:text-3xl font-thin">Delegated Staking</h1><br />
+      <Label className="lg:px-24 dark:text-gray-200 text-gray-800 text-3xl sm:text-2xl font-semibold">
           <Icon name="money" />Balance Staked: {amountCurrentlyStakedTao} Tao&nbsp;
         </Label></Grid.Row>
       
       
       <Form>
       
-      <Form.Group style={{ overflowX: 'auto' }} inline className="dark:text-gray-200 text-gray-800 text-3xl sm:text-2xl font-thin">
-          <Form.Radio 
+      <Form.Group style={{ overflowX: 'auto' }} inline className="flex dark:text-gray-200 text-gray-800 text-3xl sm:text-2xl font-thin ">
+          <Form.Radio className="lg:px-24" 
             label ="Stake"
             name="stakeType"
             value='addStake'
             checked={stakeType === 'addStake'}
             onChange={onStakeTypeChange}
           />
-          <Form.Radio
+          <Form.Radio className="lg:px-24"
             label="Un-Stake"
             name="stakeType"
             value='removeStake'
@@ -104,7 +104,7 @@ export default function Main(props) {
             onChange={onStakeTypeChange}
           />
         </Form.Group>
-        <Form.Field className="dark:text-gray-200 text-gray-800 text-3xl sm:text-2xl font-thin">
+        <Form.Field className="lg:px-24 dark:text-gray-200 text-gray-800 text-3xl sm:text-2xl font-thin" >
           <Input
             defaultValue={0}
             label="Amount"
@@ -113,7 +113,7 @@ export default function Main(props) {
             onChange={onStakeAmountChange}
           />
         </Form.Field>
-        <Form.Field className="dark:text-gray-200 text-gray-800 text-3xl sm:text-2xl font-thin">
+        <Form.Field className="lg:px-24 flex gap-5 dark:text-gray-200 text-gray-800 text-3xl sm:text-2xl font-thin">
           <TxButton
             label= {stakeType === 'addStake' ? 'Stake' : 'Un-Stake'}
             type="SIGNED-TX"
@@ -124,7 +124,7 @@ export default function Main(props) {
               inputParams: [MNRVHotkey, stakeAmount * 10**9],
               paramFields: [true, true],
             }}
-          /> 
+          />
           {stakeType === "addStake" ? <TxButton
             label="Stake All"
             type="SIGNED-TX"
@@ -147,9 +147,9 @@ export default function Main(props) {
           }}
         />}
         </Form.Field>
-        <div style={{ overflowWrap: 'break-word' }}>{status}</div>
+        <div className="dark:text-gray-200 text-gray-800" style={{ overflowWrap: 'break-word' }}>{status}</div>
       </Form>
-      <Form>
+      <Form className="lg:px-24  px-3 py-1 text-sm font-mono text-gray-900 dark:text-gray-200">
         btcli {stakeType === 'addStake' ? "delegate" : "undelegate"} --delegate_ss58key {MNRVHotkey} {parseFloat(stakeAmount) === 0 ? "--all" : btcliStakeAmount}
       </Form>
     </Grid.Column>

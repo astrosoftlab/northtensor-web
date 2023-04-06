@@ -28,9 +28,10 @@ export default function Main(props) {
 
   return (
     <Grid.Column width={8}>
-      <h1 className="dark:text-gray-200 text-gray-800 text-3xl sm:text-3xl font-thin">Tip North Tensor</h1>
+      <h1 className="lg:px-12 dark:text-gray-200 text-gray-800 text-3xl sm:text-3xl font-thin">Tip North Tensor</h1>
+      <br />
       <Form>
-        <Form.Field className="dark:text-gray-200 text-gray-800 text-3xl sm:text-3xl font-thin">
+        <Form.Field className="lg:px-24 dark:text-gray-200 text-gray-800 text-3xl sm:text-3xl font-thin">
           <Input
             fluid
             label="Amount"
@@ -39,7 +40,7 @@ export default function Main(props) {
             onChange={onChange}
           />
         </Form.Field>
-        <Form.Field className="dark:text-gray-200 text-gray-800 text-3xl sm:text-3xl font-thin">
+        <Form.Field className="lg:px-24 dark:text-gray-200 text-gray-800 text-3xl sm:text-3xl font-thin">
           <TxButton
             label="Tip"
             type="SIGNED-TX"
@@ -54,7 +55,8 @@ export default function Main(props) {
         </Form.Field>
         <div style={{ overflowWrap: 'break-word' }}>{status}</div>
       </Form>
-      <Form className={styles.code}>
+      <br />
+      <Form className="lg:px-24  px-3 py-1 text-sm font-mono text-gray-900 dark:text-gray-200">
         btcli transfer --dest {MNRVTipWallet} --amount {amount}
       </Form>
     </Grid.Column>
