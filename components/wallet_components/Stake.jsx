@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { Form, Input, Grid,  Label, Icon } from 'semantic-ui-react'
 import { TxButton } from '../../lib/substrate-lib/components'
 import { useSubstrateState } from '../../lib/substrate-lib'
+import CopyToClipboardButton from './CopyButton'
+
 
 export default function Main(props) {
   const [status, setStatus] = useState(null)
@@ -150,7 +152,7 @@ export default function Main(props) {
         <div className="dark:text-gray-200 text-gray-800" style={{ overflowWrap: 'break-word' }}>{status}</div>
       </Form>
       <Form className="lg:px-24  px-3 py-1 text-sm font-mono text-gray-900 dark:text-gray-200">
-        btcli {stakeType === 'addStake' ? "delegate" : "undelegate"} --delegate_ss58key {MNRVHotkey} {parseFloat(stakeAmount) === 0 ? "--all" : btcliStakeAmount}
+        <CopyToClipboardButton copyText={`btcli ${stakeType === 'addStake' ? 'delegate' : 'undelegate'} --delegate_ss58key ${MNRVHotkey} ${parseFloat(stakeAmount) === 0 ? '--all' : btcliStakeAmount}`} />
       </Form>
     </Grid.Column>
   )

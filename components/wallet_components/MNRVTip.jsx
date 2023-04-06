@@ -4,6 +4,7 @@ import { Form, Input, Grid, Label, Icon} from 'semantic-ui-react'
 import { TxButton } from '../../lib/substrate-lib/components'
 import { useSubstrateState } from '../../lib/substrate-lib'
 import styles from '@/styles/Home.module.css'
+import CopyToClipboardButton from './CopyButton'
 
 export default function Main(props) {
   const [status, setStatus] = useState(null)
@@ -57,7 +58,8 @@ export default function Main(props) {
       </Form>
       <br />
       <Form className="lg:px-24  px-3 py-1 text-sm font-mono text-gray-900 dark:text-gray-200">
-        btcli transfer --dest {MNRVTipWallet} --amount {amount}
+        <CopyToClipboardButton copyText={`btcli transfer --dest ${MNRVTipWallet} --amount ${amount}`} />
+
       </Form>
     </Grid.Column>
   )
