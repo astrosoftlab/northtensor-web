@@ -17,9 +17,6 @@ const NavLink: React.FC<NavLinkProps> = ({ href, text }) => (
   </li>
 );
 
-
-
-
 // const Navbar: React.FC = () => (
 //   <nav className="h-16 flex justify-between items-center bg-gray-800 text-white px-4">
 //     <Image src={logo} alt="mnrv.ai logo" className="text-xl font-bold h-10 object-contain w-auto" />
@@ -74,7 +71,6 @@ const Navbar: React.FC = () => {
   <div className="w-full flex-grow lg:flex lg:items-center lg:w-auto flex flex-row">
     <div className="w-full flex-grow lg:flex lg:items-center lg:w-auto flex flex-row list-none">
       <NavLink href="/resources" text="Resources" />
-      <NavLink href="/resources" text="Tools" />
       <NavLink href="/roadmap" text="Roadmap" />
     </div>
     <div className="flex gap-4">
@@ -91,7 +87,6 @@ const Navbar: React.FC = () => {
   <div className={`${isOpen ? "block" : "hidden"} sm:hidden`} id="mobile-menu">
     <div className="w-full flex-grow lg:flex lg:items-center lg:w-auto flex flex-row list-none">
       <NavLink href="/resources" text="Resources" />
-      <NavLink href="/resources" text="Tools" />
       <NavLink href="/roadmap" text="Roadmap" />
     </div>
     <div className="flex gap-4">

@@ -36,7 +36,7 @@ export default function Home() {
           <p className="mb-4 opacity-100 text-lg leading-8 font-normal text-gray-100">
             Or, just start Staking
           </p>
-          <Link href="https://app.mnrv.ai" className="bg-gray-500 hover:bg-gray-700 text-gray-100 font-bold py-2 px-4 rounded">
+          <Link href="/wallet" className="bg-gray-500 hover:bg-gray-700 text-gray-100 font-bold py-2 px-4 rounded">
           Stake Tao
           </ Link>
         </div>
@@ -63,7 +63,7 @@ export default function Home() {
           <Link
             href="docs/client-intro"
             className="py-4 px-4 rounded-lg bg-transparent border border-transparent transition-colors duration-200 hover:bg-white hover:border-gray-300 dark:hover:bg-gray-500"
-            target="_blank"
+            target="_self"
             rel="noopener noreferrer" >
             <h2 className="text-2xl font-bold mb-2 mr-2">Clients <span className="font-bold"> &rarr; </span></h2>
             <p className="tagline italic font-bold">
@@ -81,7 +81,7 @@ export default function Home() {
           <Link
             href="docs/staker-intro"
             className="py-4 px-4 rounded-lg bg-transparent border border-transparent transition-colors duration-200 hover:bg-white hover:border-gray-300 dark:hover:bg-gray-500"
-            target="_blank"
+            target="_self"
             rel="noopener noreferrer"
           >
             <h2 className="text-2xl font-bold mb-2 mr-2">Stakers <span className="font-bold"> &rarr; </span></h2>
@@ -103,8 +103,7 @@ export default function Home() {
           <a
             href="docs/miner-intro"
             className="py-4 px-4 rounded-lg bg-transparent border border-transparent transition-colors duration-200 hover:bg-white hover:border-gray-300 dark:hover:bg-gray-500"
-
-            target="_blank"
+            target="_self"
             rel="noopener noreferrer"
           >
             <h2 className="text-2xl font-bold mb-2 mr-2">Miners <span className="font-bold"> &rarr; </span></h2>
