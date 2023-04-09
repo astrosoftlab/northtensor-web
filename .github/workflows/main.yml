@@ -21,7 +21,7 @@ jobs:
       - name: Build and test code
         run: |
           echo ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
-          echo ${{ NEXT_PUBLIC_SUPABASE_URL }}
+          echo ${{ env.NEXT_PUBLIC_SUPABASE_URL }}
           npm run build
           npm test
           
