@@ -21,7 +21,7 @@ Windows (using [scoop](https://scoop.sh/))
   
 #### 2. Clone project to local directory
    ```bash
-   git clone git@github.com:NorthTensor/northtensor.git
+   git clone git@github.com:NorthTensor/northtensor-website.git
    ```
    
 #### 3. Install dependencies
