@@ -36,7 +36,9 @@ Windows (using [scoop](https://scoop.sh/))
    ```
    
 #### 5. Access and experiment
-   Connect to localhost:3000
+   Open your browser
+   Ender localhost:3000 as the website address
+   Webpage should load
    Changes made and saved to codebase are live and will reflect on webpage
 
 ## Learn More
