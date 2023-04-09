@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+env:
+  NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+  NEXT_PUBLIC_SUPABASE_URL: ${{ vars.NEXT_PUBLIC_SUPABASE_URL }}
 
 jobs:
   build:
@@ -21,7 +24,7 @@ jobs:
       - name: Build and test code
         run: |
           echo ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
-          echo ${{ env.NEXT_PUBLIC_SUPABASE_URL }}
+          echo ${{ vars.NEXT_PUBLIC_SUPABASE_URL }}
           npm run build
           npm test
           
