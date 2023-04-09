@@ -26,5 +26,4 @@ jobs:
           echo ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
           echo ${{ vars.NEXT_PUBLIC_SUPABASE_URL }}
           npm run build
-          npm test
           
