@@ -1,18 +1,23 @@
 ## Getting Started
 
 #### 1. Install required software using terminal
-    - Linux 
-     ```bash
-      sudo apt install npm
-      sudo apt install git
-      ```
-    - macOS (using [brew.sh](https://brew.sh/))
+Linux 
+    
+      ```bash
+       sudo apt install npm
+       sudo apt install git
+       ```
+      
+macOS (using [brew.sh](https://brew.sh/))
+    
      ```bash
      brew install node
      brew install git
      ```
-    - Windows (using [scoop](https://scoop.sh/))
-    ```powershell
+     
+Windows (using [scoop](https://scoop.sh/))
+    
+    ```bash
     scoop install nodejs
     scoop install git
     ```
