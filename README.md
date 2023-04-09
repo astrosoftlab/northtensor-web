@@ -26,7 +26,7 @@ Windows (using [scoop](https://scoop.sh/))
    
 #### 3. Install dependencies
    ```bash
-   cd mnrv.ai
+   cd northtensor-website
    npm i
    ```
 
