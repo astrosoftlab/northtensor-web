@@ -2,25 +2,22 @@
 
 #### 1. Install required software using terminal
 Linux 
-    
-      ```bash
-       sudo apt install npm
-       sudo apt install git
-       ```
+```bash
+   sudo apt install npm
+   sudo apt install git
+```
       
 macOS (using [brew.sh](https://brew.sh/))
-    
-     ```bash
-     brew install node
-     brew install git
-     ```
+```bash
+   brew install node
+   brew install git
+```
      
 Windows (using [scoop](https://scoop.sh/))
-    
-    ```bash
-    scoop install nodejs
-    scoop install git
-    ```
+```bash
+   scoop install nodejs
+   scoop install git
+```
   
 #### 2. Clone project to local directory
    ```bash
