@@ -33,7 +33,8 @@ export default function Main(props) {
 
   //Convert AccountBalance to Tao
   // const accountBalanceTao = parseFloat(accountBalance.toString().replace(/,/g, '')) / 10**9
-  const fullStakeAmount = parseFloat(accountBalance.toString().replace(/,/g, ''))
+  const fullStakeAmount = parseFloat(accountBalance.toString().replace(/,/g, '')) - 1000
+  // console.log("Full Stake", fullStakeAmount)
   // const fullStakeAmountTao = fullStakeAmount / 10**9
   const [stakeAmount, setStakeAmount] = useState(0)
   const [stakeType, setStakeType] = useState('addStake')
@@ -82,7 +83,8 @@ export default function Main(props) {
     <Grid.Column width={8}>
       <Grid.Row>
         
-        <h1 className="lg:px-12 dark:text-gray-200 text-gray-800 text-3xl sm:text-3xl font-thin">Delegated Staking</h1><br />
+      <h1 className="lg:px-12 dark:text-gray-200 text-gray-800 text-3xl sm:text-3xl font-thin">Delegated Staking</h1><br />
+      <h3 className="lg:px-12 dark:text-gray-200 text-gray-800 text-3xl sm:text-3xl font-thin">Note: You must retain 0.000001 Tao in your wallet while staking</h3><br />
       <Label className="lg:px-24 dark:text-gray-200 text-gray-800 text-3xl sm:text-2xl font-semibold">
           <Icon name="money" />Balance Staked: {amountCurrentlyStakedTao} Tao&nbsp;
         </Label></Grid.Row>
@@ -116,7 +118,7 @@ export default function Main(props) {
           />
         </Form.Field>
         <Form.Field className="lg:px-24 flex gap-5 dark:text-gray-200 text-gray-800 text-3xl sm:text-2xl font-thin">
-          <TxButton
+          {(fullStakeAmount < 1) && (stakeType === 'addStake') ? null : <TxButton
             label= {stakeType === 'addStake' ? 'Stake' : 'Un-Stake'}
             type="SIGNED-TX"
             setStatus={setStatus}
@@ -126,8 +128,9 @@ export default function Main(props) {
               inputParams: [MNRVHotkey, stakeAmount * 10**9],
               paramFields: [true, true],
             }}
-          />
-          {stakeType === "addStake" ? <TxButton
+          /> 
+}
+          {stakeType === "addStake" ? (fullStakeAmount > 0) ? <TxButton
             label="Stake All"
             type="SIGNED-TX"
             setStatus={setStatus}
@@ -136,8 +139,8 @@ export default function Main(props) {
               callable: stakeType,
               inputParams: [MNRVHotkey, fullStakeAmount],
               paramFields: [true, true],
-            }}
-          /> : <TxButton
+            }} 
+          /> : null : <TxButton
           label="Un-Stake All"
           type="SIGNED-TX"
           setStatus={setStatus}
