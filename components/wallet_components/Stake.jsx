@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { Form, Input, Grid,  Label, Icon } from 'semantic-ui-react'
 import { TxButton } from '../../lib/substrate-lib/components'
 import { useSubstrateState } from '../../lib/substrate-lib'
-import CopyToClipboardButton from './CopyButton'
-
 
 export default function Main(props) {
   const [status, setStatus] = useState(null)
@@ -33,8 +31,7 @@ export default function Main(props) {
 
   //Convert AccountBalance to Tao
   // const accountBalanceTao = parseFloat(accountBalance.toString().replace(/,/g, '')) / 10**9
-  const fullStakeAmount = parseFloat(accountBalance.toString().replace(/,/g, '')) - 1000
-  // console.log("Full Stake", fullStakeAmount)
+  const fullStakeAmount = parseFloat(accountBalance.toString().replace(/,/g, ''))
   // const fullStakeAmountTao = fullStakeAmount / 10**9
   const [stakeAmount, setStakeAmount] = useState(0)
   const [stakeType, setStakeType] = useState('addStake')
@@ -83,8 +80,7 @@ export default function Main(props) {
     <Grid.Column width={8}>
       <Grid.Row>
         
-      <h1 className="lg:px-12 dark:text-gray-200 text-gray-800 text-3xl sm:text-3xl font-thin">Delegated Staking</h1><br />
-      <h3 className="lg:px-12 dark:text-gray-200 text-gray-800 text-3xl sm:text-3xl font-thin">Note: You must retain 0.000001 Tao in your wallet while staking</h3><br />
+        <h1 className="lg:px-12 dark:text-gray-200 text-gray-800 text-3xl sm:text-3xl font-thin">Delegated Staking</h1><br />
       <Label className="lg:px-24 dark:text-gray-200 text-gray-800 text-3xl sm:text-2xl font-semibold">
           <Icon name="money" />Balance Staked: {amountCurrentlyStakedTao} Tao&nbsp;
         </Label></Grid.Row>
@@ -92,15 +88,19 @@ export default function Main(props) {
       
       <Form>
       
-      <Form.Group style={{ overflowX: 'auto' }} inline className="flex dark:text-gray-200 text-gray-800 text-3xl sm:text-2xl font-thin ">
-          <Form.Radio className="lg:px-24" 
+      <Form.Group inline className="flex dark:text-gray-200 text-gray-800 text-3xl sm:text-2xl font-thin lg:px-24 rounded-lg">
+          <Form.Radio className={`"bg-gray-200 dark:text-gray-200 hover:bg-gray-400 dark:hover-bg-gray-400 text-gray-800 font-semibold py-2 px-4 lg:px-12 rounded-lg " ${
+            stakeType === 'addStake' ? 'bg-gray-300' : 'bg-gray-200'
+          }`} 
             label ="Stake"
             name="stakeType"
             value='addStake'
             checked={stakeType === 'addStake'}
             onChange={onStakeTypeChange}
           />
-          <Form.Radio className="lg:px-24"
+          <Form.Radio className={`"bg-gray-200 hover:bg-gray-400 dark:hover-bg-gray-400 dark:text-gray-200 text-gray-800 font-semibold py-2 px-4 rounded-lg " ${
+            stakeType === 'addStake' ? 'bg-gray-200' : 'bg-gray-300'
+          }`} 
             label="Un-Stake"
             name="stakeType"
             value='removeStake'
@@ -118,7 +118,7 @@ export default function Main(props) {
           />
         </Form.Field>
         <Form.Field className="lg:px-24 flex gap-5 dark:text-gray-200 text-gray-800 text-3xl sm:text-2xl font-thin">
-          {(fullStakeAmount < 1) && (stakeType === 'addStake') ? null : <TxButton
+          <TxButton
             label= {stakeType === 'addStake' ? 'Stake' : 'Un-Stake'}
             type="SIGNED-TX"
             setStatus={setStatus}
@@ -128,9 +128,8 @@ export default function Main(props) {
               inputParams: [MNRVHotkey, stakeAmount * 10**9],
               paramFields: [true, true],
             }}
-          /> 
-}
-          {stakeType === "addStake" ? (fullStakeAmount > 0) ? <TxButton
+          />
+          {stakeType === "addStake" ? <TxButton
             label="Stake All"
             type="SIGNED-TX"
             setStatus={setStatus}
@@ -139,8 +138,8 @@ export default function Main(props) {
               callable: stakeType,
               inputParams: [MNRVHotkey, fullStakeAmount],
               paramFields: [true, true],
-            }} 
-          /> : null : <TxButton
+            }}
+          /> : <TxButton
           label="Un-Stake All"
           type="SIGNED-TX"
           setStatus={setStatus}
@@ -155,9 +154,8 @@ export default function Main(props) {
         <div className="dark:text-gray-200 text-gray-800" style={{ overflowWrap: 'break-word' }}>{status}</div>
       </Form>
       <Form className="lg:px-24  px-3 py-1 text-sm font-mono text-gray-900 dark:text-gray-200">
-        <CopyToClipboardButton copyText={`btcli ${stakeType === 'addStake' ? 'delegate' : 'undelegate'} --delegate_ss58key ${MNRVHotkey} ${parseFloat(stakeAmount) === 0 ? '--all' : btcliStakeAmount}`} />
+        btcli {stakeType === 'addStake' ? "delegate" : "undelegate"} --delegate_ss58key {MNRVHotkey} {parseFloat(stakeAmount) === 0 ? "--all" : btcliStakeAmount}
       </Form>
     </Grid.Column>
   )
 }
-
