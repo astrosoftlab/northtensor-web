@@ -1,6 +1,7 @@
 ---
 title: 'How to Purchase TAO on MEXC'
 date: '2023-03-29'
+topics: ['stakers', 'clients']
 ---
 
 To purchase TAO and use it you will need `talisman.xyz` wallet. You can download it from [here](https://talisman.xyz/).

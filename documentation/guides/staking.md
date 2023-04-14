@@ -1,6 +1,7 @@
 ---
 title: 'How to Stake TAO on North Tensor'
 date: '2023-03-29'
+topics: ['stakers']
 ---
 
 ## Staking {#staking}
