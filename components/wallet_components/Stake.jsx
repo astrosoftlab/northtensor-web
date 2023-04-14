@@ -8,7 +8,7 @@ import CopyToClipboardButton from './CopyButton'
 export default function Main(props) {
   const [status, setStatus] = useState(null)
   
-  const { api, keyring, currentAccount, storedMNRVHotkey } = useSubstrateState()
+  const { api, keyring, currentAccount, storedMNRVHotkey, balanceSigFigures } = useSubstrateState()
   const MNRVHotkey = storedMNRVHotkey
   const accounts = keyring.getPairs()
   const [accountBalance, setAccountBalance] = useState(0)
@@ -42,6 +42,7 @@ export default function Main(props) {
 
   const [amountCurrentlyStaked, setAmountCurrentlyStaked] = useState(0)
   const amountCurrentlyStakedTao = amountCurrentlyStaked / 10**9
+  const roundedCurrentlyStakedTao = parseFloat(amountCurrentlyStakedTao.toFixed(balanceSigFigures))
   async function getStake() {
     const res = await api.query.subtensorModule.stake(MNRVHotkey, acctAddr(currentAccount));
     setAmountCurrentlyStaked(parseFloat(res.toString()))
@@ -86,7 +87,7 @@ export default function Main(props) {
       <h1 className="lg:px-12 dark:text-gray-200 text-gray-800 text-3xl sm:text-3xl font-thin">Delegated Staking</h1><br />
       <h3 className="lg:px-12 dark:text-gray-200 text-gray-800 text-3xl sm:text-3xl font-thin">Note: You must retain 0.000001 Tao in your wallet while staking</h3><br />
       <Label className="lg:px-24 dark:text-gray-200 text-gray-800 text-3xl sm:text-2xl font-semibold">
-          <Icon name="money" />Balance Staked: {amountCurrentlyStakedTao} Tao&nbsp;
+          <Icon name="money" />Balance Staked: {roundedCurrentlyStakedTao} Tao&nbsp;
         </Label></Grid.Row>
       
       
