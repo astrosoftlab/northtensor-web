@@ -94,7 +94,7 @@ export default function Main(props) {
       
         <Form.Group inline className="flex dark:text-gray-200 text-gray-800 text-3xl sm:text-2xl font-thin lg:px-24 rounded-lg">
           <Form.Radio className={`"bg-gray-200 dark:text-gray-200 hover:bg-gray-400 dark:hover-bg-gray-400 text-gray-800 font-semibold py-2 px-4 lg:px-12 rounded-lg " ${
-            stakeType === 'addStake' ? 'bg-gray-300' : 'bg-gray-200'
+            stakeType === 'addStake' ? 'bg-gray-300 dark:bg-gray-500' : 'bg-gray-200 dark:bg-gray-300 dark:text-gray-800'
           }`} 
             label ="Stake"
             name="stakeType"
@@ -103,7 +103,7 @@ export default function Main(props) {
             onChange={onStakeTypeChange}
           />
           <Form.Radio className={`"bg-gray-200 hover:bg-gray-400 dark:hover-bg-gray-400 dark:text-gray-200 text-gray-800 font-semibold py-2 px-4 rounded-lg " ${
-            stakeType === 'addStake' ? 'bg-gray-200' : 'bg-gray-300'
+            stakeType === 'addStake' ? 'bg-gray-200 dark:bg-gray-300 dark:text-gray-800' : 'bg-gray-300 dark:bg-gray-500'
           }`} 
             label="Un-Stake"
             name="stakeType"
