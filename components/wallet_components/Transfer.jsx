@@ -60,9 +60,10 @@ export default function Main(props) {
     <>
  {/* <Grid.Column width={8}> */}
       <h1 className="dark:text-gray-200 text-gray-800 text-3xl sm:text-3xl font-thin">Transfer</h1>
+      <br />
       <form className="space-y-4">
         <div className="space-y-1">
-          <label htmlFor="send-to-account" className="block text-gray-700">
+          <label htmlFor="send-to-account" className="block text-gray-700 dark:text-gray-200">
             Destination Account Selection
           </label>
           <select
@@ -84,7 +85,7 @@ export default function Main(props) {
           </select>
         </div>
         <div className="space-y-1">
-          <label htmlFor="destination-wallet-address" className="block text-gray-700">
+          <label htmlFor="destination-wallet-address" className="block text-gray-700 dark:text-gray-200">
             Destination Wallet Address
           </label>
           <input
@@ -111,7 +112,7 @@ export default function Main(props) {
           />
         </div>
         <div className="space-y-1">
-          <label htmlFor="standard-number" className="block text-gray-700">
+          <label htmlFor="standard-number" className="block text-gray-700 dark:text-gray-200">
             Amount of Tao to send
           </label>
           <input
