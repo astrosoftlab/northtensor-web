@@ -53,9 +53,9 @@ function Main(props) {
               <button
                 className={`${
                   activeItem === 'Delegations'
-                    ? 'bg-gray-700 text-white'
+                    ? 'bg-gray-500 text-white'
                     : 'bg-white border border-gray-300'
-                } rounded-md shadow-sm py-2 px-4 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-600`}
+                } rounded-md shadow-sm py-2 px-4 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-600 dark:focus:ring-gray-700`}
                 onClick={() => onClickHandler({ value: 'Delegations' })}
               >
                 Delegations
@@ -72,7 +72,7 @@ function Main(props) {
               </button>
             </div>
           </div>
-          <div className="mt-10" style={{ width: '600px' }}>
+          <div className="mt-10" style={{ width: '1200px' }}>
             {activeItem === 'Stake' ? <Stake /> : null}
             {activeItem === 'Transfer' ? <Transfer /> : null}
             {activeItem === 'Tip' ? <MNRVTip /> : null}

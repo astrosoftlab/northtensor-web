@@ -57,9 +57,10 @@ export default function Main(props) {
   return (
     <>
  {/* <Grid.Column width={8}> */}
-      <h1 className="dark:text-gray-200 text-gray-800 text-3xl sm:text-3xl font-thin">Transfer</h1>
+      <h1 className="dark:text-gray-200 text-gray-800 text-3xl lg:px-12 sm:text-3xl font-thin">Transfer</h1>
       <Box
       component="form"
+      className="lg:px-12"
       sx={{
         '& .MuiTextField-root': { m: 1, width: '25ch' },
       }}
@@ -67,7 +68,7 @@ export default function Main(props) {
       autoComplete="off"
     >
       <div>
-      <TextField
+      <TextField 
           id="send-to-account"
           select
           label="Connected Accounts"
@@ -86,7 +87,7 @@ export default function Main(props) {
         <InputLabel htmlFor="destination-wallet-address">
           Destination Wallet Address
         </InputLabel>
-        <Input fullWidth 
+        <Input fullWidth  
           id="destination-wallet-address"
           value={sendToAddress}
           onChange={onAddressChange}
