@@ -22,7 +22,7 @@ export default function Home({ postData }: { postData: PostData[] }) {
         <div>
           <h2 className="text-2xl sm:text-3xl dark:text-gray-100 font-thin my-4 border-b-2 border-gray-700">Developers</h2>
             <ul className="dark:text-gray-100">
-		          {postData.filter(({ topics }) => topics.includes("Resources")).map(({ id, date, title }) => (
+		          {postData.filter(({ topics }) => topics.includes("Developers")).map(({ id, date, title }) => (
                 <li className={utilStyles.listItem} key={id}>
                   <a href={`/docs/${id}`}>{title}</a>
                   <br />
