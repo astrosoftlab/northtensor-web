@@ -199,12 +199,11 @@ export default function Main(_props: any) {
       return [delegateInfo, delegates_json];
     };
 
-    currentAccount &&
-      getMeta().then((_meta: Metagraph) => {
+        getMeta().then((_meta: Metagraph) => {
         setMeta(_meta);
         setLoader(false);
       })
-    currentAccount && _getDelegateInfo().then(([delegateInfo, delegates_json]) => {
+      _getDelegateInfo().then(([delegateInfo, delegates_json]) => {
       setDelegateInfo(delegateInfo);
       setDelegatesExtras(delegates_json);
 
