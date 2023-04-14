@@ -8,11 +8,8 @@ It's a web3 wallet that specifically supports `polkadot`.
 While this guide can be followed using any adequate polkadot wallet. We've only tested using Talisman and Polkadot{js}. 
 We highly recommend using the Talisman Wallet due to the ability to confirm transactions before signing as shown below.  
 
-&nbsp;
-
 We will be purchasing TAO using USDT (since it's the only market they offer) from mexc.com--create an account [here](https://www.mexc.com/register). 
 
-&nbsp;
 
 # Overview:
 <!-- link to headers -->
@@ -30,13 +27,11 @@ We will be purchasing TAO using USDT (since it's the only market they offer) fro
 7. [Staking](#user-content-staking)
  
 &nbsp;
-&nbsp;
+
 ## If you want to deposit and convert your existing crypto to TAO follow this--if not skip to the next section: {#deposit-convert-crypto-usdt}
-After registering if you already own crypto and want to convert it to TAO go to Mexc's wallet tab then follow this guide to deposit it: [https://support.mexc.com/hc/en-001/articles/360030441272-How-to-Deposit-Crypto-to-MEXC-Spot-Account-Web-](https://support.mexc.com/hc/en-001/articles/360030441272-How-to-Deposit-Crypto-to-MEXC-Spot-Account-Web-) 
+After registering if you already own crypto and want to convert it to TAO go to Mexc's wallet tab then follow this guide to deposit it: [How-to-Deposit-Crypto-to-MEXC-Spot-Account-Web](https://support.mexc.com/hc/en-001/articles/360030441272-How-to-Deposit-Crypto-to-MEXC-Spot-Account-Web-) 
 
 Once you've deposited your assets and MEXC has confirmed the deposit, go to this link to view them and follow the image below to convert it to USDT. [https://www.mexc.com/assets](https://www.mexc.com/assets)
-
-&nbsp;
 
 <!-- image of how to convert -->
 ![image_info](/images/guides/mexc/convert-existing-crypto.png)
@@ -45,10 +40,8 @@ Once you've deposited your assets and MEXC has confirmed the deposit, go to this
 
 ![image_info](/images/guides/mexc/sell-crypto.png)
 
-&nbsp;
-Once you click sell you will have USDT in your account. You can now purchase TAO with it. Scroll down to the "Buy TAO" section.
+Once you click sell you will have USDT in your account. You can now purchase TAO with it. You can skip to the ["Buy TAO" section](#user-content-buy-tao).
 
-&nbsp;
 &nbsp;
 
 ## If you need USDT to purchase TAO follow this: {#credit-card-usdt}

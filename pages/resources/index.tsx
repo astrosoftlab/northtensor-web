@@ -14,24 +14,70 @@ export default function Home({ postData }: { postData: PostData[] }) {
       <Head>
         <title> Resources </title>
       </Head>
-      <main className="main flex flex-col justify-between items-center p-24 min-h-screen">
       <article>
-        <h1 className="text-3xl sm:text-5xl dark:text-gray-100 font-thin">Resources</h1>
+      <main className="main flex flex-col items-center p-14 min-h-screen">
+        <h1 className="text-3xl sm:text-5xl dark:text-gray-100 font-thin ">Resources</h1>
         <br/ >
-		<ul className="dark:text-gray-100">
-		  {postData.map(({ id, date, title }) => (
-			<li className={utilStyles.listItem} key={id}>
-			  <a href={`/docs/${id}`}>{title}</a>
-			  <br />
-			  <small className={utilStyles.lightText}>
-				<Date dateString={date} />
-			  </small>
-			</li>
-		  ))}
-		</ul>
-      </article>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div>
+          <h2 className="text-2xl sm:text-3xl dark:text-gray-100 font-thin my-4 border-b-2 border-gray-700">Developers</h2>
+            <ul className="dark:text-gray-100">
+		          {postData.map(({ id, date, title }) => (
+                <li className={utilStyles.listItem} key={id}>
+                  <a href={`/docs/${id}`}>{title}</a>
+                  <br />
+                  <small className={utilStyles.lightText}>
+				           <Date dateString={date} />
+                  </small>
+                </li>))}
+            </ul>
+        </div>
+    <div>
+          <h2 className="text-2xl sm:text-3xl dark:text-gray-100 font-thin my-4 border-b-2 border-gray-700">Clients</h2>
+            <ul className="dark:text-gray-100">
+              {postData.map(({ id, date, title }) => (
+                <li className={utilStyles.listItem} key={id}>
+                  <a href={`/docs/${id}`}>{title}</a>
+                  <br />
+                  <small className={utilStyles.lightText}>
+                   <Date dateString={date} />
+                  </small>
+                </li>))}
+            </ul>
+        </div>
+    <div>
+          <h2 className="text-2xl sm:text-3xl dark:text-gray-100 font-thin my-4 border-b-2 border-gray-700">Stakers</h2>
+            <ul className="dark:text-gray-100">
+              {postData.map(({ id, date, title }) => (
+                <li className={utilStyles.listItem} key={id}>
+                  <a href={`/docs/${id}`}>{title}</a>
+                  <br />
+                  <small className={utilStyles.lightText}>
+                   <Date dateString={date} />
+                  </small>
+                </li>))}
+            </ul>
+        </div>
+
+    <div>
+          <h2 className="text-2xl sm:text-3xl dark:text-gray-100 font-thin my-4 border-b-2 border-gray-700">Miners</h2>
+            <ul className="dark:text-gray-100">
+              {postData.map(({ id, date, title }) => (
+                <li className={utilStyles.listItem} key={id}>
+                  <a href={`/docs/${id}`}>{title}</a>
+                  <br />
+                  <small className={utilStyles.lightText}>
+                   <Date dateString={date} />
+                  </small>
+                </li>))}
+            </ul>
+        </div>
+    </div>
+      
       </main>
+      </article>
     </>
+
   );
 }
 
