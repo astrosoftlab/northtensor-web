@@ -221,12 +221,12 @@ export default function Main(_props: any) {
             netuid,
             neurons
               .filter((neuron) => {
-                return neuron.coldkey === currentAccount.address;
+                return neuron.coldkey === acctAddr(currentAccount);
               })
               .map((neuron) => {
                 return {
                   address: neuron.hotkey,
-                  stake: neuron.stake[currentAccount.address] || 0
+                  stake: neuron.stake[acctAddr(currentAccount)] || 0
                 } as StakeInfo;
               }),
           ];
@@ -262,7 +262,7 @@ export default function Main(_props: any) {
       setDelegateRows(delegateInfo);
     };
     
-    mountedRef.current && prepareDelegateRows(delegateInfo, delegatesExtras, currentAccount.address);
+    mountedRef.current && prepareDelegateRows(delegateInfo, delegatesExtras, acctAddr(currentAccount));
 
   }, [currentAccount, mountedRef, delegateInfo, delegatesExtras]);
 
@@ -317,7 +317,7 @@ export default function Main(_props: any) {
                   {delegateInfo.slice((page-1)*10, page*10).map((delegate) => {
                     return (
                       <DelegateRow 
-                        coldkey_ss58={currentAccount.address}
+                        coldkey_ss58={acctAddr(currentAccount)}
                         refreshMeta={refreshMeta}
                         expanded={expanded}
                         onChange={() => handlePanelChange(delegate.delegate_ss58)}
