@@ -300,14 +300,15 @@ export default function Main(_props: any) {
 
   return (
     <>
-    {!!delegateInfo.length && 
+    {!!delegateInfo.length &&
+          <div className="flex flex-col mt-8 "> 
             <Stack direction="column" spacing={1} alignItems="center" marginTop="2em">
               
-              <Typography variant="body2" sx={{
+              <Typography className="dark:text-gray-200 text-center" variant="body2" sx={{
                     fontWeight: 'bold',
                   }} >
-                    Delegates - 
-                    <button onClick={refreshMeta}>Refresh</button>
+                    Delegates<br />
+                    <button className="bg-gray-500 hover:bg-gray-600 text-gray-100 font-bold py-2 px-4 rounded" onClick={refreshMeta}>Refresh</button>
               </Typography>
               <List sx={{
                 minHeight: "400px",
@@ -331,6 +332,7 @@ export default function Main(_props: any) {
               </List>
               <Pagination count={Math.ceil(delegateInfo.length/5)} shape="rounded" onChange={handlePageChange} page={page} />
             </Stack>
+          </div>
           }
       </>
 
