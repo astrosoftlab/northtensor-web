@@ -21,9 +21,10 @@ const Footer: React.FC = () => (
   <footer className="bg-gray-900 text-gray-400 py-8">
     <div className="max-w-screen-xl mx-auto px-4">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <div className="mb-4">
-          <h3 className="text-lg font-bold mb-2 text-center">Contact Us</h3>
+        <div className="mb-4 text-center">
+          <h3 className="text-lg font-bold mb-2">Contact Us</h3>
             <ul className="text-sm">
+              <NavLink href="mailto:northtensor@fastmail.com" text="northtensor@fastmail.com" />
 
           </ul>
         </div>
@@ -39,7 +40,7 @@ const Footer: React.FC = () => (
         <div className="mb-4 text-center">
           <h3 className="text-lg font-bold mb-2">Follow Us</h3>
           <ul className="text-sm">
-            <NavLink href="https://twitter.com/mnrv_ai" text="Twitter" />
+            <NavLink href="https://twitter.com/NorthTensorAI" text="Twitter" />
             <NavLink href="https://discordapp.com/channels/1086368192521318472/1087797623924195408" text="Discord" />
           </ul>
         </div>
