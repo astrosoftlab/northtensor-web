@@ -34,26 +34,18 @@ import {
 } from "../../lib/utils/types";
 
 export default function Main(_props: any) {
-  // const [status, setStatus] = useState(null)
 
-  // return (<h1 className="dark:text-gray-200 text-gray-800 text-3xl sm:text-3xl font-thin">Coming Soon</h1>)
-  
   const { api, keyring, currentAccount} = useSubstrateState()
 
 
-  // const classes = useStyles();
   const [value, setValue] = useState(0);
-  // const { account } = useContext<CreateAccountCtx>(AccountContext);
   const mountedRef = useIsMountedRef();
   // for first load of page
   const [loaded, setLoaded] = useState(false);
   const [page, setPage] = useState(1);
-  // const balanceArr = useBalance(account?.accountAddress || "")
-  // const unit = balanceArr[3]
 
 
 
-  // const apiCtx = useApi();
 
   const handlePanelChange = (panel: string) => {
     setExpanded(expanded === panel ? false : panel);
