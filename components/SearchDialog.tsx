@@ -15,6 +15,7 @@ import { SSE } from 'sse.js'
 import type { CreateCompletionResponse } from 'openai'
 import { X, Loader, User, Frown, CornerDownLeft, Search, Wand } from 'lucide-react'
 
+
 function promptDataReducer(
   state: any[],
   action: {
@@ -195,9 +196,9 @@ export function SearchDialog() {
       <Dialog open={open}>
         <DialogContent className="sm:max-w-[850px] text-black">
           <DialogHeader>
-            <DialogTitle>OpenAI powered doc search</DialogTitle>
+            <DialogTitle>AI Resource Search</DialogTitle>
             <DialogDescription>
-              Build your own ChatGPT style search with Next.js, OpenAI & Supabase.
+              I may make things up.
             </DialogDescription>
             <hr />
             <button className="absolute top-0 right-2 p-2" onClick={() => setOpen(false)}>
@@ -230,18 +231,18 @@ export function SearchDialog() {
                     <Frown width={18} />
                   </span>
                   <span className="text-slate-700 dark:text-slate-100">
-                    Sad news, the search has failed! Please try again.
+                    Failure. Please check your connection.
                   </span>
                 </div>
               )}
 
               {answer && !hasError ? (
                 <div className="flex items-center gap-4 dark:text-white">
-                  <span className="bg-green-500 p-2 w-8 h-8 rounded-full text-center flex items-center justify-center">
+                  <span className="bg-gray-500 p-2 w-8 h-8 rounded-full text-center flex items-center justify-center">
                     <Wand width={18} className="text-white" />
                   </span>
-                  <h3 className="font-semibold">Answer:</h3>
-                  {answer}
+                  <h3 className="font-semibold">Response:</h3>
+                  <div dangerouslySetInnerHTML={{ __html: answer }}/>
                 </div>
               ) : null}
 
@@ -269,10 +270,23 @@ export function SearchDialog() {
                   rounded border border-slate-200 dark:border-slate-600
                   transition-colors"
                   onClick={(_) =>
-                    setSearch('Create a table called profiles with fields id, name, email')
+                    setSearch('What is Bittensor?')
                   }
                 >
-                  Create a table called profiles with fields id, name, email
+                  What is Bittensor?
+                </button>
+                <button
+                  type="button"
+                  className="px-1.5 py-0.5
+                  bg-slate-50 dark:bg-gray-500
+                  hover:bg-slate-100 dark:hover:bg-gray-600
+                  rounded border border-slate-200 dark:border-slate-600
+                  transition-colors"
+                  onClick={(_) =>
+                    setSearch('How do I stake?')
+                  }
+                >
+                  How do I stake?
                 </button>
               </div>
             </div>
