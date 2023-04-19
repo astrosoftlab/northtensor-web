@@ -8,7 +8,7 @@ import Stack from '@mui/material/Stack';
 export default function Main(props) {
   const [status, setStatus] = useState(null)
   
-  const { api, keyring, currentAccount, storedMNRVHotkey } = useSubstrateState()
+  const { api, keyring, currentAccount, storedMNRVHotkey, balanceSigFigures } = useSubstrateState()
   const MNRVHotkey = storedMNRVHotkey
   const accounts = keyring.getPairs()
   const [accountBalance, setAccountBalance] = useState(0)
@@ -40,6 +40,7 @@ export default function Main(props) {
 
   const [amountCurrentlyStaked, setAmountCurrentlyStaked] = useState(0)
   const amountCurrentlyStakedTao = amountCurrentlyStaked / 10**9
+  const roundedCurrentlyStakedTao = parseFloat(amountCurrentlyStakedTao.toFixed(balanceSigFigures))
   async function getStake() {
     const res = await api.query.subtensorModule.stake(MNRVHotkey, acctAddr(currentAccount));
     setAmountCurrentlyStaked(parseFloat(res.toString()))
