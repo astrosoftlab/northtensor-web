@@ -91,7 +91,7 @@ function Main(props) {
 
 
   return (
-    <Stack spacing={1} alignItems="center" direction="row" justifyContent="center">
+    <Stack padding={1} spacing={1} alignItems="center" direction="row" justifyContent="center">
     <Stack spacing={1} alignItems="center" direction="column" justifyContent="right">
       <h1>{"Available Balance: "} {roundedAccountBalanceTao}{" Tao"}</h1>
       <h1 className="px-4">{"North Tensor Stake: "}{roundedMnrvStakeTao}{" Tao"}</h1>
