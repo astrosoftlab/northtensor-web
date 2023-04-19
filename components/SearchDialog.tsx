@@ -182,16 +182,6 @@ export function SearchDialog() {
         <Search width={15} />
         <span className="border border-l h-5"></span>
         <span className="inline-block ml-4">Ask the AI!</span>
-        <kbd
-          className="absolute right-3 top-2.5
-          pointer-events-none inline-flex h-5 select-none items-center gap-1
-          rounded border border-slate-100 bg-slate-100 px-1.5
-          font-mono text-[10px] font-medium
-          text-slate-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400
-          opacity-100 "
-        >
-          <span className="text-xs">⌘</span>K
-        </kbd>{' '}
       </button>
       <Dialog open={open}>
         <DialogContent className="sm:max-w-[850px] text-black">
@@ -291,8 +281,8 @@ export function SearchDialog() {
               </div>
             </div>
             <DialogFooter>
-              <button type="submit" className="bg-red-500">
-                Ask
+              <button type="submit" className="bg-gray-500 hover:bg-gray-700 text-gray-100 font-bold py-2 px-4 rounded">
+                Submit
               </button>
             </DialogFooter>
           </form>
