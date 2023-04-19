@@ -16,9 +16,9 @@ export default function Post({ postData }: { postData: PostData & { contentHtml:
       <Head>
         <title>{postData.title} </title>
       </Head>
-      <main className="flex flex-col justify-between items-center px-20 py-10 min-h-screen dark:invert">
-      <article className="prose prose-lg">
-        <h1 className="text-3xl sm:text-5xl font-thin">{postData.title}</h1>
+      <main className="flex flex-col justify-between items-center px-20 py-10 min-h-screen dark:text-gray-200">
+      <article className="prose dark:prose-invert prose-lg dark:text-gray-200">
+        <h1 className="text-3xl sm:text-5xl font-thin dark:text-gray-200">{postData.title}</h1>
           <Date dateString={postData.date} />
         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }}/>
       </article>

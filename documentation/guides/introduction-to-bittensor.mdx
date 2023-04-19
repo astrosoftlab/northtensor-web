@@ -1,6 +1,7 @@
 ---
 title: 'Introduction to Bittensor'
 date: '2023-03-29'
+topics: ['clients', 'developers', 'stakers', 'miners']
 ---
 
 Bittensor is a groundbreaking cryptocurrency fueling the growth of an open-source, decentralized, blockchain-based machine learning network. The platform fosters collaborative training of machine learning models and incentivizes participation with TAO, the network's native cryptocurrency. Contributors are rewarded based on the informational value they provide to the collective.

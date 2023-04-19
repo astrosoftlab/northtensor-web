@@ -34,26 +34,18 @@ import {
 } from "../../lib/utils/types";
 
 export default function Main(_props: any) {
-  // const [status, setStatus] = useState(null)
 
-  // return (<h1 className="dark:text-gray-200 text-gray-800 text-3xl sm:text-3xl font-thin">Coming Soon</h1>)
-  
   const { api, keyring, currentAccount} = useSubstrateState()
 
 
-  // const classes = useStyles();
   const [value, setValue] = useState(0);
-  // const { account } = useContext<CreateAccountCtx>(AccountContext);
   const mountedRef = useIsMountedRef();
   // for first load of page
   const [loaded, setLoaded] = useState(false);
   const [page, setPage] = useState(1);
-  // const balanceArr = useBalance(account?.accountAddress || "")
-  // const unit = balanceArr[3]
 
 
 
-  // const apiCtx = useApi();
 
   const handlePanelChange = (panel: string) => {
     setExpanded(expanded === panel ? false : panel);
@@ -148,7 +140,7 @@ export default function Main(_props: any) {
   };
 
   const getDelegatesJson = async (): Promise<DelegateExtras> => {
-    const url = "https://raw.githubusercontent.com/opentensor/bittensor/master/delegates.json";
+    const url = "https://raw.githubusercontent.com/opentensor/bittensor-delegates/main/public/delegates.json";
     const response = await fetch(url);
     const data = await response.json();
     return data;
@@ -298,43 +290,53 @@ export default function Main(_props: any) {
   const [expandedDelegate, setExpandedDelegate] = React.useState<boolean>(false);
 
 
-  return (
-    <>
-    {!!delegateInfo.length && 
-            <Stack direction="column" spacing={1} alignItems="center" marginTop="2em">
-              
-              <Typography variant="body2" sx={{
-                    fontWeight: 'bold',
-                  }} >
-                    Delegates - 
-                    <button onClick={refreshMeta}>Refresh</button>
-              </Typography>
-              <List sx={{
-                minHeight: "400px",
-                padding: "0.5em",
-              }} >
-                  {delegateInfo.slice((page-1)*10, page*10).map((delegate) => {
-                    return (
-                      <DelegateRow 
-                        coldkey_ss58={acctAddr(currentAccount)}
-                        refreshMeta={refreshMeta}
-                        expanded={expanded}
-                        onChange={() => handlePanelChange(delegate.delegate_ss58)}
-                        // unit={unit}
-                        key={`row-${delegate.delegate_ss58}`}
-                        delegate={delegate}
-                        columns={delegateInfoColumns}
-                        delegateExtra={delegatesExtras[delegate.delegate_ss58]}
-                      />
-                    )
-                  })}
-              </List>
-              <Pagination count={Math.ceil(delegateInfo.length/5)} shape="rounded" onChange={handlePageChange} page={page} />
-            </Stack>
-          }
-      </>
+  if (delegateInfo.length == 0) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <div className="w-16 h-16 border-t-2 border-b-2 border-gray-900 rounded-full animate-spin"></div>
+      </div>
+    );
+  }
+  else {
+    return (
+      <>
+      {!!delegateInfo.length &&
+            <div className="flex flex-col mt-8 "> 
+              <Stack direction="column" spacing={1} alignItems="center" marginTop="2em">
+                
+                <Typography className="dark:text-gray-200 text-center" variant="body2" sx={{
+                      fontWeight: 'bold',
+                    }} >
+                      Delegates<br />
+                      <button className="bg-gray-500 hover:bg-gray-600 text-gray-100 font-bold py-2 px-4 rounded" onClick={refreshMeta}>Refresh</button>
+                </Typography>
+                <List sx={{
+                  minHeight: "400px",
+                  padding: "0.5em",
+                }} >
+                    {delegateInfo.slice((page-1)*10, page*10).map((delegate) => {
+                      return (
+                        <DelegateRow 
+                          coldkey_ss58={acctAddr(currentAccount)}
+                          refreshMeta={refreshMeta}
+                          expanded={expanded}
+                          onChange={() => handlePanelChange(delegate.delegate_ss58)}
+                          key={`row-${delegate.delegate_ss58}`}
+                          delegate={delegate}
+                          columns={delegateInfoColumns}
+                          delegateExtra={delegatesExtras[delegate.delegate_ss58]}
+                        />
+                      )
+                    })}
+                </List>
+                <Pagination count={Math.ceil(delegateInfo.length/5)} shape="rounded" onChange={handlePageChange} page={page} />
+              </Stack>
+            </div>
+            }
+        </>
 
-  )
+    )
+          }
     
 }
 
