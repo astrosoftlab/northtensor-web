@@ -18,8 +18,8 @@ export function getSortedPostsData(): PostData[] {
 	// Get file names under /posts
 	const fileNames = fs.readdirSync(postsDirectory);
 	const allPostsData: PostData[] = fileNames.map((fileName) => {
-		// Remove ".md" from file name to get id
-		const id = fileName.replace(/\.md$/, '');
+		// Remove ".mdx" from file name to get id
+		const id = fileName.replace(/\.mdx$/, '');
 
 		// Read markdown file as string
 		const fullPath = path.join(postsDirectory, fileName);
@@ -65,14 +65,14 @@ export function getAllPostIds(): { params: { id: string } }[] {
 	return fileNames.map((fileName) => {
 		return {
 			params: {
-				id: fileName.replace(/\.md$/, ''),
+				id: fileName.replace(/\.mdx$/, ''),
 			},
 		};
 	});
 }
 
 export async function getPostData(id: string): Promise<PostData & { contentHtml: string }> {
-	const fullPath = path.join(postsDirectory, `${id}.md`);
+	const fullPath = path.join(postsDirectory, `${id}.mdx`);
 	const fileContents = fs.readFileSync(fullPath, 'utf8');
 
 	// Use gray-matter to parse the post metadata section
@@ -94,7 +94,7 @@ export async function getPostData(id: string): Promise<PostData & { contentHtml:
 }
 
 export async function getMiscPage(id: string): Promise<PostData & { contentHtml: string }> {
-	const fullPath = path.join(miscDirectory, `${id}.md`);
+	const fullPath = path.join(miscDirectory, `${id}.mdx`);
 	const fileContents = await fs.promises.readFile(fullPath, 'utf8');
 
 	const matterResult = matter(fileContents);

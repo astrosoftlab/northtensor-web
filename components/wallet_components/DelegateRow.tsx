@@ -39,7 +39,7 @@ export default function DelegateRow({columns, unit, delegate, expanded, onChange
 
     const {
         setCurrentAccount,
-        state: { keyring, currentAccount },
+        state: { keyring, currentAccount, balanceSigFigures },
       } = useSubstrate()
 
     useEffect(() => {
@@ -97,11 +97,12 @@ export default function DelegateRow({columns, unit, delegate, expanded, onChange
                                     return null;
                                 }
                                 const value: string | number = delegate_row[column.id];
+                                const formattedValue = typeof value === 'number' ? parseFloat(value.toFixed(balanceSigFigures)) : value;
                                 return (
                                 <React.Fragment key={column.id}>
                                     <Stack direction="row" alignItems="center">
                                         <Typography  >Total Stake: </Typography>
-                                        <h1>{value}</h1>
+                                        <h1>{formattedValue}</h1>
                                     </Stack>
                                 </React.Fragment>
                                 )
@@ -111,11 +112,13 @@ export default function DelegateRow({columns, unit, delegate, expanded, onChange
                                     return null;
                                 }
                                 const value: string | number = delegate_row[column.id];
+                                const parsedValue = parseInt(value.toString()) / 10**9;
+                                const formattedparsedValue = typeof parsedValue === 'number' ? parseFloat(parsedValue.toFixed(balanceSigFigures)) : parsedValue;
                                 return (
                                 <React.Fragment key={column.id}>
                                     <Stack direction="row" alignItems="center" >
                                         <Typography >Your Stake: </Typography>
-                                        <h1>{parseInt(value.toString()) / 10**9}</h1>
+                                        <h1>{formattedparsedValue}</h1>
                                     </Stack>
                                 </React.Fragment>
                                 )
