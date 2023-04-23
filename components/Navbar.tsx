@@ -41,23 +41,54 @@ const Navbar: React.FC = () => {
   const session = useSession()
   const supabase = useSupabaseClient()
   return (
-<nav className="flex items-center justify-between bg-gray-700 p-6">
-  <div className="flex items-center flex-shrink-0 text-white mr-6">
+<nav className="flex items-center bg-gray-700 p-6 w-full">
+<div className="flex flex-col sm:flex-row sm:items-center flex-shrink-0 text-white mr-6 w-full  justify-between ">
+  <div className="flex items-center flex-shrink-0 text-white mr-6 justify-between ">
   <div className="sm:hidden flex-1">
-    <button
-      onClick={toggleNavbar}
-      type="button"
-      className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
-      aria-controls="mobile-menu"
-      aria-expanded="false"
+  <button
+    onClick={toggleNavbar}
+    type="button"
+    className="relative inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none"
+    aria-controls="mobile-menu"
+    aria-expanded={isOpen}
+  >
+    <span className="sr-only">Open main menu</span>
+    <svg
+      className={`h-6 w-6 absolute left-1/2 transform -translate-x-1/2 transition-all duration-300 ${
+        isOpen ? 'opacity-0' : 'opacity-100'
+      }`}
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      aria-hidden="true"
     >
-      <span className="sr-only">Open main menu</span>
-      {isOpen ? (
-        <h1>1</h1>
-      ) : (
-        <h1>2</h1>
-      )}
-    </button>
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M4 6h16M4 12h16M4 18h16"
+      />
+    </svg>
+    <svg
+      className={`h-6 w-6 absolute left-1/2 transform -translate-x-1/2 transition-all duration-300 ${
+        isOpen ? 'opacity-100' : 'opacity-0'
+      }`}
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      aria-hidden="true"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M6 18L18 6M6 6l12 12"
+      />
+    </svg>
+  </button>
+
     </div>
     <Link href="/" className="flex-1">
       <Image src={logo} alt="mnrv.ai logo" className="text-xl font-bold h-10 object-contain w-auto"/>
@@ -84,8 +115,9 @@ const Navbar: React.FC = () => {
     </div>
   </div>
   </div>
-  <div className={`${isOpen ? "block" : "hidden"} sm:hidden`} id="mobile-menu">
-    <div className="w-full flex-grow lg:flex lg:items-center lg:w-auto flex flex-row list-none">
+  <div className={`${isOpen ? "block" : "hidden"} sm:hidden w-full flex justify-center`} id="mobile-menu">
+  <div className="flex flex-col">
+    <div className="w-full flex-grow flex items-center w-auto flex flex-row list-none">
       <NavLink href="/resources" text="Resources" />
       <NavLink href="/roadmap" text="Roadmap" />
     </div>
@@ -98,6 +130,8 @@ const Navbar: React.FC = () => {
 
       )}
     </div>
+  </div>
+  </div>
   </div>
 </nav>
 )
