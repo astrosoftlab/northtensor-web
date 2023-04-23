@@ -1,0 +1,120 @@
+---
+title: 'Installing and Managing Subtensor'
+date: '2023-04-08'
+topics: ['developers', 'miners']
+---
+
+## What is Subtensor?
+
+Bittensor is generally powered by two main codebases. Bittensor and Subtensor.
+
+**Bittensor** both refers to the mining network of intelligence models that encapsulate the whole system, as well as the "Bittensor Codebase" Python API that clients and developers run to query the network and power their models.
+
+**Subtensor** is the codebase that's powered by Substrate to coordinate the state of the network. Its main responsibilities include running the consensus mechanism (state alignment), advertising neuron information (connectivity details), and value transfer (tao transfers/holdings).
+
+Majority of bittensor users will leverage someone else's Subtensor instance when interacting with the network, such as the OpenTensor foundation's for convenience. However, if you'll be performing development that perform heavy querying or intend to run systems that need reliable uptime and accessibility then you should launch and maintain your own Subtensor instance.
+ 
+Subtensor requires a x86_64 system running on macOS or Linux, it also requires internet access.
+
+This guide will walk you through the installation and management of Subtensor leveraging Docker on an **Ubuntu** system with root privileges. If you're on a different disti we'll assume you can translate, but feel free to reach out if you want to add details for your preferred instance.
+
+## Installation
+
+### Dependencies
+Before we get going, we'll want to make sure our system is up to date and has the necessary dependencies installed.
+
+#### General Packages
+We'll use apt-get to grab the latest ca-certificates, curl, gnupg, and lsb-release packages.
+```bash
+sudo apt-get update && sudo apt-get install \
+    curl \
+    git \
+    gnupg \
+    lsb-release \
+```
+
+#### Docker
+We'll grab the gpg key from docker so when we download docker we know we have an unmodified version:
+```bash
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+```
+
+Next we add the appropriate version of docker to our apt-get sources list:
+```bash
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+```
+
+Now we download docker using apt-get:
+```bash
+sudo apt-get update && sudo apt-get install docker-ce docker-ce-cli containerd.io
+```
+
+And download the latest Docker Compose:
+```bash
+curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && sudo chmod +x /usr/local/bin/docker-compose
+```
+
+#### Subtensor
+
+With the dependencies installed, we can now move on to installing Subtensor.
+We'll install it in the main home directory of whichever user you're running by default (which is referred to by the ~)
+```bash
+git clone https://github.com/opentensor/subtensor.git ~/.bittensor/subtensor
+```
+
+The above command should've downloaded the latest version of Subtensor into the ~/.bittensor/subtensor directory. So now let's launch it.
+```bash
+cd ~/.bittensor/subtensor && docker-compose up -d && cd
+```
+
+You'll now have a docker-compose instance that downloads the latest Subtensor image (might take a bit of time) and runs it in the background. 
+
+
+## Managing Subtensor
+
+You can check the status of the instance with:
+```bash
+docker ps
+```
+
+You should see something like this:
+```bash
+CONTAINER ID   IMAGE                   COMMAND                  CREATED          STATUS          PORTS                                                                                              NAMES
+b7d3c2a3f3e9   opentensor/subtensor    "/bin/sh -c 'subtens…"   20 seconds ago   Up 19 seconds   
+```
+
+You can also check that the instance is running by checking the logs:
+```bash
+docker logs --since=1h node-subtensor
+```
+
+#### Updating
+
+On occasion (but not nearly as frequently as bittensor) there will be a subtensor update. Assuming you've followed the steps above without changes, updating Subtensor just requires a new pull of the latest git and a relaunch of subtensor with docker compose:
+```bash
+git clone https://github.com/opentensor/subtensor.git ~/.bittensor/subtensor && cd ~/.bittensor/subtensor && docker-compose up -d && cd
+```
+
+#### Connecting
+
+With your Subtensor instance running, you're now ready to query it. The main access defaults to accessiblity through port 9944, which is the default setting for bittensor.
+
+If you're going to connect a local installation of bittensor to a local subtensor it's as easy as setting the `--subtensor.network` flag to `local` e.g.:
+```bash
+btcli overview --no_prompt --wallet.name default --wallet.hotkey default --subtensor.network local
+```
+
+If you're going to connect a local installation of bittensor to a remote subtensor you just need to define the secured endpoint as well with `--subtensor.chain_endpoint <ip:port>`, e.g:
+```bash
+btcli overview --no_prompt --wallet.name do1 --wallet.hotkey do1 --subtensor.network local --subtensor.chain_endpoint 192.168.0.1:9944
+```
+Note: we're not going to get into network security, but recommendation is to not open port 9944 to the open network to avoid abuse of your subtensor instance.
+
+## Conclusion
+
+If you followed the above, you should have a Subtensor instance that is constantly speaking to the rest of the network to help maintain state, consensus, and access to neurons. 
+
+If you have any questions or issues, feel free to reach out to us.
+
