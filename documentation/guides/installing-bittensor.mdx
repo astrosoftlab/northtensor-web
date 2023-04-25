@@ -1,0 +1,154 @@
+---
+title: 'Installing Bittensor'
+date: '2023-04-24'
+topics: ['developers', 'miners', 'clients']
+---
+
+## What is Bittensor?
+
+Bittensor is generally powered by two main codebases. Bittensor and Subtensor.
+
+**Bittensor** both refers to the mining network of intelligence models that encapsulate the whole system, as well as the "Bittensor Codebase" Python API that clients and developers run to query the network and power their models.
+
+**Subtensor** is the codebase that's powered by Substrate to coordinate the state of the network. Its main responsibilities include running the consensus mechanism (state alignment), advertising neuron information (connectivity details), and value transfer (tao transfers/holdings).
+
+In this guide, we'll be explaining the "Bittensor Codebase." The Python API that you can use to manage your wallet, query the network, run mining, and more. It's foundational to all you'll use.
+
+## Installation
+
+### Dependencies
+
+To start with, you'll want to make sure your system is up-to-date and has access to the internet. Depending on what you hope to use Bittensor for, you'll also need varying hardware capabilities. We'll assume bare minimum for this guide and callout more specific requirements on the other guides. e.g. if you want to mine, we'll walk through needs for mining in that guide.
+
+#### General Packages
+##### Linux (Ubuntu, translate for your disti)
+We'll use apt-get to grab bittensor, build-essential, cmake, curl, git, and python3+pip.
+```bash
+sudo apt-get update && sudo apt-get upgrade -y
+sudo apt-get install -y apt-utils curl git cmake build-essential
+```
+
+You'll also need python3, you can check if you have it by running `which python` or `which python3` in your terminal. It should return a path to the python binary. If it doesn't, you'll need to install it. Which you can do with:
+```bash
+sudo apt-get install -y python3 python3-pip python3-dev
+```
+
+#### macOS
+We suggest using [brew](https://www.brew.sh) to use package management on macOS. You can install brew by running:
+Feel free to confirm that's the correct command on the brew homepage as well.
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+You may notice in the prompt that brew will installed xcode and git, both tool's well use later.
+Once you have brew installed, we'll need to add cmake, python3.10, and rust to our system. 
+(note we're installing 3.10, because as of this guide 3.11 doesn't support the torch library needed)
+```bash
+brew install cmake python@3.10 rust
+```
+It'll also update the brew details, so don't worry about the other package names it lists.
+
+
+#### Windows
+... is currently unsupported ...
+
+
+### Installing Bittensor from source
+With the dependencies installed, we can now install bittensor.
+Going forward, the commands will be applicable for all operating systems.
+
+Our preferred way is to install from github, as it's the most up-to-date version.
+By default, most bittensor reference assumes you have it installed in ~/.bittensor/bittensor, so we'll stick with that for consistency.
+```bash
+# make the directory where bittensor is going to live
+mkdir -p ~/.bittensor/bittensor
+# clone the repo
+cd ~
+git clone https://github.com/opentensor/bittensor.git ~/.bittensor/bittensor/
+# install bittensor from source
+python3 -m pip install -e ~/.bittensor/bittensor/
+```
+
+### Testing the installation
+Following the installation steps above should have installed bittensor as a binary in the default Python site-packages.
+We can confirm by running `btcli`, you may want to refresh your terminal to be safe.
+```bash
+btcli
+
+usage: btcli <command> <command args>
+
+bittensor cli v4.0.1
+
+positional arguments:
+  {run,help,list,stake,update,inspect,weights,unstake,overview,register,transfer,nominate,new_hotkey,metagraph,new_coldkey,my_delegates,list_subnets,regen_hotkey,regen_coldkey,delegate,undelegate,list_delegates,regen_coldkeypub,recycle_register}
+    run                 Run the miner.
+    help                Displays the help
+    list                List wallets
+    stake               Stake to your hotkey accounts.
+    update              Update bittensor
+    inspect             Inspect a wallet (cold, hot) pair
+    weights             Show weights from chain.
+    unstake             Unstake from hotkey accounts.
+    overview            Show registered account overview.
+    register            Register a wallet to a network.
+    transfer            Transfer Tao between accounts.
+    nominate            Become a delegate on the network
+    new_hotkey          Creates a new hotkey (for running a miner) under the specified path.
+    metagraph           Metagraph commands
+    new_coldkey         Creates a new coldkey (for containing balance) under the specified path.
+    my_delegates        Show all delegates where I am delegating a positive amount of stake
+    list_subnets        List all subnets on the network
+    regen_hotkey        Regenerates a hotkey from a passed mnemonic
+    regen_coldkey       Regenerates a coldkey from a passed value
+    delegate            Delegate Stake to an account.
+    undelegate          Undelegate Stake from an account.
+    list_delegates      List all delegates on the network
+    regen_coldkeypub    Regenerates a coldkeypub from the public part of the coldkey.
+    recycle_register    Register a wallet to a network.
+
+optional arguments:
+  -h, --help            show this help message and exit
+```
+If you see the bittensor cli help, you're good to go!
+
+If it returns a `command not found: btcli` error, then you'll need to add the site-packages to your path.
+You'll likely run into this on macOS.
+
+The below command will need to be added to your path, so that your terminal knows where to find the btcli binary.
+```bash
+export PATH=$PATH:$(python3 -m site --user-base)/bin
+```
+First run it in your terminal and see if `btcli` works afterwards, if so, you'll want to add the command to your .bashrc or .zshrc file.
+
+on macOS, you can do that with the command:
+```bash
+echo 'export PATH=$PATH:$(python3 -m site --user-base)/bin' >> ~/.zshrc
+```
+
+### Updating Bittensor
+Bittensor is under active development, so you'll want to keep it up-to-date.
+You can do so by running:
+```bash
+cd ~/.bittensor/bittensor
+git pull
+python3 -m pip install -e .
+```
+The above will pull the latest code from github, and reinstall bittensor from source.
+
+### Managing Breakdowns and Errors
+Occasionally things will breakdown or you'll run into errors. We'll try to keep this section up-to-date with common errors and how to fix them.
+
+To start, one of the most powerful is a reset of the source to head, and reinstall.
+The below will clean up any changes you may have made, after running, you should have a fresh install of btcli
+```bash
+cd ~/.bittensor/bittensor/
+git checkout master
+git pull --ff-only
+git reset --hard
+git clean -xdf
+python3 -m pip install -e .
+```
+
+If you run into any other errors, let us know so we can add solutions here!
+
+
