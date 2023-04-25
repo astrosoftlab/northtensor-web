@@ -55,6 +55,7 @@ It'll also update the brew details, so don't worry about the other package names
 
 ### Installing Bittensor from source
 With the dependencies installed, we can now install bittensor.
+Going forward, the commands will be applicable for all operating systems.
 
 Our preferred way is to install from github, as it's the most up-to-date version.
 By default, most bittensor reference assumes you have it installed in ~/.bittensor/bittensor, so we'll stick with that for consistency.
@@ -114,10 +115,10 @@ If it returns a `command not found: btcli` error, then you'll need to add the si
 You'll likely run into this on macOS.
 
 The below command will need to be added to your path, so that your terminal knows where to find the btcli binary.
-First run it in your terminal and see if `btcli` works afterwards, if so, you'll want to add the command to your .bashrc or .zshrc file.
 ```bash
 export PATH=$PATH:$(python3 -m site --user-base)/bin
 ```
+First run it in your terminal and see if `btcli` works afterwards, if so, you'll want to add the command to your .bashrc or .zshrc file.
 
 on macOS, you can do that with the command:
 ```bash
