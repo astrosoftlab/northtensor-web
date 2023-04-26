@@ -5,10 +5,16 @@ import Paper from '@mui/material/Paper';
 import Stack from "@mui/material/Stack"
 import Typography from "@mui/material/Typography"
 import Identicon from "@polkadot/react-identicon";
+import { Button, Snackbar } from '@mui/material'
 
 // import HeaderPathing from './HeaderPathing'
 
 function AccountIdenticon({ account }) {
+  const [open, setOpen] = useState(false)
+  const handleClick = () => {
+    setOpen(true)
+    navigator.clipboard.writeText(account.address)
+  }
   
   // console.log("card acccount", account.meta.name)
   // console.log('curracc', account.address.substring(0, 6))
@@ -24,10 +30,16 @@ function AccountIdenticon({ account }) {
             theme="polkadot"
             value={account.address}
             onCopy={() => {
-            CopyToClipboard(account.address);
+            handleClick()
             } 
             } 
         />
+        <Snackbar
+            open={open}
+            onClose={() => setOpen(false)}
+            autoHideDuration={2000}
+            message="Copied Account Address to clipboard"
+          />
         </Box>
       ))
   );
