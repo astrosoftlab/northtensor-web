@@ -1,5 +1,5 @@
 {
-  "APP_NAME": "MNRV_Staking",
+  "APP_NAME": "North Tensor Wallet",
   "CUSTOM_RPC_METHODS": {
     "neuronInfo": {
       "getNeuronsLite": {
