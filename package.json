@@ -40,7 +40,7 @@
     "lucide-react": "^0.145.0",
     "mdast-util-mdx": "^2.0.1",
     "micromark-extension-mdxjs": "^1.0.0",
-    "next": "13.2.4",
+    "next": "13.3.4",
     "openai": "^3.2.1",
     "radix-ui": "^1.0.1",
     "react": "18.2.0",
