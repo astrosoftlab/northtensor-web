@@ -1,125 +1,191 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import Link from 'next/link'
-import { Inter } from 'next/font/google'
+/*
+  This example requires some changes to your config:
+  
+  ```
+  // tailwind.config.js
+  module.exports = {
+    // ...
+    plugins: [
+      // ...
+      require('@tailwindcss/forms'),
+    ],
+  }
+  ```
+*/
+import { useState } from 'react'
+import { Dialog } from '@headlessui/react'
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import {
+  ArrowPathIcon,
+  ChevronRightIcon,
+  CloudArrowUpIcon,
+  LockClosedIcon,
+  ServerIcon,
+} from '@heroicons/react/20/solid'
 
-const inter = Inter({ subsets: ['latin'] })
+const primaryFeatures = [
+  {
+    name: 'Push to deploy.',
+    description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit aute id magna.',
+    icon: CloudArrowUpIcon,
+  },
+  {
+    name: 'SSL certificates.',
+    description: 'Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.',
+    icon: LockClosedIcon,
+  },
+  {
+    name: 'Database backups.',
+    description: 'Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus.',
+    icon: ServerIcon,
+  },
+]
+const secondaryFeatures = [
+  {
+    name: 'Push to deploy',
+    description:
+      'Commodo nec sagittis tortor mauris sed. Turpis tortor quis scelerisque diam id accumsan nullam tempus. Pulvinar etiam lacus volutpat eu. Phasellus praesent ligula sit faucibus.',
+    href: '#',
+    icon: CloudArrowUpIcon,
+  },
+  {
+    name: 'SSL certificates',
+    description:
+      'Pellentesque enim a commodo malesuada turpis eleifend risus. Facilisis donec placerat sapien consequat tempor fermentum nibh.',
+    href: '#',
+    icon: LockClosedIcon,
+  },
+  {
+    name: 'Simple queues',
+    description:
+      'Pellentesque sit elit congue ante nec amet. Dolor aenean curabitur viverra suspendisse iaculis eget. Nec mollis placerat ultricies euismod ut condimentum.',
+    href: '#',
+    icon: ArrowPathIcon,
+  },
+]
+const stats = [
 
-export default function Home() {
+
+  { id: 1, name: 'Tao Staked', value: '8,000' },
+  { id: 2, name: 'Daily Returns', value: '$300' },
+  { id: 3, name: 'APY', value: '18%' },
+]
+
+function classNames(...classes) {
+  return classes.filter(Boolean).join(' ')
+}
+
+export default function Example() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
   return (
-    <>
-      <Head>
-        <title>North Tensor</title>
-        <meta name="description" content="North Tensor Front Page" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
+    <div className="bg-white">
       <main>
-        <div className="relative bg-[url('../public/images/wallpaperflare.com_wallpaper.jpg')] px-4 py-32 sm:px-6 md:py-34 lg:flex  lg:items-center">
-        <div className="w-4/5 mx-auto mb-5">
-          <div className="text-3xl sm:text-5xl text-gray-100 font-thin">
-            North Tensor
+        {/* Hero section */}
+        <div className="relative isolate">
+          <svg
+            className="absolute inset-0 -z-10 h-full w-full stroke-gray-200 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
+            aria-hidden="true"
+          >
+            <rect width="100%" height="100%" strokeWidth={0} fill="url(#83fd4e5a-9d52-42fc-97b6-718e5d7ee527)" />
+          </svg>
+          <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:flex lg:items-center lg:gap-x-10 lg:px-8 lg:py-40">
+            <div className="mx-auto max-w-2xl lg:mx-0 lg:flex-auto">
+              <h1 className="mt-10 max-w-lg text-4xl font-extrabold tracking-tight text-gray-900 sm:text-6xl">
+                Build Your Project on Bittensor
+              </h1>
+              <p className="mt-6 text-lg leading-8 text-gray-600">
+                We are a Bittensor-first AI Firm aiming to utilize the inevitable union of economic efficiencies provided through cryptocurrency technologies. Our focus is to create infrastructure required to scale and support basic transformer driven data extraction to Artificial General Intelligence.
+              </p>
+              <div className="mt-10 flex items-center gap-x-6">
+                <a
+                  href="#"
+                  className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                >
+                  Get started
+                </a>
+                <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+                  Learn more <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            </div>
+            <div className="mt-16 sm:mt-24 lg:mt-0 lg:flex-shrink-0 lg:flex-grow">
+              <svg viewBox="0 0 950 950" role="img" className="mx-auto w-[22.875rem] max-w-full drop-shadow-xl">
+                <title>App screenshot</title>
+                <defs>
+                  <clipPath id="2ade4387-9c63-4fc4-b754-10e687a0d332">
+                    <rect width={316} height={684} rx={36} />
+                  </clipPath>
+                </defs>
+                <foreignObject
+                  width={950}
+                  height={950}
+                >
+                  <img src="/images/viking-ship.png" alt="" />
+                </foreignObject>
+              </svg>
+            </div>
           </div>
-          <br />
-          <p className="mb-4 opacity-100 text-lg leading-8 font-normal text-gray-100">
-            We are a Bittensor-first AI Firm aiming to utilize the inevitable union of economic efficiencies provided through cryptocurrency technologies. Our focus is to create infrastructure required to scale and support basic transformer driven data extraction to Artificial General Intelligence.
-          </p>
-          <p className="mb-4 opacity-100 text-lg leading-8 font-normal text-gray-100">
-            Check out our introductory guides
-          </p>
-          <Link href="/docs/introduction-to-bittensor" className="bg-gray-500 hover:bg-gray-700 text-gray-100 font-bold py-2 px-4 rounded">
-          Getting Started
-          </Link>
-          <br />
-          <br />
-          <p className="mb-4 opacity-100 text-lg leading-8 font-normal text-gray-100">
-            Or, just start Staking
-          </p>
-          <Link href="/wallet" className="bg-gray-500 hover:bg-gray-700 text-gray-100 font-bold py-2 px-4 rounded">
-          Stake Tao
-          </ Link>
         </div>
-        </div>
-
-        <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 py-6 px-6 dark:bg-gray-800">
-          <Link
-            href="docs/developer-intro"
-            className="py-4 px-4 rounded-lg bg-transparent border border-transparent transition-colors duration-200 hover:bg-white hover:border-gray-300 dark:hover:bg-gray-500"
-            target="_self"
-            rel="noopener noreferrer">
-            <h2 className="text-2xl font-bold mb-2 mr-2">Developers <span className="font-bold"> &rarr; </span></h2>
-            <p className="tagline italic font-bold">
-              A Bittensor backend is just the start for building AI solutions.
+          <div className="bg-white py-24 sm:py-32">
+                <div className="mx-auto max-w-7xl px-6 lg:px-8">
+                  <dl className="grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-3">
+                    {stats.map((stat) => (
+                      <div key={stat.id} className="mx-auto flex max-w-xs flex-col gap-y-4">
+                        <dt className="text-base leading-7 text-gray-600">{stat.name}</dt>
+                        <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
+                          {stat.value}
+                        </dd>
+                      </div>
+                    ))}
+                  </dl>
+                </div>
+              </div>
+        {/* Feature section */}
+        <div className="mx-auto mt-32 max-w-7xl px-6 sm:mt-56 lg:px-8">
+          <div className="mx-auto max-w-2xl lg:text-center">
+            <h2 className="text-base font-semibold leading-7 text-indigo-600">Deploy faster</h2>
+            <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              Everything you need to deploy your app
             </p>
-            <br />
-            <p className="text-gray-800 leading-relaxed dark:text-gray-200">
-              We&apos;re hoping to help bring the builder culture back into crypto, where collaboration and innovating killer apps that truly disrupt the world as we know it thrive.
-            <br />
-            <br />
-              If you&apos;re a developer, we&apos;ll work to provide guides, tooling, and other resources to make it easier for you to dive right into developing, iterating, and deploying your AI apps. We&apos;ll also work to provide the front-end here as a one-stop shop for connections and collaboration to drive the future of AI together.
+            <p className="mt-6 text-lg leading-8 text-gray-600">
+              Quis tellus eget adipiscing convallis sit sit eget aliquet quis. Suspendisse eget egestas a elementum
+              pulvinar et feugiat blandit at. In mi viverra elit nunc.
             </p>
-            </ Link>
-          <Link
-            href="docs/client-intro"
-            className="py-4 px-4 rounded-lg bg-transparent border border-transparent transition-colors duration-200 hover:bg-white hover:border-gray-300 dark:hover:bg-gray-500"
-            target="_self"
-            rel="noopener noreferrer" >
-            <h2 className="text-2xl font-bold mb-2 mr-2">Clients <span className="font-bold"> &rarr; </span></h2>
-            <p className="tagline italic font-bold">
-              AI can be used for more than you think.
-            </p>
-            <br />
-            <p className="text-gray-800 leading-relaxed dark:text-gray-200">
-              We&apos;re investing in further development and implementation of AI to inspire simple solutions to complex problems. 
-            <br />
-            <br />
-              As a Client, this means access to an increasing array of AI tools for work, play, and inspiration. We also aim to distribute non-expiring Tao utility tokens to you during the period of your membership, to be utilized for transformer interactions in simple GUI interfaces and API calls in your own apps.
-            </p>
-          </Link>
-
-          <Link
-            href="docs/staker-intro"
-            className="py-4 px-4 rounded-lg bg-transparent border border-transparent transition-colors duration-200 hover:bg-white hover:border-gray-300 dark:hover:bg-gray-500"
-            target="_self"
-            rel="noopener noreferrer"
-          >
-            <h2 className="text-2xl font-bold mb-2 mr-2">Stakers <span className="font-bold"> &rarr; </span></h2>
-            <p className="tagline italic font-bold">
-              Your Tao can do good for both you and the rest of the world.
-            </p>
-            <br />
-            <p className="text-gray-800 leading-relaxed dark:text-gray-200">
-              With experience validating since early 2022, we appreciate how valuable validating is to the future of Bittensor. We want to scale that value out.
-            <br />
-            <br />
-              As a Staker, you&apos;ll be provided your share of Tao inflation directly into your personal wallet, and you&apos;ll be given membership commensurate with your stake to take advantage of our Client and Miner offerings without needing to pay extra.
-            <br />
-            <br />
-              Your staked Tao will reward you and allow us to achieve our vision of a more accessible and open AI.
-            </p>
-          </Link>
-
-          <a
-            href="docs/miner-intro"
-            className="py-4 px-4 rounded-lg bg-transparent border border-transparent transition-colors duration-200 hover:bg-white hover:border-gray-300 dark:hover:bg-gray-500"
-            target="_self"
-            rel="noopener noreferrer"
-          >
-            <h2 className="text-2xl font-bold mb-2 mr-2">Miners <span className="font-bold"> &rarr; </span></h2>
-            <p className="tagline italic font-bold ">
-              You can help mine, no matter your skill level.
-            </p>
-            <br />
-            <p className="text-gray-800 leading-relaxed dark:text-gray-200">
-              We personally know the complexity and expenses of mining Tao. We want to break down those barriers to allow you to contribute to mining no matter your skill level, and receive Tao inflation for it. 
-            <br />
-            <br />
-              As a member, you&apos;ll be provided access to our growing resources to help you and others mine Tao. These will range from introductory documentation to a simplified front-end where you can fine-tune models for your own personal deployment or launch your model into mining directly from our site.
-            </p>
-          </a>
+          </div>
+          <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
+            <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
+              {secondaryFeatures.map((feature) => (
+                <div key={feature.name} className="flex flex-col">
+                  <dt className="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900">
+                    <feature.icon className="h-5 w-5 flex-none text-indigo-600" aria-hidden="true" />
+                    {feature.name}
+                  </dt>
+                  <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600">
+                    <p className="flex-auto">{feature.description}</p>
+                    <p className="mt-6">
+                      <a href={feature.href} className="text-sm font-semibold leading-6 text-indigo-600">
+                        Learn more <span aria-hidden="true">→</span>
+                      </a>
+                    </p>
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </div>
         </div>
       </main>
-    </>
+
+      {/* Footer */}
+      <footer className="mt-32 bg-white-100 sm:mt-56" aria-labelledby="footer-heading">
+        <h2 id="footer-heading" className="sr-only">
+          Footer
+        </h2>
+        <div className="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
+          <div className="xl:grid xl:grid-cols-3 xl:gap-8">
+          </div>
+          </div>
+      </footer>
+    </div>
   )
 }
