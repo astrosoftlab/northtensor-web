@@ -5,6 +5,7 @@ import { createBrowserSupabaseClient } from '@supabase/auth-helpers-nextjs'
 import { SessionContextProvider, Session } from '@supabase/auth-helpers-react'
 import Layout from "./../components/Layout";
 import { Inter } from 'next/font/google'
+import landing from "./tailwindui/landing.tsx"
 
 const inter = Inter({
   subsets: ['latin'],
