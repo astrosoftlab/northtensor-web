@@ -9,7 +9,7 @@ const navigation = {
   social: [
     {
       name: 'Discord',
-      href: '#',
+      href: 'https://discordapp.com/channels/1086368192521318472/1087797623924195408',
       icon: (props) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path
