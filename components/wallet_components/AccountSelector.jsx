@@ -84,8 +84,8 @@ function Main(props) {
   }, [api.rpc.system])
 
   return (
-      <Stack spacing={2} alignItems="center" direction="row" justifyContent="center">
-          <AccountIdenticon account={currentAccount}/>
+      <Stack padding={1} spacing={2} alignItems="center" direction="row" justifyContent="center">
+          {/* <AccountIdenticon account={currentAccount}/> */}
           {(keyringOptions && currentAccount) ?
             <Select 
               labelId="account-selection-label"
@@ -111,36 +111,6 @@ function Main(props) {
   )
 }
 
-function BalanceAnnotation(props) {
-  const { api, currentAccount } = useSubstrateState()
-  
-  const [accountBalance, setAccountBalance] = useState(0)
-
-  // When account address changes, update subscriptions
-  useEffect(() => {
-    let unsubscribe
-
-    // If the user has selected an address, create a new subscription
-    currentAccount &&
-      api.query.system
-        .account(acctAddr(currentAccount), balance =>
-          setAccountBalance(balance.data.free.toHuman())
-        )
-        .then(unsub => (unsubscribe = unsub))
-        .catch(console.error)
-
-    return () => unsubscribe && unsubscribe()
-  }, [api, currentAccount])
-
-  const accountBalanceTao = parseFloat(accountBalance.toString().replace(/,/g, '')) / 10**9
-
-  return currentAccount ? (
-    <Label pointing="left" color="blue">
-      {"Available Tao: "} 
-      {accountBalanceTao}
-    </Label>
-  ) : null
-}
 
 export default function AccountSelector(props) {
   const { api, keyring } = useSubstrateState()

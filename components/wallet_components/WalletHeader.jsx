@@ -35,7 +35,7 @@ const acctAddr = acct => (acct ? acct.address : '')
 function Main(props) {
   const {
     setCurrentAccount,
-    state: { keyring, currentAccount },
+    state: { keyring, currentAccount, selectedAccounts },
   } = useSubstrate()
   const [nodeInfo, setNodeInfo] = useState({})
 
@@ -84,55 +84,20 @@ function Main(props) {
   }, [api.rpc.system])
 
   return (
-    <Box
-      sx={{
-        display: 'flex-width',
-        flexWrap: 'wrap',
-        '& > :not(style)': {
-          // height: 64,
-        },
-      }}
-    >
-        <Paper >
-        <Stack spacing={2} direction="row" justifyContent="space-between">
-            <AccountSelector/>
-            <AccountBasicInfo/>
-        </Stack>
-    </Paper>
-    </Box>
+    <div className="bg-white shadow sm:rounded-md w-90 flex flex-wrap">
+      <div className="w-full">
+        <div className="flex flex-row justify-between">
+          {/* <AccountBasicInfo /> */}
+          <AccountSelector />
+        </div>
+      </div>
+    </div>
+
+
+
   )
 }
 
-function BalanceAnnotation(props) {
-  const { api, currentAccount } = useSubstrateState()
-  
-  const [accountBalance, setAccountBalance] = useState(0)
-
-  // When account address changes, update subscriptions
-  useEffect(() => {
-    let unsubscribe
-
-    // If the user has selected an address, create a new subscription
-    currentAccount &&
-      api.query.system
-        .account(acctAddr(currentAccount), balance =>
-          setAccountBalance(balance.data.free.toHuman())
-        )
-        .then(unsub => (unsubscribe = unsub))
-        .catch(console.error)
-
-    return () => unsubscribe && unsubscribe()
-  }, [api, currentAccount])
-
-  const accountBalanceTao = parseFloat(accountBalance.toString().replace(/,/g, '')) / 10**9
-
-  return currentAccount ? (
-    <Label pointing="left" color="blue">
-      {"Available Tao:    "} 
-      {accountBalanceTao}
-    </Label>
-  ) : null
-}
 
 export default function WalletHeader(props) {
   const { api, keyring } = useSubstrateState()
