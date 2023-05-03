@@ -112,36 +112,24 @@ export default function Example() {
               <CheckCircleIcon className="mt-1 h-5 w-5 flex-none text-indigo-600" aria-hidden="true" />
               <span>
                 <strong className="font-semibold text-gray-900">The right to erasure – </strong> You have the right to request that we erase your personal data, under certain conditions.
-                blanditiis ratione.
               </span>
             </li>
 <li className="flex gap-x-3">
               <CheckCircleIcon className="mt-1 h-5 w-5 flex-none text-indigo-600" aria-hidden="true" />
               <span>
                 <strong className="font-semibold text-gray-900">The right to restrict processing – </strong> You have the right to request that we restrict the processing of your personal data, under certain conditions.
-                blanditiis ratione.
               </span>
             </li>
 <li className="flex gap-x-3">
               <CheckCircleIcon className="mt-1 h-5 w-5 flex-none text-indigo-600" aria-hidden="true" />
               <span>
                 <strong className="font-semibold text-gray-900">The right to object to processing – </strong> You have the right to object to our processing of your personal data, under certain conditions.
-                blanditiis ratione.
               </span>
             </li>
 <li className="flex gap-x-3">
               <CheckCircleIcon className="mt-1 h-5 w-5 flex-none text-indigo-600" aria-hidden="true" />
               <span>
                 <strong className="font-semibold text-gray-900">The right to data portability – </strong> You have the right to request that we transfer the data that we have collected to another organization, or directly to you, under certain conditions.
-                blanditiis ratione.
-              </span>
-            </li>
-<li className="flex gap-x-3">
-              <CheckCircleIcon className="mt-1 h-5 w-5 flex-none text-indigo-600" aria-hidden="true" />
-              <span>
-                <strong className="font-semibold text-gray-900">The right to access - </strong> Lorem ipsum, dolor sit amet
-                consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate
-                blanditiis ratione.
               </span>
             </li>
 </ul>
