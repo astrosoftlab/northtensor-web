@@ -21,18 +21,9 @@ function AccountCard({ account }) {
       ) : 
       (
       <Stack direction="row">
-        {/* <Identicon
-          size={32}
-          theme="polkadot"
-          value={account.address}
-          onCopy={() => {
-            CopyToClipboard(account.address);
-            } 
-          } 
-        /> */}
         <Stack direction="column">
           <h1>{account.meta.name}</h1>
-          <p>{account.address.substring(0, 10)}...</p>
+          {/* <p>{account.address.substring(0, 10)}...</p> */}
         </Stack>
       </Stack>))
   );

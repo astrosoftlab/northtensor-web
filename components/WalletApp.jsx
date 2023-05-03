@@ -13,6 +13,7 @@ import { SubstrateContextProvider, useSubstrateState } from '../lib/substrate-li
 // import { DeveloperConsole } from './substrate-lib/components'
 
 import WalletHeader from './wallet_components/WalletHeader'
+import WalletBase from './wallet_components/WalletBase'
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 
@@ -66,25 +67,17 @@ function Main() {
 
 
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        '& > :not(style)': {
-          m: 0,
-        },
-      }}
-    >
-      
-      <Paper variant="outlined">
-            <div ref={contextRef}>
-            <Sticky context={contextRef}>
-                <WalletHeader />
-            </Sticky>
-            <Navigations />
-            </div>
-      </Paper>
-    </Box>
+    <div class="flex flex-col item-start space-y-4 p-4 w-full sm:w-auto max-w-screen-lg">
+      <div x-ref="contextRef" class="sticky top-0 bg-white z-10 ">
+        <WalletHeader />
+      </div>
+      <div class="flex justify-center">
+        <div class="flex flex-col w-full">
+          <WalletBase />
+        </div>
+      </div>
+
+    </div>
 
   )
 }
