@@ -20,9 +20,9 @@ export default function Home() {
             Sign in to your account
           </h2>
         </div>
-
+        
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          {!session ? (
+        {!session ? (
             <Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} theme="dark" providers={[]}/>
           ) : (
             <Account session={session} />
