@@ -6,8 +6,10 @@ import utilStyles from '../../styles/utils.module.css';
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 import { SearchDialog } from '@/components/SearchDialog';
+import SidebarNav from '@/components/tailwindui/SidebarNav';
 
 const inter = Inter({ subsets: ['latin'] })
+
 
 export default function Home({ postData }: { postData: PostData[] }) {
   return (
@@ -16,7 +18,11 @@ export default function Home({ postData }: { postData: PostData[] }) {
         <title> Resources </title>
       </Head>
       <article>
-      <main className="main flex flex-col items-center p-14 min-h-screen">
+      <div className='flex h-screen'>
+        <div className='w-1/6 bg-gray-200 p4'>
+          <SidebarNav />
+        </div>
+        <div className='w-3/4 p-4'>
         <h1 className="text-3xl sm:text-5xl dark:text-gray-100 font-thin ">Resources</h1>
         <br/ >
         <div className={styles.center}>
@@ -40,6 +46,7 @@ export default function Home({ postData }: { postData: PostData[] }) {
           </ul>
         </div>
         <div>
+        
           <h2 className="text-2xl sm:text-3xl dark:text-gray-100 font-thin my-4 border-b-2 border-gray-700">Clients</h2>
           <ul className="dark:text-gray-100">
             {postData.filter(({ topics }) => topics.includes("clients")).map(({ id, date, title }) => (
@@ -86,7 +93,10 @@ export default function Home({ postData }: { postData: PostData[] }) {
           </ul>
         </div>
     </div>
-      </main>
+
+        </div>
+      </div>
+    
       </article>
     </>
 
