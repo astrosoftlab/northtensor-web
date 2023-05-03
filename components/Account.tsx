@@ -156,8 +156,8 @@ export default function Account({ session }: { session: Session }) {
           </div>
 
       <div className="mt-6 flex items-center justify-end gap-x-6">
-        <button type="button" className="text-sm font-semibold leading-6 text-slate-900">
-          Cancel
+         <button type="button" className="rounded-md bg-slate-500 px-3 py-2 text-sm font-semibold text-slate-100 shadow-sm hover:bg-slate-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-500" onClick={() => supabase.auth.signOut()}>
+         Log Out
         </button>
         <button
           type="submit"

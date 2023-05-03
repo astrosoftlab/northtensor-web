@@ -54,9 +54,6 @@ export default function Example() {
               <a href="/profile/" className="ml-auto rounded-md bg-slate-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600">
                 Account 
               </a>
-              <button type="button" className="text-sm font-semibold leading-6 text-slate-100 ml-2" onClick={() => supabase.auth.signOut()}>
-                Log Out
-              </button>
             </div>
           )}
         </div>
