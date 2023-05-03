@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useUser, useSupabaseClient, Session } from '@supabase/auth-helpers-react'
 import { Database } from '../lib/utils/database.type'
+import ColdkeyInput from '@/components/tailwindui/InputLabelled'
 type Profiles = Database['public']['Tables']['profiles']['Row']
 
 export default function Account({ session }: { session: Session }) {
@@ -10,6 +11,18 @@ export default function Account({ session }: { session: Session }) {
   const [username, setUsername] = useState<Profiles['username']>(null)
   const [website, setWebsite] = useState<Profiles['website']>(null)
   const [avatar_url, setAvatarUrl] = useState<Profiles['avatar_url']>(null)
+  const coldKeys = [
+  {
+    "name1": "blah",
+    "coldkey": "123456",
+    "watched": "True",
+    "validated": "True"
+  },
+  {
+    "name1": "bl2",
+    "coldkey": "12312"
+  }
+]
 
   useEffect(() => {
     getProfile()
@@ -152,6 +165,18 @@ export default function Account({ session }: { session: Session }) {
               </div>
             </div>
             </div>
+            </div>
+            <div className="isolate -space-y-px rounded-md shadow-sm">
+            <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
+              Coldkeys
+            </label>
+            <ul>
+              {coldKeys.map(key => (
+                <li id={key.name1}>
+                  <ColdkeyInput title={key.name1}  />
+                </li>
+              ))}
+            </ul>
             </div>
           </div>
 
