@@ -7,11 +7,15 @@ type Profiles = Database['public']['Tables']['profiles']['Row']
 export default function Account({ session }: { session: Session }) {
   const supabase = useSupabaseClient<Database>()
   const user = useUser()
-  const [loading, setLoading] = useState(true)
-  const [username, setUsername] = useState<Profiles['username']>(null)
-  const [website, setWebsite] = useState<Profiles['website']>(null)
-  const [avatar_url, setAvatarUrl] = useState<Profiles['avatar_url']>(null)
-  const coldKeys = [
+  const [loading, setLoading] = useState(true);
+  const [username, setUsername] = useState<Profiles['username']>(null);
+  const [website, setWebsite] = useState<Profiles['website']>(null);
+  const [avatar_url, setAvatarUrl] = useState<Profiles['avatar_url']>(null);
+  const [ss58_coldkeys, setSS58Coldkeys] = useState<Profiles['ss58_coldkeys']>(null);
+  const [showModal, setShowModal] = useState(false);
+  const [newColdkeyName, setNewColdkeyName] = useState('');
+  const [newColdkeyValue, setNewColdkeyValue] = useState('');
+[
   {
     "name1": "blah",
     "coldkey": "123456",
@@ -47,6 +51,7 @@ export default function Account({ session }: { session: Session }) {
         setUsername(data.username)
         setWebsite(data.website)
         setAvatarUrl(data.avatar_url)
+        setSS58Coldkeys(data.ss58_coldkeys)
       }
     } catch (error) {
       alert('Error loading user data!')
@@ -60,10 +65,12 @@ export default function Account({ session }: { session: Session }) {
     username,
     website,
     avatar_url,
+    ss58_coldkeys,
   }: {
     username: Profiles['username']
     website: Profiles['website']
     avatar_url: Profiles['avatar_url']
+    ss58_coldkeys: Profiles['ss58_coldkeys']
   }) {
     try {
       setLoading(true)
@@ -171,7 +178,7 @@ export default function Account({ session }: { session: Session }) {
               Coldkeys
             </label>
             <ul>
-              {coldKeys.map(key => (
+              {ss58_coldkeys?.map((key) => (
                 <li id={key.name1}>
                   <ColdkeyInput title={key.name1}  />
                 </li>
