@@ -51,7 +51,7 @@ export default function Example() {
         <nav className="-mb-6 columns-2 sm:flex sm:justify-center sm:space-x-12 mt-10 text-center text-xs leading-5 text-gray-100" aria-label="Footer">
           {navigation.main.map((item) => (
             <div key={item.name} className="pb-6">
-              <a href={item.href} className="text-sm leading-6 text-gray-100 hover:text-gray-900">
+              <a href={item.href} className="text-sm leading-6 text-gray-100 hover:text-gray-500">
                 {item.name}
               </a>
             </div>
