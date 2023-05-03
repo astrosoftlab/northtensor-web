@@ -14,7 +14,7 @@ export default function Home() {
           { !session &&
             <>
               <img
-                className="mx-auto h-12 w-auto"
+                className="mx-auto h-16 w-auto"
                 src="/images/newlogo.svg"
                 alt="Your Company"
               />

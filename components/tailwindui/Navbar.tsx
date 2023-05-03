@@ -1,13 +1,14 @@
-import { useState } from 'react'
+import Image from "next/image";
 import { Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react'
 import Link from 'next/link';
+import { useState } from 'react';
 
 const navigation = [
-  { name: 'Product', href: '#' },
-  { name: 'Features', href: '#' },
-  { name: 'Marketplace', href: '#' },
+  { name: 'Resources', href: '#' },
+  { name: 'Projects', href: '#' },
+  { name: 'Roadmap', href: '#' },
   { name: 'Company', href: '#' },
 ]
 
@@ -16,13 +17,14 @@ const navigation = [
 export default function Example() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const session = useSession()
+  const supabase = useSupabaseClient()
   return (
     <header className="bg-gray-900">
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
           <a href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">North Tensor</span>
-            <img className="h-8 w-auto" src="/images/newlogo.svg" alt="" />
+            <img className="h-16 w-auto" src="./images/invert.svg" alt="" />
           </a>
         </div>
         <div className="flex lg:hidden">
@@ -42,17 +44,25 @@ export default function Example() {
             </a>
           ))}
         </div>
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-        {!session ? (
-          <a href="/profile" className="text-sm font-semibold leading-6 text-white">
-            Log in <span aria-hidden="true">&rarr;</span>
-          </a>
+        <div className="flex flex-1 items-center justify-end gap-x-6">
+          {!session ? (
+            <a href="/profile/" className="ml-auto rounded-md bg-slate-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600">
+              Log In
+            </a>
           ) : (
-          <a href="/profile" className="text-sm font-semibold leading-6 text-white">
-            Account <span aria-hidden="true">&rarr;</span>
-          </a>
+            <div className="flex flex-1 items-center justify-end gap-x-6">
+              <a href="/profile/" className="ml-auto rounded-md bg-slate-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600">
+                Account 
+              </a>
+              <button type="button" className="text-sm font-semibold leading-6 text-slate-100 ml-2" onClick={() => supabase.auth.signOut()}>
+                Log Out
+              </button>
+            </div>
           )}
         </div>
+
+
+
       </nav>
       <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
         <div className="fixed inset-0 z-10" />
@@ -62,8 +72,7 @@ export default function Example() {
               <span className="sr-only">North Tensor</span>
               <img
                 className="h-8 w-auto"
-                src="/images/newlogo.svg"
-                alt=""
+                src="./images/invert.svg"
               />
             </a>
             <button
