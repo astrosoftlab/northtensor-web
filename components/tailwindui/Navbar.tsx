@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react'
+import Link from 'next/link';
 
 const navigation = [
   { name: 'Product', href: '#' },
@@ -9,9 +11,11 @@ const navigation = [
   { name: 'Company', href: '#' },
 ]
 
+
+
 export default function Example() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-
+  const session = useSession()
   return (
     <header className="bg-gray-900">
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
@@ -39,9 +43,15 @@ export default function Example() {
           ))}
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="#" className="text-sm font-semibold leading-6 text-white">
+        {!session ? (
+          <a href="/profile" className="text-sm font-semibold leading-6 text-white">
             Log in <span aria-hidden="true">&rarr;</span>
           </a>
+          ) : (
+          <a href="/profile" className="text-sm font-semibold leading-6 text-white">
+            Account <span aria-hidden="true">&rarr;</span>
+          </a>
+          )}
         </div>
       </nav>
       <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
@@ -79,12 +89,18 @@ export default function Example() {
                 ))}
               </div>
               <div className="py-6">
-                <a
-                  href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-gray-800"
-                >
-                  Log in
-                </a>
+                {!session ? (
+                  <a href="/profile"
+                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-gray-800">
+                    Log in
+                  </a>
+                ) : (
+                  <a href='/profile'
+                     className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-gray-800"
+                     >
+                     Profile
+                     </a>
+                     )}
               </div>
             </div>
           </div>
