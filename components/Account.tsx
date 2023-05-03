@@ -39,7 +39,7 @@ export default function Account({ session }: { session: Session }) {
 
       let { data, error, status } = await supabase
         .from('profiles')
-        .select(`username, website, avatar_url`)
+        .select(`username, website, avatar_url, ss58_coldkeys`)
         .eq('id', user.id)
         .single()
 
@@ -179,8 +179,8 @@ export default function Account({ session }: { session: Session }) {
             </label>
             <ul>
               {ss58_coldkeys?.map((key) => (
-                <li id={key.name1}>
-                  <ColdkeyInput title={key.name1}  />
+                <li id={key.coldkey}>
+                  <ColdkeyInput name={key.name1} coldkey={key.coldkey} watched={key.watched} validated={key.validated} />
                 </li>
               ))}
             </ul>
