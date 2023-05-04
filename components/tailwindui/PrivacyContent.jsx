@@ -149,8 +149,6 @@ export default function Example() {
 
 <p>We may update our Privacy Policy from time to time. Thus, we advise you to review this page periodically for any changes. We will notify you of any changes by posting the new Privacy Policy on this page. These changes are effective immediately, after they are posted on this page.</p>
 
-<p>Our Privacy Policy was created with the help of the <a href="https://www.termsfeed.com/privacy-policy-generator/">Privacy Policy Generator</a>.</p>
-
 <h2 className="mt-16 text-2xl font-bold tracking-tight text-gray-900">Contact Us</h2>
 <Divider />
 

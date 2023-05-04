@@ -7,6 +7,7 @@ import remarkHeadingId from 'remark-heading-id';
 
 const miscDirectory = path.join(process.cwd(), 'documentation/misc');
 const postsDirectory = path.join(process.cwd(), 'documentation/guides');
+
 export interface PostData {
 	id: string;
 	date: string;

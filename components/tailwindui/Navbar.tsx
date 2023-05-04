@@ -6,13 +6,11 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 const navigation = [
-  { name: 'Resources', href: '#' },
+  { name: 'Resources', href: '/resources' },
   { name: 'Projects', href: '#' },
   { name: 'Roadmap', href: '#' },
   { name: 'Company', href: '#' },
 ]
-
-
 
 export default function Example() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)

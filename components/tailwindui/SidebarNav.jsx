@@ -7,17 +7,32 @@ import {
   FolderIcon,
   HomeIcon,
   UsersIcon,
+  WalletIcon,
+  CurrencyDollarIcon,
+  UserGroupIcon,
+  GlobeAltIcon
 } from '@heroicons/react/24/outline'
+import Link from 'next/link'
 
 const navigation = [
-  { name: 'Getting Started', href: '#', icon: HomeIcon, current: true },
+  { name: 'Getting Started', href: '#', icon: HomeIcon},
+  {
+    name: 'Becoming a User',
+    icon: UserGroupIcon,
+    current: true,
+    children: [
+      { name: 'Getting Started', href: '/resources/client-overview', current: true  },
+      { name: 'Examples', href: '/', current: false },
+      { name: 'Customer Success', href: '#' },
+    ],
+  },
   {
     name: 'Development',
     icon: CodeBracketIcon,
     current: false,
     children: [
-      { name: 'Engineering', href: '#' },
-      { name: 'Human Resources', href: '#' },
+      { name: 'Getting Started', href: '#' },
+      { name: 'Examples', href: '#' },
       { name: 'Customer Success', href: '#' },
     ],
   },
@@ -50,7 +65,7 @@ export default function SidebarNav() {
               {navigation.map((item) => (
                 <li key={item.name}>
                   {!item.children ? (
-                    <a
+                    <Link
                       href={item.href}
                       className={classNames(
                         item.current ? 'bg-gray-50' : 'hover:bg-gray-50',
@@ -59,9 +74,9 @@ export default function SidebarNav() {
                     >
                       <item.icon className="h-6 w-6 shrink-0 text-gray-400" aria-hidden="true" />
                       {item.name}
-                    </a>
+                    </Link>
                   ) : (
-                    <Disclosure as="div">
+                    <Disclosure as="div" defaultOpen={true}>
                       {({ open }) => (
                         <>
                           <Disclosure.Button
