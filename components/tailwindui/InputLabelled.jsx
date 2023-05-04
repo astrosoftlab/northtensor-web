@@ -9,11 +9,11 @@ export default function Example({ name, coldkey, watched, validated}) {
       </label>
       <div className="relative flex flex-grow items-stretch focus-within:z-10">
       <input
-            type="email"
-            name="email"
-            id="email"
+            type="text"
+            name="coldkey"
+            id="coldkey"
             className="block w-full rounded-l-md border-0 py-1.5 pl-2 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-            placeholder={coldkey}
+            defaultValue={coldkey}
           />
           <button
           type="button"

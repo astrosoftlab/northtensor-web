@@ -104,9 +104,9 @@ function Main(props: any) {
     
   
     return (
-      <><div className="bg-white shadow sm:rounded-md w-90">
+      <><div className="bg-slate-50 shadow sm:rounded-md lg:w-96 sm:w-full">
 
-        <ul role="list" className="divide-y divide-gray-200">
+        <ul role="list" className="divide-y divide-slate-200">
           <li key={'balance1'} className="px-4 py-4 sm:px-6">
             <div className="flex items-center justify-between w-full  py-2 px-4 rounded-md">
               <div className="flex items-center w-1/2">
@@ -115,27 +115,27 @@ function Main(props: any) {
               <div className="flex items-center justify-end w-1/2">
                 <div className="flex flex-col items-end">
                   <h1>{roundedTotalWalletBalance} Tao</h1>
-                  <p className="text-gray-400 text-xs">${totalWalletBalanceUSD} USD</p>
+                  <p className="text-slate-400 text-xs">${totalWalletBalanceUSD} USD</p>
                 </div>
               </div>
             </div>
           </li>
 
           <li key={'balance2'} className="px-4 py-4 sm:px-6">
-            <button className="flex items-center justify-between w-full hover:bg-gray-200 py-2 px-4 rounded-md">
+            <button className="flex items-center justify-between w-full hover:bg-slate-200 py-2 px-4 rounded-md">
               <div className="flex items-center w-1/2">
                 <h1 className="mr-2">Un-Staked</h1>
               </div>
               <div className="flex items-center justify-end w-1/2">
                 <div className="flex flex-col items-end">
                   <h1>{roundedAccountBalanceTao} Tao</h1>
-                  <p className="text-gray-400 text-xs">${accountBalanceUSD} USD</p>
+                  <p className="text-slate-400 text-xs">${accountBalanceUSD} USD</p>
                 </div>
               </div>
             </button>
           </li>
           <li key={'balance3'} className="px-4 py-4 sm:px-6">
-            <button className="flex items-center justify-between w-full hover:bg-gray-200 py-2 px-4 rounded-md">
+            <button className="flex items-center justify-between w-full hover:bg-slate-200 py-2 px-4 rounded-md">
               <div className="flex items-center w-1/2">
                 <h1 className="mr-2">Staked</h1>
               </div>
@@ -143,7 +143,7 @@ function Main(props: any) {
                 <div className="flex flex-col items-end">
                   <div className="flex flex-col items-end">
                     <h1>{roundedCurrentlyStakedTao} Tao</h1>
-                    <p className="text-gray-400 text-xs">${amountCurrentlyStakedUSD} USD</p>
+                    <p className="text-slate-400 text-xs">${amountCurrentlyStakedUSD} USD</p>
                   </div>
                 </div>
               </div>
@@ -152,13 +152,13 @@ function Main(props: any) {
           <li key={'balance4'} className="px-4 py-4 sm:px-6">
             <div className="flex items-center justify-between w-full rounded-md text-center">
               <div className="flex flex-col w-1/4">
-                <p className="text-gray-400 ">APY</p>
-                <p className="text-gray-400 ">0.00%</p>
+                <p className="text-slate-400 ">APY</p>
+                <p className="text-slate-400 ">0.00%</p>
               </div>
               <div className="flex items-center justify-between w-1/3">
                 <div className="flex flex-col items-center text-center">
-                  <p className="text-gray-400 ">Estimated Daily Return</p>
-                  <p className="text-gray-400 ">.2 Tao</p>
+                  <p className="text-slate-400 ">Estimated Daily Return</p>
+                  <p className="text-slate-400 ">.2 Tao</p>
                 </div>
               </div>
             </div>
@@ -170,10 +170,10 @@ function Main(props: any) {
       
       <div className="relative">
         <div className="absolute inset-0 flex items-center" aria-hidden="true">
-          <div className="w-full border-t border-gray-300" />
+          <div className="w-full border-t border-slate-300" />
         </div>
         <div className="relative flex justify-center">
-          <span className="px-2 text-sm text-gray-500">&nbsp;</span>
+          <span className="px-2 text-sm text-slate-500">&nbsp;</span>
         </div>
       </div>
 
@@ -187,7 +187,8 @@ function Main(props: any) {
             callable: 'addStake',
             inputParams: [MNRVHotkey, fullStakeAmount],
             paramFields: [true, true],
-          }} /> 
+          }} 
+          /> 
           :
           null
         }</>
