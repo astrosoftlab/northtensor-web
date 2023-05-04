@@ -56,8 +56,11 @@ function Main(props) {
 
   const session = useSession()
 
-  const [ss58_coldkeys, setSS58Coldkeys] = useState(null);
+  const [ss58_coldkeys, setSS58Coldkeys] = useState([]);
+  const [accountColdkeyRetrieved, setAccountColdkeyRetrieved] = useState(false);
   const [ss58_coldkeys_processed, setSS58ColdkeysProcessed] = useState([]);
+  const [newSS58keys, setNewSS58Keys] = useState(false);
+  const [accountColdkeysUpdateMessage, setAccountColdkeysUpdateMessage] = useState('');
   const user = useUser()
 
 
@@ -88,6 +91,7 @@ function Main(props) {
       if (data) {
         // console.log(data)
         setSS58Coldkeys(data.ss58_coldkeys);
+        setAccountColdkeyRetrieved(true);
       }
         
     } catch (error) {
@@ -99,8 +103,7 @@ function Main(props) {
   }
 
   async function updateProfile({
-    new_username,
-    new_ss58_coldkeys,
+    ss58_coldkeys,
   }) {
     try {
       setLoading(true)
@@ -108,14 +111,14 @@ function Main(props) {
 
       const updates = {
         id: user.id,
-        username: new_username,
-        ss58_coldkeys: new_ss58_coldkeys,
+        ss58_coldkeys: ss58_coldkeys,
         updated_at: new Date().toISOString(),
       }
 
       let { error } = await supabase.from('profiles').upsert(updates)
       if (error) throw error
-      alert('Profile updated!')
+      alert(accountColdkeysUpdateMessage)
+      setNewSS58Keys(false)
     } catch (error) {
       alert('Error updating the data!')
       console.log(error)
@@ -123,6 +126,42 @@ function Main(props) {
       setLoading(false)
     }
   }
+
+  useEffect(() => {
+    if (accountColdkeyRetrieved && keyringOptions.length > 0 && session) { // <-- added check for setSS58Coldkeys
+      let new_coldkeys = [];
+      for (const keyringOption of keyringOptions) {
+        //Check if the keyringOption is not in the ss58_coldkeys array
+        if (ss58_coldkeys && !ss58_coldkeys.some(item => item.coldkey === keyringOption.value)) {
+          // create a new coldkey object
+          const newColdkey = {
+            name1: keyringOption.text,
+            coldkey: keyringOption.value,
+            validated: false,
+            watched: true,
+          };
+          // Call setSS58Coldkeys to update ss58_coldkeys
+          new_coldkeys.push(newColdkey);
+          // setSS58Coldkeys((prevState) => [...prevState, newColdkey]);
+          
+          
+        }
+      }
+      // Send the updated ss58_coldkeys to the database
+      let temp_ss58coldkeys = [...ss58_coldkeys, ...new_coldkeys];
+      if (temp_ss58coldkeys.length > ss58_coldkeys.length) {
+        // console.log('sending', temp_ss58coldkeys );
+        setSS58Coldkeys(temp_ss58coldkeys);
+        setNewSS58Keys(true);
+        const newColdkeyNames = new_coldkeys.map(coldkey => coldkey.name1);
+        console.log('newColdkeyNames', newColdkeyNames)
+        setAccountColdkeysUpdateMessage(`Added the following coldkeys to your account: ${newColdkeyNames.join(', ')}`);
+
+      }
+    }
+  }, [keyringOptions, session]); // <-- added setSS58Coldkeys to the dependency array
+  
+  
 
   useEffect(() => {
     if (ss58_coldkeys) {
@@ -142,36 +181,17 @@ function Main(props) {
   console.log("ss58_coldkeys", ss58_coldkeys)
   console.log("keyringOptions", keyringOptions)
 
-  useEffect(() => {
-    if (keyringOptions.length > 0 && session) {
-      let send_update = false;
-      for (const keyringOption of keyringOptions) {
-        // console.log('keyringOption', keyringOption)
-        // console.log('bool', ss58_coldkeys && !ss58_coldkeys.some(item => item.coldkey === keyringOption.value))
-        //Check if the keyringOption is not in the ss58_coldkeys array
-        if (ss58_coldkeys && !ss58_coldkeys.some(item => item.coldkey === keyringOption.value)) {
-          // create a new coldkey object
-          const newColdkey = {
-            name1: keyringOption.text,
-            coldkey: keyringOption.value,
-            validated: false,
-            watched: true,
-          };
-          // console.log('newColdkey', newColdkey)
-          setSS58Coldkeys((prevState) => [...prevState, newColdkey]);
-          send_update = true;
-        }
-      }
-      // Send the updated ss58_coldkeys to the database
-      // console.log('updated',  ss58_coldkeys)
-      if (send_update) {
-        updateProfile('updated', ss58_coldkeys)
-      }
+  const updatedKeyringOptions = keyringOptions.map((keyringOption) => {
+    const matchingColdkey = ss58_coldkeys_processed.find((coldkey) => coldkey.value === keyringOption.value);
+    if (matchingColdkey) {
+      return { ...keyringOption, text: matchingColdkey.text };
+    } else {
+      return keyringOption;
     }
-  }, [keyringOptions]);
+  });
 
   const completeColdkeyOptions = [
-    ...keyringOptions,
+    ...updatedKeyringOptions,
     ...ss58_coldkeys_processed.filter((item) => !keyringOptions.some((other) => other.key === item.key)),
   ]
 
@@ -218,6 +238,7 @@ function Main(props) {
     console.log("setnewcurrentaccount", currentAccount)
     }
   }
+
   // const { api } = useSubstrateState()
 
   // useEffect(() => {
@@ -238,7 +259,7 @@ function Main(props) {
   // }, [api.rpc.system])
 
   return (
-      <Stack padding={1} spacing={2} alignItems="center" direction="row" justifyContent="center">
+      <Stack padding={1} spacing={2} alignItems="center" direction="column" justifyContent="center">
           {/* <AccountIdenticon account={currentAccount}/> */}
           {(completeColdkeyOptions && currentAccount) ?
             <Select 
@@ -260,6 +281,7 @@ function Main(props) {
             :
             <h1>No Accounts Detected</h1>
           }
+          {newSS58keys ? <Button onClick={() => updateProfile({ ss58_coldkeys })}>Save Coldkeys to Account</Button> : null}
 
         </Stack>
   )
