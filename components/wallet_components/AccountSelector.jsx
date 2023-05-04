@@ -98,6 +98,32 @@ function Main(props) {
     }
   }
 
+  async function updateProfile({
+    new_username,
+    new_ss58_coldkeys,
+  }) {
+    try {
+      setLoading(true)
+      if (!user) throw new Error('No user')
+
+      const updates = {
+        id: user.id,
+        username: new_username,
+        ss58_coldkeys: new_ss58_coldkeys,
+        updated_at: new Date().toISOString(),
+      }
+
+      let { error } = await supabase.from('profiles').upsert(updates)
+      if (error) throw error
+      alert('Profile updated!')
+    } catch (error) {
+      alert('Error updating the data!')
+      console.log(error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
   useEffect(() => {
     if (ss58_coldkeys) {
       const processed = ss58_coldkeys.map((coldkey) => ({
@@ -118,21 +144,29 @@ function Main(props) {
 
   useEffect(() => {
     if (keyringOptions.length > 0 && session) {
+      let send_update = false;
       for (const keyringOption of keyringOptions) {
-        console.log('keyringOption', keyringOption)
-        console.log('bool', ss58_coldkeys && !ss58_coldkeys.some(item => item.coldkey === keyringOption.value))
+        // console.log('keyringOption', keyringOption)
+        // console.log('bool', ss58_coldkeys && !ss58_coldkeys.some(item => item.coldkey === keyringOption.value))
+        //Check if the keyringOption is not in the ss58_coldkeys array
         if (ss58_coldkeys && !ss58_coldkeys.some(item => item.coldkey === keyringOption.value)) {
+          // create a new coldkey object
           const newColdkey = {
             name1: keyringOption.text,
             coldkey: keyringOption.value,
             validated: false,
             watched: true,
           };
-          console.log('newColdkey', newColdkey)
+          // console.log('newColdkey', newColdkey)
           setSS58Coldkeys((prevState) => [...prevState, newColdkey]);
+          send_update = true;
         }
       }
-      console.log('updated',  ss58_coldkeys)
+      // Send the updated ss58_coldkeys to the database
+      // console.log('updated',  ss58_coldkeys)
+      if (send_update) {
+        updateProfile('updated', ss58_coldkeys)
+      }
     }
   }, [keyringOptions]);
 
