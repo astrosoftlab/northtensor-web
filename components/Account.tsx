@@ -96,8 +96,13 @@ export default function Account({ session }: { session: Session }) {
     }
   }
 
+  const handleSubmit = (event: { preventDefault: () => void }) => {
+    event.preventDefault()
+    // Handle form submission
+  }
+
   return (
-    <form>
+    <form onSubmit={handleSubmit} method="POST">
       <div>
         <div className="border-b border-white/10 pb-12">
           <h2 className="text-base font-semibold leading-9 text-slate-900">Profile</h2>
