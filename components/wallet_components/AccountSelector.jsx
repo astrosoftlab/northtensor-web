@@ -116,20 +116,25 @@ function Main(props) {
   console.log("ss58_coldkeys", ss58_coldkeys)
   console.log("keyringOptions", keyringOptions)
 
-  if (keyringOptions.length > 0 && session) {
-    for (const keyringOption of keyringOptions) {
-      console.log('keyringOption', keyringOption)
-      if (ss58_coldkeys && ss58_coldkeys.some(item => item.coldkey === keyringOption.value)) {
-        ss58_coldkeys.push({
-          name1: keyringOption.text,
-          coldkey: keyringOption.value,
-          validated: false,
-          watched: true,
-        })
+  useEffect(() => {
+    if (keyringOptions.length > 0 && session) {
+      for (const keyringOption of keyringOptions) {
+        console.log('keyringOption', keyringOption)
+        console.log('bool', ss58_coldkeys && !ss58_coldkeys.some(item => item.coldkey === keyringOption.value))
+        if (ss58_coldkeys && !ss58_coldkeys.some(item => item.coldkey === keyringOption.value)) {
+          const newColdkey = {
+            name1: keyringOption.text,
+            coldkey: keyringOption.value,
+            validated: false,
+            watched: true,
+          };
+          console.log('newColdkey', newColdkey)
+          setSS58Coldkeys((prevState) => [...prevState, newColdkey]);
+        }
       }
+      console.log('updated',  ss58_coldkeys)
     }
-    console.log('updated',  ss58_coldkeys)
-  }
+  }, [keyringOptions]);
 
   const completeColdkeyOptions = [
     ...keyringOptions,
