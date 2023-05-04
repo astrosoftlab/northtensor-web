@@ -81,6 +81,7 @@ export default function Account({ session }: { session: Session }) {
         username,
         website,
         avatar_url,
+        ss58_coldkeys,
         updated_at: new Date().toISOString(),
       }
 
@@ -168,6 +169,7 @@ export default function Account({ session }: { session: Session }) {
                   type="email"
                   autoComplete="email"
                   className="block w-full rounded-md border-0 bg-slate-100 py-1.5 text-slate-900 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-slate-500 sm:text-sm sm:leading-6"
+                  readOnly
                 />
               </div>
             </div>
@@ -179,7 +181,7 @@ export default function Account({ session }: { session: Session }) {
             </label>
             <ul>
               {ss58_coldkeys?.map((key) => (
-                <li id={key.coldkey}>
+                <li id={key.coldkey} key={key.coldkey}>
                   <ColdkeyInput name={key.name1} coldkey={key.coldkey} watched={key.watched} validated={key.validated} />
                 </li>
               ))}
@@ -194,7 +196,7 @@ export default function Account({ session }: { session: Session }) {
         <button
           type="submit"
           className="rounded-md bg-slate-500 px-3 py-2 text-sm font-semibold text-slate-100 shadow-sm hover:bg-slate-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-500"
-        onClick={() => updateProfile({ username, website, avatar_url })}
+        onClick={() => updateProfile({ username, website, avatar_url, ss58_coldkeys })}
           disabled={loading}>
           Save
         </button>

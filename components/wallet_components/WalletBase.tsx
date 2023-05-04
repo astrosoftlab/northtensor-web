@@ -5,82 +5,99 @@ import { useSubstrateState } from '../../lib/substrate-lib'
 import { useIsMountedRef } from "../../lib/hooks/api/useIsMountedRef";
 import axios from 'axios';
 
-const acctAddr = (acct: { address: any; }) => (acct ? acct.address : '')
+
+const acctAddr = (acct: { value: any; }) => (acct ? acct.value : '')
 function Main(props: any) {
 
     const [status, setStatus] = useState(null)
 
     const { api, keyring, currentAccount, storedMNRVHotkey, balanceSigFigures } = useSubstrateState()
 
+    // Account Balance
     const [accountBalance, setAccountBalance] = useState(0)
-    const [accountTotalStake, setAccountTotalStake] = useState(0)
-    const [mnrvStake, setmnrvStake] = useState(0)
-    const mountedRef = useIsMountedRef();
-    const [loaded, setLoaded] = useState(false);
-    const [totalStakeProcessed, setTotalStakeProcessed] = useState<boolean>(false);
-    const [taoConversionRateUSD, setTaoConversionRateUSD] = useState(0)
+    // Account Staked
+    const [amountCurrentlyStaked, setAmountCurrentlyStaked] = useState(0)
+
+    // TAO Conversion Rate
+    const [taoConversionRate, setTaoConversionRate] = useState(0)
+    const [taoConversionRateUpdated, setTaoConversionRateUpdated] = useState(false)
 
     const MNRVHotkey = storedMNRVHotkey
 
-
-    const addStaketoTotalStaked = (stake: number) => {
-        setAccountTotalStake(accountTotalStake + stake)
-    }
 
 
   
     // When account address changes, update subscriptions
     useEffect(() => {
-        let unsubscribe: () => any
-
-        // If the user has selected an address, create a new subscription
-        currentAccount &&
-            api.query.system
-            .account(acctAddr(currentAccount), (balance: { data: { free: { toHuman: () => React.SetStateAction<number>; }; }; }) =>
-                setAccountBalance(balance.data.free.toHuman())
-            )
-            .then((unsub: () => any) => (unsubscribe = unsub))
-            .catch(console.error)
-
-        return () => unsubscribe && unsubscribe()
-        }, [api, currentAccount])
+      if (!currentAccount) {
+        return () => {}
+      }
+      let unsubscribe: () => any
+    
+      async function getStake(specificColdkey: string) {
+        const res = await api.query.subtensorModule.stake(MNRVHotkey, specificColdkey);
+        return parseFloat(res.toString())
+      }
+    
+      async function loopAccounts() {
+        let tempAccountBalance = 0
+        let tempAmountCurrentlyStaked = 0
+        // const specificAccountBalances = []
+    
+        for (const coldkey of currentAccount.coldkey_array) {
+          const balance = await api.query.system.account(coldkey)
+          const specificBalance = balance.data.free.toNumber()
+          // specificAccountBalances.push(specificBalance)
+          tempAccountBalance += specificBalance
+          tempAmountCurrentlyStaked += await getStake(coldkey)
+        }
+    
+        setAccountBalance(tempAccountBalance)
+        setAmountCurrentlyStaked(tempAmountCurrentlyStaked)
+        // setSpecificAccountBalances(specificAccountBalances)
+      }
+    
+      loopAccounts()
+    
+      return () => unsubscribe && unsubscribe()
+    }, [api, currentAccount])
+    
 
     const accountBalanceTao = parseFloat(accountBalance.toString().replace(/,/g, '')) / 10**9
     const roundedAccountBalanceTao  = parseFloat(accountBalanceTao.toFixed(balanceSigFigures))
-    const accountBalanceUSD = (accountBalanceTao * taoConversionRateUSD).toFixed(2)
+    const accountBalanceUSD = (accountBalanceTao * taoConversionRate).toFixed(2)
 
     const fullStakeAmount = parseFloat(accountBalance.toString().replace(/,/g, '')) - 1000
 
 
-    const [amountCurrentlyStaked, setAmountCurrentlyStaked] = useState(0)
+    
     const amountCurrentlyStakedTao = amountCurrentlyStaked / 10**9
     const roundedCurrentlyStakedTao = parseFloat(amountCurrentlyStakedTao.toFixed(balanceSigFigures))
-    async function getStake() {
-      const res = await api.query.subtensorModule.stake(MNRVHotkey, acctAddr(currentAccount));
-      setAmountCurrentlyStaked(parseFloat(res.toString()))
-    }
-    const amountCurrentlyStakedUSD = (amountCurrentlyStakedTao * taoConversionRateUSD).toFixed(2)
+    
+    const amountCurrentlyStakedUSD = (amountCurrentlyStakedTao * taoConversionRate).toFixed(2)
     
     const totalWalletBalance = accountBalanceTao + amountCurrentlyStakedTao
     const roundedTotalWalletBalance = parseFloat(totalWalletBalance.toFixed(balanceSigFigures))
-    const totalWalletBalanceUSD = (totalWalletBalance * taoConversionRateUSD).toFixed(2)
-    getStake();
+    const totalWalletBalanceUSD = (totalWalletBalance * taoConversionRate).toFixed(2)
+    
 
     
     
 
   // replace "your_token_id" with the ID of the token you want to get the value for
   const token_id = "bittensor";
-
-  axios.get<{ [key: string]: { usd: number } }>(`https://api.coingecko.com/api/v3/simple/price?ids=${token_id}&vs_currencies=usd`)
-    .then((response: { data: { [x: string]: { usd: any; }; }; }) => {
-      const price = response.data[token_id].usd;
-      setTaoConversionRateUSD(price)
-    })
-    .catch((error: any) => {
-      console.log(error);
-    });
-
+  
+  if (!taoConversionRateUpdated) {
+    axios.get<{ [key: string]: { usd: number } }>(`https://api.coingecko.com/api/v3/simple/price?ids=${token_id}&vs_currencies=usd`)
+      .then((response: { data: { [x: string]: { usd: any; }; }; }) => {
+        const price = response.data[token_id].usd;
+        setTaoConversionRate(price)
+        setTaoConversionRateUpdated(true)
+      })
+      .catch((error: any) => {
+        console.log(error);
+      });
+  }
 
 
     
@@ -161,7 +178,7 @@ function Main(props: any) {
       </div>
 
         
-        <TxButton
+      {(currentAccount != null && currentAccount.source == 'polkadot' && fullStakeAmount > 0) ? <TxButton
           label="Stake"
           type="SIGNED-TX"
           setStatus={setStatus}
@@ -170,7 +187,10 @@ function Main(props: any) {
             callable: 'addStake',
             inputParams: [MNRVHotkey, fullStakeAmount],
             paramFields: [true, true],
-          }} /></> 
+          }} /> 
+          :
+          null
+        }</>
     );
     }
 

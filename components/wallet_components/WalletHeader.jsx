@@ -30,59 +30,11 @@ const CHROME_EXT_URL =
 const FIREFOX_ADDON_URL =
   'https://addons.mozilla.org/en-US/firefox/addon/polkadot-js-extension/'
 
-const acctAddr = acct => (acct ? acct.address : '')
 
 function Main(props) {
-  const {
-    setCurrentAccount,
-    state: { keyring, currentAccount, selectedAccounts },
-  } = useSubstrate()
-  const [nodeInfo, setNodeInfo] = useState({})
 
   // Get the list of accounts we possess the private key for
-  const keyringOptions = keyring.getPairs().map(account => ({
-    key: account.address,
-    value: account.address,
-    text: account.meta.name.toUpperCase(),
-    icon: 'user',
-  }))
-
-  const initialAddress =
-    keyringOptions.length > 0 ? keyringOptions[0].value : ''
-
-  // Set the initial address
-  useEffect(() => {
-    !currentAccount &&
-      initialAddress.length > 0 &&
-      setCurrentAccount(keyring.getPair(initialAddress))
-  }, [currentAccount, setCurrentAccount, keyring, initialAddress])
-  
-  const onChange = addr => {
-    // console.log("onchange", addr)
-    if (addr.target.value === "Coldkey") {console.log("Coldkey")}
-    else {
-    setCurrentAccount(keyring.getPair(addr.target.value))
-    }
-  }
-  const { api } = useSubstrateState()
-
-  useEffect(() => {
-    const getInfo = async () => {
-      try {
-        const [chain, nodeName, nodeVersion] = await Promise.all([
-          api.rpc.system.chain(),
-          api.rpc.system.name(),
-          api.rpc.system.version(),
-        ])
-        setNodeInfo({ chain, nodeName, nodeVersion })
-        
-      } catch (e) {
-        console.error(e)
-      }
-    }
-    getInfo()
-  }, [api.rpc.system])
-
+ 
   return (
     <div className="bg-white shadow sm:rounded-md w-90 flex flex-wrap">
       <div className="w-full">
