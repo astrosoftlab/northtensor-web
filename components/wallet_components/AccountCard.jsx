@@ -8,12 +8,12 @@ import Identicon from "@polkadot/react-identicon";
 
 // import HeaderPathing from './HeaderPathing'
 
-function AccountCard({ account }) {
+function AccountCard({ accountName }) {
   
   // console.log("card acccount", account.meta.name)
   // console.log('curracc', account.address.substring(0, 6))
   return (
-    (!account ? 
+    (!accountName ? 
       (
         <h1>
           No Active Account
@@ -22,7 +22,7 @@ function AccountCard({ account }) {
       (
       <Stack direction="row">
         <Stack direction="column">
-          <h1>{account.meta.name}</h1>
+          <h1>{accountName}</h1>
           {/* <p>{account.address.substring(0, 10)}...</p> */}
         </Stack>
       </Stack>))
