@@ -168,7 +168,8 @@ function Main(props: any) {
 
       </div>
       
-      <div className="relative">
+      {(currentAccount != null && currentAccount.source == 'polkadot' && fullStakeAmount > 0) ?
+        <div className="relative">
         <div className="absolute inset-0 flex items-center" aria-hidden="true">
           <div className="w-full border-t border-slate-300" />
         </div>
@@ -176,6 +177,7 @@ function Main(props: any) {
           <span className="px-2 text-sm text-slate-500">&nbsp;</span>
         </div>
       </div>
+      : null }
 
         
       {(currentAccount != null && currentAccount.source == 'polkadot' && fullStakeAmount > 0) ? <TxButton

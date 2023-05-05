@@ -191,8 +191,8 @@ function Main(props) {
     ...updatedKeyringOptions,
     ...ss58_coldkeys_processed.filter((item) => !keyringOptions.some((other) => other.key === item.key)),
   ]
-  if (completeColdkeyOptions.length !== 0) {
-    completeColdkeyOptions.push({
+  if (completeColdkeyOptions.length > 1) {
+    completeColdkeyOptions.unshift({
       key: 'All Accounts',
       value: 'All Accounts',
       text: 'All Accounts',
@@ -201,6 +201,7 @@ function Main(props) {
       source: 'account',
     })
   }
+  
 
 
   // console.log("completeColdkeyOptions", completeColdkeyOptions)
