@@ -64,10 +64,7 @@ function Main(props) {
   const user = useUser()
 
 
-  if (!session) {
-    return null;
-  }
-  else {
+  if (session) {
     useEffect(() => {
       getProfile();
     }, [session]);
@@ -194,15 +191,17 @@ function Main(props) {
     ...updatedKeyringOptions,
     ...ss58_coldkeys_processed.filter((item) => !keyringOptions.some((other) => other.key === item.key)),
   ]
+  if (completeColdkeyOptions.length !== 0) {
+    completeColdkeyOptions.push({
+      key: 'All Accounts',
+      value: 'All Accounts',
+      text: 'All Accounts',
+      coldkey_array: completeColdkeyOptions.map(obj => obj.value),
+      icon: 'user',
+      source: 'account',
+    })
+  }
 
-  completeColdkeyOptions.push({
-    key: 'All Accounts',
-    value: 'All Accounts',
-    text: 'All Accounts',
-    coldkey_array: completeColdkeyOptions.map(obj => obj.value),
-    icon: 'user',
-    source: 'account',
-  })
 
   console.log("completeColdkeyOptions", completeColdkeyOptions)
 
@@ -261,7 +260,7 @@ function Main(props) {
   return (
       <Stack padding={1} spacing={2} alignItems="center" direction="column" justifyContent="center">
           {/* <AccountIdenticon account={currentAccount}/> */}
-          {(completeColdkeyOptions && currentAccount) ?
+          {(completeColdkeyOptions.length > 0 && currentAccount) ?
             <Select 
               labelId="account-selection-label"
               id="account-selection"
@@ -279,7 +278,11 @@ function Main(props) {
               {/* <MenuItem key={"Coldkey"} value={"Coldkey"}>Coldkey</MenuItem> */}
             </Select>
             :
-            <h1>No Accounts Detected</h1>
+            <div className='justify-center items-center flex flex-row overflow-x-hidden overflow-hidden'>
+              <h1>No Accounts Detected</h1>
+              <h1>Connect a Polkadot Wallet or</h1>
+              {session? <h1>add Coldkeys to your account</h1> : <h1>Log in to your Account</h1>}
+            </div>
           }
           {newSS58keys ? <Button onClick={() => updateProfile({ ss58_coldkeys })}>Save Coldkeys to Account</Button> : null}
 
