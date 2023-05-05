@@ -12,7 +12,7 @@ export default function Post({ postData }: { postData: PostData & { contentHtml:
         <title>Blah </title>
       </Head>
       <div className='flex h-screen'>
-      <div className='w-1/6 bg-gray-200 p4'>
+      <div className='w-1/6 bg-gray-200 p4 '>
           <SidebarNav />
         </div>
       <main className="md:max-xl:flex-wrap flex-col items-center px-20 py-10 min-h-screen dark:text-gray-200">

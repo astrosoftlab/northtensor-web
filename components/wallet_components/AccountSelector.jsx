@@ -279,9 +279,9 @@ function Main(props) {
             </Select>
             :
             <div className='justify-center items-center flex flex-row overflow-x-hidden overflow-hidden'>
-              <h1>No Accounts Detected</h1>
-              <h1>Connect a Polkadot Wallet or</h1>
-              {session? <h1>add Coldkeys to your account</h1> : <h1>Log in to your Account</h1>}
+              <h1 className="dark:text-slate-800">No Accounts Detected</h1>
+              <h1 className="dark:text-slate-800">Connect a Polkadot Wallet or</h1>
+              {session? <h1>add Coldkeys to your account</h1> : <h1 className="dark:text-slate-800">Log in to your Account</h1>}
             </div>
           }
           {newSS58keys ? <Button onClick={() => updateProfile({ ss58_coldkeys })}>Save Coldkeys to Account</Button> : null}

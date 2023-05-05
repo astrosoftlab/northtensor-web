@@ -13,9 +13,9 @@ function classNames(...classes) {
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
-    <div className="bg-slate-200 py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div className="bg-slate-200 py-24 sm:py-32 dark:bg-slate-900">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 ">
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 dark:text-slate-100">
       <p> Projects Built on Bittensor </p>
       <div className="mx-auto max-w-10xl"><LogoCards /></div>
     </div>

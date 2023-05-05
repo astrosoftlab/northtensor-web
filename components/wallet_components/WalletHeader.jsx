@@ -36,7 +36,7 @@ function Main(props) {
   // Get the list of accounts we possess the private key for
  
   return (
-    <div className="bg-white shadow sm:rounded-md w-90 flex flex-wrap">
+    <div className="bg-white shadow sm:rounded-md w-90 flex flex-wrap dark:text-slate-600">
       <div className="w-full">
         <div className="flex flex-row justify-between">
           {/* <AccountBasicInfo /> */}
