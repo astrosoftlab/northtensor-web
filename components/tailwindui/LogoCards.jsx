@@ -78,7 +78,7 @@ export default function Example() {
       <Link
       type="button"
       href='/contact'
-      className="relative block w-full rounded-lg border-2 border-dashed border-gray-300 p-12 text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+      className="relative block w-full rounded-lg border-2 border-dashed border-gray-300 p-12 text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2"
     >
       <span className="mt-2 block text-sm font-semibold text-gray-900 dark:text-slate-100">Your Project Here!</span>
     </Link>

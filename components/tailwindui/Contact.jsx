@@ -1,12 +1,12 @@
 export default function Example() {
   return (
-    <div className="bg-slate-100 py-24 sm:py-32">
+    <div className="bg-slate-100 py-24 sm:py-32 dark:bg-slate-800">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl space-y-16 divide-y divide-gray-100 lg:mx-0 lg:max-w-none">
           <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-3">
             <div>
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900">Give us a Ping</h2>
-              <p className="mt-4 leading-7 text-gray-600">
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-slate-100">Give us a Ping</h2>
+              <p className="mt-4 leading-7 text-gray-600 dark:text-slate-300">
                 Don't hesitate to reach out if you're interested in North Tensor and Bittensor. We're happy to collaborate.
               </p>
             </div>
@@ -66,7 +66,7 @@ export default function Example() {
           </div>
         </div>
       </div>
-      <div className="bg-slate-100 py-24 sm:py-32">
+      <div className="bg-slate-100 py-24 sm:py-32 dark:bg-slate-800">
     </div>
     </div>
   )
