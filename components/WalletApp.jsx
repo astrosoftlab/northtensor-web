@@ -1,39 +1,46 @@
-import React, { createRef } from 'react'
+import React, { createRef, useEffect, useState } from 'react'
 import {
-  Container,
   Dimmer,
   Loader,
   Grid,
-  Sticky,
   Message,
 } from 'semantic-ui-react'
-// import 'semantic-ui-css/semantic.min.css'
 
-import { SubstrateContextProvider, useSubstrateState } from '../lib/substrate-lib'
-// import { DeveloperConsole } from './substrate-lib/components'
+import { useRouter } from 'next/router';
+import { SubstrateContextProvider, useSubstrate} from '../lib/substrate-lib'
 
 import WalletHeader from './wallet_components/WalletHeader'
 import WalletBase from './wallet_components/WalletBase'
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
 
-// import Balances from './Balances'
-// import Bittensor from './Bittensor'
-// import BlockNumber from './BlockNumber'
-// import Interactor from './Interactor'
-// import NodeInfo from './NodeInfo'
-// import MNRVTip from './MNRVTip'
-// import Transfer from './Transfer'
-// import Events from './Events'
-import Navigations from './wallet_components/Navigations'
-
-import styles from '@/styles/Home.module.css'
-
-// import TemplateModule from './TemplateModule'
 
 function Main() {
-  const { apiState, apiError, keyringState } = useSubstrateState()
-  console.log('err', apiError)
+  const { forceLoadKeyring,  state: {apiState, apiError, keyringState} } = useSubstrate()
+
+  const [refresh, setRefresh] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    const handleRouteChange = () => {
+      setRefresh(true);
+    };
+
+    router.events.on('routeChangeComplete', handleRouteChange);
+
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (refresh) {
+      // Perform any actions you need to do when the page "refreshes"
+      console.log('refreshed')
+      window.location.reload();
+      setRefresh(false);
+
+    }
+  }, [refresh]);
+
   const loader = text => (
     <Dimmer active>
       <Loader size="small">{text}</Loader>
