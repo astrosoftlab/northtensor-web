@@ -3,6 +3,7 @@ import { Dialog } from '@headlessui/react'
 import Landing from "@/components/tailwindui/Landing";
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Feature from "@/components/tailwindui/Feature"
+import Contact from "@/components/tailwindui/Contact"
 
 
 function classNames(...classes) {
@@ -12,8 +13,7 @@ function classNames(...classes) {
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
-    <Landing />
-    <Feature />
+    <Contact />
       {}
     </>
   );

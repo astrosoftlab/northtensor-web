@@ -6,10 +6,9 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 const navigation = [
-  { name: 'Resources', href: '/resources' },
-  { name: 'Projects', href: '#' },
-  { name: 'Roadmap', href: '#' },
-  { name: 'Company', href: '#' },
+  { name: 'Get Involved', href: '/resources' },
+  { name: 'Stake with North Tensor', href: '/wallet' },
+  { name: 'Built on Bittensor', href: '/built-on-bittensor' }, 
 ]
 
 export default function Example() {

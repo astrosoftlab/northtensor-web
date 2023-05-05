@@ -15,15 +15,14 @@ import {
 import Link from 'next/link'
 
 const navigation = [
-  { name: 'Getting Started', href: '#', icon: HomeIcon},
+  { name: 'Overview', href: '/resources', icon: HomeIcon},
   {
     name: 'Becoming a User',
     icon: UserGroupIcon,
-    current: true,
     children: [
-      { name: 'Getting Started', href: '/resources/client-overview', current: true  },
-      { name: 'Examples', href: '/', current: false },
-      { name: 'Customer Success', href: '#' },
+      { name: 'Getting Started', href: '/docs/client-intro', },
+      { name: 'Purchase Guide', href: '/docs/purchase-tao', current: false },
+      { name: 'Staking on North Tensor', href: '/docs/staker-intro' },
     ],
   },
   {
@@ -31,9 +30,8 @@ const navigation = [
     icon: CodeBracketIcon,
     current: false,
     children: [
-      { name: 'Getting Started', href: '#' },
-      { name: 'Examples', href: '#' },
-      { name: 'Customer Success', href: '#' },
+      { name: 'Getting Started', href: '/docs/developer-intro' },
+      { name: 'Installation Guide', href: '/docs/installing-bittensor' },
     ],
   },
   {
@@ -41,10 +39,7 @@ const navigation = [
     icon: CpuChipIcon,
     current: false,
     children: [
-      { name: 'GraphQL API', href: '#' },
-      { name: 'iOS App', href: '#' },
-      { name: 'Android App', href: '#' },
-      { name: 'New Customer Portal', href: '#' },
+      { name: 'Getting Started', href: '/docs/miner-intro' },
     ],
   },
 ]

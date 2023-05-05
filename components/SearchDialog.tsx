@@ -181,7 +181,7 @@ export function SearchDialog() {
       >
         <Search width={15} />
         <span className="border border-l h-5"></span>
-        <span className="inline-block ml-4">Ask the AI!</span>
+        <span className="inline-block ml-4">Ask About our Docs</span>
       </button>
       <Dialog open={open}>
         <DialogContent className="sm:max-w-[850px] text-black">
