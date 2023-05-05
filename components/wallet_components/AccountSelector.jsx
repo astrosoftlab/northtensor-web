@@ -257,37 +257,37 @@ function Main(props) {
   //   getInfo()
   // }, [api.rpc.system])
 
-  return (
-      <Stack padding={1} spacing={2} alignItems="center" direction="column" justifyContent="center">
-          {/* <AccountIdenticon account={currentAccount}/> */}
-          {(completeColdkeyOptions.length > 0 && currentAccount) ?
+return (
+    <div className="flex-row items-center justify-center">
+        {/* <AccountIdenticon account={currentAccount}/> */}
+        {(completeColdkeyOptions.length > 0 && currentAccount) ?
             <Select 
               labelId="account-selection-label"
               id="account-selection"
               value={currentAccount.value}
               // label="Active Account"
               onChange={(event) => onChange(event)}
+              style={{margin: '1rem'}}
             >
               {completeColdkeyOptions.map(temp_account => {
                 return (
-                <MenuItem key={temp_account.key} value={temp_account.key}>
-                   <AccountCard accountName={temp_account.text}/>
-                </MenuItem>
+                    <MenuItem key={temp_account.key} value={temp_account.key}>
+                        <AccountCard accountName={temp_account.text}/>
+                    </MenuItem>
                 );
               })}
               {/* <MenuItem key={"Coldkey"} value={"Coldkey"}>Coldkey</MenuItem> */}
             </Select>
             :
             <div className='justify-center items-center flex flex-row overflow-x-hidden overflow-hidden'>
-              <h1 className="dark:text-slate-800">No Accounts Detected</h1>
-              <h1 className="dark:text-slate-800">Connect a Polkadot Wallet or</h1>
-              {session? <h1>add Coldkeys to your account</h1> : <h1 className="dark:text-slate-800">Log in to your Account</h1>}
+                <h1 className="dark:text-slate-800">No Accounts Detected</h1>
+                <h1 className="dark:text-slate-800">Connect a Polkadot Wallet or</h1>
+                {session? <h1>add Coldkeys to your account</h1> : <h1 className="dark:text-slate-800">Log in to your Account</h1>}
             </div>
-          }
-          {newSS58keys ? <Button onClick={() => updateProfile({ ss58_coldkeys })}>Save Coldkeys to Account</Button> : null}
-
-        </Stack>
-  )
+        }
+        {newSS58keys ? <Button onClick={() => updateProfile({ ss58_coldkeys })}>Save Coldkeys to Account</Button> : null}
+    </div>
+)
 }
 
 
