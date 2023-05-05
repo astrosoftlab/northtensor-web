@@ -75,7 +75,7 @@ function Main() {
 
   return (
     <div class="flex flex-col item-start space-y-4 p-4 w-full sm:w-auto max-w-screen-lg">
-      <div x-ref="contextRef" class="sticky top-0 bg-white z-10 ">
+      <div x-ref="contextRef" style={{ position: 'sticky', top: 0, backgroundColor: 'white', zIndex: 10, borderRadius: 10, boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)' }}>
         <WalletHeader />
       </div>
       <div class="flex justify-center">

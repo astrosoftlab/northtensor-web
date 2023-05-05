@@ -175,8 +175,8 @@ function Main(props) {
     }
   }, [ss58_coldkeys]);
 
-  console.log("ss58_coldkeys", ss58_coldkeys)
-  console.log("keyringOptions", keyringOptions)
+  // console.log("ss58_coldkeys", ss58_coldkeys)
+  // console.log("keyringOptions", keyringOptions)
 
   const updatedKeyringOptions = keyringOptions.map((keyringOption) => {
     const matchingColdkey = ss58_coldkeys_processed.find((coldkey) => coldkey.value === keyringOption.value);
@@ -203,12 +203,12 @@ function Main(props) {
   }
 
 
-  console.log("completeColdkeyOptions", completeColdkeyOptions)
+  // console.log("completeColdkeyOptions", completeColdkeyOptions)
 
   const initialAddress = completeColdkeyOptions.length > 0 ? completeColdkeyOptions[0].value : ''
 
-  console.log('inistailasdadress', initialAddress)
-  console.log('currentAccount', currentAccount)
+  // console.log('inistailasdadress', initialAddress)
+  // console.log('currentAccount', currentAccount)
 
   // Set the initial address
   useEffect(() => {
@@ -221,9 +221,9 @@ function Main(props) {
 
   }, [initialAddress])
 
-  useEffect(() => {
-    console.log('currentAccount updated:', currentAccount);
-  }, [currentAccount]);
+  // useEffect(() => {
+  //   console.log('currentAccount updated:', currentAccount);
+  // }, [currentAccount]);
   
 
   
@@ -238,56 +238,44 @@ function Main(props) {
     }
   }
 
-  // const { api } = useSubstrateState()
 
-  // useEffect(() => {
-  //   const getInfo = async () => {
-  //     try {
-  //       const [chain, nodeName, nodeVersion] = await Promise.all([
-  //         api.rpc.system.chain(),
-  //         api.rpc.system.name(),
-  //         api.rpc.system.version(),
-  //       ])
-  //       setNodeInfo({ chain, nodeName, nodeVersion })
-        
-  //     } catch (e) {
-  //       console.error(e)
-  //     }
-  //   }
-  //   getInfo()
-  // }, [api.rpc.system])
+  return (
+    <div style={{ padding: 8, display: 'flex', alignItems: 'center', flexDirection: 'column', justifyContent: 'center' }}>
+      {(completeColdkeyOptions.length > 0 && currentAccount) ?
+        <Select 
+          labelId="account-selection-label"
+          id="account-selection"
+          value={currentAccount.value}
+          // label="Active Account"
+          onChange={(event) => onChange(event)}
+        >
+          {completeColdkeyOptions.map(temp_account => {
+            return (
+            <MenuItem key={temp_account.key} value={temp_account.key}>
+                <AccountCard accountName={temp_account.text}/>
+            </MenuItem>
+            );
+          })}
+        </Select>
+        :
+        <div className="text-center">
+          <h1 className="text-xl font-bold dark:text-slate-800 mb-2">No Accounts Detected</h1>
+          <h2 className="text-xl dark:text-slate-800">Connect a Talisman Wallet </h2>
+          <h2 className="text-xl dark:text-slate-800">or</h2>
+          <h2 className="text-xl dark:text-slate-800">
+            {
+              session ? 
+                'add Coldkeys to your account' 
+                : 
+                'Log in to your Account'
+            }
+            </h2>
+        </div>
 
-return (
-    <div className="flex-row items-center justify-center">
-        {/* <AccountIdenticon account={currentAccount}/> */}
-        {(completeColdkeyOptions.length > 0 && currentAccount) ?
-            <Select 
-              labelId="account-selection-label"
-              id="account-selection"
-              value={currentAccount.value}
-              // label="Active Account"
-              onChange={(event) => onChange(event)}
-              style={{margin: '1rem'}}
-            >
-              {completeColdkeyOptions.map(temp_account => {
-                return (
-                    <MenuItem key={temp_account.key} value={temp_account.key}>
-                        <AccountCard accountName={temp_account.text}/>
-                    </MenuItem>
-                );
-              })}
-              {/* <MenuItem key={"Coldkey"} value={"Coldkey"}>Coldkey</MenuItem> */}
-            </Select>
-            :
-            <div className='justify-center items-center flex flex-row overflow-x-hidden overflow-hidden'>
-                <h1 className="dark:text-slate-800">No Accounts Detected</h1>
-                <h1 className="dark:text-slate-800">Connect a Polkadot Wallet or</h1>
-                {session? <h1>add Coldkeys to your account</h1> : <h1 className="dark:text-slate-800">Log in to your Account</h1>}
-            </div>
-        }
-        {newSS58keys ? <Button onClick={() => updateProfile({ ss58_coldkeys })}>Save Coldkeys to Account</Button> : null}
+      }
+      {newSS58keys ? <Button onClick={() => updateProfile({ ss58_coldkeys })}>Save Coldkeys to Account</Button> : null}
     </div>
-)
+  )
 }
 
 
