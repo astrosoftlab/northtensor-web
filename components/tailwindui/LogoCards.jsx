@@ -13,25 +13,25 @@ const projects = [
   {
     id: 1,
     name: 'North Tensor',
-    imageUrl: '',
+    imageUrl: '/images/ntLOGO.svg',
     detail: { team: 'North Tensor', task: 'NLP: Text Generation', summary: 'Sample project placeholder to store new projects running on bittensor'},
   },
   {
     id: 2,
     name: 'Chattensor',
-    imageUrl: '',
+    imageUrl: '/images/bittensor.png',
     detail: { team: 'OpenTensor', task: 'NLP: Prompting', summary: 'Sample project placeholder to store new projects running on bittensor'},
   },
   {
     id: 3,
     name: 'Reform',
-    imageUrl: '',
+    imageUrl: '/images/cooldog.jpg',
     detail: { team: 'North Tensor', task: 'NLP: Text Generation', summary: 'Sample project placeholder to store new projects running on bittensor'},
   },
   {
     id: 4,
     name: 'Reform',
-    imageUrl: '',
+    imageUrl: '/images/coolcat.jpg',
     detail: {team: 'North Tensor', task: 'NLP: Text Generation', summary: 'Sample project placeholder to store new projects running on bittensor'},
   },
 ]
@@ -48,6 +48,8 @@ export default function Example() {
           <div className="flex items-center gap-x-4 border-b border-gray-900/5 bg-gray-50 p-6">
             <Image
               src={project.imageUrl}
+              width= '150'
+              height= '150'
               alt={project.name}
               className="h-12 w-12 flex-none rounded-lg bg-white object-cover ring-1 ring-gray-900/10"
             />

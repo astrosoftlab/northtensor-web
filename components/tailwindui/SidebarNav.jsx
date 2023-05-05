@@ -50,7 +50,7 @@ function classNames(...classes) {
 
 export default function SidebarNav() {
   return (
-    <div className="flex h-screen grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6">
+    <div className="flex h-screen grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-slate-100 px-6">
       <div className="flex h-2 shrink-0 items-center">
       </div>
       <nav className="flex flex-1 flex-col">
