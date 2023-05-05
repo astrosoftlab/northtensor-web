@@ -30,7 +30,7 @@ export default function Example() {
                 Username
               </label>
               <div className="mt-2">
-                <div className="flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                <div className="flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-slate-500">
                   <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">workcation.com/</span>
                   <input
                     type="text"
@@ -53,7 +53,7 @@ export default function Example() {
                   id="about"
                   name="about"
                   rows={3}
-                  className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-slate-500 sm:text-sm sm:leading-6"
                   defaultValue={''}
                 />
               </div>
@@ -85,7 +85,7 @@ export default function Example() {
                   <div className="mt-4 flex text-sm leading-6 text-gray-400">
                     <label
                       htmlFor="file-upload"
-                      className="relative cursor-pointer rounded-md bg-gray-900 font-semibold text-white focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 focus-within:ring-offset-gray-900 hover:text-indigo-500"
+                      className="relative cursor-pointer rounded-md bg-gray-900 font-semibold text-white focus-within:outline-none focus-within:ring-2 focus-within:ring-slate-600 focus-within:ring-offset-2 focus-within:ring-offset-gray-900 hover:text-slate-500"
                     >
                       <span>Upload a file</span>
                       <input id="file-upload" name="file-upload" type="file" className="sr-only" />
@@ -112,7 +112,7 @@ export default function Example() {
                   name="username"
                   id="username"
                   autoComplete="username"
-                  className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-slate-500 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -126,7 +126,7 @@ export default function Example() {
                   name="email"
                   type="email"
                   autoComplete="email"
-                  className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-slate-500 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -146,7 +146,7 @@ export default function Example() {
                       id="comments"
                       name="comments"
                       type="checkbox"
-                      className="h-4 w-4 rounded border-white/10 bg-white/5 text-indigo-600 focus:ring-indigo-600 focus:ring-offset-gray-900"
+                      className="h-4 w-4 rounded border-white/10 bg-white/5 text-slate-600 focus:ring-slate-600 focus:ring-offset-gray-900"
                     />
                   </div>
                   <div className="text-sm leading-6">
@@ -162,7 +162,7 @@ export default function Example() {
                       id="candidates"
                       name="candidates"
                       type="checkbox"
-                      className="h-4 w-4 rounded border-white/10 bg-white/5 text-indigo-600 focus:ring-indigo-600 focus:ring-offset-gray-900"
+                      className="h-4 w-4 rounded border-white/10 bg-white/5 text-slate-600 focus:ring-slate-600 focus:ring-offset-gray-900"
                     />
                   </div>
                   <div className="text-sm leading-6">
@@ -178,7 +178,7 @@ export default function Example() {
                       id="offers"
                       name="offers"
                       type="checkbox"
-                      className="h-4 w-4 rounded border-white/10 bg-white/5 text-indigo-600 focus:ring-indigo-600 focus:ring-offset-gray-900"
+                      className="h-4 w-4 rounded border-white/10 bg-white/5 text-slate-600 focus:ring-slate-600 focus:ring-offset-gray-900"
                     />
                   </div>
                   <div className="text-sm leading-6">
@@ -199,7 +199,7 @@ export default function Example() {
                     id="push-everything"
                     name="push-notifications"
                     type="radio"
-                    className="h-4 w-4 border-white/10 bg-white/5 text-indigo-600 focus:ring-indigo-600 focus:ring-offset-gray-900"
+                    className="h-4 w-4 border-white/10 bg-white/5 text-slate-600 focus:ring-slate-600 focus:ring-offset-gray-900"
                   />
                   <label htmlFor="push-everything" className="block text-sm font-medium leading-6 text-white">
                     Everything
@@ -210,7 +210,7 @@ export default function Example() {
                     id="push-email"
                     name="push-notifications"
                     type="radio"
-                    className="h-4 w-4 border-white/10 bg-white/5 text-indigo-600 focus:ring-indigo-600 focus:ring-offset-gray-900"
+                    className="h-4 w-4 border-white/10 bg-white/5 text-slate-600 focus:ring-slate-600 focus:ring-offset-gray-900"
                   />
                   <label htmlFor="push-email" className="block text-sm font-medium leading-6 text-white">
                     Same as email
@@ -221,7 +221,7 @@ export default function Example() {
                     id="push-nothing"
                     name="push-notifications"
                     type="radio"
-                    className="h-4 w-4 border-white/10 bg-white/5 text-indigo-600 focus:ring-indigo-600 focus:ring-offset-gray-900"
+                    className="h-4 w-4 border-white/10 bg-white/5 text-slate-600 focus:ring-slate-600 focus:ring-offset-gray-900"
                   />
                   <label htmlFor="push-nothing" className="block text-sm font-medium leading-6 text-white">
                     No push notifications
@@ -239,7 +239,7 @@ export default function Example() {
         </button>
         <button
           type="submit"
-          className="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+          className="rounded-md bg-slate-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-slate-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-500"
         >
           Save
         </button>
