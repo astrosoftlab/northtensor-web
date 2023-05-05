@@ -110,12 +110,12 @@ function Main(props: any) {
           <li key={'balance1'} className="px-4 py-4 sm:px-6">
             <div className="flex items-center justify-between w-full  py-2 px-4 rounded-md">
               <div className="flex items-center w-1/2">
-                <h1 className="mr-2">Total</h1>
+                <h1 className="mr-2 dark:text-slate-800">Total</h1>
               </div>
               <div className="flex items-center justify-end w-1/2">
                 <div className="flex flex-col items-end">
-                  <h1>{roundedTotalWalletBalance} Tao</h1>
-                  <p className="text-slate-400 text-xs">${totalWalletBalanceUSD} USD</p>
+                  <h1 className="dark:text-slate-800">{roundedTotalWalletBalance} Tao</h1>
+                  <p className="text-slate-400 text-xs dark:text-slate-600">${totalWalletBalanceUSD} USD</p>
                 </div>
               </div>
             </div>
@@ -124,12 +124,12 @@ function Main(props: any) {
           <li key={'balance2'} className="px-4 py-4 sm:px-6">
             <button className="flex items-center justify-between w-full hover:bg-slate-200 py-2 px-4 rounded-md">
               <div className="flex items-center w-1/2">
-                <h1 className="mr-2">Un-Staked</h1>
+                <h1 className="mr-2 dark:text-slate-800">Un-Staked</h1>
               </div>
               <div className="flex items-center justify-end w-1/2">
                 <div className="flex flex-col items-end">
-                  <h1>{roundedAccountBalanceTao} Tao</h1>
-                  <p className="text-slate-400 text-xs">${accountBalanceUSD} USD</p>
+                  <h1 className="dark:text-slate-800">{roundedAccountBalanceTao} Tao</h1>
+                  <p className="text-slate-400 text-xs dark:text-slate-600">${accountBalanceUSD} USD</p>
                 </div>
               </div>
             </button>
@@ -137,13 +137,13 @@ function Main(props: any) {
           <li key={'balance3'} className="px-4 py-4 sm:px-6">
             <button className="flex items-center justify-between w-full hover:bg-slate-200 py-2 px-4 rounded-md">
               <div className="flex items-center w-1/2">
-                <h1 className="mr-2">Staked</h1>
+                <h1 className="mr-2 dark:text-slate-800">Staked</h1>
               </div>
               <div className="flex items-center justify-end w-1/2">
                 <div className="flex flex-col items-end">
                   <div className="flex flex-col items-end">
-                    <h1>{roundedCurrentlyStakedTao} Tao</h1>
-                    <p className="text-slate-400 text-xs">${amountCurrentlyStakedUSD} USD</p>
+                    <h1 className="dark:text-slate-800">{roundedCurrentlyStakedTao} Tao</h1>
+                    <p className="text-slate-400 text-xs dark:text-slate-600">${amountCurrentlyStakedUSD} USD</p>
                   </div>
                 </div>
               </div>
@@ -152,13 +152,13 @@ function Main(props: any) {
           <li key={'balance4'} className="px-4 py-4 sm:px-6">
             <div className="flex items-center justify-between w-full rounded-md text-center">
               <div className="flex flex-col w-1/4">
-                <p className="text-slate-400 ">APY</p>
-                <p className="text-slate-400 ">0.00%</p>
+                <p className="text-slate-400 dark:text-slate-800 ">APY</p>
+                <p className="text-slate-400 dark:text-slate-800">0.00%</p>
               </div>
               <div className="flex items-center justify-between w-1/3">
                 <div className="flex flex-col items-center text-center">
-                  <p className="text-slate-400 ">Estimated Daily Return</p>
-                  <p className="text-slate-400 ">.2 Tao</p>
+                  <p className="text-slate-400 dark:text-slate-600 ">Estimated Daily Return</p>
+                  <p className="text-slate-400 dark:text-slate-600">.2 Tao</p>
                 </div>
               </div>
             </div>
