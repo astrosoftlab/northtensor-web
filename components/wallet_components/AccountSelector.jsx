@@ -6,6 +6,7 @@ import AccountIdenticon from './AccountIdenticon'
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import { useUser, useSession, useSupabaseClient, Session } from '@supabase/auth-helpers-react'
+import Link from 'next/link'
 
 
 
@@ -261,14 +262,15 @@ function Main(props) {
         :
         <div className="text-center">
           <h1 className="text-xl font-bold dark:text-slate-800 mb-2">No Accounts Detected</h1>
-          <h2 className="text-xl dark:text-slate-800">Connect a Talisman Wallet </h2>
-          <h2 className="text-xl dark:text-slate-800">or</h2>
-          <h2 className="text-xl dark:text-slate-800">
+          <h2 className="text-l dark:text-slate-800">Connect a Talisman Wallet </h2>
+          <p className="text-ml dark:text-slate-800">or</p>
+          <h2 className="text-l dark:text-slate-800">
             {
               session ? 
                 'add Coldkeys to your account' 
                 : 
-                'Log in to your Account'
+                <Link href="profile" className='ml-2 rounded-md bg-slate-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600'>
+                Log in to your Account</Link>
             }
             </h2>
         </div>

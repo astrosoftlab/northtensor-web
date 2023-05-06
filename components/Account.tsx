@@ -113,7 +113,7 @@ export default function Account({ session }: { session: Session }) {
               </label>
               <div className="mt-2">
                 <div className="flex rounded-md bg-slate-100 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-slate-500">
-                  <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm"></span>
+                  <span className="flex select-none items-center pl-3 text-slate-500 sm:text-sm"></span>
                   <input
                     type="text"
                     value={username || ''}
@@ -181,7 +181,7 @@ export default function Account({ session }: { session: Session }) {
             </div>
             </div>
             <div className="isolate -space-y-px rounded-md shadow-sm">
-            <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
+            <label htmlFor="email" className="block text-sm font-medium leading-6 text-slate-900">
               Coldkeys
             </label>
             <ul>
