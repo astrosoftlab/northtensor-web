@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 import dynamic from 'next/dynamic'
-import logo from '../public/noun-owl-759873.svg';
+import logo from '@/public/noun-owl-759873.svg';
 import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react'
 import { useState } from 'react';
 

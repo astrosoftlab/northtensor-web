@@ -1,7 +1,7 @@
-import { getAllPostIds, getPostData, PostData } from '../../lib/docs';
+import { getAllPostIds, getPostData, PostData } from '@/lib/docs';
 import Head from 'next/head';
-import Date from '../../components/date';
- import SidebarNav from '@/components/tailwindui/SidebarNav';
+import Date from '@/components/date';
+import SidebarNav from '@/components/tailwindui/SidebarNav';
 
 export async function getStaticPaths() {
   const paths = getAllPostIds();
@@ -32,8 +32,6 @@ export default function Post({ postData }: { postData: PostData & { contentHtml:
     </>
   );
 }
-
-
 
 export async function getStaticProps({ params }: { params: { id: string } }) {
   // Add the "await" keyword like this:
