@@ -6,8 +6,8 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 const navigation = [
-  { name: 'Get Involved', href: '/resources' },
-  { name: 'Stake with North Tensor', href: '/wallet' },
+  { name: 'Get Started', href: '/resources' },
+  { name: 'Stake on North Tensor', href: '/wallet' },
   { name: 'Built on Bittensor', href: '/built-on-bittensor' }, 
 ]
 
@@ -16,7 +16,7 @@ export default function Example() {
   const session = useSession()
   const supabase = useSupabaseClient()
   return (
-    <header className="bg-gray-900">
+    <header className="bg-slate-900">
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
@@ -27,7 +27,7 @@ export default function Example() {
         <div className="flex lg:hidden">
           <button
             type="button"
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-400"
+            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-slate-400"
             onClick={() => setMobileMenuOpen(true)}
           >
             <span className="sr-only">Open main menu</span>
@@ -58,7 +58,7 @@ export default function Example() {
       </nav>
       <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
         <div className="fixed inset-0 z-10" />
-        <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-gray-900 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10">
+        <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-slate-900 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10">
           <div className="flex items-center justify-between">
             <Link href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">North Tensor</span>
@@ -69,7 +69,7 @@ export default function Example() {
             </Link>
             <button
               type="button"
-              className="-m-2.5 rounded-md p-2.5 text-gray-400"
+              className="-m-2.5 rounded-md p-2.5 text-slate-400"
               onClick={() => setMobileMenuOpen(false)}
             >
               <span className="sr-only">Close menu</span>
@@ -77,13 +77,13 @@ export default function Example() {
             </button>
           </div>
           <div className="mt-6 flow-root">
-            <div className="-my-6 divide-y divide-gray-500/25">
+            <div className="-my-6 divide-y divide-slate-500/25">
               <div className="space-y-2 py-6">
                 {navigation.map((item) => (
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-800"
+                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-slate-800"
                   >
                     {item.name}
                   </Link>
@@ -92,12 +92,12 @@ export default function Example() {
               <div className="py-6">
                 {!session ? (
                   <Link href="/profile"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-gray-800">
+                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-slate-800">
                     Log in
                   </Link>
                 ) : (
                   <Link href='/profile'
-                     className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-gray-800"
+                     className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-slate-800"
                      >
                      Profile
                      </Link>

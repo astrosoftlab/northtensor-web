@@ -23,7 +23,7 @@ export default function Example() {
         {/* Hero section */}
         <div className="relative isolate">
           <svg
-            className="absolute inset-0 -z-10 h-full w-full stroke-gray-200 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
+            className="absolute inset-0 -z-10 h-full w-full stroke-slate-200 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
             aria-hidden="true"
           >
             <rect width="100%" height="100%" strokeWidth={0} fill="url(#83fd4e5a-9d52-42fc-97b6-718e5d7ee527)" />
@@ -43,7 +43,7 @@ export default function Example() {
                 >
                   Get started
                 </Link>
-                <Link href="#" className="text-sm font-semibold leading-6 text-gray-900">
+                <Link href="#" className="text-sm font-semibold leading-6 text-slate-900">
                   Learn more <span aria-hidden="true">→</span>
                 </Link>
               </div>

@@ -50,7 +50,7 @@ function classNames(...classes) {
 
 export default function SidebarNav() {
   return (
-    <div className="flex h-screen grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-slate-100 px-6">
+    <div className="flex h-screen grow flex-col gap-y-5 overflow-y-auto border-r border-slate-200 bg-slate-100 px-6">
       <div className="flex h-2 shrink-0 items-center">
       </div>
       <nav className="flex flex-1 flex-col">
@@ -63,11 +63,11 @@ export default function SidebarNav() {
                     <Link
                       href={item.href}
                       className={classNames(
-                        item.current ? 'bg-gray-50' : 'hover:bg-gray-50',
-                        'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold text-gray-700'
+                        item.current ? 'bg-slate-50' : 'hover:bg-slate-50',
+                        'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold text-slate-700'
                       )}
                     >
-                      <item.icon className="h-6 w-6 shrink-0 text-gray-400" aria-hidden="true" />
+                      <item.icon className="h-6 w-6 shrink-0 text-slate-400" aria-hidden="true" />
                       {item.name}
                     </Link>
                   ) : (
@@ -76,15 +76,15 @@ export default function SidebarNav() {
                         <>
                           <Disclosure.Button
                             className={classNames(
-                              item.current ? 'bg-gray-50' : 'hover:bg-gray-50',
-                              'flex items-center w-full text-left rounded-md p-2 gap-x-3 text-sm leading-6 font-semibold text-gray-700'
+                              item.current ? 'bg-slate-50' : 'hover:bg-slate-50',
+                              'flex items-center w-full text-left rounded-md p-2 gap-x-3 text-sm leading-6 font-semibold text-slate-700'
                             )}
                           >
-                            <item.icon className="h-6 w-6 shrink-0 text-gray-400" aria-hidden="true" />
+                            <item.icon className="h-6 w-6 shrink-0 text-slate-400" aria-hidden="true" />
                             {item.name}
                             <ChevronRightIcon
                               className={classNames(
-                                open ? 'rotate-90 text-gray-500' : 'text-gray-400',
+                                open ? 'rotate-90 text-slate-500' : 'text-slate-400',
                                 'ml-auto h-5 w-5 shrink-0'
                               )}
                               aria-hidden="true"
@@ -98,8 +98,8 @@ export default function SidebarNav() {
                                   as="a"
                                   href={subItem.href}
                                   className={classNames(
-                                    subItem.current ? 'bg-gray-50' : 'hover:bg-gray-50',
-                                    'block rounded-md py-2 pr-2 pl-9 text-sm leading-6 text-gray-700'
+                                    subItem.current ? 'bg-slate-50' : 'hover:bg-slate-50',
+                                    'block rounded-md py-2 pr-2 pl-9 text-sm leading-6 text-slate-700'
                                   )}
                                 >
                                   {subItem.name}
