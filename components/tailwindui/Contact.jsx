@@ -66,8 +66,7 @@ export default function Example() {
           </div>
         </div>
       </div>
-      <div className="bg-slate-100 py-24 sm:py-32 dark:bg-slate-800">
-    </div>
+
     </div>
   )
 }

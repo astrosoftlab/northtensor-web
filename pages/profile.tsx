@@ -8,7 +8,7 @@ export default function Home() {
   const supabase = useSupabaseClient()
 
   return (
-    <div className="h-full bg-slate-200">
+    <div className="min-h-screen bg-slate-200">
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           { !session &&
