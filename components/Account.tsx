@@ -15,18 +15,6 @@ export default function Account({ session }: { session: Session }) {
   const [showModal, setShowModal] = useState(false);
   const [newColdkeyName, setNewColdkeyName] = useState('');
   const [newColdkeyValue, setNewColdkeyValue] = useState('');
-[
-  {
-    "name1": "blah",
-    "coldkey": "123456",
-    "watched": "True",
-    "validated": "True"
-  },
-  {
-    "name1": "bl2",
-    "coldkey": "12312"
-  }
-]
 
   useEffect(() => {
     getProfile()
@@ -96,6 +84,12 @@ export default function Account({ session }: { session: Session }) {
     }
   }
 
+  function formatString(str: String) {
+    const firstFive = str.slice(0, 15);
+    const lastFive = str.slice(-5);
+    return `${firstFive}...${lastFive}`;
+  }
+
   const handleSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault()
     // Handle form submission
@@ -122,7 +116,7 @@ export default function Account({ session }: { session: Session }) {
                     id="username"
                     autoComplete="username"
                     className="flex-1 border-0 bg-transparent py-1.5 pl-1 text-slate-900 focus:ring-0 sm:text-sm sm:leading-6"
-                    placeholder="janesmith"
+                    placeholder="username"
                   />
                 </div>
               </div>
@@ -187,7 +181,7 @@ export default function Account({ session }: { session: Session }) {
             <ul>
               {ss58_coldkeys?.map((key) => (
                 <li id={key.coldkey} key={key.coldkey}>
-                  <ColdkeyInput name={key.name1} coldkey={key.coldkey} watched={key.watched} validated={key.validated} />
+                  <ColdkeyInput name={key.name1} coldkey={formatString(key.coldkey)} watched={key.watched} validated={key.validated} />
                 </li>
               ))}
             </ul>
