@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { useState } from 'react';
 
 const navigation = {
   main: [
@@ -46,30 +47,73 @@ const navigation = {
 }
 
 export default function Example() {
+
+  const [showMenu, setShowMenu] = useState(false);
   return (
-    <footer className="bg-slate-900">
-      <div className="mx-auto max-w-7xl overflow-hidden px-6 py-20 sm:py-12 lg:px-8">
-        <nav className="-mb-6 columns-2 sm:flex sm:justify-center sm:space-x-12 mt-10 text-center text-xs leading-5 text-slate-100" aria-label="Footer">
-          {navigation.main.map((item) => (
-            <div key={item.name} className="pb-6">
-              <Link href={item.href} className="text-sm leading-6 text-slate-100 hover:text-slate-500">
-                {item.name}
-              </Link>
-            </div>
-          ))}
-        </nav>
-        <div className="mt-10 flex justify-center space-x-10">
-          {navigation.social.map((item) => (
-            <Link key={item.name} href={item.href} className="text-slate-100 hover:text-slate-500">
-              <span className="sr-only">{item.name}</span>
-              <item.icon className="h-6 w-6" aria-hidden="true" />
-            </Link>
-          ))}
-        </div>
-        <p className="mt-10 text-center text-xs leading-5 text-slate-100">
+    <footer className="bg-slate-900" style={{ position: 'fixed', bottom: 0, width: '100%' }}>
+    <div className="hidden sm:block mx-auto max-w-7xl overflow-hidden px-6 py-2 sm:py-2 lg:px-8">
+      <nav className="sm:flex sm:justify-center sm:space-x-6 mt-0 text-center text-xs leading-0 text-slate-100" aria-label="Footer"> 
+            {navigation.main.map((item) => (
+              <div key={item.name} className="pb-1">
+                <Link href={item.href} className="text-sm leading-0 text-slate-100 hover:text-slate-500">
+                  {item.name}
+                </Link>
+              </div>
+            ))}
+      </nav>
+      <div className="mt-1 flex justify-center space-x-6">
+        {navigation.social.map((item) => (
+          <Link key={item.name} href={item.href} className="text-slate-100 hover:text-slate-500">
+            <span className="sr-only">{item.name}</span>
+            <item.icon className="h-6 w-6" aria-hidden="true" />
+          </Link>
+        ))}
+      </div>
+      <p className="mt-1 text-center text-xs leading-5 text-slate-100">
           &copy; 2023 North Tensor
         </p>
+
+
+    </div>
+    <div className="block sm:hidden mx-auto max-w-7xl overflow-hidden px-6 py-2 sm:py-2 lg:px-8">
+    {showMenu && (<>
+      <nav className="sm:flex sm:justify-center sm:space-x-6 mt-0 text-center text-xs leading-0 text-slate-100" aria-label="Footer">
+        
+          
+            {navigation.main.map((item) => (
+              <div key={item.name} className="pb-1">
+                <Link href={item.href} className="text-sm leading-0 text-slate-100 hover:text-slate-500">
+                  {item.name}
+                </Link>
+              </div>
+            ))}
+          
+      </nav>
+      <div className="mt-4 flex justify-center space-x-8">
+        {navigation.social.map((item) => (
+          <Link key={item.name} href={item.href} className="text-slate-100 hover:text-slate-500">
+            <span className="sr-only">{item.name}</span>
+            <item.icon className="h-6 w-6" aria-hidden="true" />
+          </Link>
+        ))}
       </div>
-    </footer>
+      </>
+      )}
+      <div className="mt-3 flex justify-between  space-x-6 items-center">
+      <button
+        className="block sm:hidden px-1 py-1 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-slate-500 border border-transparent rounded-md active:bg-slate-600 hover:bg-slate-600 focus:outline-none focus:shadow-outline-slate-500 focus:border-slate-600"
+        onClick={() => {
+          setShowMenu(!showMenu);
+          
+        }}
+      >
+        {showMenu ? 'Menu' : 'Menu'}
+      </button>
+      <p className="ml-auto text-xs leading-5 text-slate-100">
+        &copy; 2023 North Tensor
+      </p>
+      </div>
+    </div>
+  </footer>
   )
 }
