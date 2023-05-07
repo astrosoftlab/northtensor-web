@@ -1,28 +1,32 @@
 import { BarsArrowUpIcon, EyeIcon, EyeSlashIcon, PencilSquareIcon } from '@heroicons/react/20/solid'
 import { useState } from 'react';
 import ColdkeyModal from '@/components/tailwindui/ColdkeyModal'
+import Modal from 'react-modal';
 
-function MyComponent() {
+
+export default function Example({ onInputChange, name, coldkey, watched, validated, index}) {
+
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-   return (
-    <div>
-      <button onClick={() => setIsModalOpen(true)}>Open Modal</button>
-      
-      {isModalOpen && (
-        <div className="modal">
-          <div className="modal-content">
-            <h2>Modal Title</h2>
-            <p>Modal content goes here.</p>
-            <button onClick={() => setIsModalOpen(false)}>Close Modal</button>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
+  function handleColdkeyUpdate(Name, Coldkey, Watched) {
+    onInputChange(index, Name, Coldkey, Watched)
+  }
 
-export default function Example({ name, coldkey, watched, validated}) {
+  function handleColdkeyChange(updatedName, updatedColdkey) {
+    handleColdkeyUpdate(updatedName, updatedColdkey, watched)
+  }
+  
+  function handleWatchedChange(getNewValue) {
+    const newValue = getNewValue();
+    handleColdkeyUpdate(name, coldkey, newValue);
+  }
+
+  function formatString(str) {
+    const firstFive = str.slice(0, 15);
+    const lastFive = str.slice(-5);
+    return `${firstFive}...${lastFive}`;
+  }
+
   return (
     <div>
       <div className="rounded-md px-3 pb-1.5 pt-2.5 shadow-sm ring-1 ring-inset ring-slate-300">
@@ -30,25 +34,26 @@ export default function Example({ name, coldkey, watched, validated}) {
         {name}
       </label>
       <div className="relative flex flex-grow items-stretch focus-within:z-10">
-      <input
+        <input
             type="text"
             name="coldkey"
             id="coldkey"
             className="block w-full rounded-l-md border-0 py-1.5 pl-2 bg-slate-100 text-slate-900 ring-1 ring-inset ring-slate-400 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-slate-600 sm:text-sm sm:leading-6"
-            defaultValue={coldkey}
+            defaultValue={formatString(coldkey)}
             readOnly
           />
-          <button
+        <button
           type="button"
           className="relative -ml-px inline-flex items-center gap-x-1.5 px-3 py-2 text-sm font-semibold text-slate-900 ring-1 ring-inset ring-slate-400 cursor-default"
+          onClick={() => handleWatchedChange(() => !watched)}
         >
-          {watched? 
-          <EyeIcon className="-ml-0.5 h-5 w-5 text-slate-400" aria-hidden="true" />
-          :
-          <EyeSlashIcon className="-ml-0.5 h-5 w-5 text-slate-400" aria-hidden="true" />
-          }
-          
+          {watched ? (
+            <EyeIcon className="-ml-0.5 h-5 w-5 text-slate-400" aria-hidden="true" />
+          ) : (
+            <EyeSlashIcon className="-ml-0.5 h-5 w-5 text-slate-400" aria-hidden="true" />
+          )}
         </button>
+
         <button
           onClick={() => setIsModalOpen(true)}
           type="button"
@@ -57,8 +62,11 @@ export default function Example({ name, coldkey, watched, validated}) {
           <PencilSquareIcon className="-ml-0.5 h-5 w-5 text-slate-400" aria-hidden="true" />
           
         </button>
-        </div>
+      </div>
     </div>
+    <Modal isOpen={isModalOpen} onRequestClose={() => setIsModalOpen(false)}>
+      <ColdkeyModal name={name} coldkey={coldkey} onSave={handleColdkeyChange} onClose={() => setIsModalOpen(false)} />
+    </Modal>
   </div>
 
   )

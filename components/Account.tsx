@@ -20,6 +20,15 @@ export default function Account({ session }: { session: Session }) {
     getProfile()
   }, [session])
 
+  function handleColdkeyInputChange(index: number, newName: string, newColdkey: string, newWatched: boolean) {
+    setSS58Coldkeys(prevColdkeys => {
+      const updatedColdkeys = [...prevColdkeys];
+      updatedColdkeys[index] = { ...updatedColdkeys[index], name1: newName, coldkey:newColdkey, watched: newWatched};
+      return updatedColdkeys;
+    });
+  }
+
+
   async function getProfile() {
     try {
       setLoading(true)
@@ -82,12 +91,6 @@ export default function Account({ session }: { session: Session }) {
     } finally {
       setLoading(false)
     }
-  }
-
-  function formatString(str: String) {
-    const firstFive = str.slice(0, 15);
-    const lastFive = str.slice(-5);
-    return `${firstFive}...${lastFive}`;
   }
 
   const handleSubmit = (event: { preventDefault: () => void }) => {
@@ -179,9 +182,9 @@ export default function Account({ session }: { session: Session }) {
               Coldkeys
             </label>
             <ul>
-              {ss58_coldkeys?.map((key) => (
+              {ss58_coldkeys?.map((key, index) => (
                 <li id={key.coldkey} key={key.coldkey}>
-                  <ColdkeyInput name={key.name1} coldkey={formatString(key.coldkey)} watched={key.watched} validated={key.validated} />
+                  <ColdkeyInput onInputChange={handleColdkeyInputChange} name={key.name1} coldkey={key.coldkey} watched={key.watched} validated={key.validated} index={index} />
                 </li>
               ))}
             </ul>
