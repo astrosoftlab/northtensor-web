@@ -1,9 +1,14 @@
-import { Fragment, useState  } from 'react';
+import { Fragment, useState, useEffect  } from 'react';
 
 export default function ColdkeyModal({ name, coldkey, onSave, onClose }) {
 
   const [newName, setNewName] = useState(name);
   const [newColdkey, setNewColdkey] = useState(coldkey);
+  const [coldkeyIsValid, setColdkeyIsValid] = useState(true);
+
+  useEffect(() => {
+    setColdkeyIsValid(/^([1-9]|[A-HJ-NP-Za-km-z]){0,48}$/.test(coldkey))
+  }, [coldkey])
 
   function handleNameChange(event) {
     setNewName(event.target.value);
@@ -11,6 +16,7 @@ export default function ColdkeyModal({ name, coldkey, onSave, onClose }) {
 
   function handleColdkeyChange(event) {
     setNewColdkey(event.target.value);
+    setColdkeyIsValid(/^([1-9]|[A-HJ-NP-Za-km-z]){0,48}$/.test(newColdkey))
   }
 
   function handleSave() {
@@ -76,13 +82,16 @@ export default function ColdkeyModal({ name, coldkey, onSave, onClose }) {
               </div>
 
               <div className="mt-5 sm:mt-6">
-                <button
-                  type="button"
-                  className="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-sky-600 text-base font-medium text-white hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 sm:text-sm"
-                  onClick={handleSave}
-                >
-                  Save
-                </button>
+              <button
+                type="button"
+                className={`inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 ${coldkeyIsValid? "bg-sky-600 hover:bg-sky-700" : "bg-gray-400"} text-base font-medium text-white  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 sm:text-sm`}
+                onClick={handleSave}
+                disabled={!coldkeyIsValid}
+              >
+                {coldkeyIsValid? "Save" : "Invalid Coldkey"}
+              </button>
+
+
                 <button
                   type="button"
                   className="inline-flex justify-center mt-4 w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-sky-600 text-base font-medium text-white hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 sm:text-sm"
