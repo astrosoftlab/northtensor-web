@@ -7,7 +7,7 @@ export default function ColdkeyModal({ name, coldkey, onSave, onClose }) {
   const [coldkeyIsValid, setColdkeyIsValid] = useState(true);
 
   useEffect(() => {
-    setColdkeyIsValid(/^([1-9]|[A-HJ-NP-Za-km-z]){0,48}$/.test(coldkey))
+    setColdkeyIsValid(/^([1-9]|[A-HJ-NP-Za-km-z]){0,48}$/.test(coldkey) && coldkey.length === 48)
   }, [coldkey])
 
   function handleNameChange(event) {
@@ -16,7 +16,8 @@ export default function ColdkeyModal({ name, coldkey, onSave, onClose }) {
 
   function handleColdkeyChange(event) {
     setNewColdkey(event.target.value);
-    setColdkeyIsValid(/^([1-9]|[A-HJ-NP-Za-km-z]){0,48}$/.test(newColdkey))
+    console.log((/^([1-9]|[A-HJ-NP-Za-km-z]){0,48}$/.test(event.target.value) && event.target.value.length === 48))
+    setColdkeyIsValid(/^([1-9]|[A-HJ-NP-Za-km-z]){0,48}$/.test(event.target.value) && event.target.value.length === 48)
   }
 
   function handleSave() {
