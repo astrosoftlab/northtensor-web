@@ -149,7 +149,7 @@ function Main(props: any) {
               </div>
             </button>
           </li>
-          <li key={'balance4'} className="px-4 py-4 sm:px-6">
+          {/* <li key={'balance4'} className="px-4 py-4 sm:px-6">
             <div className="flex items-center justify-between w-full rounded-md text-center">
               <div className="flex flex-col w-1/4">
                 <p className="text-slate-400 dark:text-slate-800 ">APY</p>
@@ -162,7 +162,7 @@ function Main(props: any) {
                 </div>
               </div>
             </div>
-          </li>
+          </li> */}
 
         </ul>
 
