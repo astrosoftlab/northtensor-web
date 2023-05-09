@@ -50,7 +50,7 @@ export default function Example() {
 
   const [showMenu, setShowMenu] = useState(false);
   return (
-    <footer className="bg-slate-900" style={{ position: 'fixed', bottom: 0, width: '100%' }}>
+    <footer className="bg-slate-900" style={{ position: 'sticky', bottom: 0, width: '100%' }}>
     <div className="hidden sm:block mx-auto max-w-7xl overflow-hidden px-6 py-2 sm:py-2 lg:px-8">
       <nav className="sm:flex sm:justify-center sm:space-x-6 mt-0 text-center text-xs leading-0 text-slate-100" aria-label="Footer"> 
             {navigation.main.map((item) => (

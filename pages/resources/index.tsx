@@ -16,7 +16,7 @@ export default function Home({ postData }: { postData: PostData[] }) {
         <title> Resources </title>
       </Head>
       <article>
-      <div className='flex h-screen'>
+      <div className='flex h-fill'>
         <div className='w-1/6 bg-gray-200 p4'>
           <SidebarNav />
         </div>
