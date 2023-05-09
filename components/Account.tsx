@@ -38,7 +38,13 @@ export default function Account({ session }: { session: Session }) {
     });
   }
   
-
+  function handleRemoveColdkey(index: number) {
+    setSS58Coldkeys(prevColdkeys => {
+      const updatedColdkeys = [...prevColdkeys];
+      updatedColdkeys.splice(index, 1);
+      return updatedColdkeys;
+    });
+  }
 
   async function getProfile() {
     try {
@@ -200,7 +206,7 @@ export default function Account({ session }: { session: Session }) {
           <ul>
             {ss58_coldkeys?.map((key, index) => (
               <li id={key.coldkey} key={key.coldkey}>
-                <ColdkeyInput onInputChange={handleColdkeyInputChange} name={key.name1} coldkey={key.coldkey} watched={key.watched} validated={key.validated} index={index} />
+                <ColdkeyInput onInputChange={handleColdkeyInputChange} name={key.name1} coldkey={key.coldkey} watched={key.watched} validated={key.validated} index={index} onDelete={handleRemoveColdkey} />
               </li>
             ))}
           </ul>
@@ -221,7 +227,7 @@ export default function Account({ session }: { session: Session }) {
       </div>
     </form>
     <Modal isOpen={isAddColdkeyModalOpen} onRequestClose={() => setIsAddColdkeyModalOpen(false)} style={{ overlay: { backgroundColor: 'rgba(0, 0, 0, 0.5)' }, content: { backgroundColor: 'rgba(0, 0, 0, 0)', border: 'rgba(0, 0, 0, 0)' } }}>
-        <ColdkeyModal name={`New Coldkey ${ss58_coldkeys? ss58_coldkeys.length : 1}`} coldkey={""} onSave={addNewColdkey} onClose={() => setIsAddColdkeyModalOpen(false)} />
+        <ColdkeyModal name={`New Coldkey ${ss58_coldkeys? ss58_coldkeys.length : 1}`} coldkey={""} onSave={addNewColdkey} onClose={() => setIsAddColdkeyModalOpen(false)} newBool={true}/>
     </Modal>
     </>
   )

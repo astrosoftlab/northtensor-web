@@ -1,6 +1,6 @@
 import { Fragment, useState, useEffect  } from 'react';
 
-export default function ColdkeyModal({ name, coldkey, onSave, onClose }) {
+export default function ColdkeyModal({ name, coldkey, onSave, onClose, newBool=false, onDelete=() => {} }) {
 
   const [newName, setNewName] = useState(name);
   const [newColdkey, setNewColdkey] = useState(coldkey);
@@ -29,6 +29,11 @@ export default function ColdkeyModal({ name, coldkey, onSave, onClose }) {
     onClose();
   }
 
+  function handleDelete() {
+    onDelete();
+    onClose();
+  }
+
   return (
     <Fragment style={{ overlay: { backgroundColor: 'rgba(0, 0, 0, 0.5)' } }}>
       <div className="fixed z-10 inset-0 overflow-y-auto">
@@ -41,6 +46,17 @@ export default function ColdkeyModal({ name, coldkey, onSave, onClose }) {
 
           <div className="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6">
             <div>
+              {newBool? null : <div className="flex justify-end">
+                <button
+                  type="button"
+                  className="text-gray-400 hover:text-red-600 focus:outline-none focus:text-gray-600"
+                  onClick={handleDelete}
+                >
+                  DELETE
+                </button>
+              </div>
+              }
+            
               <div className="mt-3 text-center sm:mt-5">
                 <h3 className="text-lg leading-6 font-medium text-gray-900">{name}</h3>
                 <div className="mt-2">

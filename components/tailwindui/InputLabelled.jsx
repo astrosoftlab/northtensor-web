@@ -4,7 +4,7 @@ import ColdkeyModal from '@/components/tailwindui/ColdkeyModal'
 import Modal from 'react-modal';
 
 
-export default function Example({ onInputChange, name, coldkey, watched, validated, index}) {
+export default function Example({ onInputChange, name, coldkey, watched, validated, index, onDelete=() => {}}) {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -25,6 +25,10 @@ export default function Example({ onInputChange, name, coldkey, watched, validat
     const firstFive = str.slice(0, 15);
     const lastFive = str.slice(-5);
     return `${firstFive}...${lastFive}`;
+  }
+
+  function handleDelete() {
+    onDelete(index)
   }
 
   return (
@@ -65,7 +69,7 @@ export default function Example({ onInputChange, name, coldkey, watched, validat
       </div>
     </div>
     <Modal isOpen={isModalOpen} onRequestClose={() => setIsModalOpen(false)} style={{ overlay: { backgroundColor: 'rgba(0, 0, 0, 0.5)' }, content: { backgroundColor: 'rgba(0, 0, 0, 0)', border: 'rgba(0, 0, 0, 0)' } }}>
-      <ColdkeyModal name={name} coldkey={coldkey} onSave={handleColdkeyChange} onClose={() => setIsModalOpen(false)} />
+      <ColdkeyModal name={name} coldkey={coldkey} onSave={handleColdkeyChange} onClose={() => setIsModalOpen(false)} onDelete={handleDelete}/>
     </Modal>
   </div>
 
