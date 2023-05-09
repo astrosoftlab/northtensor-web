@@ -64,7 +64,7 @@ export default function Example({ onInputChange, name, coldkey, watched, validat
         </button>
       </div>
     </div>
-    <Modal isOpen={isModalOpen} onRequestClose={() => setIsModalOpen(false)}>
+    <Modal isOpen={isModalOpen} onRequestClose={() => setIsModalOpen(false)} style={{ overlay: { backgroundColor: 'rgba(0, 0, 0, 0.5)' }, content: { backgroundColor: 'rgba(0, 0, 0, 0)', border: 'rgba(0, 0, 0, 0)' } }}>
       <ColdkeyModal name={name} coldkey={coldkey} onSave={handleColdkeyChange} onClose={() => setIsModalOpen(false)} />
     </Modal>
   </div>
