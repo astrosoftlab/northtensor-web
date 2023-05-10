@@ -8,14 +8,14 @@ export default function Example() {
         <p className="text-base font-semibold leading-7 text-[#CC6B32]">Legal</p>
         <h1 className="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl"><strong>Terms and Conditions</strong></h1>
 
-<p className="mt-6 text-xl leading-8">These terms and conditions outline the rules and regulations for the use of North Tensor's Website, located at northtensor.ai.</p>
+<p className="mt-6 text-xl leading-8">These terms and conditions outline the rules and regulations for the use of North Tensor&apos;s Website, located at northtensor.ai.</p>
 <p>By accessing this website we assume you accept these terms and conditions. Do not continue to use North Tensor if you do not agree to take all of the terms and conditions stated on this page.</p>
-<p>The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and all Agreements: "Client", "You" and "Your" refers to you, the person log on this website and compliant to the Company's terms and conditions. "The Company", "Ourselves", "We", "Our" and "Us", refers to our Company. "Party", "Parties", or "Us", refers to both the Client and ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner for the express purpose of meeting the Client's needs in respect of provision of the Company's stated services, in accordance with and subject to, prevailing law of us. Any use of the above terminology or other words in the singular, plural, capitalization and/or he/she or they, are taken as interchangeable and therefore as referring to same.</p>
+<p>The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and all Agreements: &quot;Client&quot;, &quot;You&quot; and &quot;Your&quot; refers to you, the person log on this website and compliant to the Company&apos;s terms and conditions. &quot;The Company&quot;, &quot;Ourselves&quot;, &quot;We&quot;, &quot;Our&quot; and &quot;Us&quot;, refers to our Company. &quot;Party&quot;, &quot;Parties&quot;, or &quot;Us&quot;, refers to both the Client and ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner for the express purpose of meeting the Client&apos;s needs in respect of provision of the Company&apos;s stated services, in accordance with and subject to, prevailing law of us. Any use of the above terminology or other words in the singular, plural, capitalization and/or he/she or they, are taken as interchangeable and therefore as referring to same.</p>
 
 <h2 className="mt-16 text-2xl font-bold tracking-tight text-slate-900"><strong>Cookies</strong></h2>
 <Divider />
-<p>We employ the use of cookies. By accessing North Tensor, you agreed to use cookies in agreement with the North Tensor's Privacy Policy. </p>
-<p>Most interactive websites use cookies to let us retrieve the user's details for each visit. Cookies are used by our website to enable the functionality of certain areas to make it easier for people visiting our website. Some of our affiliate/advertising partners may also use cookies.</p>
+<p>We employ the use of cookies. By accessing North Tensor, you agreed to use cookies in agreement with the North Tensor&apos;s Privacy Policy. </p>
+<p>Most interactive websites use cookies to let us retrieve the user&apos;s details for each visit. Cookies are used by our website to enable the functionality of certain areas to make it easier for people visiting our website. Some of our affiliate/advertising partners may also use cookies.</p>
 
 <h2 className="mt-16 text-2xl font-bold tracking-tight text-slate-900"><strong>License</strong></h2>
 <Divider />
@@ -84,7 +84,7 @@ export default function Example() {
     System wide Accredited Businesses except soliciting non-profit organizations, charity shopping malls, and charity fundraising groups which may not hyperlink to our Web site.</li>
 </ul>
 
-<p>These organizations may link to our home page, to publications or to other Website information so long as the link: (a) is not in any way deceptive; (b) does not falsely imply sponsorship, endorsement or approval of the linking party and its products and/or services; and (c) fits within the context of the linking party's site.</p>
+<p>These organizations may link to our home page, to publications or to other Website information so long as the link: (a) is not in any way deceptive; (b) does not falsely imply sponsorship, endorsement or approval of the linking party and its products and/or services; and (c) fits within the context of the linking party&apos;s site.</p>
 
 <p>We may consider and approve other link requests from the following types of organizations:</p>
 
@@ -114,7 +114,7 @@ export default function Example() {
 
 <p>We will approve link requests from these organizations if we decide that: (a) the link would not make us look unfavorably to ourselves or to our accredited businesses; (b) the organization does not have any negative records with us; (c) the benefit to us from the visibility of the hyperlink compensates the absence of North Tensor; and (d) the link is in the context of general resource information.</p>
 
-<p>These organizations may link to our home page so long as the link: (a) is not in any way deceptive; (b) does not falsely imply sponsorship, endorsement or approval of the linking party and its products or services; and (c) fits within the context of the linking party's site.</p>
+<p>These organizations may link to our home page so long as the link: (a) is not in any way deceptive; (b) does not falsely imply sponsorship, endorsement or approval of the linking party and its products or services; and (c) fits within the context of the linking party&apos;s site.</p>
 
 <p>If you are one of the organizations listed in paragraph 2 above and are interested in linking to our website, you must inform us by sending an e-mail to North Tensor. Please include your name, your organization name, contact information as well as the URL of your site, a list of any URLs from which you intend to link to our Website, and a list of the URLs on our site to which you would like to link. Wait 2-3 weeks for a response.</p>
 
@@ -129,10 +129,10 @@ export default function Example() {
     By use of the uniform resource locator being linked to; or</li>
     <li className="flex gap-x-3">
   <CheckCircleIcon className="mt-1 h-5 w-5 flex-none text-[#CC6B32]" aria-hidden="true" />
-    By use of any other description of our Website being linked to that makes sense within the context and format of content on the linking party's site.</li>
+    By use of any other description of our Website being linked to that makes sense within the context and format of content on the linking party&apos;s site.</li>
 </ul>
 
-<p>No use of North Tensor's logo or other artwork will be allowed for linking absent a trademark license agreement.</p>
+<p>No use of North Tensor&apos;s logo or other artwork will be allowed for linking absent a trademark license agreement.</p>
 
 <h2 className="mt-16 text-2xl font-bold tracking-tight text-slate-900"><strong>iFrames</strong></h2>
 <Divider />
@@ -147,7 +147,7 @@ export default function Example() {
 <h2 className="mt-16 text-2xl font-bold tracking-tight text-slate-900"><strong>Reservation of Rights</strong></h2>
 <Divider />
 
-<p>We reserve the right to request that you remove all links or any particular link to our Website. You approve to immediately remove all links to our Website upon request. We also reserve the right to amen these terms and conditions and it's linking policy at any time. By continuously linking to our Website, you agree to be bound to and follow these linking terms and conditions.</p>
+<p>We reserve the right to request that you remove all links or any particular link to our Website. You approve to immediately remove all links to our Website upon request. We also reserve the right to amen these terms and conditions and it&apos;s linking policy at any time. By continuously linking to our Website, you agree to be bound to and follow these linking terms and conditions.</p>
 
 <h2 className="mt-16 text-2xl font-bold tracking-tight text-slate-900"><strong>Removal of links from our website</strong></h2>
 <Divider />

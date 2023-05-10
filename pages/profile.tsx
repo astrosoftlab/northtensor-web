@@ -2,6 +2,7 @@ import { Auth } from '@supabase/auth-ui-react'
 import { ThemeSupa } from '@supabase/auth-ui-shared'
 import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react'
 import Account from '@/components/Account'
+import Image from 'next/image'
 
 export default function Home() {
   const session = useSession()
@@ -13,7 +14,7 @@ export default function Home() {
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           { !session &&
             <>
-              <img
+              <Image
                 className="mx-auto h-16 w-auto"
                 src="/images/newlogo.svg"
                 alt="Your Company"
