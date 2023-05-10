@@ -1,26 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import Stack from "@mui/material/Stack"
-import Identicon from "@polkadot/react-identicon";
 import AccountCard from './AccountCard'
-import AccountIdenticon from './AccountIdenticon'
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import { useUser, useSession, useSupabaseClient, Session } from '@supabase/auth-helpers-react'
 import Link from 'next/link'
 
 
-
-
-import {
-  Menu,
-  Button,
-  Dropdown,
-  Container,
-  Card,
-  // Icon,
-  // Image,
-  Label,
-} from 'semantic-ui-react'
 
 // import HeaderPathing from './HeaderPathing'
 import { useSubstrate, useSubstrateState } from '../../lib/substrate-lib'
@@ -136,7 +121,7 @@ function Main(props) {
             name1: keyringOption.text,
             coldkey: keyringOption.value,
             validated: false,
-            watched: true,
+            watched: false,
           };
           // Call setSS58Coldkeys to update ss58_coldkeys
           new_coldkeys.push(newColdkey);
@@ -152,7 +137,7 @@ function Main(props) {
         setSS58Coldkeys(temp_ss58coldkeys);
         setNewSS58Keys(true);
         const newColdkeyNames = new_coldkeys.map(coldkey => coldkey.name1);
-        console.log('newColdkeyNames', newColdkeyNames)
+        // console.log('newColdkeyNames', newColdkeyNames)
         setAccountColdkeysUpdateMessage(`Added the following coldkeys to your account: ${newColdkeyNames.join(', ')}`);
 
       }
@@ -170,6 +155,7 @@ function Main(props) {
         coldkey_array: [coldkey.coldkey],
         icon: 'user',
         source: 'account',
+        watched: coldkey.watched,
       }));
   
       setSS58ColdkeysProcessed(processed);
@@ -182,9 +168,9 @@ function Main(props) {
   const updatedKeyringOptions = keyringOptions.map((keyringOption) => {
     const matchingColdkey = ss58_coldkeys_processed.find((coldkey) => coldkey.value === keyringOption.value);
     if (matchingColdkey) {
-      return { ...keyringOption, text: matchingColdkey.text };
+      return { ...keyringOption, text: matchingColdkey.text, watched: matchingColdkey.watched };
     } else {
-      return keyringOption;
+      return { ...keyringOption, watched: false};
     }
   });
 
@@ -193,11 +179,23 @@ function Main(props) {
     ...ss58_coldkeys_processed.filter((item) => !keyringOptions.some((other) => other.key === item.key)),
   ]
   if (completeColdkeyOptions.length > 1) {
+    const watchedColdkeys = completeColdkeyOptions.filter(obj => obj.watched);
+    const allAccountsBeforeWatched = completeColdkeyOptions.map(obj => obj.value)
+    if ( watchedColdkeys.length > 0) {
+      completeColdkeyOptions.unshift({
+        key: 'Watched Accounts',
+        value: 'Watched Accounts',
+        text: 'Watched Accounts',
+        coldkey_array: watchedColdkeys.map(obj => obj.value),
+        icon: 'user',
+        source: 'account',
+      })
+    }
     completeColdkeyOptions.unshift({
       key: 'All Accounts',
       value: 'All Accounts',
       text: 'All Accounts',
-      coldkey_array: completeColdkeyOptions.map(obj => obj.value),
+      coldkey_array: allAccountsBeforeWatched,
       icon: 'user',
       source: 'account',
     })
@@ -217,8 +215,8 @@ function Main(props) {
     if (!currentAccount && initialAddress.length > 0) {
       let acc_match = completeColdkeyOptions.find((obj) => obj.key === initialAddress)
       setCurrentAccount(acc_match)
-      console.log('setcurrentaccount', currentAccount)
-      console.log('should be', completeColdkeyOptions.find((obj) => obj.key === initialAddress))
+      // console.log('setcurrentaccount', currentAccount)
+      // console.log('should be', completeColdkeyOptions.find((obj) => obj.key === initialAddress))
     }
 
   }, [initialAddress])
@@ -234,9 +232,9 @@ function Main(props) {
     // console.log("onchange", addr)
     if (addr.target.value === "Coldkey") {console.log("Coldkey")}
     else {
-    console.log("findign match result", completeColdkeyOptions.find((obj) => obj.key === addr.target.value))
+    // console.log("findign match result", completeColdkeyOptions.find((obj) => obj.key === addr.target.value))
     setCurrentAccount(completeColdkeyOptions.find((obj) => obj.key === addr.target.value))
-    console.log("setnewcurrentaccount", currentAccount)
+    // console.log("setnewcurrentaccount", currentAccount)
     }
   }
 
@@ -276,7 +274,7 @@ function Main(props) {
         </div>
 
       }
-      {newSS58keys ? <Button className='ml-2 rounded-md bg-slate-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600' onClick={() => updateProfile({ ss58_coldkeys })}>Save Coldkeys to Account</Button> : null}
+      {newSS58keys ? <button className='mt-2 ml-2 rounded-md bg-slate-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600' onClick={() => updateProfile({ ss58_coldkeys })}>Save Coldkeys to Account</button> : null}
     </div>
   )
 }
