@@ -38,14 +38,14 @@ export default function Example() {
               </p>
               <div className="mt-10 flex items-center gap-x-6">
                 <Link
-                  href="#"
+                  href="/resources"
                   className="rounded-md bg-slate-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
                 >
                   Get started
                 </Link>
-                <Link href="#" className="text-sm font-semibold leading-6 text-slate-900">
+                {/* <Link href="#" className="text-sm font-semibold leading-6 text-slate-900">
                   Learn more <span aria-hidden="true">→</span>
-                </Link>
+                </Link> */}
               </div>
             </div>
             <div className="mt-16 sm:mt-24 lg:mt-0 lg:flex-shrink-0 lg:flex-grow">
