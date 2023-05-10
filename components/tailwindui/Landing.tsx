@@ -19,7 +19,7 @@ export default function Example() {
 
   return (
 <div className="bg-slate-900">
-      <main>
+      <main className='flex h-fill'>
         {/* Hero section */}
         <div className="relative isolate">
           <svg
