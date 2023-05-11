@@ -25,21 +25,41 @@ export default function Account({ session }: { session: Session }) {
 
   function handleColdkeyInputChange(index: number, newName: string, newColdkey: string, newWatched: boolean) {
     setSS58Coldkeys(prevColdkeys => {
+      if (prevColdkeys === null) return prevColdkeys;
+      if (prevColdkeys[index] === null) return prevColdkeys;
+      const coldkey = prevColdkeys[index];
+      if (typeof coldkey !== 'object') return prevColdkeys;
+      const updatedColdkey = { 
+        ...coldkey,
+        name1: newName, 
+        coldkey: newColdkey, 
+        watched: newWatched
+      };
       const updatedColdkeys = [...prevColdkeys];
-      updatedColdkeys[index] = { ...updatedColdkeys[index], name1: newName, coldkey:newColdkey, watched: newWatched};
+      updatedColdkeys[index] = updatedColdkey;
       return updatedColdkeys;
     });
   }
+  
+  
 
-  function addNewColdkey(newName: string, newColdkey: String) {
+  function addNewColdkey(newName: string, newColdkey: string) {
     setSS58Coldkeys(prevColdkeys => {
-      const updatedColdkeys = [...prevColdkeys, { name1: newName, coldkey: newColdkey, watched: true, validated: false }];
+      if (prevColdkeys === null) {
+        const updatedColdkeys = [{ name1: newName, coldkey: newColdkey, watched: true, validated: false }];
       return updatedColdkeys;
+      }
+      else {
+        const updatedColdkeys = [...prevColdkeys, { name1: newName, coldkey: newColdkey, watched: true, validated: false }];
+        return updatedColdkeys;
+      }
+      
     });
   }
   
   function handleRemoveColdkey(index: number) {
     setSS58Coldkeys(prevColdkeys => {
+      if (prevColdkeys === null) return prevColdkeys;
       const updatedColdkeys = [...prevColdkeys];
       updatedColdkeys.splice(index, 1);
       return updatedColdkeys;
@@ -204,11 +224,15 @@ export default function Account({ session }: { session: Session }) {
             </button>
           </div>
           <ul>
-            {ss58_coldkeys?.map((key, index) => (
-              <li id={key.coldkey} key={key.coldkey}>
-                <ColdkeyInput onInputChange={handleColdkeyInputChange} name={key.name1} coldkey={key.coldkey} watched={key.watched} validated={key.validated} index={index} onDelete={handleRemoveColdkey} />
+          {ss58_coldkeys?.map((key, index) => {
+            if (typeof key !== 'object' || Array.isArray(key)) return null;
+            return (
+              <li id={key?.coldkey as string} key={key?.coldkey as string}>
+                <ColdkeyInput onInputChange={handleColdkeyInputChange} name={key?.name1} coldkey={key?.coldkey} watched={key?.watched} validated={key?.validated} index={index} onDelete={() => handleRemoveColdkey(index)} />
               </li>
-            ))}
+            )
+          })}
+
           </ul>
         </div>
       </div>

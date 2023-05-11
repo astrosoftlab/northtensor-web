@@ -11,7 +11,7 @@ import {
   ServerIcon,
 } from '@heroicons/react/20/solid'
 
-function classNames(...classes) {
+function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(' ')
 }
 

@@ -49,12 +49,13 @@ function Main(props) {
   const [accountColdkeysUpdateMessage, setAccountColdkeysUpdateMessage] = useState('');
   const user = useUser()
 
-
-  if (session) {
-    useEffect(() => {
+  useEffect(() => {
+    if (session) {
+    
       getProfile();
-    }, [session]);
-  }
+    }
+  }, [session]);
+  
 
   async function getProfile() {
     try {

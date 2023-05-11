@@ -6,8 +6,8 @@ import { useIsMountedRef } from "../../lib/hooks/api/useIsMountedRef";
 import axios from 'axios';
 
 
-const acctAddr = (acct: { value: any; }) => (acct ? acct.value : '')
-function Main(props: any) {
+const acctAddr = (acct) => (acct ? acct.value : '')
+function Main(props) {
 
     const [status, setStatus] = useState(null)
 
@@ -32,9 +32,9 @@ function Main(props: any) {
       if (!currentAccount) {
         return () => {}
       }
-      let unsubscribe: () => any
+      let unsubscribe
     
-      async function getStake(specificColdkey: string) {
+      async function getStake(specificColdkey) {
         const res = await api.query.subtensorModule.stake(MNRVHotkey, specificColdkey);
         return parseFloat(res.toString())
       }
@@ -88,13 +88,13 @@ function Main(props: any) {
   const token_id = "bittensor";
   
   if (!taoConversionRateUpdated) {
-    axios.get<{ [key: string]: { usd: number } }>(`https://api.coingecko.com/api/v3/simple/price?ids=${token_id}&vs_currencies=usd`)
-      .then((response: { data: { [x: string]: { usd: any; }; }; }) => {
+    axios.get<{ [key]: { usd } }>(`https://api.coingecko.com/api/v3/simple/price?ids=${token_id}&vs_currencies=usd`)
+      .then((response) => {
         const price = response.data[token_id].usd;
         setTaoConversionRate(price)
         setTaoConversionRateUpdated(true)
       })
-      .catch((error: any) => {
+      .catch((error) => {
         console.log(error);
       });
   }
@@ -199,6 +199,6 @@ function Main(props: any) {
 
 
 
-export default function Navigation(props : any) {
+export default function Navigation(props ) {
   return <Main {...props} />
 }

@@ -7,7 +7,7 @@ export default function Example() {
             <div>
               <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-100">Give us a Ping</h2>
               <p className="mt-4 leading-7 text-slate-600 dark:text-slate-300">
-                Don't hesitate to reach out if you're interested in North Tensor and Bittensor. We're happy to collaborate.
+                Don&apos;t hesitate to reach out if you&apos;re interested in North Tensor and Bittensor. We&apos;re happy to collaborate.
               </p>
             </div>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:col-span-2 lg:gap-8">
