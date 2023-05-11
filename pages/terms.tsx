@@ -3,7 +3,7 @@ import Feature from "@/components/tailwindui/Feature";
 import TermsContent from "@/components/tailwindui/TermsContent";
 
 
-function classNames(...classes) {
+function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(' ')
 }
 

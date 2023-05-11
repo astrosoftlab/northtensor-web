@@ -6,7 +6,7 @@ import Feature from "@/components/tailwindui/Feature"
 import Contact from "@/components/tailwindui/Contact"
 
 
-function classNames(...classes) {
+function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(' ')
 }
 
