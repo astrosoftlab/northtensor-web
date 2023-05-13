@@ -21,7 +21,7 @@ export default function Example() {
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">North Tensor</span>
-            <img className="h-16 w-auto" src="./images/invert.svg" alt="" />
+            <img className="h-16 w-auto" src="/images/invert.svg" alt="" />
           </Link>
         </div>
         <div className="flex lg:hidden">
@@ -64,7 +64,7 @@ export default function Example() {
               <span className="sr-only">North Tensor</span>
               <img
                 className="h-8 w-auto"
-                src="./images/invert.svg"
+                src="/images/invert.svg"
               />
             </Link>
             <button
