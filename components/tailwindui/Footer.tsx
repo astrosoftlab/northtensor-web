@@ -51,17 +51,25 @@ export default function Example() {
   const [showMenu, setShowMenu] = useState(false);
   return (
     <footer className="bg-slate-900 sticky bottom-0 w-full" >
-    <div className="hidden sm:block mx-auto max-w-7xl overflow-hidden px-6 py-2 sm:py-2 lg:px-8">
-      <nav className="sm:flex sm:justify-center sm:space-x-6 mt-0 text-center text-xs leading-0 text-slate-100" aria-label="Footer"> 
+    <div className="mx-auto max-w-7xl overflow-hidden px-6 py-2 sm:py-2 lg:px-8">
+      <div className="block sm:hidden mt-2 flex justify-center space-x-6">
+          {navigation.social.map((item) => (
+            <Link key={item.name} href={item.href} className="text-slate-100 hover:text-slate-500">
+              <span className="sr-only">{item.name}</span>
+              <item.icon className="h-6 w-6" aria-hidden="true" />
+            </Link>
+          ))}
+        </div>
+      <nav className="sm:flex sm:justify-center sm:space-x-6 mt- text-center text-xs leading-0 text-slate-100" aria-label="Footer"> 
             {navigation.main.map((item) => (
-              <div key={item.name} className="pb-1">
+              <div key={item.name} className="pb-1 mt-3">
                 <Link href={item.href} className="text-sm leading-0 text-slate-100 hover:text-slate-500">
                   {item.name}
                 </Link>
               </div>
             ))}
       </nav>
-      <div className="mt-1 flex justify-center space-x-6">
+      <div className="hidden sm:block mt-3 flex justify-center space-x-6">
         {navigation.social.map((item) => (
           <Link key={item.name} href={item.href} className="text-slate-100 hover:text-slate-500">
             <span className="sr-only">{item.name}</span>
@@ -74,45 +82,6 @@ export default function Example() {
         </p>
 
 
-    </div>
-    <div className="block sm:hidden mx-auto max-w-7xl overflow-hidden px-6 py-2 sm:py-2 lg:px-8">
-    {showMenu && (<>
-      <nav className="sm:flex sm:justify-center sm:space-x-6 mt-0 text-center text-xs leading-0 text-slate-100" aria-label="Footer">
-        
-          
-            {navigation.main.map((item) => (
-              <div key={item.name} className="pb-1">
-                <Link href={item.href} className="text-sm leading-0 text-slate-100 hover:text-slate-500">
-                  {item.name}
-                </Link>
-              </div>
-            ))}
-          
-      </nav>
-      <div className="mt-4 flex justify-center space-x-8">
-        {navigation.social.map((item) => (
-          <Link key={item.name} href={item.href} className="text-slate-100 hover:text-slate-500">
-            <span className="sr-only">{item.name}</span>
-            <item.icon className="h-6 w-6" aria-hidden="true" />
-          </Link>
-        ))}
-      </div>
-      </>
-      )}
-      <div className="mt-3 flex justify-between  space-x-6 items-center">
-      <button
-        className="block sm:hidden px-1 py-1 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-slate-500 border border-transparent rounded-md active:bg-slate-600 hover:bg-slate-600 focus:outline-none focus:shadow-outline-slate-500 focus:border-slate-600"
-        onClick={() => {
-          setShowMenu(!showMenu);
-          
-        }}
-      >
-        {showMenu ? 'Menu' : 'Menu'}
-      </button>
-      <p className="ml-auto text-xs leading-5 text-slate-100">
-        &copy; 2023 North Tensor
-      </p>
-      </div>
     </div>
   </footer>
   )
