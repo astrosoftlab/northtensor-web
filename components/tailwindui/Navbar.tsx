@@ -84,7 +84,7 @@ export default function Example() {
               <span className="sr-only">Close menu</span>
               <XMarkIcon className="h-6 w-6" aria-hidden="true" />
             </button>
-            <Link href="#" className="block md:hidden -m-1.5 p-1.5">
+            <Link href="/" className="block md:hidden -m-1.5 p-1.5">
               <span className="sr-only">North Tensor</span>
               <img
                 className="h-16 w-auto"
