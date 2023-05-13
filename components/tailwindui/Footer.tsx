@@ -1,5 +1,4 @@
 import Link from "next/link"
-import { useState } from 'react';
 
 const navigation = {
   main: [
@@ -48,7 +47,7 @@ const navigation = {
 
 export default function Example() {
 
-  const [showMenu, setShowMenu] = useState(false);
+  
   return (
     <footer className="bg-slate-900 sticky bottom-0 w-full" >
     <div className="mx-auto max-w-7xl overflow-hidden px-6 py-2 sm:py-2 lg:px-8">
@@ -69,13 +68,15 @@ export default function Example() {
               </div>
             ))}
       </nav>
-      <div className="hidden sm:block mt-3 flex justify-center space-x-6">
-        {navigation.social.map((item) => (
-          <Link key={item.name} href={item.href} className="text-slate-100 hover:text-slate-500">
-            <span className="sr-only">{item.name}</span>
-            <item.icon className="h-6 w-6" aria-hidden="true" />
-          </Link>
-        ))}
+      <div className='hidden sm:block'>
+        <div className="mt-3 flex justify-center space-x-6">
+          {navigation.social.map((item) => (
+            <Link key={item.name} href={item.href} className="text-slate-100 hover:text-slate-500">
+              <span className="sr-only">{item.name}</span>
+              <item.icon className="h-6 w-6" aria-hidden="true" />
+            </Link>
+          ))}
+        </div>
       </div>
       <p className="mt-1 text-center text-xs leading-5 text-slate-100">
           &copy; 2023 North Tensor
