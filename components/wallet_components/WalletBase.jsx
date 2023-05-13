@@ -88,11 +88,11 @@ function Main(props) {
   const token_id = "bittensor";
   
   if (!taoConversionRateUpdated) {
-    axios.get<{ [key]: { usd } }>(`https://api.coingecko.com/api/v3/simple/price?ids=${token_id}&vs_currencies=usd`)
+    axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=${token_id}&vs_currencies=usd`)
       .then((response) => {
         const price = response.data[token_id].usd;
-        setTaoConversionRate(price)
-        setTaoConversionRateUpdated(true)
+        setTaoConversionRate(price);
+        setTaoConversionRateUpdated(true);
       })
       .catch((error) => {
         console.log(error);
