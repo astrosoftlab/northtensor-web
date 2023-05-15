@@ -16,24 +16,24 @@ const projects = [
     imageUrl: '/images/ntLOGO.svg',
     detail: { team: 'North Tensor', task: 'NLP: Text Generation', summary: 'Sample project placeholder to store new projects running on bittensor'},
   },
-  {
-    id: 2,
-    name: 'Chattensor',
-    imageUrl: '/images/bittensor.png',
-    detail: { team: 'OpenTensor', task: 'NLP: Prompting', summary: 'Sample project placeholder to store new projects running on bittensor'},
-  },
-  {
-    id: 3,
-    name: 'Reform',
-    imageUrl: '/images/cooldog.jpg',
-    detail: { team: 'North Tensor', task: 'NLP: Text Generation', summary: 'Sample project placeholder to store new projects running on bittensor'},
-  },
-  {
-    id: 4,
-    name: 'Reform',
-    imageUrl: '/images/coolcat.jpg',
-    detail: {team: 'North Tensor', task: 'NLP: Text Generation', summary: 'Sample project placeholder to store new projects running on bittensor'},
-  },
+  // {
+  //   id: 2,
+  //   name: 'Chattensor',
+  //   imageUrl: '/images/bittensor.png',
+  //   detail: { team: 'OpenTensor', task: 'NLP: Prompting', summary: 'Sample project placeholder to store new projects running on bittensor'},
+  // },
+  // {
+  //   id: 3,
+  //   name: 'Reform',
+  //   imageUrl: '/images/cooldog.jpg',
+  //   detail: { team: 'North Tensor', task: 'NLP: Text Generation', summary: 'Sample project placeholder to store new projects running on bittensor'},
+  // },
+  // {
+  //   id: 4,
+  //   name: 'Reform',
+  //   imageUrl: '/images/coolcat.jpg',
+  //   detail: {team: 'North Tensor', task: 'NLP: Text Generation', summary: 'Sample project placeholder to store new projects running on bittensor'},
+  // },
 ]
 
 function classNames(...classes) {
