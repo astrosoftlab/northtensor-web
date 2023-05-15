@@ -1,38 +1,46 @@
-import React, { createRef } from 'react'
+import React, { createRef, useEffect, useState } from 'react'
 import {
-  Container,
   Dimmer,
   Loader,
   Grid,
-  Sticky,
   Message,
 } from 'semantic-ui-react'
-// import 'semantic-ui-css/semantic.min.css'
 
-import { SubstrateContextProvider, useSubstrateState } from '../lib/substrate-lib'
-// import { DeveloperConsole } from './substrate-lib/components'
+import { useRouter } from 'next/router';
+import { SubstrateContextProvider, useSubstrate} from '../lib/substrate-lib'
 
 import WalletHeader from './wallet_components/WalletHeader'
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
+import WalletBase from './wallet_components/WalletBase'
 
-// import Balances from './Balances'
-// import Bittensor from './Bittensor'
-// import BlockNumber from './BlockNumber'
-// import Interactor from './Interactor'
-// import NodeInfo from './NodeInfo'
-// import MNRVTip from './MNRVTip'
-// import Transfer from './Transfer'
-// import Events from './Events'
-import Navigations from './wallet_components/Navigations'
-
-import styles from '@/styles/Home.module.css'
-
-// import TemplateModule from './TemplateModule'
 
 function Main() {
-  const { apiState, apiError, keyringState } = useSubstrateState()
-  console.log('err', apiError)
+  const { forceLoadKeyring,  state: {apiState, apiError, keyringState} } = useSubstrate()
+
+  const [refresh, setRefresh] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    const handleRouteChange = () => {
+      setRefresh(true);
+    };
+
+    router.events.on('routeChangeComplete', handleRouteChange);
+
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (refresh) {
+      // Perform any actions you need to do when the page "refreshes"
+      console.log('refreshed')
+      window.location.reload();
+      setRefresh(false);
+
+    }
+  }, [refresh]);
+
   const loader = text => (
     <Dimmer active>
       <Loader size="small">{text}</Loader>
@@ -66,25 +74,17 @@ function Main() {
 
 
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        '& > :not(style)': {
-          m: 0,
-        },
-      }}
-    >
-      
-      <Paper variant="outlined">
-            <div ref={contextRef}>
-            <Sticky context={contextRef}>
-                <WalletHeader />
-            </Sticky>
-            <Navigations />
-            </div>
-      </Paper>
-    </Box>
+    <div class="flex flex-col item-start space-y-4 p-4 w-full sm:w-auto max-w-screen-lg">
+      <div x-ref="contextRef" style={{ position: 'sticky', top: 0, backgroundColor: 'white', zIndex: 10, borderRadius: 10, boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)' }}>
+        <WalletHeader />
+      </div>
+      <div class="flex justify-center">
+        <div class="flex flex-col w-full">
+          <WalletBase />
+        </div>
+      </div>
+
+    </div>
 
   )
 }

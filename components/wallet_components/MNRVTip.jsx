@@ -30,11 +30,11 @@ export default function Main(props) {
 
   return (
       <>
-      <h1 className="dark:text-gray-200 text-gray-800 text-3xl sm:text-3xl font-thin">Tip North Tensor</h1>
+      <h1 className="dark:text-slate-200 text-slate-800 text-3xl sm:text-3xl font-thin">Tip North Tensor</h1>
       <br />
       <form className="space-y-4">
         <div className="space-y-1">
-          <label htmlFor="standard-number" className="block text-gray-700 dark:text-gray-200">
+          <label htmlFor="standard-number" className="block text-slate-700 dark:text-slate-200">
           Tip Amount in Tao
           </label>
           <input
@@ -42,7 +42,7 @@ export default function Main(props) {
             type="number"
             value={sendAmount}
             onChange={onAmountChange}
-            className="block w-full px-4 py-2 leading-tight bg-white border border-gray-300 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
+            className="block w-full px-4 py-2 leading-tight bg-white border border-slate-300 rounded appearance-none focus:outline-none focus:bg-white focus:border-slate-500"
           />
         </div>
       </form>

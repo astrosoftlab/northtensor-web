@@ -181,7 +181,7 @@ export function SearchDialog() {
       >
         <Search width={15} />
         <span className="border border-l h-5"></span>
-        <span className="inline-block ml-4">Ask the AI!</span>
+        <span className="inline-block ml-4">Ask About our Docs</span>
       </button>
       <Dialog open={open}>
         <DialogContent className="sm:max-w-[850px] text-black">
@@ -192,7 +192,7 @@ export function SearchDialog() {
             </DialogDescription>
             <hr />
             <button className="absolute top-0 right-2 p-2" onClick={() => setOpen(false)}>
-              <X className="h-4 w-4 dark:text-gray-100" />
+              <X className="h-4 w-4 dark:text-slate-100" />
             </button>
           </DialogHeader>
 
@@ -228,7 +228,7 @@ export function SearchDialog() {
 
               {answer && !hasError ? (
                 <div className="flex items-center gap-4 dark:text-white">
-                  <span className="bg-gray-500 p-2 w-8 h-8 rounded-full text-center flex items-center justify-center">
+                  <span className="bg-slate-500 p-2 w-8 h-8 rounded-full text-center flex items-center justify-center">
                     <Wand width={18} className="text-white" />
                   </span>
                   <h3 className="font-semibold">Response:</h3>
@@ -245,18 +245,18 @@ export function SearchDialog() {
                   className="col-span-3"
                 />
                 <CornerDownLeft
-                  className={`absolute top-3 right-5 h-4 w-4 text-gray-300 transition-opacity ${
+                  className={`absolute top-3 right-5 h-4 w-4 text-slate-300 transition-opacity ${
                     search ? 'opacity-100' : 'opacity-0'
                   }`}
                 />
               </div>
-              <div className="text-xs text-gray-500 dark:text-gray-100">
+              <div className="text-xs text-slate-500 dark:text-slate-100">
                 Or try:{' '}
                 <button
                   type="button"
                   className="px-1.5 py-0.5
-                  bg-slate-50 dark:bg-gray-500
-                  hover:bg-slate-100 dark:hover:bg-gray-600
+                  bg-slate-50 dark:bg-slate-500
+                  hover:bg-slate-100 dark:hover:bg-slate-600
                   rounded border border-slate-200 dark:border-slate-600
                   transition-colors"
                   onClick={(_) =>
@@ -268,8 +268,8 @@ export function SearchDialog() {
                 <button
                   type="button"
                   className="px-1.5 py-0.5
-                  bg-slate-50 dark:bg-gray-500
-                  hover:bg-slate-100 dark:hover:bg-gray-600
+                  bg-slate-50 dark:bg-slate-500
+                  hover:bg-slate-100 dark:hover:bg-slate-600
                   rounded border border-slate-200 dark:border-slate-600
                   transition-colors"
                   onClick={(_) =>
@@ -281,7 +281,7 @@ export function SearchDialog() {
               </div>
             </div>
             <DialogFooter>
-              <button type="submit" className="bg-gray-500 hover:bg-gray-700 text-gray-100 font-bold py-2 px-4 rounded">
+              <button type="submit" className="bg-slate-500 hover:bg-slate-700 text-slate-100 font-bold py-2 px-4 rounded">
                 Submit
               </button>
             </DialogFooter>

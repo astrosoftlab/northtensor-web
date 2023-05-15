@@ -293,7 +293,7 @@ export default function Main(_props: any) {
   if (delegateInfo.length == 0) {
     return (
       <div className="flex items-center justify-center h-screen">
-        <div className="w-16 h-16 border-t-2 border-b-2 border-gray-900 rounded-full animate-spin"></div>
+        <div className="w-16 h-16 border-t-2 border-b-2 border-slate-900 rounded-full animate-spin"></div>
       </div>
     );
   }
@@ -304,11 +304,11 @@ export default function Main(_props: any) {
             <div className="flex flex-col mt-8 "> 
               <Stack direction="column" spacing={1} alignItems="center" marginTop="2em">
                 
-                <Typography className="dark:text-gray-200 text-center" variant="body2" sx={{
+                <Typography className="dark:text-slate-200 text-center" variant="body2" sx={{
                       fontWeight: 'bold',
                     }} >
                       Delegates<br />
-                      <button className="bg-gray-500 hover:bg-gray-600 text-gray-100 font-bold py-2 px-4 rounded" onClick={refreshMeta}>Refresh</button>
+                      <button className="bg-slate-500 hover:bg-slate-600 text-slate-100 font-bold py-2 px-4 rounded" onClick={refreshMeta}>Refresh</button>
                 </Typography>
                 <List sx={{
                   minHeight: "400px",
