@@ -23,6 +23,7 @@ const navigation = [
     icon: UserGroupIcon,
     children: [
       { name: 'Getting Started', href: '/docs/client-intro', },
+      { name: 'Talisman Wallet Guide', href: '/docs/talisman-general-guide', },
       { name: 'Using A VPN', href: '/docs/using-vpn', },
       { name: 'Purchase Guide', href: '/docs/purchase-tao', current: false },
       { name: 'Purchase Guide (Mobile)', href: '/docs/purchase-tao-mobile', },
