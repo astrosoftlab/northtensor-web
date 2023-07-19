@@ -8,8 +8,8 @@ import { useRouter } from 'next/router';
 
 const navigation = [
   { name: 'Get Started', href: '/resources' },
-  { name: 'Stake on North Tensor', href: '/wallet' },
-  { name: 'Built on Bittensor', href: '/built-on-bittensor' }, 
+  { name: 'Stake on North Tensor', href: '/wallet' }
+  // { name: 'Built on Bittensor', href: '/built-on-bittensor' }, 
 ]
 
 export default function Example() {
