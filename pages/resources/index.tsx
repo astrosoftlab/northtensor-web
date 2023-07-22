@@ -1,5 +1,6 @@
 import Layout from '../../components/Layout';
 import Head from 'next/head';
+import Link from "next/link";
 import { Inter } from 'next/font/google'
 import Date from '@/components/date';
 import { SearchDialog } from '@/components/SearchDialog';
@@ -8,96 +9,55 @@ import { getAllPostIds, getPostData, getSortedPostsData, PostData } from '@/lib/
 
 const inter = Inter({ subsets: ['latin'] })
 
-
 export default function Home({ postData }: { postData: PostData[] }) {
   return (
     <>
       <Head>
-        <title> Resources </title>
+        <title>Get Started</title>
       </Head>
-      <article>
-      <div className='flex flex-col md:flex-row h-fill'>
-        <div className='w-full md:w-1/6 bg-gray-200 md:px-0'>
-          <SidebarNav />
-        </div>
+      <div className='flex flex-col md:flex-row justify-center min-h-screen'>
         <div className='w-3/4 p-4'>
-        <h1 className="text-3xl sm:text-5xl dark:text-gray-100 font-thin ">Resources</h1>
-        <br/ >
-        <div className='flex justify-center items-center relative py-2'>
-          <SearchDialog />
-        </div>
-        <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-16 py-6 px-6">
-        <div>
-          <h2 className="text-2xl sm:text-3xl dark:text-gray-100 font-thin my-4 border-b-2 border-gray-700">Developers</h2>
-          <ul className="dark:text-gray-100">
-            {postData.filter(({ topics }) => topics.includes("developers")).map(({ id, date, title }) => (
-              <li className="py-4 px-4 rounded-lg bg-transparent border border-transparent transition-colors duration-200 hover:bg-white hover:border-gray-300 dark:hover:bg-gray-500 cursor-pointer" key={id} onClick={() => { window.location.href = `/docs/${id}` }}>
-                <div>
-                  {title}
-                  <br />
-                  <small className="text-gray-500 dark:text-gray-400">
-                    <Date dateString={date} />
-                  </small>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div>
-        
-          <h2 className="text-2xl sm:text-3xl dark:text-gray-100 font-thin my-4 border-b-2 border-gray-700">Clients</h2>
-          <ul className="dark:text-gray-100">
-            {postData.filter(({ topics }) => topics.includes("clients")).map(({ id, date, title }) => (
-              <li className="py-4 px-4 rounded-lg bg-transparent border border-transparent transition-colors duration-200 hover:bg-white hover:border-gray-300 dark:hover:bg-gray-500 cursor-pointer" key={id} onClick={() => { window.location.href = `/docs/${id}` }}>
-                {title}
-                <br />
-                <small className="text-gray-500 dark:text-gray-400">
-                  <Date dateString={date} />
-                </small>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <h2 className="text-2xl sm:text-3xl dark:text-gray-100 font-thin my-4 border-b-2 border-gray-700">Stakers</h2>
-          <ul className="dark:text-gray-100">
-            {postData.filter(({ topics }) => topics.includes("stakers")).map(({ id, date, title }) => (
-              <li className="py-4 px-4 rounded-lg bg-transparent border border-transparent transition-colors duration-200 hover:bg-white hover:border-gray-300 dark:hover:bg-gray-500 cursor-pointer" key={id} onClick={() => { window.location.href = `/docs/${id}` }}>
-                <div>
-                  {title}
-                  <br />
-                  <small className="text-gray-500 dark:text-gray-400">
-                    <Date dateString={date} />
-                  </small>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
-    <div>
-          <h2 className="text-2xl sm:text-3xl dark:text-gray-100 font-thin my-4 border-b-2 border-gray-700">Miners</h2>
-          <ul className="dark:text-gray-100">
-            {postData.filter(({ topics }) => topics.includes("miners")).map(({ id, date, title }) => (
-              <li className="py-4 px-4 rounded-lg bg-transparent border border-transparent transition-colors duration-200 hover:bg-white hover:border-gray-300 dark:hover:bg-gray-500 cursor-pointer" key={id} onClick={() => { window.location.href = `/docs/${id}` }}>
-                <div>
-                  {title}
-                  <br />
-                  <small className="text-gray-500 dark:text-gray-400">
-                   <Date dateString={date} />
-                  </small>
-                </div>
-               </li>
-              ))}
-          </ul>
-        </div>
-    </div>
+          <h1 className="text-4xl sm:text-6xl font-bold dark:text-slate-100 text-slate-800 mb-4"></h1>
+          <br />
 
+          <div className="md:grid grid-cols-3 gap-8 justify-center block md:gap-8"> {/* Added block class for mobile stacking */}
+            {/* Wallet Panel */}
+            <div className="overflow-hidden rounded-lg bg-slate-100 dark:bg-slate-600 shadow">
+              <div className="px-4 py-5 sm:p-6">
+                <h2 className="text-3xl sm:text-4xl font-semibold dark:text-slate-50 text-slate-800 mb-2">Wallet</h2>
+                <Link href="/docs/talisman-general-guide" className="dark:text-slate-200 text-slate-700 text-xl hover:underline">Talisman Wallet (desktop)</Link>
+                <br />
+                <Link href="/docs/nova-general-guide" className="dark:text-slate-200 text-slate-700 text-xl hover:underline">Nova Wallet (mobile)</Link>
+              </div>
+            </div>
+
+            {/* Buy Panel */}
+            <div className="overflow-hidden rounded-lg bg-slate-100 dark:bg-slate-600 shadow mt-8 md:mt-0"> {/* Added margin for mobile spacing */}
+              <div className="px-4 py-5 sm:p-6">
+                <h2 className="text-3xl sm:text-4xl font-semibold dark:text-slate-50 text-slate-800 mb-2">Buy</h2>
+                <h3 className="text-2xl sm:text-2xl font-semibold dark:text-slate-50 text-slate-800 mt-4 mb-2 underline">Centralized Exchange (CEX):</h3>
+                <Link href="/docs/purchase-tao" className="dark:text-slate-200 text-slate-700 text-xl hover:underline">Outside the US or with a VPN (desktop)</Link>
+                <br />
+                <Link href="/docs/purchase-tao-mobile" className="dark:text-slate-200 text-slate-700 text-xl hover:underline">Outside the US or with a VPN (mobile)</Link>
+                <h3 className="text-2xl sm:text-2xl font-semibold dark:text-slate-50 text-slate-800 mt-6 mb-2 underline">Decentralized Exchange (DEX):</h3>
+                <p className="dark:text-slate-200" >Using Ethereum, Uniswap, and Taobridge (coming soon)</p>
+              </div>
+            </div>
+
+            {/* Stake Panel */}
+            <div className="overflow-hidden rounded-lg dark:bg-slate-600 bg-slate-100 shadow mt-8 md:mt-0"> {/* Added margin for mobile spacing */}
+              <div className="px-4 py-5 sm:p-6">
+                <h2 className="text-3xl sm:text-4xl font-semibold dark:text-slate-50 text-slate-800 mb-2">Stake</h2>
+                <Link href="/docs/staking" className="dark:text-slate-200 text-slate-700 text-xl hover:underline">Staking on North Tensor</Link>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    
-      </article>
+      <footer className="flex justify-center items-center">
+        {/* Your footer content here */}
+      </footer>
     </>
-
   );
 }
 

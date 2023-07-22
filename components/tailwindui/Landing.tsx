@@ -16,11 +16,11 @@ function classNames(...classes: any[]) {
 }
 
 export default function Example() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-<div className="bg-slate-900">
-      <main className='flex h-fill'>
+    <div className="bg-slate-900">
+      <main className="flex justify-center items-center h-fill pb-16">
         {/* Hero section */}
         <div className="relative isolate">
           <svg
@@ -35,7 +35,9 @@ export default function Example() {
                 Build Your Project on Bittensor
               </h1>
               <p className="mt-6 text-lg leading-8 text-slate-300">
-                We are a Bittensor-first AI Firm aiming to utilize the inevitable union of economic efficiencies provided through cryptocurrency technologies. Our focus is to create infrastructure required to scale and support basic transformer driven data extraction to Artificial General Intelligence.
+                We are a Bittensor-first AI Firm aiming to utilize the inevitable union of economic efficiencies provided
+                through cryptocurrency technologies. Our focus is to create infrastructure required to scale and support
+                basic transformer-driven data extraction to Artificial General Intelligence.
               </p>
               <div className="mt-10 flex items-center gap-x-6">
                 <Link
@@ -57,10 +59,7 @@ export default function Example() {
                     <rect width={316} height={684} rx={36} />
                   </clipPath>
                 </defs>
-                <foreignObject
-                  width={950}
-                  height={950}
-                >
+                <foreignObject width={950} height={950}>
                   <img src="/images/viking-ship.png" alt="" />
                 </foreignObject>
               </svg>
@@ -69,5 +68,5 @@ export default function Example() {
         </div>
       </main>
     </div>
-  )
+  );
 }
