@@ -20,7 +20,7 @@ export default function Example() {
 
   return (
     <div className="bg-slate-900">
-      <main className="flex justify-center items-center h-fill">
+      <main className="flex justify-center items-center h-fill pb-16">
         {/* Hero section */}
         <div className="relative isolate">
           <svg
