@@ -5,9 +5,6 @@ import { useSubstrateState } from '../../lib/substrate-lib'
 import { useIsMountedRef } from "../../lib/hooks/api/useIsMountedRef";
 import axios from 'axios';
 
-import Modal from 'react-modal';
-import UnstakeModal from '@/components/tailwindui/UnstakeModal'
-
 
 const acctAddr = (acct) => (acct ? acct.value : '')
 function Main(props) {
