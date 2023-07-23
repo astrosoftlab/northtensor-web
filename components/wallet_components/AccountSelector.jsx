@@ -195,7 +195,7 @@ function Main(props) {
         meta: {source: 'group', 'isInjected': false},
         coldkey_array: watchedColdkeys.map(obj => obj.value),
         icon: 'user',
-        source: 'account',
+        source: 'group',
       })
     }
     completeColdkeyOptions.unshift({
@@ -206,7 +206,7 @@ function Main(props) {
       meta: {source: 'group', 'isInjected': false},
       coldkey_array: allAccountsBeforeWatched,
       icon: 'user',
-      source: 'account',
+      source: 'group',
     })
   }
   
