@@ -4,6 +4,7 @@ import { useSubstrateState } from '../../lib/substrate-lib'
 
 import { useIsMountedRef } from "../../lib/hooks/api/useIsMountedRef";
 import axios from 'axios';
+import CopyToClipboardButton from './CopyButton'
 
 
 const acctAddr = (acct) => (acct ? acct.value : '')
@@ -117,7 +118,21 @@ function Main(props) {
   //   }
   // }, [currentAccount])
     return (
-      <><div className="flex items-center justify-center flex-grow">
+      <>
+      <div className="relative" style={{ display: "flex", justifyContent: "space-evenly" }}>
+        {(currentAccount != null && currentAccount.source != 'group') ?
+          <CopyToClipboardButton copyText={currentAccount.address} displayText={currentAccount.address.length > 10
+            ? `${currentAccount.address.substring(0, 5)}...${currentAccount.address.substring(currentAccount.address.length - 5)}`
+            : currentAccount.address} />
+          :
+          null
+        }
+      </div>
+
+      <div style={{ height: "10px" }}></div>
+
+      <div className="flex items-center justify-center flex-grow">
+        
         <div className="bg-slate-50 shadow sm:rounded-md lg:w-96 sm:w-full">
 
         <ul role="list" className="divide-y divide-slate-200">
@@ -169,11 +184,12 @@ function Main(props) {
         </div>
       </div>
     
-      <div className="flex justify-center items-center pt-4"> {/* Add 'pt-4' here for padding-top */}
-        <div className="text-center w-full bg-slate-50 shadow sm:rounded-md lg:w-96 sm:w-full" style={{whiteSpace: "normal", wordWrap: "break-word"}}>
+      <div className="flex justify-center items-center pt-4">
+        <div className="text-center w-full bg-gray-200 shadow sm:rounded-md lg:w-96 sm:w-full" style={{ whiteSpace: "normal", wordWrap: "break-word", color: "black" }}>
           {status}
         </div>
       </div>
+
 
 
 
@@ -228,15 +244,16 @@ function Main(props) {
         <div style={{ display: "flex", alignItems: "center" }}>
           <input
             type="number"
-            step="0.00000000001"
-            placeholder="Enter Tao value to Un-Stake"
+            step="0.000001"
+            placeholder="Enter Tao value to Stake"
             onChange={(e) => {
               // Assuming you have a state variable named 'setUnstakeAmount' to store the input value
               setStakeAmount(parseFloat(e.target.value));
             }}
-            style={{ width: "100%" }}
+            style={{ width: "100%", color: "black" }}
           />
         </div>
+
 
 
 
@@ -349,13 +366,13 @@ function Main(props) {
         <div style={{ display: "flex", alignItems: "center" }}>
           <input
             type="number"
-            step="0.00000000001"
+            step="0.000001"
             placeholder="Enter Tao value to Un-Stake"
             onChange={(e) => {
               // Assuming you have a state variable named 'setUnstakeAmount' to store the input value
               setUnstakeAmount(parseFloat(e.target.value));
             }}
-            style={{ width: "100%" }}
+            style={{ width: "100%", color: "black" }}
           />
         </div>
 
