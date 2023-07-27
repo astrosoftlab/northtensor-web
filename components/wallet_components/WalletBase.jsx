@@ -184,11 +184,12 @@ function Main(props) {
         </div>
       </div>
     
-      <div className="flex justify-center items-center pt-4"> {/* Add 'pt-4' here for padding-top */}
-        <div className="text-center w-full bg-slate-50 shadow sm:rounded-md lg:w-96 sm:w-full" style={{whiteSpace: "normal", wordWrap: "break-word"}}>
+      <div className="flex justify-center items-center pt-4">
+        <div className="text-center w-full bg-gray-200 shadow sm:rounded-md lg:w-96 sm:w-full" style={{ whiteSpace: "normal", wordWrap: "break-word", color: "black" }}>
           {status}
         </div>
       </div>
+
 
 
 
