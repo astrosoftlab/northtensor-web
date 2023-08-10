@@ -1,11 +1,13 @@
 import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 
 export default function Example() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const router = useRouter()
+  const pathName = usePathname()
 
   const closeMenu = () => {
     setMobileMenuOpen(false)
@@ -22,7 +24,11 @@ export default function Example() {
 
   return (
     <header>
-      <nav className="absolute z-10 w-full border-b border-black/5 dark:border-white/5 lg:border-transparent ">
+      <nav
+        className={`${
+          pathName === "/" ? "" : "bg-white"
+        } z-10 w-full border-b border-b-gray-100 border-solid`}
+      >
         <div className="container">
           <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 md:gap-0 md:py-4 ">
             <div className="relative z-20 flex justify-between w-full md:px-0 lg:w-max ">
