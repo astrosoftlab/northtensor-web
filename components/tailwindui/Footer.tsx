@@ -51,12 +51,7 @@ export default function Example() {
         <div
           aria-hidden="true"
           className="absolute inset-0 flex items-center h-full"
-        >
-          <div
-            aria-hidden="true"
-            className="bg-layers bg-scale w-56 h-56 m-auto blur-xl bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 rounded-full md:w-[30rem] md:h-[30rem] md:blur-3xl"
-          />
-        </div>
+        ></div>
         <div
           aria-hidden="true"
           className="absolute inset-0 w-full h-full bg-[#020314] opacity-80"
