@@ -1,6 +1,6 @@
-'use client'
+"use client"
 
-import * as React from 'react'
+import * as React from "react"
 // import { Button } from '@/components/ui/button'
 import {
   Dialog,
@@ -9,12 +9,19 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog'
-import { Input } from '@/components/ui/input'
-import { SSE } from 'sse.js'
-import type { CreateCompletionResponse } from 'openai'
-import { X, Loader, User, Frown, CornerDownLeft, Search, Wand } from 'lucide-react'
-
+} from "@/components/ui/dialog"
+import { Input } from "@/components/ui/input"
+import {
+  CornerDownLeft,
+  Frown,
+  Loader,
+  Search,
+  User,
+  Wand,
+  X,
+} from "lucide-react"
+import type { CreateCompletionResponse } from "openai"
+import { SSE } from "sse.js"
 
 function promptDataReducer(
   state: any[],
@@ -23,15 +30,15 @@ function promptDataReducer(
     answer?: string | undefined
     status?: string
     query?: string | undefined
-    type?: 'remove-last-item' | string
-  }
+    type?: "remove-last-item" | string
+  },
 ) {
   // set a standard state to use later
   let current = [...state]
 
   if (action.type) {
     switch (action.type) {
-      case 'remove-last-item':
+      case "remove-last-item":
         current.pop()
         return [...current]
       default:
@@ -43,7 +50,7 @@ function promptDataReducer(
   if (action.index === undefined) return [...state]
 
   if (!current[action.index]) {
-    current[action.index] = { query: '', answer: '', status: '' }
+    current[action.index] = { query: "", answer: "", status: "" }
   }
 
   current[action.index].answer = action.answer
@@ -60,40 +67,44 @@ function promptDataReducer(
 
 export function SearchDialog() {
   const [open, setOpen] = React.useState(false)
-  const [search, setSearch] = React.useState<string>('')
-  const [question, setQuestion] = React.useState<string>('')
-  const [answer, setAnswer] = React.useState<string | undefined>('')
+  const [search, setSearch] = React.useState<string>("")
+  const [question, setQuestion] = React.useState<string>("")
+  const [answer, setAnswer] = React.useState<string | undefined>("")
   const eventSourceRef = React.useRef<SSE>()
   const [isLoading, setIsLoading] = React.useState(false)
   const [hasError, setHasError] = React.useState(false)
   const [promptIndex, setPromptIndex] = React.useState(0)
-  const [promptData, dispatchPromptData] = React.useReducer(promptDataReducer, [])
+  const [promptData, dispatchPromptData] = React.useReducer(
+    promptDataReducer,
+    [],
+  )
 
-  const cantHelp = answer?.trim() === "Sorry, I don't know how to help with that."
+  const cantHelp =
+    answer?.trim() === "Sorry, I don't know how to help with that."
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
-      if (e.key === 'k' && e.metaKey) {
+      if (e.key === "k" && e.metaKey) {
         setOpen(true)
       }
 
-      if (e.key === 'Escape') {
-        console.log('esc')
+      if (e.key === "Escape") {
+        console.log("esc")
         handleModalToggle()
       }
     }
 
-    document.addEventListener('keydown', down)
-    return () => document.removeEventListener('keydown', down)
+    document.addEventListener("keydown", down)
+    return () => document.removeEventListener("keydown", down)
   }, [])
 
   function handleModalToggle() {
     setOpen(!open)
-    setSearch('')
-    setQuestion('')
+    setSearch("")
+    setQuestion("")
     setAnswer(undefined)
     setPromptIndex(0)
-    dispatchPromptData({ type: 'remove-last-item' })
+    dispatchPromptData({ type: "remove-last-item" })
     setHasError(false)
     setIsLoading(false)
   }
@@ -102,16 +113,16 @@ export function SearchDialog() {
     async (query: string) => {
       setAnswer(undefined)
       setQuestion(query)
-      setSearch('')
+      setSearch("")
       dispatchPromptData({ index: promptIndex, answer: undefined, query })
       setHasError(false)
       setIsLoading(true)
 
       const eventSource = new SSE(`api/vector-search`, {
         headers: {
-          apikey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? '',
+          apikey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? "",
           Authorization: `Bearer ${process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY}`,
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         payload: JSON.stringify({ query }),
       })
@@ -122,30 +133,32 @@ export function SearchDialog() {
         console.error(err)
       }
 
-      eventSource.addEventListener('error', handleError)
-      eventSource.addEventListener('message', (e: any) => {
+      eventSource.addEventListener("error", handleError)
+      eventSource.addEventListener("message", (e: any) => {
         try {
           setIsLoading(false)
 
-          if (e.data === '[DONE]') {
+          if (e.data === "[DONE]") {
             setPromptIndex((x) => {
               return x + 1
             })
             return
           }
 
-          const completionResponse: CreateCompletionResponse = JSON.parse(e.data)
+          const completionResponse: CreateCompletionResponse = JSON.parse(
+            e.data,
+          )
           const text = completionResponse.choices[0].text
 
           setAnswer((answer) => {
-            const currentAnswer = answer ?? ''
+            const currentAnswer = answer ?? ""
 
             dispatchPromptData({
               index: promptIndex,
               answer: currentAnswer + text,
             })
 
-            return (answer ?? '') + text
+            return (answer ?? "") + text
           })
         } catch (err) {
           handleError(err)
@@ -158,7 +171,7 @@ export function SearchDialog() {
 
       setIsLoading(true)
     },
-    [promptIndex, promptData]
+    [promptIndex, promptData],
   )
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
@@ -173,26 +186,25 @@ export function SearchDialog() {
       <button
         onClick={() => setOpen(true)}
         className="text-base flex gap-2 items-center px-4 py-2 z-50 relative
-        text-slate-500 dark:text-slate-400  hover:text-slate-700 dark:hover:text-slate-300
-        transition-colors
-        rounded-md
-        border border-slate-200 dark:border-slate-500 hover:border-slate-300 dark:hover:border-slate-500
-        min-w-[300px] "
+        text-slate-500 hover:text-slate-700 transition-colors rounded-md
+        border border-slate-200  hover:border-slate-300 
+        min-w-[300px]"
       >
         <Search width={15} />
-        <span className="border border-l h-5"></span>
+        <span className="h-5 border border-l"></span>
         <span className="inline-block ml-4">Ask About our Docs</span>
       </button>
       <Dialog open={open}>
         <DialogContent className="sm:max-w-[850px] text-black">
           <DialogHeader>
             <DialogTitle>AI Resource Search</DialogTitle>
-            <DialogDescription>
-              I may make things up.
-            </DialogDescription>
+            <DialogDescription>I may make things up.</DialogDescription>
             <hr />
-            <button className="absolute top-0 right-2 p-2" onClick={() => setOpen(false)}>
-              <X className="h-4 w-4 dark:text-slate-100" />
+            <button
+              className="absolute top-0 p-2 right-2"
+              onClick={() => setOpen(false)}
+            >
+              <X className="w-4 h-4 " />
             </button>
           </DialogHeader>
 
@@ -200,39 +212,39 @@ export function SearchDialog() {
             <div className="grid gap-4 py-4 text-slate-700">
               {question && (
                 <div className="flex gap-4">
-                  <span className="bg-slate-100 dark:bg-slate-300 p-2 w-8 h-8 rounded-full text-center flex items-center justify-center">
-                    <User width={18} />{' '}
+                  <span className="flex items-center justify-center w-8 h-8 p-2 text-center rounded-full bg-slate-100 ">
+                    <User width={18} />{" "}
                   </span>
-                  <p className="mt-0.5 font-semibold text-slate-700 dark:text-slate-100">
+                  <p className="mt-0.5 font-semibold text-slate-700 ">
                     {question}
                   </p>
                 </div>
               )}
 
               {isLoading && (
-                <div className="animate-spin relative flex w-5 h-5 ml-2">
+                <div className="relative flex w-5 h-5 ml-2 animate-spin">
                   <Loader />
                 </div>
               )}
 
               {hasError && (
                 <div className="flex items-center gap-4">
-                  <span className="bg-red-100 p-2 w-8 h-8 rounded-full text-center flex items-center justify-center">
+                  <span className="flex items-center justify-center w-8 h-8 p-2 text-center bg-red-100 rounded-full">
                     <Frown width={18} />
                   </span>
-                  <span className="text-slate-700 dark:text-slate-100">
+                  <span className="text-slate-700 ">
                     Failure. Please check your connection.
                   </span>
                 </div>
               )}
 
               {answer && !hasError ? (
-                <div className="flex items-center gap-4 dark:text-white">
-                  <span className="bg-slate-500 p-2 w-8 h-8 rounded-full text-center flex items-center justify-center">
+                <div className="flex items-center gap-4 ">
+                  <span className="flex items-center justify-center w-8 h-8 p-2 text-center rounded-full bg-slate-500">
                     <Wand width={18} className="text-white" />
                   </span>
                   <h3 className="font-semibold">Response:</h3>
-                  <div dangerouslySetInnerHTML={{ __html: answer }}/>
+                  <div dangerouslySetInnerHTML={{ __html: answer }} />
                 </div>
               ) : null}
 
@@ -246,42 +258,41 @@ export function SearchDialog() {
                 />
                 <CornerDownLeft
                   className={`absolute top-3 right-5 h-4 w-4 text-slate-300 transition-opacity ${
-                    search ? 'opacity-100' : 'opacity-0'
+                    search ? "opacity-100" : "opacity-0"
                   }`}
                 />
               </div>
-              <div className="text-xs text-slate-500 dark:text-slate-100">
-                Or try:{' '}
+              <div className="text-xs text-slate-500 ">
+                Or try:{" "}
                 <button
                   type="button"
                   className="px-1.5 py-0.5
-                  bg-slate-50 dark:bg-slate-500
-                  hover:bg-slate-100 dark:hover:bg-slate-600
-                  rounded border border-slate-200 dark:border-slate-600
+                  bg-slate-50 
+                  hover:bg-slate-100 
+                  rounded border border-slate-200 
                   transition-colors"
-                  onClick={(_) =>
-                    setSearch('What is Bittensor?')
-                  }
+                  onClick={(_) => setSearch("What is Bittensor?")}
                 >
                   What is Bittensor?
                 </button>
                 <button
                   type="button"
                   className="px-1.5 py-0.5
-                  bg-slate-50 dark:bg-slate-500
-                  hover:bg-slate-100 dark:hover:bg-slate-600
-                  rounded border border-slate-200 dark:border-slate-600
+                  bg-slate-50 
+                  hover:bg-slate-100 
+                  rounded border border-slate-200 
                   transition-colors"
-                  onClick={(_) =>
-                    setSearch('How do I stake?')
-                  }
+                  onClick={(_) => setSearch("How do I stake?")}
                 >
                   How do I stake?
                 </button>
               </div>
             </div>
             <DialogFooter>
-              <button type="submit" className="bg-slate-500 hover:bg-slate-700 text-slate-100 font-bold py-2 px-4 rounded">
+              <button
+                type="submit"
+                className="px-4 py-2 font-bold rounded bg-slate-500 hover:bg-slate-700 text-slate-100"
+              >
                 Submit
               </button>
             </DialogFooter>

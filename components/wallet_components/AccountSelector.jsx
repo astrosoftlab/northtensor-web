@@ -139,8 +139,8 @@ function Main(props) {
         // console.log('newColdkeyNames', newColdkeyNames)
         setAccountColdkeysUpdateMessage(
           `Added the following coldkeys to your account: ${newColdkeyNames.join(
-            ", "
-          )}`
+            ", ",
+          )}`,
         )
       }
     }
@@ -169,7 +169,7 @@ function Main(props) {
 
   const updatedKeyringOptions = keyringOptions.map((keyringOption) => {
     const matchingColdkey = ss58_coldkeys_processed.find(
-      (coldkey) => coldkey.value === keyringOption.value
+      (coldkey) => coldkey.value === keyringOption.value,
     )
     if (matchingColdkey) {
       return {
@@ -185,13 +185,13 @@ function Main(props) {
   const completeColdkeyOptions = [
     ...updatedKeyringOptions,
     ...ss58_coldkeys_processed.filter(
-      (item) => !keyringOptions.some((other) => other.key === item.key)
+      (item) => !keyringOptions.some((other) => other.key === item.key),
     ),
   ]
   if (completeColdkeyOptions.length > 1) {
     const watchedColdkeys = completeColdkeyOptions.filter((obj) => obj.watched)
     const allAccountsBeforeWatched = completeColdkeyOptions.map(
-      (obj) => obj.value
+      (obj) => obj.value,
     )
     if (watchedColdkeys.length > 0) {
       completeColdkeyOptions.unshift({
@@ -229,7 +229,7 @@ function Main(props) {
   useEffect(() => {
     if (!currentAccount && initialAddress.length > 0) {
       let acc_match = completeColdkeyOptions.find(
-        (obj) => obj.key === initialAddress
+        (obj) => obj.key === initialAddress,
       )
       setCurrentAccount(acc_match)
       // console.log('setcurrentaccount', currentAccount)
@@ -248,7 +248,7 @@ function Main(props) {
     } else {
       // console.log("findign match result", completeColdkeyOptions.find((obj) => obj.key === addr.target.value))
       setCurrentAccount(
-        completeColdkeyOptions.find((obj) => obj.key === addr.target.value)
+        completeColdkeyOptions.find((obj) => obj.key === addr.target.value),
       )
       // console.log("setnewcurrentaccount", currentAccount)
     }
@@ -274,14 +274,10 @@ function Main(props) {
         </Select>
       ) : (
         <div className="text-center">
-          <h1 className="mb-2 text-xl font-bold dark:text-slate-800">
-            No Accounts Detected
-          </h1>
-          <h2 className="text-l dark:text-slate-800">
-            Connect a Talisman Wallet{" "}
-          </h2>
-          <p className="mb-2 text-ml dark:text-slate-800">or</p>
-          <h2 className="text-l dark:text-slate-800">
+          <h1 className="mb-2 text-xl font-bold ">No Accounts Detected</h1>
+          <h2 className="text-l ">Connect a Talisman Wallet </h2>
+          <p className="mb-2 text-ml ">or</p>
+          <h2 className="text-l ">
             {session ? (
               "add Coldkeys to your account"
             ) : (

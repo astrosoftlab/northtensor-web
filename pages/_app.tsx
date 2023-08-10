@@ -27,7 +27,7 @@ export default function App({
       initialSession={pageProps.initialSession}
     >
       <Head>
-        <title>NORTH TENSOR</title>
+        <title>NorthTensor</title>
       </Head>
       <div className={`${inter.variable} font-sans`}>
         <Layout>

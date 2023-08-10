@@ -38,8 +38,8 @@ export default function Example() {
                 className="flex items-center gap-1 space-x-2 hover:text-inherit"
               >
                 <img className="w-auto h-10" src="/images/solo.png" alt="" />
-                <div className="flex gap-2 text-2xl font-bold">
-                  <span className="text-primary">NORTH</span>{" "}
+                <div className="flex text-2xl font-bold">
+                  <span className="text-primary">NORTH</span>
                   <span>TENSOR</span>
                 </div>
               </Link>
@@ -53,12 +53,12 @@ export default function Example() {
                   <div
                     aria-hidden="true"
                     id="line"
-                    className="m-auto h-0.5 w-5 rounded bg-sky-900 transition duration-300 dark:bg-gray-300 "
+                    className="m-auto h-0.5 w-5 rounded bg-sky-900 transition duration-300  "
                   ></div>
                   <div
                     aria-hidden="true"
                     id="line2"
-                    className="m-auto mt-2 h-0.5 w-5 rounded bg-sky-900 transition duration-300 dark:bg-gray-300 "
+                    className="m-auto mt-2 h-0.5 w-5 rounded bg-sky-900 transition duration-300  "
                   ></div>
                 </button>
               </div>
@@ -66,20 +66,20 @@ export default function Example() {
             <div
               id="navLayer"
               aria-hidden="true"
-              className="fixed inset-0 z-10 w-screen h-screen transition duration-500 origin-bottom scale-y-0 bg-white/70 backdrop-blur-2xl dark:bg-gray-900/70 lg:hidden"
+              className="fixed inset-0 z-10 w-screen h-screen transition duration-500 origin-bottom scale-y-0 bg-white/70 backdrop-blur-2xl lg:hidden"
             ></div>
             <div
               id="navlinks"
               className={`absolute left-0 z-20 flex-col flex-wrap justify-end sm:visible ${
                 mobileMenuOpen ? "" : "invisible opacity-0"
-              } w-full gap-6 p-8 transition-all duration-300 origin-top-right translate-y-1 bg-white border border-gray-100 shadow-2xl top-full rounded-3xl shadow-gray-600/10 dark:border-gray-700 dark:bg-gray-800 dark:shadow-none lg:relative lg:flex lg:w-7/12 lg:translate-y-0 lg:flex-row lg:items-center lg:gap-0 lg:border-none lg:bg-transparent lg:p-0 lg:opacity-100 lg:shadow-none`}
+              } w-full gap-6 p-8 transition-all duration-300 origin-top-right translate-y-1 bg-white border border-gray-100 shadow-2xl top-full rounded-3xl shadow-gray-600/10  lg:relative lg:flex lg:w-7/12 lg:translate-y-0 lg:flex-row lg:items-center lg:gap-0 lg:border-none lg:bg-transparent lg:p-0 lg:opacity-100 lg:shadow-none`}
             >
-              <div className="w-full text-gray-600 dark:text-gray-200 lg:w-auto lg:pr-4 lg:pt-0 ">
+              <div className="w-full text-gray-600 lg:w-auto lg:pr-4 lg:pt-0 ">
                 <ul className="flex flex-col gap-6 tracking-wide lg:flex-row lg:gap-0 lg:text-sm ">
                   <li className="">
                     <Link
                       href="/resources"
-                      className="block font-semibold text-gray-700 transition hover:text-primary dark:hover:text-white md:px-4 "
+                      className="block font-semibold text-gray-700 transition hover:text-primary md:px-4 "
                     >
                       <span className="">Get Started</span>
                     </Link>
@@ -87,7 +87,7 @@ export default function Example() {
                   <li className="">
                     <Link
                       href="/wallet"
-                      className="flex gap-2 font-semibold text-gray-700 transition hover:text-primary dark:text-white dark:hover:text-white md:px-4 "
+                      className="flex gap-2 font-semibold text-gray-700 transition hover:text-primary md:px-4 "
                     >
                       <span className="">Stake on North Tensor</span>
                     </Link>
@@ -97,9 +97,9 @@ export default function Example() {
               <div className="flex gap-2 mt-12 lg:mt-0 ">
                 <Link
                   href="/wallet"
-                  className="relative flex items-center justify-center w-full px-4 h-9 before:absolute before:inset-0 before:rounded-full before:border before:border-transparent before:bg-primary/10 before:bg-gradient-to-b before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 dark:before:border-gray-700 dark:before:bg-gray-800 sm:w-max"
+                  className="relative flex items-center justify-center w-full px-4 h-9 before:absolute before:inset-0 before:rounded-full before:border before:border-transparent before:bg-primary/10 before:bg-gradient-to-b before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
                 >
-                  <span className="relative text-sm font-semibold text-primary dark:text-white">
+                  <span className="relative text-sm font-semibold text-primary ">
                     Wallet
                   </span>
                 </Link>

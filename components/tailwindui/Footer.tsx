@@ -7,7 +7,7 @@ export default function Example() {
         <div className="flex flex-col sm:flex-row justify-between gap-8 relative z-[1] container max-w-2xl text-white">
           <div className="flex items-center gap-1">
             <img src="/images/solo-white.png" alt="" className="w-auto h-6" />
-            <span>North Tensor © 2023</span>
+            <span>NorthTensor © 2023</span>
           </div>
           <div className="flex flex-col gap-4 sm:flex-row">
             <Link href={"/terms"} className="hover:text-secondary">

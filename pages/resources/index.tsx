@@ -9,7 +9,7 @@ export default function Home({ postData }: { postData: PostData[] }) {
         <title>Get Started</title>
       </Head>
       <div className="w-3/4 p-4">
-        <h1 className="mb-4 text-4xl font-bold sm:text-6xl dark:text-slate-100 text-slate-800">
+        <h1 className="mb-4 text-4xl font-bold sm:text-6xl  text-slate-800">
           <br />
         </h1>
         <br />
@@ -19,7 +19,7 @@ export default function Home({ postData }: { postData: PostData[] }) {
           {/* Added block class for mobile stacking */}
           {/* Wallet Panel */}
           <div className="px-4 py-5 card sm:p-8">
-            <h2 className="mb-6 text-3xl font-semibold sm:text-4xl dark:text-slate-50 text-slate-800">
+            <h2 className="mb-6 text-3xl font-semibold sm:text-4xl  text-slate-800">
               Wallet
             </h2>
             <div className="flex flex-col gap-2">
@@ -35,7 +35,7 @@ export default function Home({ postData }: { postData: PostData[] }) {
           <div className="px-4 py-5 card sm:p-8">
             {" "}
             {/* Added margin for mobile spacing */}
-            <h2 className="mb-6 text-3xl font-semibold sm:text-4xl dark:text-slate-50 text-slate-800">
+            <h2 className="mb-6 text-3xl font-semibold sm:text-4xl  text-slate-800">
               Buy
             </h2>
             <h5 className="mt-4 mb-2 text-xs font-semibold text-gray-400 sm:text-sm">
@@ -52,7 +52,7 @@ export default function Home({ postData }: { postData: PostData[] }) {
             <h3 className="mt-6 mb-2 text-xs font-semibold text-gray-400 sm:text-sm">
               Decentralized Exchange (DEX):
             </h3>
-            <p className="dark:text-slate-200">
+            <p className="">
               - Using Ethereum, Uniswap, and Taobridge (coming soon)
             </p>
           </div>
@@ -60,7 +60,7 @@ export default function Home({ postData }: { postData: PostData[] }) {
           <div className="px-4 py-5 card sm:p-8">
             {" "}
             {/* Added margin for mobile spacing */}
-            <h2 className="mb-6 text-3xl font-semibold sm:text-4xl dark:text-slate-50 text-slate-800">
+            <h2 className="mb-6 text-3xl font-semibold sm:text-4xl  text-slate-800">
               Stake
             </h2>
             <div className="flex flex-col gap-2">

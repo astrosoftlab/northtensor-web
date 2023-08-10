@@ -36,7 +36,7 @@ function Main(props) {
     async function getStake(specificColdkey) {
       const res = await api.query.subtensorModule.stake(
         MNRVHotkey,
-        specificColdkey
+        specificColdkey,
       )
       return parseFloat(res.toString())
     }
@@ -72,7 +72,7 @@ function Main(props) {
   const accountBalanceTao =
     parseFloat(accountBalance.toString().replace(/,/g, "")) / 10 ** 9
   const roundedAccountBalanceTao = parseFloat(
-    accountBalanceTao.toFixed(balanceSigFigures)
+    accountBalanceTao.toFixed(balanceSigFigures),
   )
   const accountBalanceUSD = (accountBalanceTao * taoConversionRate).toFixed(2)
 
@@ -81,7 +81,7 @@ function Main(props) {
 
   const amountCurrentlyStakedTao = amountCurrentlyStaked / 10 ** 9
   const roundedCurrentlyStakedTao = parseFloat(
-    amountCurrentlyStakedTao.toFixed(balanceSigFigures)
+    amountCurrentlyStakedTao.toFixed(balanceSigFigures),
   )
 
   const amountCurrentlyStakedUSD = (
@@ -90,7 +90,7 @@ function Main(props) {
 
   const totalWalletBalance = accountBalanceTao + amountCurrentlyStakedTao
   const roundedTotalWalletBalance = parseFloat(
-    totalWalletBalance.toFixed(balanceSigFigures)
+    totalWalletBalance.toFixed(balanceSigFigures),
   )
   const totalWalletBalanceUSD = (
     totalWalletBalance * taoConversionRate
@@ -106,7 +106,7 @@ function Main(props) {
   if (!taoConversionRateUpdated) {
     axios
       .get(
-        `https://api.coingecko.com/api/v3/simple/price?ids=${token_id}&vs_currencies=usd`
+        `https://api.coingecko.com/api/v3/simple/price?ids=${token_id}&vs_currencies=usd`,
       )
       .then((response) => {
         const price = response.data[token_id].usd
@@ -136,9 +136,9 @@ function Main(props) {
               currentAccount.address.length > 10
                 ? `${currentAccount.address.substring(
                     0,
-                    5
+                    5,
                   )}...${currentAccount.address.substring(
-                    currentAccount.address.length - 5
+                    currentAccount.address.length - 5,
                   )}`
                 : currentAccount.address
             }
@@ -154,14 +154,12 @@ function Main(props) {
             <li key={"balance1"} className="px-4 py-4 sm:px-6">
               <div className="flex items-center justify-between w-full px-4 py-2 rounded-md">
                 <div className="flex items-center w-1/2">
-                  <h1 className="mr-2 dark:text-slate-800">Total</h1>
+                  <h1 className="mr-2 ">Total</h1>
                 </div>
                 <div className="flex items-center justify-end w-1/2">
                   <div className="flex flex-col items-end">
-                    <h1 className="dark:text-slate-800">
-                      {roundedTotalWalletBalance} Tao
-                    </h1>
-                    <p className="text-xs text-slate-400 dark:text-slate-600">
+                    <h1 className="">{roundedTotalWalletBalance} Tao</h1>
+                    <p className="text-xs text-slate-400 ">
                       ${totalWalletBalanceUSD} USD
                     </p>
                   </div>
@@ -172,14 +170,12 @@ function Main(props) {
             <li key={"balance2"} className="px-4 py-4 sm:px-6">
               <button className="flex items-center justify-between w-full px-4 py-2 rounded-md hover:bg-slate-200">
                 <div className="flex items-center w-1/2">
-                  <h1 className="mr-2 dark:text-slate-800">Un-Staked</h1>
+                  <h1 className="mr-2 ">Un-Staked</h1>
                 </div>
                 <div className="flex items-center justify-end w-1/2">
                   <div className="flex flex-col items-end">
-                    <h1 className="dark:text-slate-800">
-                      {roundedAccountBalanceTao} Tao
-                    </h1>
-                    <p className="text-xs text-slate-400 dark:text-slate-600">
+                    <h1 className="">{roundedAccountBalanceTao} Tao</h1>
+                    <p className="text-xs text-slate-400 ">
                       ${accountBalanceUSD} USD
                     </p>
                   </div>
@@ -189,15 +185,13 @@ function Main(props) {
             <li key={"balance3"} className="px-4 py-4 sm:px-6">
               <button className="flex items-center justify-between w-full px-4 py-2 rounded-md hover:bg-slate-200">
                 <div className="flex items-center w-1/2">
-                  <h1 className="mr-2 dark:text-slate-800">Staked</h1>
+                  <h1 className="mr-2 ">Staked</h1>
                 </div>
                 <div className="flex items-center justify-end w-1/2">
                   <div className="flex flex-col items-end">
                     <div className="flex flex-col items-end">
-                      <h1 className="dark:text-slate-800">
-                        {roundedCurrentlyStakedTao} Tao
-                      </h1>
-                      <p className="text-xs text-slate-400 dark:text-slate-600">
+                      <h1 className="">{roundedCurrentlyStakedTao} Tao</h1>
+                      <p className="text-xs text-slate-400 ">
                         ${amountCurrentlyStakedUSD} USD
                       </p>
                     </div>
