@@ -3,7 +3,7 @@ import Link from "next/link"
 export default function Example() {
   return (
     <>
-      <footer className="relative flex flex-col items-center gap-16 py-20 overflow-hidden md:py-28 bg-cyan-900">
+      <footer className="relative flex flex-col items-center gap-16 py-16 overflow-hidden 2xl:py-[55px] md:py-[59px] bg-cyan-900">
         <div className="flex flex-col sm:flex-row justify-between gap-8 relative z-[1] container max-w-2xl text-white">
           <div className="flex items-center gap-1">
             <img src="/images/solo-white.png" alt="" className="w-auto h-6" />

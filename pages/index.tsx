@@ -2,7 +2,7 @@ import Link from "next/link"
 
 export default function Index() {
   return (
-    <main className="mb-40 space-y-40">
+    <main className="">
       <section className="relative" id="home">
         <div
           aria-hidden="true"
@@ -12,7 +12,7 @@ export default function Index() {
           <div className="blur-[106px] h-32 bg-gradient-to-r from-cyan-400 to-sky-300 " />
         </div>
         <div className="container">
-          <div className="relative pt-40 ml-auto">
+          <div className="relative ml-auto py-44">
             <div className="mx-auto lg:w-4/5">
               <div className="flex flex-col-reverse justify-between sm:flex-row">
                 <div>
