@@ -3,7 +3,7 @@ import Select from "@mui/material/Select"
 import {
   useSession,
   useSupabaseClient,
-  useUser,
+  useUser
 } from "@supabase/auth-helpers-react"
 import Link from "next/link"
 import { useEffect, useState } from "react"
@@ -261,7 +261,7 @@ function Main(props) {
           labelId="account-selection-label"
           id="account-selection"
           value={currentAccount.value}
-          // label="Active Account"
+          className="w-full"
           onChange={(event) => onChange(event)}
         >
           {completeColdkeyOptions.map((temp_account) => {
