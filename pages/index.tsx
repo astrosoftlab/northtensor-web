@@ -2,7 +2,7 @@ import Link from "next/link"
 
 export default function Index() {
   return (
-    <div className="mb-40 space-y-40">
+    <main className="mb-40 space-y-40">
       <section className="relative" id="home">
         <div
           aria-hidden="true"
@@ -60,6 +60,6 @@ export default function Index() {
           </div>
         </div>
       </section>
-    </div>
+    </main>
   )
 }
