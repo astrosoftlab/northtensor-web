@@ -35,7 +35,7 @@ export default function Example() {
               <Link
                 href="/"
                 aria-label="logo"
-                className="flex items-center gap-1 space-x-2 "
+                className="flex items-center gap-1 space-x-2 hover:text-inherit"
               >
                 <img className="w-auto h-10" src="/images/solo.png" alt="" />
                 <div className="flex gap-2 text-2xl font-bold">
