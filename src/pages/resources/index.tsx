@@ -1,4 +1,4 @@
-import { getSortedPostsData, PostData } from "@/lib/docs"
+import { getSortedPostsData, PostData } from "@lib/docs"
 import Head from "next/head"
 import Link from "next/link"
 

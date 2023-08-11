@@ -1,5 +1,5 @@
-import Date from "@/components/date"
-import { getAllPostIds, getPostData, PostData } from "@/lib/docs"
+import Date from "@components//date"
+import { getAllPostIds, getPostData, PostData } from "@lib/docs"
 import Head from "next/head"
 
 export async function getStaticPaths() {

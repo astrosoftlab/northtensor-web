@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic"
 
-const WalletApp = dynamic(() => import("@/components/WalletApp"), {
+const WalletApp = dynamic(() => import("@components/WalletApp"), {
   ssr: false,
 })
 

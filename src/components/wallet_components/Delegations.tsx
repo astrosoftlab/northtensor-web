@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useEffect, useState } from "react"
 // import { TxButton } from './substrate-lib/components'
-import { useSubstrateState } from "../../lib/substrate-lib"
+import { useSubstrateState } from "../../../lib/substrate-lib"
 // import { u8aUnwrapBytes} from '@polkadot/util'
 
 import List from "@mui/material/List"
@@ -8,8 +8,8 @@ import Pagination from "@mui/material/Pagination"
 import Stack from "@mui/material/Stack"
 import Typography from "@mui/material/Typography"
 import { AccountId } from "@polkadot/types/interfaces"
-import { useIsMountedRef } from "../../lib/hooks/api/useIsMountedRef"
-import { StakeData } from "../../lib/utils/types"
+import { useIsMountedRef } from "../../../lib/hooks/api/useIsMountedRef"
+import { StakeData } from "../../../lib/utils/types"
 import DelegateRow from "./DelegateRow"
 
 import {
@@ -23,7 +23,7 @@ import {
   RawMetagraph,
   StakeInfo,
   SubnetInfo,
-} from "../../lib/utils/types"
+} from "../../../lib/utils/types"
 
 export default function Main(_props: any) {
   const { api, keyring, currentAccount } = useSubstrateState()
