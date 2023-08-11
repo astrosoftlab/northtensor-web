@@ -7,7 +7,7 @@ import { Session, useSupabaseClient, useUser } from "@supabase/auth-helpers-reac
 import ColdkeyModal from "@components/tailwindui/ColdkeyModal"
 import ColdkeyInput from "@components/tailwindui/InputLabelled"
 
-import { Database } from "../../lib/utils/database.type"
+import { Database } from "../lib/utils/database.type"
 
 type Profiles = Database["public"]["Tables"]["profiles"]["Row"]
 
@@ -155,7 +155,7 @@ export default function Account({ session }: { session: Session }) {
     <>
       <form onSubmit={handleSubmit} method="POST">
         <div>
-          <div className="border-b border-white/10 pb-12">
+          <div className="pb-12 border-b border-white/10">
             <h2 className="text-base font-semibold leading-9 text-slate-900">Profile</h2>
             <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
               <div className="sm:col-span-6">
@@ -164,7 +164,7 @@ export default function Account({ session }: { session: Session }) {
                 </label>
                 <div className="mt-2">
                   <div className="flex rounded-md bg-slate-100 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-slate-500">
-                    <span className="flex select-none items-center pl-3 text-slate-500 sm:text-sm"></span>
+                    <span className="flex items-center pl-3 select-none text-slate-500 sm:text-sm"></span>
                     <input
                       type="text"
                       value={username || ""}
@@ -181,7 +181,7 @@ export default function Account({ session }: { session: Session }) {
             </div>
           </div>
 
-          <div className="border-b border-white/10 pb-12">
+          <div className="pb-12 border-b border-white/10">
             <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
               <div className="sm:col-span-3">
                 <label htmlFor="first-name" className="block text-sm font-medium leading-6 text-slate-900">
@@ -231,8 +231,8 @@ export default function Account({ session }: { session: Session }) {
               </div>
             </div>
           </div>
-          <div className="isolate -space-y-px rounded-md shadow-sm">
-            <div className="flex justify-between items-center mb-2">
+          <div className="-space-y-px rounded-md shadow-sm isolate">
+            <div className="flex items-center justify-between mb-2">
               <label htmlFor="email" className="block text-sm font-medium leading-6 text-slate-900">
                 Coldkeys
               </label>
@@ -265,17 +265,17 @@ export default function Account({ session }: { session: Session }) {
           </div>
         </div>
 
-        <div className="mt-6 flex items-center justify-end gap-x-6">
+        <div className="flex items-center justify-end mt-6 gap-x-6">
           <button
             type="button"
-            className="rounded-md bg-slate-500 px-3 py-2 text-sm font-semibold text-slate-100 shadow-sm hover:bg-slate-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-500"
+            className="px-3 py-2 text-sm font-semibold rounded-md shadow-sm bg-slate-500 text-slate-100 hover:bg-slate-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-500"
             onClick={() => supabase.auth.signOut()}
           >
             Log Out
           </button>
           <button
             type="submit"
-            className="rounded-md bg-slate-500 px-3 py-2 text-sm font-semibold text-slate-100 shadow-sm hover:bg-slate-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-500"
+            className="px-3 py-2 text-sm font-semibold rounded-md shadow-sm bg-slate-500 text-slate-100 hover:bg-slate-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-500"
             onClick={() => updateProfile({ username, website, avatar_url, ss58_coldkeys })}
             disabled={loading}
           >
