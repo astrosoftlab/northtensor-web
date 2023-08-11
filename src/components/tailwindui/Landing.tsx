@@ -1,22 +1,24 @@
-import Link from "next/link"
+import { useState } from "react"
+
 import Image from "next/image"
-import { useState } from 'react'
-import { Dialog } from '@headlessui/react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import Link from "next/link"
+
+import { Dialog } from "@headlessui/react"
 import {
   ArrowPathIcon,
   ChevronRightIcon,
   CloudArrowUpIcon,
   LockClosedIcon,
   ServerIcon,
-} from '@heroicons/react/20/solid'
+} from "@heroicons/react/20/solid"
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline"
 
 function classNames(...classes: any[]) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(" ")
 }
 
 export default function Example() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
     <div className="bg-slate-900">
@@ -35,9 +37,9 @@ export default function Example() {
                 Build Your Project on Bittensor
               </h1>
               <p className="mt-6 text-lg leading-8 text-slate-300">
-                We are a Bittensor-first AI Firm aiming to utilize the inevitable union of economic efficiencies provided
-                through cryptocurrency technologies. Our focus is to create infrastructure required to scale and support
-                basic transformer-driven data extraction to Artificial General Intelligence.
+                We are a Bittensor-first AI Firm aiming to utilize the inevitable union of economic efficiencies
+                provided through cryptocurrency technologies. Our focus is to create infrastructure required to scale
+                and support basic transformer-driven data extraction to Artificial General Intelligence.
               </p>
               <div className="mt-10 flex items-center gap-x-6">
                 <Link
@@ -68,5 +70,5 @@ export default function Example() {
         </div>
       </main>
     </div>
-  );
+  )
 }

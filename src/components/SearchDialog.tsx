@@ -1,6 +1,11 @@
 "use client"
 
+import { CornerDownLeft, Frown, Loader, Search, User, Wand, X } from "lucide-react"
+import type { CreateCompletionResponse } from "openai"
+import { SSE } from "sse.js"
+
 import * as React from "react"
+
 // import { Button } from '@components/ui/button'
 import {
   Dialog,
@@ -11,17 +16,6 @@ import {
   DialogTitle,
 } from "@components//ui/dialog"
 import { Input } from "@components//ui/input"
-import {
-  CornerDownLeft,
-  Frown,
-  Loader,
-  Search,
-  User,
-  Wand,
-  X,
-} from "lucide-react"
-import type { CreateCompletionResponse } from "openai"
-import { SSE } from "sse.js"
 
 function promptDataReducer(
   state: any[],
@@ -74,13 +68,9 @@ export function SearchDialog() {
   const [isLoading, setIsLoading] = React.useState(false)
   const [hasError, setHasError] = React.useState(false)
   const [promptIndex, setPromptIndex] = React.useState(0)
-  const [promptData, dispatchPromptData] = React.useReducer(
-    promptDataReducer,
-    [],
-  )
+  const [promptData, dispatchPromptData] = React.useReducer(promptDataReducer, [])
 
-  const cantHelp =
-    answer?.trim() === "Sorry, I don't know how to help with that."
+  const cantHelp = answer?.trim() === "Sorry, I don't know how to help with that."
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -145,9 +135,7 @@ export function SearchDialog() {
             return
           }
 
-          const completionResponse: CreateCompletionResponse = JSON.parse(
-            e.data,
-          )
+          const completionResponse: CreateCompletionResponse = JSON.parse(e.data)
           const text = completionResponse.choices[0].text
 
           setAnswer((answer) => {
@@ -200,10 +188,7 @@ export function SearchDialog() {
             <DialogTitle>AI Resource Search</DialogTitle>
             <DialogDescription>I may make things up.</DialogDescription>
             <hr />
-            <button
-              className="absolute top-0 p-2 right-2"
-              onClick={() => setOpen(false)}
-            >
+            <button className="absolute top-0 p-2 right-2" onClick={() => setOpen(false)}>
               <X className="w-4 h-4 " />
             </button>
           </DialogHeader>
@@ -215,9 +200,7 @@ export function SearchDialog() {
                   <span className="flex items-center justify-center w-8 h-8 p-2 text-center rounded-full bg-slate-100 ">
                     <User width={18} />{" "}
                   </span>
-                  <p className="mt-0.5 font-semibold text-slate-700 ">
-                    {question}
-                  </p>
+                  <p className="mt-0.5 font-semibold text-slate-700 ">{question}</p>
                 </div>
               )}
 
@@ -232,9 +215,7 @@ export function SearchDialog() {
                   <span className="flex items-center justify-center w-8 h-8 p-2 text-center bg-red-100 rounded-full">
                     <Frown width={18} />
                   </span>
-                  <span className="text-slate-700 ">
-                    Failure. Please check your connection.
-                  </span>
+                  <span className="text-slate-700 ">Failure. Please check your connection.</span>
                 </div>
               )}
 

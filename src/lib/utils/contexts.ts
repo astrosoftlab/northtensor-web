@@ -1,12 +1,13 @@
 import { createContext } from "react"
+
 import {
-  LocalStorageAccountCtx,
   AdminCtx,
+  ApiCtx,
   BalanceVisibilityCtx,
+  CreateAccountCtx,
   EvtMgrCtx,
   EvtTxCtx,
-  CreateAccountCtx,
-  ApiCtx
+  LocalStorageAccountCtx,
 } from "./types"
 
 const BalanceVisibleContext = createContext<BalanceVisibilityCtx>({
@@ -22,11 +23,4 @@ const ApiContext = createContext<ApiCtx>({} as ApiCtx)
 const EvtMgrContext = createContext<EvtMgrCtx>([])
 const EvtTxContext = createContext<EvtTxCtx>([])
 
-export {
-  AccountContext,
-  AdminContext,
-  ApiContext,
-  BalanceVisibleContext,
-  EvtMgrContext,
-  EvtTxContext,
-}
+export { AccountContext, AdminContext, ApiContext, BalanceVisibleContext, EvtMgrContext, EvtTxContext }

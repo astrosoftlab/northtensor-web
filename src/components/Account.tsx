@@ -1,13 +1,14 @@
+import Modal from "react-modal"
+
+import { useEffect, useState } from "react"
+
+import { Session, useSupabaseClient, useUser } from "@supabase/auth-helpers-react"
+
 import ColdkeyModal from "@components/tailwindui/ColdkeyModal"
 import ColdkeyInput from "@components/tailwindui/InputLabelled"
-import {
-  Session,
-  useSupabaseClient,
-  useUser,
-} from "@supabase/auth-helpers-react"
-import { useEffect, useState } from "react"
-import Modal from "react-modal"
+
 import { Database } from "../../lib/utils/database.type"
+
 type Profiles = Database["public"]["Tables"]["profiles"]["Row"]
 
 export default function Account({ session }: { session: Session }) {
@@ -17,8 +18,7 @@ export default function Account({ session }: { session: Session }) {
   const [username, setUsername] = useState<Profiles["username"]>(null)
   const [website, setWebsite] = useState<Profiles["website"]>(null)
   const [avatar_url, setAvatarUrl] = useState<Profiles["avatar_url"]>(null)
-  const [ss58_coldkeys, setSS58Coldkeys] =
-    useState<Profiles["ss58_coldkeys"]>(null)
+  const [ss58_coldkeys, setSS58Coldkeys] = useState<Profiles["ss58_coldkeys"]>(null)
   const [showModal, setShowModal] = useState(false)
   const [newColdkeyName, setNewColdkeyName] = useState("")
   const [newColdkeyValue, setNewColdkeyValue] = useState("")
@@ -28,12 +28,7 @@ export default function Account({ session }: { session: Session }) {
     getProfile()
   }, [session])
 
-  function handleColdkeyInputChange(
-    index: number,
-    newName: string,
-    newColdkey: string,
-    newWatched: boolean,
-  ) {
+  function handleColdkeyInputChange(index: number, newName: string, newColdkey: string, newWatched: boolean) {
     setSS58Coldkeys((prevColdkeys) => {
       if (prevColdkeys === null) return prevColdkeys
       if (prevColdkeys[index] === null) return prevColdkeys
@@ -161,15 +156,10 @@ export default function Account({ session }: { session: Session }) {
       <form onSubmit={handleSubmit} method="POST">
         <div>
           <div className="border-b border-white/10 pb-12">
-            <h2 className="text-base font-semibold leading-9 text-slate-900">
-              Profile
-            </h2>
+            <h2 className="text-base font-semibold leading-9 text-slate-900">Profile</h2>
             <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
               <div className="sm:col-span-6">
-                <label
-                  htmlFor="username"
-                  className="block text-sm font-medium leading-6 text-slate-900"
-                >
+                <label htmlFor="username" className="block text-sm font-medium leading-6 text-slate-900">
                   Username
                 </label>
                 <div className="mt-2">
@@ -194,10 +184,7 @@ export default function Account({ session }: { session: Session }) {
           <div className="border-b border-white/10 pb-12">
             <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
               <div className="sm:col-span-3">
-                <label
-                  htmlFor="first-name"
-                  className="block text-sm font-medium leading-6 text-slate-900"
-                >
+                <label htmlFor="first-name" className="block text-sm font-medium leading-6 text-slate-900">
                   First name
                 </label>
                 <div className="mt-2">
@@ -212,10 +199,7 @@ export default function Account({ session }: { session: Session }) {
               </div>
 
               <div className="sm:col-span-3">
-                <label
-                  htmlFor="last-name"
-                  className="block text-sm font-medium leading-6 text-slate-900"
-                >
+                <label htmlFor="last-name" className="block text-sm font-medium leading-6 text-slate-900">
                   Last name
                 </label>
                 <div className="mt-2">
@@ -230,10 +214,7 @@ export default function Account({ session }: { session: Session }) {
               </div>
 
               <div className="sm:col-span-4">
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium leading-6 text-slate-900"
-                >
+                <label htmlFor="email" className="block text-sm font-medium leading-6 text-slate-900">
                   Email address
                 </label>
                 <div className="mt-2">
@@ -252,10 +233,7 @@ export default function Account({ session }: { session: Session }) {
           </div>
           <div className="isolate -space-y-px rounded-md shadow-sm">
             <div className="flex justify-between items-center mb-2">
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium leading-6 text-slate-900"
-              >
+              <label htmlFor="email" className="block text-sm font-medium leading-6 text-slate-900">
                 Coldkeys
               </label>
               <button
@@ -298,9 +276,7 @@ export default function Account({ session }: { session: Session }) {
           <button
             type="submit"
             className="rounded-md bg-slate-500 px-3 py-2 text-sm font-semibold text-slate-100 shadow-sm hover:bg-slate-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-500"
-            onClick={() =>
-              updateProfile({ username, website, avatar_url, ss58_coldkeys })
-            }
+            onClick={() => updateProfile({ username, website, avatar_url, ss58_coldkeys })}
             disabled={loading}
           >
             Save

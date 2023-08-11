@@ -4,10 +4,7 @@ export default function Index() {
   return (
     <main className="">
       <section className="relative" id="home">
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40 "
-        >
+        <div aria-hidden="true" className="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40 ">
           <div className="blur-[106px] h-56 bg-gradient-to-br from-primary to-purple-400 " />
           <div className="blur-[106px] h-32 bg-gradient-to-r from-cyan-400 to-sky-300 " />
         </div>
@@ -23,29 +20,22 @@ export default function Index() {
                     <span className="text-primary "> Bittensor</span>
                   </h1>
                   <p className="mt-8 text-gray-700 ">
-                    We are a Bittensor-first AI Firm aiming to utilize the
-                    inevitable union of economic efficiencies provided through
-                    cryptocurrency technologies. Our focus is to create
-                    infrastructure required to scale and support basic
-                    transformer-driven data extraction to Artificial General
-                    Intelligence.
+                    We are a Bittensor-first AI Firm aiming to utilize the inevitable union of economic efficiencies
+                    provided through cryptocurrency technologies. Our focus is to create infrastructure required to
+                    scale and support basic transformer-driven data extraction to Artificial General Intelligence.
                   </p>
                   <div className="flex flex-wrap mt-16 gap-y-4 gap-x-6">
                     <Link
                       href="/resources"
                       className="relative flex items-center justify-center w-full px-6 h-11 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
                     >
-                      <span className="relative text-base font-semibold text-white">
-                        Get started
-                      </span>
+                      <span className="relative text-base font-semibold text-white">Get started</span>
                     </Link>
                     <a
                       href="#"
                       className="relative flex items-center justify-center w-full px-6 h-11 before:absolute before:inset-0 before:rounded-full before:border before:border-transparent before:bg-primary/10 before:bg-gradient-to-b before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
                     >
-                      <span className="relative text-base font-semibold text-primary ">
-                        Learn more
-                      </span>
+                      <span className="relative text-base font-semibold text-primary ">Learn more</span>
                     </a>
                   </div>
                 </div>

@@ -1,9 +1,12 @@
-import { ApplicationError, UserError } from "@lib/errors"
-import { createClient } from "@supabase/supabase-js"
 import { codeBlock, oneLine } from "common-tags"
 import GPT3Tokenizer from "gpt3-tokenizer"
-import type { NextRequest } from "next/server"
 import { CreateCompletionRequest } from "openai"
+
+import type { NextRequest } from "next/server"
+
+import { createClient } from "@supabase/supabase-js"
+
+import { ApplicationError, UserError } from "@lib/errors"
 
 // OpenAIApi does currently not work in Vercel Edge Functions as it uses Axios under the hood.
 export const config = {
@@ -25,9 +28,7 @@ export default async function handler(req: NextRequest) {
     }
 
     if (!supabaseServiceKey) {
-      throw new ApplicationError(
-        "Missing environment variable SUPABASE_SERVICE_ROLE_KEY",
-      )
+      throw new ApplicationError("Missing environment variable SUPABASE_SERVICE_ROLE_KEY")
     }
 
     const requestData = await req.json()
@@ -46,19 +47,16 @@ export default async function handler(req: NextRequest) {
 
     // Moderate the content to comply with OpenAI T&C
     const sanitizedQuery = query.trim()
-    const moderationResponse = await fetch(
-      "https://api.openai.com/v1/moderations",
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${openAiKey}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          input: sanitizedQuery,
-        }),
+    const moderationResponse = await fetch("https://api.openai.com/v1/moderations", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${openAiKey}`,
+        "Content-Type": "application/json",
       },
-    ).then((res) => res.json())
+      body: JSON.stringify({
+        input: sanitizedQuery,
+      }),
+    }).then((res) => res.json())
 
     const [results] = moderationResponse.results
 
@@ -69,41 +67,32 @@ export default async function handler(req: NextRequest) {
       })
     }
 
-    const embeddingResponse = await fetch(
-      "https://api.openai.com/v1/embeddings",
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${openAiKey}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          model: "text-embedding-ada-002",
-          input: sanitizedQuery.replaceAll("\n", " "),
-        }),
+    const embeddingResponse = await fetch("https://api.openai.com/v1/embeddings", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${openAiKey}`,
+        "Content-Type": "application/json",
       },
-    )
+      body: JSON.stringify({
+        model: "text-embedding-ada-002",
+        input: sanitizedQuery.replaceAll("\n", " "),
+      }),
+    })
 
     if (embeddingResponse.status !== 200) {
-      throw new ApplicationError(
-        "Failed to create embedding for question",
-        embeddingResponse,
-      )
+      throw new ApplicationError("Failed to create embedding for question", embeddingResponse)
     }
 
     const {
       data: [{ embedding }],
     } = await embeddingResponse.json()
 
-    const { error: matchError, data: pageSections } = await supabaseClient.rpc(
-      "match_page_sections",
-      {
-        embedding,
-        match_threshold: 0.78,
-        match_count: 10,
-        min_content_length: 50,
-      },
-    )
+    const { error: matchError, data: pageSections } = await supabaseClient.rpc("match_page_sections", {
+      embedding,
+      match_threshold: 0.78,
+      match_count: 10,
+      min_content_length: 50,
+    })
 
     if (matchError) {
       throw new ApplicationError("Failed to match page sections", matchError)

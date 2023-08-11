@@ -1,6 +1,7 @@
-import Date from "@components//date"
-import { getAllPostIds, getPostData, PostData } from "@lib/docs"
 import Head from "next/head"
+
+import Date from "@components//date"
+import { PostData, getAllPostIds, getPostData } from "@lib/docs"
 
 export async function getStaticPaths() {
   const paths = getAllPostIds()
@@ -10,11 +11,7 @@ export async function getStaticPaths() {
   }
 }
 
-export default function Post({
-  postData,
-}: {
-  postData: PostData & { contentHtml: string }
-}) {
+export default function Post({ postData }: { postData: PostData & { contentHtml: string } }) {
   return (
     <>
       <Head>
@@ -23,9 +20,7 @@ export default function Post({
       <div className="flex items-center justify-center min-h-screen">
         <main className="flex flex-col items-center max-w-3xl px-4 py-10 md:px-20 ">
           <article className="prose">
-            <h1 className="text-3xl font-thin sm:text-5xl ">
-              {postData.title}
-            </h1>
+            <h1 className="text-3xl font-thin sm:text-5xl ">{postData.title}</h1>
             <Date dateString={postData.date} />
             <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
           </article>

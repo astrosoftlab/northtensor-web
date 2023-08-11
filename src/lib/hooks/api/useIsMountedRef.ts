@@ -1,4 +1,4 @@
-import { useEffect, useRef, MutableRefObject } from "react"
+import { MutableRefObject, useEffect, useRef } from "react"
 
 export type MountedRef = MutableRefObject<boolean>
 

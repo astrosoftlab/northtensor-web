@@ -12,7 +12,7 @@
   }
   ```
 */
-import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
+import { PhotoIcon, UserCircleIcon } from "@heroicons/react/24/solid"
 
 export default function Example() {
   return (
@@ -54,7 +54,7 @@ export default function Example() {
                   name="about"
                   rows={3}
                   className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-slate-500 sm:text-sm sm:leading-6"
-                  defaultValue={''}
+                  defaultValue={""}
                 />
               </div>
               <p className="mt-3 text-sm leading-6 text-slate-400">Write a few sentences about yourself.</p>
@@ -131,121 +131,123 @@ export default function Example() {
               </div>
             </div>
           </div>
-        <div className="border-b border-white/10 pb-12">
-          <h2 className="text-base font-semibold leading-7 text-white">Notifications</h2>
-          <p className="mt-1 text-sm leading-6 text-slate-400">
-            We&apos;ll always let you know about important changes, but you pick what else you want to hear about.
-          </p>
+          <div className="border-b border-white/10 pb-12">
+            <h2 className="text-base font-semibold leading-7 text-white">Notifications</h2>
+            <p className="mt-1 text-sm leading-6 text-slate-400">
+              We&apos;ll always let you know about important changes, but you pick what else you want to hear about.
+            </p>
 
-          <div className="mt-10 space-y-10">
-            <fieldset>
-              <legend className="text-sm font-semibold leading-6 text-white">By Email</legend>
-              <div className="mt-6 space-y-6">
-                <div className="relative flex gap-x-3">
-                  <div className="flex h-6 items-center">
+            <div className="mt-10 space-y-10">
+              <fieldset>
+                <legend className="text-sm font-semibold leading-6 text-white">By Email</legend>
+                <div className="mt-6 space-y-6">
+                  <div className="relative flex gap-x-3">
+                    <div className="flex h-6 items-center">
+                      <input
+                        id="comments"
+                        name="comments"
+                        type="checkbox"
+                        className="h-4 w-4 rounded border-white/10 bg-white/5 text-slate-600 focus:ring-slate-600 focus:ring-offset-slate-900"
+                      />
+                    </div>
+                    <div className="text-sm leading-6">
+                      <label htmlFor="comments" className="font-medium text-white">
+                        Comments
+                      </label>
+                      <p className="text-slate-400">Get notified when someones posts a comment on a posting.</p>
+                    </div>
+                  </div>
+                  <div className="relative flex gap-x-3">
+                    <div className="flex h-6 items-center">
+                      <input
+                        id="candidates"
+                        name="candidates"
+                        type="checkbox"
+                        className="h-4 w-4 rounded border-white/10 bg-white/5 text-slate-600 focus:ring-slate-600 focus:ring-offset-slate-900"
+                      />
+                    </div>
+                    <div className="text-sm leading-6">
+                      <label htmlFor="candidates" className="font-medium text-white">
+                        Candidates
+                      </label>
+                      <p className="text-slate-400">Get notified when a candidate applies for a job.</p>
+                    </div>
+                  </div>
+                  <div className="relative flex gap-x-3">
+                    <div className="flex h-6 items-center">
+                      <input
+                        id="offers"
+                        name="offers"
+                        type="checkbox"
+                        className="h-4 w-4 rounded border-white/10 bg-white/5 text-slate-600 focus:ring-slate-600 focus:ring-offset-slate-900"
+                      />
+                    </div>
+                    <div className="text-sm leading-6">
+                      <label htmlFor="offers" className="font-medium text-white">
+                        Offers
+                      </label>
+                      <p className="text-slate-400">Get notified when a candidate accepts or rejects an offer.</p>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+              <fieldset>
+                <legend className="text-sm font-semibold leading-6 text-white">Push Notifications</legend>
+                <p className="mt-1 text-sm leading-6 text-slate-400">
+                  These are delivered via SMS to your mobile phone.
+                </p>
+                <div className="mt-6 space-y-6">
+                  <div className="flex items-center gap-x-3">
                     <input
-                      id="comments"
-                      name="comments"
-                      type="checkbox"
-                      className="h-4 w-4 rounded border-white/10 bg-white/5 text-slate-600 focus:ring-slate-600 focus:ring-offset-slate-900"
+                      id="push-everything"
+                      name="push-notifications"
+                      type="radio"
+                      className="h-4 w-4 border-white/10 bg-white/5 text-slate-600 focus:ring-slate-600 focus:ring-offset-slate-900"
                     />
-                  </div>
-                  <div className="text-sm leading-6">
-                    <label htmlFor="comments" className="font-medium text-white">
-                      Comments
+                    <label htmlFor="push-everything" className="block text-sm font-medium leading-6 text-white">
+                      Everything
                     </label>
-                    <p className="text-slate-400">Get notified when someones posts a comment on a posting.</p>
                   </div>
-                </div>
-                <div className="relative flex gap-x-3">
-                  <div className="flex h-6 items-center">
+                  <div className="flex items-center gap-x-3">
                     <input
-                      id="candidates"
-                      name="candidates"
-                      type="checkbox"
-                      className="h-4 w-4 rounded border-white/10 bg-white/5 text-slate-600 focus:ring-slate-600 focus:ring-offset-slate-900"
+                      id="push-email"
+                      name="push-notifications"
+                      type="radio"
+                      className="h-4 w-4 border-white/10 bg-white/5 text-slate-600 focus:ring-slate-600 focus:ring-offset-slate-900"
                     />
-                  </div>
-                  <div className="text-sm leading-6">
-                    <label htmlFor="candidates" className="font-medium text-white">
-                      Candidates
+                    <label htmlFor="push-email" className="block text-sm font-medium leading-6 text-white">
+                      Same as email
                     </label>
-                    <p className="text-slate-400">Get notified when a candidate applies for a job.</p>
                   </div>
-                </div>
-                <div className="relative flex gap-x-3">
-                  <div className="flex h-6 items-center">
+                  <div className="flex items-center gap-x-3">
                     <input
-                      id="offers"
-                      name="offers"
-                      type="checkbox"
-                      className="h-4 w-4 rounded border-white/10 bg-white/5 text-slate-600 focus:ring-slate-600 focus:ring-offset-slate-900"
+                      id="push-nothing"
+                      name="push-notifications"
+                      type="radio"
+                      className="h-4 w-4 border-white/10 bg-white/5 text-slate-600 focus:ring-slate-600 focus:ring-offset-slate-900"
                     />
-                  </div>
-                  <div className="text-sm leading-6">
-                    <label htmlFor="offers" className="font-medium text-white">
-                      Offers
+                    <label htmlFor="push-nothing" className="block text-sm font-medium leading-6 text-white">
+                      No push notifications
                     </label>
-                    <p className="text-slate-400">Get notified when a candidate accepts or rejects an offer.</p>
                   </div>
                 </div>
-              </div>
-            </fieldset>
-            <fieldset>
-              <legend className="text-sm font-semibold leading-6 text-white">Push Notifications</legend>
-              <p className="mt-1 text-sm leading-6 text-slate-400">These are delivered via SMS to your mobile phone.</p>
-              <div className="mt-6 space-y-6">
-                <div className="flex items-center gap-x-3">
-                  <input
-                    id="push-everything"
-                    name="push-notifications"
-                    type="radio"
-                    className="h-4 w-4 border-white/10 bg-white/5 text-slate-600 focus:ring-slate-600 focus:ring-offset-slate-900"
-                  />
-                  <label htmlFor="push-everything" className="block text-sm font-medium leading-6 text-white">
-                    Everything
-                  </label>
-                </div>
-                <div className="flex items-center gap-x-3">
-                  <input
-                    id="push-email"
-                    name="push-notifications"
-                    type="radio"
-                    className="h-4 w-4 border-white/10 bg-white/5 text-slate-600 focus:ring-slate-600 focus:ring-offset-slate-900"
-                  />
-                  <label htmlFor="push-email" className="block text-sm font-medium leading-6 text-white">
-                    Same as email
-                  </label>
-                </div>
-                <div className="flex items-center gap-x-3">
-                  <input
-                    id="push-nothing"
-                    name="push-notifications"
-                    type="radio"
-                    className="h-4 w-4 border-white/10 bg-white/5 text-slate-600 focus:ring-slate-600 focus:ring-offset-slate-900"
-                  />
-                  <label htmlFor="push-nothing" className="block text-sm font-medium leading-6 text-white">
-                    No push notifications
-                  </label>
-                </div>
-              </div>
-            </fieldset>
+              </fieldset>
+            </div>
+          </div>
+
+          <div className="mt-6 flex items-center justify-end gap-x-6">
+            <button type="button" className="text-sm font-semibold leading-6 text-white">
+              Cancel
+            </button>
+            <button
+              type="submit"
+              className="rounded-md bg-slate-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-slate-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-500"
+            >
+              Save
+            </button>
           </div>
         </div>
-
-      <div className="mt-6 flex items-center justify-end gap-x-6">
-        <button type="button" className="text-sm font-semibold leading-6 text-white">
-          Cancel
-        </button>
-        <button
-          type="submit"
-          className="rounded-md bg-slate-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-slate-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-500"
-        >
-          Save
-        </button>
       </div>
-    </div>
-    </div>
     </form>
   )
 }

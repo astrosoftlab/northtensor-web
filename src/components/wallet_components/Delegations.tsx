@@ -8,6 +8,8 @@ import Typography from "@mui/material/Typography"
 import { AccountId } from "@polkadot/types/interfaces"
 
 import { useIsMountedRef } from "../../lib/hooks/api/useIsMountedRef"
+// import { TxButton } from './substrate-lib/components'
+import { useSubstrateState } from "../../lib/substrate-lib"
 import { StakeData } from "../../lib/utils/types"
 import {
   DelegateColumn,
@@ -21,8 +23,6 @@ import {
   StakeInfo,
   SubnetInfo,
 } from "../../lib/utils/types"
-// import { TxButton } from './substrate-lib/components'
-import { useSubstrateState } from "../../lib/substrate-lib"
 import DelegateRow from "./DelegateRow"
 
 export default function Main(_props: any) {
