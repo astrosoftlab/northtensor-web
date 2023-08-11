@@ -1,18 +1,14 @@
-import {
-  DelegateColumn,
-  DelegateExtra,
-  DelegateInfo,
-  DelegateInfoRow,
-} from "../../../lib/utils/types"
-import DelegateCard from "./DelegateCard"
-// import StakeForm from "./StakeForm"
+import React, { useEffect } from "react"
 
+// import StakeForm from "./StakeForm"
 import Box from "@mui/material/Box"
 import Stack from "@mui/material/Stack"
 import Typography from "@mui/material/Typography"
-import React, { useEffect } from "react"
-import { useSubstrate } from "../../../lib/substrate-lib"
+
+import { useSubstrate } from "../../lib/substrate-lib"
+import { DelegateColumn, DelegateExtra, DelegateInfo, DelegateInfoRow } from "../../lib/utils/types"
 import { Accordion, AccordionDetails, AccordionSummary } from "./Accordion"
+import DelegateCard from "./DelegateCard"
 
 // import { Theme, Typography, makeStyles } from "@material-ui/core"
 // import '../assets/styles/DelegateRow.css'
@@ -45,9 +41,7 @@ export default function DelegateRow({
   coldkey_ss58,
   delegateExtra,
 }: Props) {
-  const [delegate_row, setDelegateRow] = React.useState<DelegateInfoRow>(
-    {} as DelegateInfoRow,
-  )
+  const [delegate_row, setDelegateRow] = React.useState<DelegateInfoRow>({} as DelegateInfoRow)
 
   const {
     setCurrentAccount,
@@ -82,18 +76,9 @@ export default function DelegateRow({
   return (
     <React.Fragment>
       {!!Object.keys(delegate_row).length && (
-        <Accordion
-          expanded={expanded === delegate_row.delegate_ss58}
-          onChange={onChange}
-          id="delegates"
-        >
+        <Accordion expanded={expanded === delegate_row.delegate_ss58} onChange={onChange} id="delegates">
           <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-            <Stack
-              direction="row"
-              justifyContent="space-between"
-              alignItems="center"
-              width="100%"
-            >
+            <Stack direction="row" justifyContent="space-between" alignItems="center" width="100%">
               {columns.map((column) => {
                 if (!["delegate_ss58"].includes(column.id)) {
                   return null
@@ -102,10 +87,7 @@ export default function DelegateRow({
                 return (
                   <React.Fragment key={column.id}>
                     {column.id === "delegate_ss58" && (
-                      <DelegateCard
-                        accountName={delegateExtra?.name || ""}
-                        accountAddress={value.toString()}
-                      />
+                      <DelegateCard accountName={delegateExtra?.name || ""} accountAddress={value.toString()} />
                       // <AccountCard account={{ address: value.toString(), name: delegateExtra?.name || ""  }}  />
                       // <AccountCard account={keyring.getPair(value.toString())}  />
                       // <h1>{value.toString()} - {delegateExtra?.name || ""}</h1>
@@ -120,9 +102,7 @@ export default function DelegateRow({
                   }
                   const value: string | number = delegate_row[column.id]
                   const formattedValue =
-                    typeof value === "number"
-                      ? parseFloat(value.toFixed(balanceSigFigures))
-                      : value
+                    typeof value === "number" ? parseFloat(value.toFixed(balanceSigFigures)) : value
                   return (
                     <React.Fragment key={column.id}>
                       <Stack direction="row" alignItems="center">
@@ -139,9 +119,7 @@ export default function DelegateRow({
                   const value: string | number = delegate_row[column.id]
                   const parsedValue = parseInt(value.toString()) / 10 ** 9
                   const formattedparsedValue =
-                    typeof parsedValue === "number"
-                      ? parseFloat(parsedValue.toFixed(balanceSigFigures))
-                      : parsedValue
+                    typeof parsedValue === "number" ? parseFloat(parsedValue.toFixed(balanceSigFigures)) : parsedValue
                   return (
                     <React.Fragment key={column.id}>
                       <Stack direction="row" alignItems="center">
@@ -155,12 +133,7 @@ export default function DelegateRow({
             </Stack>
           </AccordionSummary>
           <AccordionDetails>
-            <Stack
-              direction="row"
-              justifyContent="space-between"
-              alignItems="center"
-              width="100%"
-            >
+            <Stack direction="row" justifyContent="space-between" alignItems="center" width="100%">
               {columns.map((column) => {
                 if (!["owner_ss58"].includes(column.id)) {
                   return null
@@ -170,10 +143,7 @@ export default function DelegateRow({
                   <React.Fragment key={column.id}>
                     {column.id === "owner_ss58" && (
                       <Box flex={3}>
-                        <DelegateCard
-                          accountName={"Delegate Coldkey"}
-                          accountAddress={value.toString()}
-                        />
+                        <DelegateCard accountName={"Delegate Coldkey"} accountAddress={value.toString()} />
                         {/* <h1>{value.toString()} - {"Delegate Coldkey"}</h1> */}
                         {/* <AccountCard account={keyring.getPair(value.toString())}  /> */}
                         {/* <AccountCard account={{ address: value.toString(), name: "Delegate Coldkey" }} /> */}
@@ -182,13 +152,7 @@ export default function DelegateRow({
                   </React.Fragment>
                 )
               })}
-              <Stack
-                direction="column"
-                justifyContent="space-between"
-                alignItems="center"
-                width="100%"
-                flex={2}
-              >
+              <Stack direction="column" justifyContent="space-between" alignItems="center" width="100%" flex={2}>
                 {columns.map((column) => {
                   if (!["stake", "nominators"].includes(column.id)) {
                     return null
@@ -196,56 +160,40 @@ export default function DelegateRow({
                   const value: string | number = delegate_row[column.id]
                   return (
                     <React.Fragment key={column.id}>
-                      {["nominators"].includes(column.id) &&
-                        typeof value === "number" && (
-                          <React.Fragment>
-                            <Stack
-                              direction="row"
-                              justifyContent="space-between"
-                              alignItems="center"
-                              width="100%"
+                      {["nominators"].includes(column.id) && typeof value === "number" && (
+                        <React.Fragment>
+                          <Stack direction="row" justifyContent="space-between" alignItems="center" width="100%">
+                            <Typography
+                              style={{
+                                fontWeight: "bold",
+                              }}
                             >
-                              <Typography
-                                style={{
-                                  fontWeight: "bold",
-                                }}
-                              >
-                                Nominators:{" "}
-                              </Typography>
-                              <Typography>{value.toString()}</Typography>
-                            </Stack>
-                          </React.Fragment>
-                        )}
-                      {["stake"].includes(column.id) &&
-                        typeof value === "number" && (
-                          <React.Fragment>
-                            <Stack
-                              direction="row"
-                              justifyContent="space-between"
-                              alignItems="center"
-                              width="100%"
+                              Nominators:{" "}
+                            </Typography>
+                            <Typography>{value.toString()}</Typography>
+                          </Stack>
+                        </React.Fragment>
+                      )}
+                      {["stake"].includes(column.id) && typeof value === "number" && (
+                        <React.Fragment>
+                          <Stack direction="row" justifyContent="space-between" alignItems="center" width="100%">
+                            <Typography
+                              style={{
+                                fontWeight: "bold",
+                              }}
                             >
-                              <Typography
-                                style={{
-                                  fontWeight: "bold",
-                                }}
-                              >
-                                Your Stake:{" "}
-                              </Typography>
-                              <h1>{parseInt(value.toString()) / 10 ** 9}</h1>
-                            </Stack>
-                          </React.Fragment>
-                        )}
+                              Your Stake:{" "}
+                            </Typography>
+                            <h1>{parseInt(value.toString()) / 10 ** 9}</h1>
+                          </Stack>
+                        </React.Fragment>
+                      )}
                     </React.Fragment>
                   )
                 })}
               </Stack>
             </Stack>
-            <Box
-              justifyContent="flex-end"
-              flexDirection="row"
-              alignItems="center"
-            >
+            <Box justifyContent="flex-end" flexDirection="row" alignItems="center">
               {/* <ErrorBoundary> */}
               {/* <StakeForm hotkeyAddr={delegate_row.delegate_ss58} stake={delegate_row.stake} refreshMeta={refreshMeta} /> */}
               {/* </ErrorBoundary> */}

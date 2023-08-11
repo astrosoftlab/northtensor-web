@@ -1,17 +1,14 @@
 import React, { ChangeEvent, useEffect, useState } from "react"
-// import { TxButton } from './substrate-lib/components'
-import { useSubstrateState } from "../../../lib/substrate-lib"
-// import { u8aUnwrapBytes} from '@polkadot/util'
 
+// import { u8aUnwrapBytes} from '@polkadot/util'
 import List from "@mui/material/List"
 import Pagination from "@mui/material/Pagination"
 import Stack from "@mui/material/Stack"
 import Typography from "@mui/material/Typography"
 import { AccountId } from "@polkadot/types/interfaces"
-import { useIsMountedRef } from "../../../lib/hooks/api/useIsMountedRef"
-import { StakeData } from "../../../lib/utils/types"
-import DelegateRow from "./DelegateRow"
 
+import { useIsMountedRef } from "../../lib/hooks/api/useIsMountedRef"
+import { StakeData } from "../../lib/utils/types"
 import {
   DelegateColumn,
   DelegateExtras,
@@ -23,7 +20,10 @@ import {
   RawMetagraph,
   StakeInfo,
   SubnetInfo,
-} from "../../../lib/utils/types"
+} from "../../lib/utils/types"
+// import { TxButton } from './substrate-lib/components'
+import { useSubstrateState } from "../../lib/substrate-lib"
+import DelegateRow from "./DelegateRow"
 
 export default function Main(_props: any) {
   const { api, keyring, currentAccount } = useSubstrateState()
@@ -38,10 +38,7 @@ export default function Main(_props: any) {
     setExpanded(expanded === panel ? false : panel)
   }
 
-  const handlePageChange = (
-    event: React.ChangeEvent<unknown>,
-    value: number,
-  ) => {
+  const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
     setPage(value)
   }
 
@@ -63,9 +60,7 @@ export default function Main(_props: any) {
   const [loader, setLoader] = useState<boolean>(true)
   const [delegateInfo, setDelegateInfo] = useState<DelegateInfo[]>([])
   const [delegateRows, setDelegateRows] = useState<DelegateInfo[]>([])
-  const [personalDelegateRows, setPersonalDelegateRows] = useState<
-    DelegateInfo[]
-  >([])
+  const [personalDelegateRows, setPersonalDelegateRows] = useState<DelegateInfo[]>([])
 
   const [delegatesExtras, setDelegatesExtras] = useState<DelegateExtras>({})
 
@@ -74,9 +69,7 @@ export default function Main(_props: any) {
       let results_map: RawMetagraph = {}
       for (let netuid of netuids) {
         try {
-          let result_bytes = await (api.rpc as any).neuronInfo.getNeuronsLite(
-            netuid,
-          )
+          let result_bytes = await (api.rpc as any).neuronInfo.getNeuronsLite(netuid)
 
           const result = api.createType("Vec<NeuronInfoLite>", result_bytes)
           const neurons_info = result.toJSON() as any[] as NeuronInfoLite[]
@@ -94,10 +87,7 @@ export default function Main(_props: any) {
   const acctAddr = (acct: { address: any }) => (acct ? acct.address : "")
 
   async function getPersonalStakeOnDelegate(delegate_ss58: any) {
-    const res = await api.query.subtensorModule.stake(
-      delegate_ss58,
-      acctAddr(currentAccount),
-    )
+    const res = await api.query.subtensorModule.stake(delegate_ss58, acctAddr(currentAccount))
     const valueStr = res.toString()
     const value = parseFloat(valueStr)
     return value / 10 ** 9
@@ -106,8 +96,7 @@ export default function Main(_props: any) {
   const getDelegateInfo = async (): Promise<DelegateInfo[]> => {
     const result_bytes = await (api.rpc as any).delegateInfo.getDelegates()
     const result = api.createType("Vec<DelegateInfo>", result_bytes)
-    const delegate_info_raw: DelegateInfoRaw[] =
-      result.toJSON() as any[] as DelegateInfoRaw[]
+    const delegate_info_raw: DelegateInfoRaw[] = result.toJSON() as any[] as DelegateInfoRaw[]
     console.log("delegate_info_raw", delegate_info_raw)
     const delegate_info = delegate_info_raw.map((delegate: DelegateInfoRaw) => {
       let nominators: [string, number][] = []
@@ -134,8 +123,7 @@ export default function Main(_props: any) {
   }
 
   const getDelegatesJson = async (): Promise<DelegateExtras> => {
-    const url =
-      "https://raw.githubusercontent.com/opentensor/bittensor-delegates/main/public/delegates.json"
+    const url = "https://raw.githubusercontent.com/opentensor/bittensor-delegates/main/public/delegates.json"
     const response = await fetch(url)
     const data = await response.json()
     return data
@@ -145,48 +133,37 @@ export default function Main(_props: any) {
     const getMeta = async (): Promise<Metagraph> => {
       setLoader(true)
 
-      const subnets_info_bytes = await (
-        api.rpc as any
-      ).subnetInfo.getSubnetsInfo()
-      const subnets_info = api.createType(
-        "Vec<Option<SubnetInfo>>",
-        subnets_info_bytes,
-      )
+      const subnets_info_bytes = await (api.rpc as any).subnetInfo.getSubnetsInfo()
+      const subnets_info = api.createType("Vec<Option<SubnetInfo>>", subnets_info_bytes)
 
-      const netuids: Array<number> = (subnets_info as any)
-        .toJSON()
-        .map((subnetInfo: SubnetInfo) => {
-          return subnetInfo.netuid
-        })
+      const netuids: Array<number> = (subnets_info as any).toJSON().map((subnetInfo: SubnetInfo) => {
+        return subnetInfo.netuid
+      })
 
       let _meta: Metagraph = {}
 
       const result: RawMetagraph = await getNeurons(netuids)
 
-      Object.entries(result).forEach(
-        ([netuid, neurons]: [string, NeuronInfoLite[]]) => {
-          let neurons_ = neurons.map((neuron: NeuronInfoLite) => {
-            return {
-              hotkey: neuron.hotkey.toString(),
-              coldkey: neuron.coldkey.toString(),
-              stake: Object.fromEntries(
-                neuron.stake.map((stake: [AccountId, number]) => {
-                  return [stake[0].toString(), stake[1]]
-                }),
-              ),
-              uid: neuron.uid,
-            }
-          })
-          _meta[netuid] = neurons_
-        },
-      )
+      Object.entries(result).forEach(([netuid, neurons]: [string, NeuronInfoLite[]]) => {
+        let neurons_ = neurons.map((neuron: NeuronInfoLite) => {
+          return {
+            hotkey: neuron.hotkey.toString(),
+            coldkey: neuron.coldkey.toString(),
+            stake: Object.fromEntries(
+              neuron.stake.map((stake: [AccountId, number]) => {
+                return [stake[0].toString(), stake[1]]
+              }),
+            ),
+            uid: neuron.uid,
+          }
+        })
+        _meta[netuid] = neurons_
+      })
 
       return _meta
     }
 
-    const _getDelegateInfo = async (): Promise<
-      [DelegateInfo[], DelegateExtras]
-    > => {
+    const _getDelegateInfo = async (): Promise<[DelegateInfo[], DelegateExtras]> => {
       const delegates_json = await getDelegatesJson()
       const delegateInfo = await getDelegateInfo()
       return [delegateInfo, delegates_json]
@@ -258,12 +235,7 @@ export default function Main(_props: any) {
       setDelegateRows(delegateInfo)
     }
 
-    mountedRef.current &&
-      prepareDelegateRows(
-        delegateInfo,
-        delegatesExtras,
-        acctAddr(currentAccount),
-      )
+    mountedRef.current && prepareDelegateRows(delegateInfo, delegatesExtras, acctAddr(currentAccount))
   }, [currentAccount, mountedRef, delegateInfo, delegatesExtras])
 
   const firstLoad = () => {
@@ -309,12 +281,7 @@ export default function Main(_props: any) {
       <>
         {!!delegateInfo.length && (
           <div className="flex flex-col mt-8 ">
-            <Stack
-              direction="column"
-              spacing={1}
-              alignItems="center"
-              marginTop="2em"
-            >
+            <Stack direction="column" spacing={1} alignItems="center" marginTop="2em">
               <Typography
                 className=" text-center"
                 variant="body2"
@@ -337,24 +304,20 @@ export default function Main(_props: any) {
                   padding: "0.5em",
                 }}
               >
-                {delegateInfo
-                  .slice((page - 1) * 10, page * 10)
-                  .map((delegate) => {
-                    return (
-                      <DelegateRow
-                        coldkey_ss58={acctAddr(currentAccount)}
-                        refreshMeta={refreshMeta}
-                        expanded={expanded}
-                        onChange={() =>
-                          handlePanelChange(delegate.delegate_ss58)
-                        }
-                        key={`row-${delegate.delegate_ss58}`}
-                        delegate={delegate}
-                        columns={delegateInfoColumns}
-                        delegateExtra={delegatesExtras[delegate.delegate_ss58]}
-                      />
-                    )
-                  })}
+                {delegateInfo.slice((page - 1) * 10, page * 10).map((delegate) => {
+                  return (
+                    <DelegateRow
+                      coldkey_ss58={acctAddr(currentAccount)}
+                      refreshMeta={refreshMeta}
+                      expanded={expanded}
+                      onChange={() => handlePanelChange(delegate.delegate_ss58)}
+                      key={`row-${delegate.delegate_ss58}`}
+                      delegate={delegate}
+                      columns={delegateInfoColumns}
+                      delegateExtra={delegatesExtras[delegate.delegate_ss58]}
+                    />
+                  )
+                })}
               </List>
               <Pagination
                 count={Math.ceil(delegateInfo.length / 5)}
