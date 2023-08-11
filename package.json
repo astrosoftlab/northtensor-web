@@ -16,7 +16,7 @@
     "@mdx-js/loader": "^2.3.0",
     "@mdx-js/react": "^2.3.0",
     "@mui/icons-material": "^5.14.3",
-    "@mui/material": "^5.11.16",
+    "@mui/material": "^5.14.3",
     "@next/mdx": "^13.3.4",
     "@polkadot/api": "^10.2.2",
     "@polkadot/extension-dapp": "^0.45.5",
@@ -67,10 +67,12 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.9",
+    "@trivago/prettier-plugin-sort-imports": "^4.2.0",
     "@types/common-tags": "^1.8.1",
     "@types/react-modal": "^3.16.0",
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.23",
+    "prettier": "^3.0.1",
     "supabase": "^1.46.5",
     "tailwindcss": "^3.3.1"
   }
