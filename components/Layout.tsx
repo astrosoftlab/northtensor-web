@@ -1,12 +1,13 @@
-import Navbar from "./tailwindui/Navbar";
-import Footer from "./tailwindui/Footer";
+import Footer from "./tailwindui/Footer"
+import Header from "./tailwindui/Header"
+
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <Navbar />
+      <Header />
       {children}
       <Footer />
       {/* You can add more things here  */}
     </>
-  );
+  )
 }

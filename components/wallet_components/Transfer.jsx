@@ -1,26 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState } from "react"
 // import { Form, Input, Grid, Label, Icon, Dropdown } from 'semantic-ui-react'
-import Select, { SelectChangeEvent } from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import FormControl from '@mui/material/FormControl';
-import Input from '@mui/material/Input';
-import InputLabel from '@mui/material/InputLabel';
-import InputAdornment from '@mui/material/InputAdornment';
-import CopyToClipboardButton from './CopyButton'
-import classNames from "classnames";
-import Stack from '@mui/material/Stack';
+import Stack from "@mui/material/Stack"
+import classNames from "classnames"
+import CopyToClipboardButton from "./CopyButton"
 
-
-import { TxButton } from '../../lib/substrate-lib/components'
-import { useSubstrateState } from '../../lib/substrate-lib'
-import styles from '@/styles/Home.module.css'
+import { useSubstrateState } from "../../lib/substrate-lib"
+import { TxButton } from "../../lib/substrate-lib/components"
 
 export default function Main(props) {
   const [status, setStatus] = useState(null)
-  const [sendToAccount, setSendToAccount] = useState('')
-  const [sendToAddress, setSendToAddress] = useState('')
+  const [sendToAccount, setSendToAccount] = useState("")
+  const [sendToAddress, setSendToAddress] = useState("")
   const [sendAmount, setSendAmount] = useState(0)
 
   const onAddressChange = (event) => {
@@ -32,10 +22,9 @@ export default function Main(props) {
   }
 
   const onDestinationAccountChange = (event) => {
-    setSendToAccount(event.target.value)   
-    setSendToAddress(event.target.value) 
+    setSendToAccount(event.target.value)
+    setSendToAddress(event.target.value)
   }
-  
 
   // const { addressTo, amount } = formState
 
@@ -44,7 +33,7 @@ export default function Main(props) {
   console.log(accounts)
 
   const availableAccounts = []
-  accounts.map(account => {
+  accounts.map((account) => {
     if (account.meta.name != currentAccount.meta.name) {
       return availableAccounts.push({
         key: account.meta.name,
@@ -58,12 +47,14 @@ export default function Main(props) {
 
   return (
     <>
- {/* <Grid.Column width={8}> */}
-      <h1 className="dark:text-slate-200 text-slate-800 text-3xl sm:text-3xl font-thin">Transfer</h1>
+      {/* <Grid.Column width={8}> */}
+      <h1 className=" text-slate-800 text-3xl sm:text-3xl font-thin">
+        Transfer
+      </h1>
       <br />
       <form className="space-y-4">
         <div className="space-y-1">
-          <label htmlFor="send-to-account" className="block text-slate-700 dark:text-slate-200">
+          <label htmlFor="send-to-account" className="block text-slate-700 ">
             Destination Account Selection
           </label>
           <select
@@ -85,7 +76,10 @@ export default function Main(props) {
           </select>
         </div>
         <div className="space-y-1">
-          <label htmlFor="destination-wallet-address" className="block text-slate-700 dark:text-slate-200">
+          <label
+            htmlFor="destination-wallet-address"
+            className="block text-slate-700 "
+          >
             Destination Wallet Address
           </label>
           <input
@@ -106,13 +100,13 @@ export default function Main(props) {
               "focus:outline-none",
               "focus:bg-white",
               "focus:border-slate-500",
-              sendToAccount !== "" && "bg-slate-200 cursor-not-allowed"
+              sendToAccount !== "" && "bg-slate-200 cursor-not-allowed",
             )}
             readOnly={sendToAccount !== ""}
           />
         </div>
         <div className="space-y-1">
-          <label htmlFor="standard-number" className="block text-slate-700 dark:text-slate-200">
+          <label htmlFor="standard-number" className="block text-slate-700 ">
             Amount of Tao to send
           </label>
           <input
@@ -124,21 +118,25 @@ export default function Main(props) {
           />
         </div>
       </form>
-      <Stack sx={{m: 2}} spacing={2} direction="column">
-      <TxButton
-            label="Transfer"
-            type="SIGNED-TX"
-            setStatus={setStatus}
-            attrs={{
-              palletRpc: 'balances',
-              callable: 'transfer',
-              inputParams: [sendToAddress, sendAmount * 10**9],
-              paramFields: [true, true],
-            }}
-          />
+      <Stack sx={{ m: 2 }} spacing={2} direction="column">
+        <TxButton
+          label="Transfer"
+          type="SIGNED-TX"
+          setStatus={setStatus}
+          attrs={{
+            palletRpc: "balances",
+            callable: "transfer",
+            inputParams: [sendToAddress, sendAmount * 10 ** 9],
+            paramFields: [true, true],
+          }}
+        />
 
-  <CopyToClipboardButton copyText={`btcli transfer --dest ${sendToAddress === '' ? "DESTINATION_WALLET_KEY" : sendToAddress} --amount ${sendAmount}`} />
-  </Stack>
-  </>)
-  
+        <CopyToClipboardButton
+          copyText={`btcli transfer --dest ${
+            sendToAddress === "" ? "DESTINATION_WALLET_KEY" : sendToAddress
+          } --amount ${sendAmount}`}
+        />
+      </Stack>
+    </>
+  )
 }

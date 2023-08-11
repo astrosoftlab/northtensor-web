@@ -1,90 +1,77 @@
-import React, { useState } from 'react'
-import navstyles from '../../styles/navbar.module.css';
-import styles from '@/styles/Home.module.css'
+import React, { useState } from "react"
 
-import {
-  Menu,
-  Segment,
-  Grid,
-  Container,
-} from 'semantic-ui-react'
-
-import Transfer from './Transfer'
-import Stake from './Stake'
-import MNRVTip from './MNRVTip'
-import Delegations from './Delegations'
-
+import Delegations from "./Delegations"
+import MNRVTip from "./MNRVTip"
+import Stake from "./Stake"
+import Transfer from "./Transfer"
 
 function Main(props) {
-  const [activeItem, setActiveItem] = useState('Stake');
+  const [activeItem, setActiveItem] = useState("Stake")
 
   const onClickHandler = (data) => {
-    setActiveItem(data.value);
-  };
+    setActiveItem(data.value)
+  }
 
   return (
-    <div className="min-h-screen bg-slate-100 dark:bg-slate-700">
+    <div className="min-h-screen bg-slate-100 ">
       <div className="py-4">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="lg:text-center">
-          </div>
-          <div style={{ width: '1200px' }}>
+        <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+          <div className="lg:text-center"></div>
+          <div style={{ width: "1200px" }}>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
               <button
                 className={`${
-                  activeItem === 'Stake'
-                    ? 'bg-slate-500 text-white'
-                    : 'bg-white border border-slate-300'
-                } rounded-md shadow-sm py-2 px-4 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-600 dark:focus:ring-slate-700`}
-                onClick={() => onClickHandler({ value: 'Stake' })}
+                  activeItem === "Stake"
+                    ? "bg-slate-500 text-white"
+                    : "bg-white border border-slate-300"
+                } rounded-md shadow-sm py-2 px-4 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-600 `}
+                onClick={() => onClickHandler({ value: "Stake" })}
               >
                 Stake
               </button>
               <button
                 className={`${
-                  activeItem === 'Transfer'
-                    ? 'bg-slate-500 text-white'
-                    : 'bg-white border border-slate-300'
-                } rounded-md shadow-sm py-2 px-4 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-600 dark:focus:ring-slate-700`}
-                onClick={() => onClickHandler({ value: 'Transfer' })}
+                  activeItem === "Transfer"
+                    ? "bg-slate-500 text-white"
+                    : "bg-white border border-slate-300"
+                } rounded-md shadow-sm py-2 px-4 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-600 `}
+                onClick={() => onClickHandler({ value: "Transfer" })}
               >
                 Transfer
               </button>
               <button
                 className={`${
-                  activeItem === 'Delegations'
-                    ? 'bg-slate-500 text-white'
-                    : 'bg-white border border-slate-300'
-                } rounded-md shadow-sm py-2 px-4 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-600 dark:focus:ring-slate-700`}
-                onClick={() => onClickHandler({ value: 'Delegations' })}
+                  activeItem === "Delegations"
+                    ? "bg-slate-500 text-white"
+                    : "bg-white border border-slate-300"
+                } rounded-md shadow-sm py-2 px-4 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-600 `}
+                onClick={() => onClickHandler({ value: "Delegations" })}
               >
                 Delegations
               </button>
               <button
                 className={`${
-                  activeItem === 'Tip'
-                    ? 'bg-slate-500 text-white'
-                    : 'bg-white border border-slate-300'
-                } rounded-md shadow-sm py-2 px-4 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-600 dark:focus:ring-slate-700`}
-                onClick={() => onClickHandler({ value: 'Tip' })}
+                  activeItem === "Tip"
+                    ? "bg-slate-500 text-white"
+                    : "bg-white border border-slate-300"
+                } rounded-md shadow-sm py-2 px-4 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-600 `}
+                onClick={() => onClickHandler({ value: "Tip" })}
               >
                 Tip
               </button>
             </div>
           </div>
-          <div className="mt-10" style={{ width: '1200px' }}>
-            {activeItem === 'Stake' ? <Stake /> : null}
-            {activeItem === 'Transfer' ? <Transfer /> : null}
-            {activeItem === 'Tip' ? <MNRVTip /> : null}
-            {activeItem === 'Delegations' ? <Delegations /> : null}
+          <div className="mt-10" style={{ width: "1200px" }}>
+            {activeItem === "Stake" ? <Stake /> : null}
+            {activeItem === "Transfer" ? <Transfer /> : null}
+            {activeItem === "Tip" ? <MNRVTip /> : null}
+            {activeItem === "Delegations" ? <Delegations /> : null}
           </div>
         </div>
       </div>
     </div>
-  );
+  )
 }
-
-
 
 export default function Navigation(props) {
   return <Main {...props} />

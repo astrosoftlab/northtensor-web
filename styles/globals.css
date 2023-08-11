@@ -5,12 +5,12 @@
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
-  --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
-    'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
-    'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
+  --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
+    "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
+    "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
 
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
+  --background-start-rgb: 250, 250, 250;
   --background-end-rgb: 255, 255, 255;
 
   --primary-glow: conic-gradient(
@@ -45,7 +45,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  /* :root {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
@@ -74,7 +74,7 @@
     --callout-border-rgb: 108, 108, 108;
     --card-rgb: 100, 100, 100;
     --card-border-rgb: 200, 200, 200;
-  }
+  } */
 }
 
 * {
@@ -100,12 +100,35 @@ body {
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+  @apply text-inherit no-underline hover:text-primary;
+}
+
+.container {
+  @apply sm:px-0 px-[20px];
+}
+
+.container-sm {
+  @apply container xl:max-w-[1200px];
 }
 
 @media (prefers-color-scheme: dark) {
   html {
-    color-scheme: dark;
+    /* color-scheme: dark; */
   }
+}
+
+#toggle_nav:checked ~ div #hamburger #line {
+  @apply rotate-45 translate-y-1.5;
+}
+
+#toggle_nav:checked ~ div #hamburger #line2 {
+  @apply -rotate-45 -translate-y-1;
+}
+
+.card {
+  @apply rounded-lg shadow bg-white;
+}
+
+.min-h-body {
+  @apply min-h-[calc(100vh-73px)];
 }
