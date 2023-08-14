@@ -1,5 +1,5 @@
 {
-  "APP_NAME": "North Tensor Wallet",
+  "APP_NAME": "NorthTensor Wallet",
   "CUSTOM_RPC_METHODS": {
     "neuronInfo": {
       "getNeuronsLite": {

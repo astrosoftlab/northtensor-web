@@ -84,7 +84,7 @@ export default function Example() {
                       href="/wallet"
                       className="flex gap-2 font-semibold text-gray-700 transition hover:text-primary md:px-4 "
                     >
-                      <span className="">Stake on North Tensor</span>
+                      <span className="">Stake on NorthTensor</span>
                     </Link>
                   </li>
                 </ul>

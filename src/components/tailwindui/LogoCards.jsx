@@ -9,13 +9,12 @@ const statuses = {
 const projects = [
   {
     id: 1,
-    name: "North Tensor",
+    name: "NorthTensor",
     imageUrl: "/images/ntLOGO.svg",
     detail: {
-      team: "North Tensor",
+      team: "NorthTensor",
       task: "NLP: Text Generation",
-      summary:
-        "Sample project placeholder to store new projects running on bittensor",
+      summary: "Sample project placeholder to store new projects running on bittensor",
     },
   },
   // {
@@ -28,13 +27,13 @@ const projects = [
   //   id: 3,
   //   name: 'Reform',
   //   imageUrl: '/images/cooldog.jpg',
-  //   detail: { team: 'North Tensor', task: 'NLP: Text Generation', summary: 'Sample project placeholder to store new projects running on bittensor'},
+  //   detail: { team: 'NorthTensor', task: 'NLP: Text Generation', summary: 'Sample project placeholder to store new projects running on bittensor'},
   // },
   // {
   //   id: 4,
   //   name: 'Reform',
   //   imageUrl: '/images/coolcat.jpg',
-  //   detail: {team: 'North Tensor', task: 'NLP: Text Generation', summary: 'Sample project placeholder to store new projects running on bittensor'},
+  //   detail: {team: 'NorthTensor', task: 'NLP: Text Generation', summary: 'Sample project placeholder to store new projects running on bittensor'},
   // },
 ]
 
@@ -44,15 +43,9 @@ function classNames(...classes) {
 
 export default function Example() {
   return (
-    <ul
-      role="list"
-      className="grid grid-cols-1 gap-x-6 gap-y-8 lg:grid-cols-3 xl:gap-x-8 "
-    >
+    <ul role="list" className="grid grid-cols-1 gap-x-6 gap-y-8 lg:grid-cols-3 xl:gap-x-8 ">
       {projects.map((project) => (
-        <li
-          key={project.id}
-          className="overflow-hidden rounded-xl border border-slate-200"
-        >
+        <li key={project.id} className="overflow-hidden rounded-xl border border-slate-200">
           <div className="flex items-center gap-x-4 border-b border-slate-900/5 bg-slate-50 p-6">
             <Image
               src={project.imageUrl}
@@ -61,9 +54,7 @@ export default function Example() {
               alt={project.name}
               className="h-12 w-12 flex-none rounded-lg bg-white object-cover ring-1 ring-slate-900/10"
             />
-            <div className="text-sm font-medium leading-6 text-slate-900">
-              {project.name}
-            </div>
+            <div className="text-sm font-medium leading-6 text-slate-900">{project.name}</div>
           </div>
           <dl className="-my-3 divide-y divide-slate-100 px-6 py-4 text-sm leading-6">
             <div className="flex justify-between gap-x-4 py-3">
@@ -92,9 +83,7 @@ export default function Example() {
         href="/contact"
         className="relative block w-full rounded-lg border-2 border-dashed border-slate-300 p-12 text-center hover:border-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2"
       >
-        <span className="mt-2 block text-sm font-semibold text-slate-900 ">
-          Your Project Here!
-        </span>
+        <span className="mt-2 block text-sm font-semibold text-slate-900 ">Your Project Here!</span>
       </Link>
     </ul>
   )

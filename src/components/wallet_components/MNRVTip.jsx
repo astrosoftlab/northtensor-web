@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 
 import Stack from "@mui/material/Stack"
+
 import { useSubstrateState } from "../../lib/substrate-lib"
 import { TxButton } from "../../lib/substrate-lib/components"
 import CopyToClipboardButton from "./CopyButton"
@@ -28,9 +29,7 @@ export default function Main(props) {
 
   return (
     <>
-      <h1 className=" text-slate-800 text-3xl sm:text-3xl font-thin">
-        Tip North Tensor
-      </h1>
+      <h1 className=" text-slate-800 text-3xl sm:text-3xl font-thin">Tip NorthTensor</h1>
       <br />
       <form className="space-y-4">
         <div className="space-y-1">
@@ -58,9 +57,7 @@ export default function Main(props) {
             paramFields: [true, true],
           }}
         />
-        <CopyToClipboardButton
-          copyText={`btcli transfer --dest ${MNRVTipWallet} --amount ${sendAmount}`}
-        />
+        <CopyToClipboardButton copyText={`btcli transfer --dest ${MNRVTipWallet} --amount ${sendAmount}`} />
       </Stack>
     </>
   )

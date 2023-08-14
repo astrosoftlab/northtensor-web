@@ -54,7 +54,7 @@ export default function Home({ postData }: { postData: PostData[] }) {
             <h2 className="mb-6 text-3xl font-semibold sm:text-4xl  text-slate-800">Stake</h2>
             <div className="flex flex-col gap-2">
               <Link href="/docs/staking" className="text-md">
-                - Staking on North Tensor
+                - Staking on NorthTensor
               </Link>
             </div>
           </div>
