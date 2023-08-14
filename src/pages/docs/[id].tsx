@@ -1,6 +1,6 @@
 import Head from "next/head"
 
-import Date from "@components//date"
+import Date from "@components/date"
 import { PostData, getAllPostIds, getPostData } from "@lib/docs"
 
 export async function getStaticPaths() {

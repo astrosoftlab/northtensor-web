@@ -7,7 +7,7 @@ import Head from "next/head"
 import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs"
 import { Session, SessionContextProvider } from "@supabase/auth-helpers-react"
 
-import Layout from "@components//Layout"
+import Layout from "@components/Layout"
 import "@styles/globals.css"
 
 // import landing from "@/tailwindui/Landing.tsx"
