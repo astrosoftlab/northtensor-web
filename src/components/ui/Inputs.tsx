@@ -70,7 +70,11 @@ const InputGroupContext = React.createContext<string | null>(null)
 export const InputGroup = React.forwardRef<HTMLDivElement, InputGroupProps>(({ children, rounded }, ref) => {
   const childrenComponents = React.Children.map(children, (child: React.ReactNode, index) => {
     if (React.isValidElement(child)) {
-      return React.cloneElement(child, { index, rounded, siblings: React.Children.count(children) })
+      return React.cloneElement(child as React.ReactElement<TextInputProps>, {
+        index,
+        rounded,
+        siblings: React.Children.count(children),
+      })
     }
   })
 

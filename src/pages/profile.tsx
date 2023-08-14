@@ -2,7 +2,7 @@ import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react"
 import { Auth } from "@supabase/auth-ui-react"
 import { ThemeSupa } from "@supabase/auth-ui-shared"
 
-import Account from "@components//Account"
+import Account from "@components/Account"
 
 export default function Home() {
   const session = useSession()
@@ -14,7 +14,7 @@ export default function Home() {
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           {!session && (
             <>
-              <h2 className="mt-10 text-2xl font-bold leading-9 tracking-tight text-center text-slate-900">
+              <h2 className="mt-10 text-3xl font-bold leading-9 tracking-tight text-center sm:text-4xl text-slate-900">
                 Sign in to your account
               </h2>
             </>

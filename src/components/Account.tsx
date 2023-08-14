@@ -8,6 +8,8 @@ import ColdkeyModal from "@components/tailwindui/ColdkeyModal"
 import ColdkeyInput from "@components/tailwindui/InputLabelled"
 
 import { Database } from "../lib/utils/database.type"
+import { Button } from "./ui/Buttons"
+import { InputGroup, TextInput } from "./ui/Inputs"
 
 type Profiles = Database["public"]["Tables"]["profiles"]["Row"]
 
@@ -155,94 +157,39 @@ export default function Account({ session }: { session: Session }) {
     <>
       <form onSubmit={handleSubmit} method="POST">
         <div>
-          <div className="pb-12 border-b border-white/10">
-            <h2 className="text-base font-semibold leading-9 text-slate-900">Profile</h2>
-            <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-              <div className="sm:col-span-6">
-                <label htmlFor="username" className="block text-sm font-medium leading-6 text-slate-900">
-                  Username
-                </label>
-                <div className="mt-2">
-                  <div className="flex rounded-md bg-slate-100 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-slate-500">
-                    <span className="flex items-center pl-3 select-none text-slate-500 sm:text-sm"></span>
-                    <input
-                      type="text"
-                      value={username || ""}
-                      onChange={(e) => setUsername(e.target.value)}
-                      name="username"
-                      id="username"
-                      autoComplete="username"
-                      className="flex-1 border-0 bg-transparent py-1.5 pl-1 text-slate-900 focus:ring-0 sm:text-sm sm:leading-6"
-                      placeholder="username"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
+          <h2 className="mb-6 text-3xl font-semibold leading-9 sm:text-4xl text-slate-900">Profile</h2>
+          <div className="pb-8">
+            <TextInput
+              rounded
+              label="User name"
+              placeholder="johndoe"
+              value={username || ""}
+              onChange={(e) => setUsername(e.target.value)}
+            />
           </div>
-
-          <div className="pb-12 border-b border-white/10">
-            <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-              <div className="sm:col-span-3">
-                <label htmlFor="first-name" className="block text-sm font-medium leading-6 text-slate-900">
-                  First name
-                </label>
-                <div className="mt-2">
-                  <input
-                    type="text"
-                    name="first-name"
-                    id="first-name"
-                    autoComplete="given-name"
-                    className="block w-full rounded-md border-0 bg-slate-100 py-1.5 text-slate-900 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-slate-500 sm:text-sm sm:leading-6"
-                  />
-                </div>
-              </div>
-
-              <div className="sm:col-span-3">
-                <label htmlFor="last-name" className="block text-sm font-medium leading-6 text-slate-900">
-                  Last name
-                </label>
-                <div className="mt-2">
-                  <input
-                    type="text"
-                    name="last-name"
-                    id="last-name"
-                    autoComplete="family-name"
-                    className="block w-full rounded-md border-0 bg-slate-100 py-1.5 text-slate-900 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-slate-500 sm:text-sm sm:leading-6"
-                  />
-                </div>
-              </div>
-
-              <div className="sm:col-span-4">
-                <label htmlFor="email" className="block text-sm font-medium leading-6 text-slate-900">
-                  Email address
-                </label>
-                <div className="mt-2">
-                  <input
-                    id="email"
-                    value={session.user.email}
-                    name="email"
-                    type="email"
-                    autoComplete="email"
-                    className="block w-full rounded-md border-0 bg-slate-100 py-1.5 text-slate-900 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-slate-500 sm:text-sm sm:leading-6"
-                    readOnly
-                  />
-                </div>
-              </div>
-            </div>
+          <div className="pb-8">
+            <InputGroup rounded>
+              <TextInput label="First name" placeholder="john" />
+              <TextInput label="Last name" placeholder="doe" />
+            </InputGroup>
           </div>
-          <div className="-space-y-px rounded-md shadow-sm isolate">
+          <div className="pb-8">
+            <TextInput
+              rounded
+              label="Email address"
+              placeholder="johndoe@example.com"
+              value={session.user.email}
+              readOnly
+            />
+          </div>
+          <div className="py-0.5 rounded-md shadow-sm isolate">
             <div className="flex items-center justify-between mb-2">
               <label htmlFor="email" className="block text-sm font-medium leading-6 text-slate-900">
                 Coldkeys
               </label>
-              <button
-                type="button"
-                className="rounded-md bg-slate-500 px-1 py-1.5 text-sm font-semibold text-slate-100 shadow-sm hover:bg-slate-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-500"
-                onClick={() => setIsAddColdkeyModalOpen(true)}
-              >
-                Add coldkey
-              </button>
+              <Button size="sm" onClick={() => setIsAddColdkeyModalOpen(true)}>
+                Add Coldkey
+              </Button>
             </div>
             <ul>
               {ss58_coldkeys?.map((key, index) => {
@@ -265,25 +212,21 @@ export default function Account({ session }: { session: Session }) {
           </div>
         </div>
 
-        <div className="flex items-center justify-end mt-6 gap-x-6">
-          <button
-            type="button"
-            className="px-3 py-2 text-sm font-semibold rounded-md shadow-sm bg-slate-500 text-slate-100 hover:bg-slate-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-500"
-            onClick={() => supabase.auth.signOut()}
-          >
+        <div className="flex items-center justify-end mt-6 gap-x-3">
+          <Button className="min-w-[100px]" color="secondary" onClick={() => supabase.auth.signOut()}>
             Log Out
-          </button>
-          <button
-            type="submit"
-            className="px-3 py-2 text-sm font-semibold rounded-md shadow-sm bg-slate-500 text-slate-100 hover:bg-slate-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-500"
-            onClick={() => updateProfile({ username, website, avatar_url, ss58_coldkeys })}
+          </Button>
+          <Button
+            className="min-w-[100px]"
             disabled={loading}
+            onClick={() => updateProfile({ username, website, avatar_url, ss58_coldkeys })}
           >
             Save
-          </button>
+          </Button>
         </div>
       </form>
       <Modal
+        ariaHideApp={false}
         isOpen={isAddColdkeyModalOpen}
         onRequestClose={() => setIsAddColdkeyModalOpen(false)}
         style={{
