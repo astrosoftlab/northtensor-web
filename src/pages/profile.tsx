@@ -27,13 +27,13 @@ export default function Home() {
               supabaseClient={supabase}
               appearance={{
                 theme: ThemeSupa,
-                variables: {
-                  default: {
-                    colors: {
-                      brand: "#0f172a",
-                      brandAccent: "#475569",
-                    },
-                  },
+                className: {
+                  input:
+                    "block w-full border-gray-300 shadow-sm focus:ring-primary focus:!border-primary sm:text-sm !rounded-full !font-sans",
+                  button:
+                    "w-full relative flex items-center justify-center before:absolute before:inset-0 !rounded-full before:transition before:duration-300 active:duration-75 font-semibold !bg-primary text-white !border-primary !font-sans",
+                  anchor: "!font-sans hover:!text-primary",
+                  message: "!font-sans",
                 },
               }}
               providers={[]}
