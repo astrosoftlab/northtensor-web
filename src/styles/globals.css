@@ -119,3 +119,7 @@ a {
 .min-h-body {
   @apply min-h-[calc(100vh-73px)];
 }
+
+.ReactModal__Overlay {
+  @apply z-50;
+}
