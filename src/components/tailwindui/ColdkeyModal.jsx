@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 
-import { Button } from "@components/ui/Buttons"
-import { TextInput } from "@components/ui/Inputs"
+import { Button } from "@components/UI/Buttons"
+import { TextInput } from "@components/UI/Inputs"
 
 export default function ColdkeyModal({ name, coldkey, onSave, onClose, newBool = false, onDelete = () => {} }) {
   const [newName, setNewName] = useState(name)

@@ -1,12 +1,13 @@
-import { createRef, useEffect, useState } from "react"
 import { Grid, Message } from "semantic-ui-react"
 
-import { useRouter } from "next/router"
-import { SubstrateContextProvider, useSubstrate } from "../lib/substrate-lib"
+import { createRef, useEffect, useState } from "react"
 
+import { useRouter } from "next/router"
+
+import { SubstrateContextProvider, useSubstrate } from "../lib/substrate-lib"
 import { Loader } from "./Loaders"
-import WalletBase from "./wallet_components/WalletBase"
-import WalletHeader from "./wallet_components/WalletHeader"
+import WalletBase from "./WalletComponents/WalletBase"
+import WalletHeader from "./WalletComponents/WalletHeader"
 
 function Main() {
   const {
@@ -61,9 +62,7 @@ function Main() {
   }
 
   if (keyringState !== "READY") {
-    return loader(
-      "Loading accounts (please review any extension's authorization) and/or refresh the page"
-    )
+    return loader("Loading accounts (please review any extension's authorization) and/or refresh the page")
   }
 
   const contextRef = createRef()

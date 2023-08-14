@@ -1,4 +1,4 @@
-import PrivacyContent from "@components/tailwindui/PrivacyContent"
+import PrivacyContent from "@components/Tailwindui/PrivacyContent"
 
 function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(" ")

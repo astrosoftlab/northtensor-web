@@ -4,7 +4,7 @@ import { useState } from "react"
 
 import { EyeIcon, EyeSlashIcon, PencilSquareIcon } from "@heroicons/react/20/solid"
 
-import ColdkeyModal from "@components/tailwindui/ColdkeyModal"
+import ColdkeyModal from "@components/Tailwindui/ColdkeyModal"
 
 export default function Example({ onInputChange, name, coldkey, watched, validated, index, onDelete = () => {} }) {
   const [isModalOpen, setIsModalOpen] = useState(false)

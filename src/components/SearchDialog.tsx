@@ -14,8 +14,8 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@components/ui/Dialog"
-import { Input } from "@components/ui/Inputs"
+} from "@components/UI/Dialog"
+import { Input } from "@components/UI/Inputs"
 
 function promptDataReducer(
   state: any[],

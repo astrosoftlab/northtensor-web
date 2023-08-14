@@ -1,6 +1,6 @@
 import { CheckCircleIcon } from "@heroicons/react/20/solid"
 
-import Divider from "@components/tailwindui/Divider"
+import Divider from "@components/Tailwindui/Divider"
 
 export default function Example() {
   return (
