@@ -9,8 +9,8 @@ export default function Home() {
   const supabase = useSupabaseClient()
 
   return (
-    <main className="min-h-body">
-      <div className="flex flex-col justify-center flex-1 min-h-full px-6 py-12 lg:px-8">
+    <main className="flex-1">
+      <div className="flex flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           {!session && (
             <>

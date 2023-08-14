@@ -30,7 +30,7 @@ export default function App({
       <Head>
         <title>NorthTensor</title>
       </Head>
-      <div className={`${inter.variable} font-sans`}>
+      <div className={`${inter.variable} font-sans flex flex-col min-h-screen`}>
         <Layout>
           <Component {...pageProps} />
         </Layout>
