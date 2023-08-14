@@ -1,5 +1,5 @@
-import Footer from "./tailwindui/Footer"
-import Header from "./tailwindui/Header"
+import Footer from "./Footer"
+import Header from "./Header"
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -7,7 +7,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <Header />
       {children}
       <Footer />
-      {/* You can add more things here  */}
     </>
   )
 }
