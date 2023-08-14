@@ -6,7 +6,7 @@ export const Loader = ({ text }: Props) => (
   <div className="flex items-center gap-2">
     <svg
       aria-hidden="true"
-      className="inline text-gray-200 w-7 h-7 animate-spin  fill-blue-600"
+      className="inline text-gray-200 w-7 h-7 animate-spin fill-primary"
       viewBox="0 0 100 101"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -29,7 +29,7 @@ export const ScreenLoader = ({ text }: Props) => (
     <div className="flex items-center gap-2">
       <svg
         aria-hidden="true"
-        className="inline text-gray-200 w-7 h-7 animate-spin  fill-blue-600"
+        className="inline text-gray-200 w-7 h-7 animate-spin fill-primary"
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
