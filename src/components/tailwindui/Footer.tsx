@@ -1,3 +1,4 @@
+import Image from "next/image"
 import Link from "next/link"
 
 export default function Example() {
@@ -6,7 +7,7 @@ export default function Example() {
       <footer className="relative flex flex-col items-center gap-16 py-16 overflow-hidden 2xl:py-[55px] md:py-[59px] bg-cyan-900">
         <div className="flex flex-col sm:flex-row justify-between gap-8 relative z-[1] container max-w-2xl text-white">
           <div className="flex items-center gap-1">
-            <img src="/images/solo-white.png" alt="" className="w-auto h-6" />
+            <Image src="/images/solo-white.png" alt="" width={24} height={24} />
             <span>NorthTensor © 2023</span>
           </div>
           <div className="flex flex-col gap-4 sm:flex-row">

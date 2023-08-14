@@ -1,3 +1,4 @@
+import Image from "next/image"
 import Link from "next/link"
 
 export default function Index() {
@@ -12,7 +13,7 @@ export default function Index() {
           <div className="relative ml-auto py-44">
             <div className="mx-auto lg:w-4/5">
               <div className="flex flex-col-reverse justify-between sm:flex-row">
-                <div>
+                <div className="w-2/4">
                   <h1 className="text-5xl font-bold leading-tight text-gray-900 md:text-6xl xl:text-7xl">
                     Build Your Project
                     <br />
@@ -39,8 +40,8 @@ export default function Index() {
                     </a>
                   </div>
                 </div>
-                <div className="mb-16 sm:mb-0">
-                  <img src="/images/viking-ship.png" alt="" />
+                <div className="relative flex-1 mb-16 sm:mb-0">
+                  <Image src="/images/viking-ship.png" alt="" fill className="object-contain" />
                 </div>
               </div>
             </div>
