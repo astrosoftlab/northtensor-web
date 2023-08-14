@@ -1,4 +1,4 @@
-import LogoCards from "@components/Tailwindui/LogoCards"
+import LogoCards from "@components/TailwindUI/LogoCards"
 
 function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(" ")

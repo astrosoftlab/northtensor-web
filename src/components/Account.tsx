@@ -4,8 +4,8 @@ import { useEffect, useState } from "react"
 
 import { Session, useSupabaseClient, useUser } from "@supabase/auth-helpers-react"
 
-import ColdkeyModal from "@components/Tailwindui/ColdkeyModal"
-import ColdkeyInput from "@components/Tailwindui/InputLabelled"
+import ColdkeyInput from "@components/TailwindUI/ColdkeyInput"
+import ColdkeyModal from "@components/TailwindUI/ColdkeyModal"
 
 import { Database } from "../lib/utils/database.type"
 import { Button } from "./UI/Buttons"

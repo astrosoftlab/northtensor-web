@@ -1,4 +1,4 @@
-import TermsContent from "@components/Tailwindui/TermsContent"
+import TermsContent from "@components/TailwindUI/TermsContent"
 
 function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(" ")
