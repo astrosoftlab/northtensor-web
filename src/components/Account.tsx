@@ -195,13 +195,13 @@ export default function Account({ session }: { session: Session }) {
               {ss58_coldkeys?.map((key, index) => {
                 if (typeof key !== "object" || Array.isArray(key)) return null
                 return (
-                  <li id={key?.coldkey as string} key={key?.coldkey as string}>
+                  <li id={key?.coldkey as string} key={index}>
                     <ColdkeyInput
                       onInputChange={handleColdkeyInputChange}
-                      name={key?.name1}
-                      coldkey={key?.coldkey}
-                      watched={key?.watched}
-                      validated={key?.validated}
+                      name={key?.name1 as string}
+                      coldkey={key?.coldkey as string}
+                      watched={key?.watched as boolean}
+                      validated={key?.validated as boolean}
                       index={index}
                       onDelete={() => handleRemoveColdkey(index)}
                     />
