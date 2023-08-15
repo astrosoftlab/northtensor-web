@@ -5,9 +5,9 @@ import { createRef, useEffect, useState } from "react"
 import { useRouter } from "next/router"
 
 import { SubstrateContextProvider, useSubstrate } from "../lib/substrate-lib"
-import { Loader } from "./UI/Loaders"
-import WalletBase from "./WalletComponents/WalletBase"
-import WalletHeader from "./WalletComponents/WalletHeader"
+import { Loader } from "./ui/Loaders"
+import WalletBase from "./walletComponents/WalletBase"
+import WalletHeader from "./walletComponents/WalletHeader"
 
 function Main() {
   const {

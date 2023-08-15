@@ -4,7 +4,7 @@ import { useState } from "react"
 
 import { EyeIcon, EyeSlashIcon, PencilSquareIcon } from "@heroicons/react/20/solid"
 
-import ColdkeyModal from "@components/TailwindUI/ColdkeyModal"
+import ColdkeyModal from "./ColdkeyModal"
 
 interface Props {
   name: string
@@ -12,7 +12,7 @@ interface Props {
   watched: boolean
   validated: boolean
   index: number
-  onInputChange: (index: number, Name: string, Coldkey: string, Watched: boolean) => void
+  onInputChange: (index: number, name: string, coldkey: string, watched: boolean) => void
   onDelete: (index: number) => void
 }
 
@@ -27,8 +27,8 @@ export default function ColdkeyInput({
 }: Props) {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
-  function handleColdkeyUpdate(Name: string, Coldkey: string, Watched: boolean) {
-    onInputChange(index, Name, Coldkey, Watched)
+  function handleColdkeyUpdate(name: string, coldkey: string, watched: boolean) {
+    onInputChange(index, name, coldkey, watched)
   }
 
   function handleColdkeyChange(updatedName: string, updatedColdkey: string) {
@@ -87,6 +87,7 @@ export default function ColdkeyInput({
         </div>
       </div>
       <Modal
+        ariaHideApp={false}
         isOpen={isModalOpen}
         onRequestClose={() => setIsModalOpen(false)}
         style={{

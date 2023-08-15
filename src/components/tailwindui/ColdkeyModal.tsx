@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react"
 
-import { Button } from "@components/UI/Buttons"
-import { TextInput } from "@components/UI/Inputs"
+import { Button } from "@components/ui/Buttons"
+import { TextInput } from "@components/ui/Inputs"
 
 interface Props {
   name: string
   coldkey: string
-  newBool: boolean
+  newBool?: boolean
   onSave: (newName: string, newColdkey: string) => void
   onClose: () => void
-  onDelete: () => void
+  onDelete?: () => void
 }
 
 export default function ColdkeyModal({ name, coldkey, onSave, onClose, newBool = false, onDelete = () => {} }: Props) {
@@ -27,7 +27,6 @@ export default function ColdkeyModal({ name, coldkey, onSave, onClose, newBool =
 
   function handleColdkeyChange(event: React.ChangeEvent<HTMLInputElement>) {
     setNewColdkey(event.target.value)
-    console.log(/^([1-9]|[A-HJ-NP-Za-km-z]){0,48}$/.test(event.target.value) && event.target.value.length === 48)
     setColdkeyIsValid(/^([1-9]|[A-HJ-NP-Za-km-z]){0,48}$/.test(event.target.value) && event.target.value.length === 48)
   }
 
