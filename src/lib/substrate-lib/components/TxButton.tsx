@@ -10,7 +10,7 @@ import utils from "../utils"
 interface Attrs {
   palletRpc: string
   callable: string
-  inputParams: string[]
+  inputParams: any[]
   paramFields: any[]
 }
 
@@ -21,7 +21,7 @@ interface Props {
   label: string
   style?: React.CSSProperties
   type?: "QUERY" | "RPC" | "SIGNED-TX" | "UNSIGNED-TX" | "SUDO-TX" | "UNCHECKED-SUDO-TX" | "CONSTANT"
-  setStatus: (status: string) => void
+  setStatus: any
   txOnClickHandler?: (unsub: any) => void
 }
 

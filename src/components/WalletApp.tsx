@@ -11,7 +11,6 @@ import WalletHeader from "./walletComponents/WalletHeader"
 
 function Main() {
   const {
-    forceLoadKeyring,
     state: { apiState, apiError, keyringState },
   } = useSubstrate()
 

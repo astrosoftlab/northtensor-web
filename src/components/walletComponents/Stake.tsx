@@ -7,7 +7,7 @@ import { TxButton } from "../../lib/substrate-lib/components"
 import CopyToClipboardButton from "./CopyButton"
 
 export default function Main() {
-  const [status, setStatus] = useState(null)
+  const [status, setStatus] = useState<string>()
 
   const { api, keyring, currentAccount, storedMNRVHotkey, balanceSigFigures } = useSubstrateState()
   const MNRVHotkey = storedMNRVHotkey

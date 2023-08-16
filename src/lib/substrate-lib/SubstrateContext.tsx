@@ -347,7 +347,7 @@ SubstrateContextProvider.propTypes = {
   socket: PropTypes.string,
 }
 
-const useSubstrate = () => useContext(SubstrateContext)
+const useSubstrate = () => useContext<any>(SubstrateContext)
 const useSubstrateState = () => useContext<any>(SubstrateContext).state
 
 export { SubstrateContextProvider, useSubstrate, useSubstrateState }
