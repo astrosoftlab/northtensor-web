@@ -3,9 +3,12 @@ import { useState } from "react"
 import { Button, Snackbar } from "@mui/material"
 import Stack from "@mui/material/Stack"
 
-// import HeaderPathing from './HeaderPathing'
+interface Props {
+  accountName: string
+  accountAddress: string
+}
 
-function DelegateCard({ accountName, accountAddress }) {
+function DelegateCard({ accountName, accountAddress }: Props) {
   const CopyToClipboardButton = () => {
     const [open, setOpen] = useState(false)
     const handleClick = () => {

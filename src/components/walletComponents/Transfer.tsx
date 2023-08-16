@@ -1,39 +1,40 @@
+import classNames from "classnames"
+
 import React, { useState } from "react"
+
 // import { Form, Input, Grid, Label, Icon, Dropdown } from 'semantic-ui-react'
 import Stack from "@mui/material/Stack"
-import classNames from "classnames"
-import CopyToClipboardButton from "./CopyButton"
 
 import { useSubstrateState } from "../../lib/substrate-lib"
 import { TxButton } from "../../lib/substrate-lib/components"
+import CopyToClipboardButton from "./CopyButton"
 
-export default function Main(props) {
+export default function Main() {
   const [status, setStatus] = useState(null)
   const [sendToAccount, setSendToAccount] = useState("")
   const [sendToAddress, setSendToAddress] = useState("")
   const [sendAmount, setSendAmount] = useState(0)
 
-  const onAddressChange = (event) => {
-    setSendToAddress(event.target.value)
+  const onAddressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSendToAddress(e.target.value)
   }
 
-  const onAmountChange = (event) => {
-    setSendAmount(event.target.value)
+  const onAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSendAmount(Number(e.target.value))
   }
 
-  const onDestinationAccountChange = (event) => {
-    setSendToAccount(event.target.value)
-    setSendToAddress(event.target.value)
+  const onDestinationAccountChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSendToAccount(e.target.value)
+    setSendToAddress(e.target.value)
   }
 
   // const { addressTo, amount } = formState
 
   const { keyring, currentAccount } = useSubstrateState()
   const accounts = keyring.getPairs()
-  console.log(accounts)
 
-  const availableAccounts = []
-  accounts.map((account) => {
+  const availableAccounts: any[] = []
+  accounts.map((account: any) => {
     if (account.meta.name != currentAccount.meta.name) {
       return availableAccounts.push({
         key: account.meta.name,
@@ -48,9 +49,7 @@ export default function Main(props) {
   return (
     <>
       {/* <Grid.Column width={8}> */}
-      <h1 className=" text-slate-800 text-3xl sm:text-3xl font-thin">
-        Transfer
-      </h1>
+      <h1 className="text-3xl font-thin text-slate-800 sm:text-3xl">Transfer</h1>
       <br />
       <form className="space-y-4">
         <div className="space-y-1">
@@ -63,23 +62,20 @@ export default function Main(props) {
             defaultValue="Custom"
             onChange={onDestinationAccountChange}
             value={sendToAccount}
-            className="block w-full px-4 py-2 pr-8 leading-tight bg-white border border-slate-300 rounded appearance-none focus:outline-none focus:bg-white focus:border-slate-500"
+            className="block w-full px-4 py-2 pr-8 leading-tight bg-white border rounded appearance-none border-slate-300 focus:outline-none focus:bg-white focus:border-slate-500"
           >
             {availableAccounts.map((option) => (
               <option key={option.key} value={option.value}>
                 {option.text}
               </option>
             ))}
-            <option key={"Custom"} text={"Custom"} value={""}>
+            <option key={"Custom"} value={""}>
               {"Custom"}
             </option>
           </select>
         </div>
         <div className="space-y-1">
-          <label
-            htmlFor="destination-wallet-address"
-            className="block text-slate-700 "
-          >
+          <label htmlFor="destination-wallet-address" className="block text-slate-700 ">
             Destination Wallet Address
           </label>
           <input
@@ -114,7 +110,7 @@ export default function Main(props) {
             type="number"
             value={sendAmount}
             onChange={onAmountChange}
-            className="block w-full px-4 py-2 leading-tight bg-white border border-slate-300 rounded appearance-none focus:outline-none focus:bg-white focus:border-slate-500"
+            className="block w-full px-4 py-2 leading-tight bg-white border rounded appearance-none border-slate-300 focus:outline-none focus:bg-white focus:border-slate-500"
           />
         </div>
       </form>

@@ -39,9 +39,9 @@ function Main() {
     }
   }, [refresh])
 
-  const loader = (text) => <Loader text={text} />
+  const loader = (text: string) => <Loader text={text} />
 
-  const message = (errObj) => (
+  const message = (errObj: any) => (
     <Grid centered columns={2} padded>
       <Grid.Column>
         <Message
