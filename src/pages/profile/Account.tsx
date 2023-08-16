@@ -4,11 +4,12 @@ import { useEffect, useState } from "react"
 
 import { Session, useSupabaseClient, useUser } from "@supabase/auth-helpers-react"
 
-import { Database } from "../lib/utils/database.type"
-import ColdkeyInput from "./tailwindui/ColdkeyInput"
-import ColdkeyModal from "./tailwindui/ColdkeyModal"
-import { Button } from "./ui/Buttons"
-import { InputGroup, TextInput } from "./ui/Inputs"
+import { Button } from "@components/ui/Buttons"
+import { InputGroup, TextInput } from "@components/ui/Inputs"
+import { Database } from "@lib/utils/database.type"
+
+import ColdkeyInput from "./ColdkeyInput"
+import ColdkeyModal from "./ColdkeyModal"
 
 type Profiles = Database["public"]["Tables"]["profiles"]["Row"]
 

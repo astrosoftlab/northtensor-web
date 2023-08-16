@@ -4,10 +4,11 @@ import { createRef, useEffect, useState } from "react"
 
 import { useRouter } from "next/router"
 
-import { SubstrateContextProvider, useSubstrate } from "../lib/substrate-lib"
-import { Loader } from "./ui/Loaders"
-import WalletBase from "./walletComponents/WalletBase"
-import WalletHeader from "./walletComponents/WalletHeader"
+import { Loader } from "@components/ui/Loaders"
+import { SubstrateContextProvider, useSubstrate } from "@lib/substrate-lib"
+import WalletBase from "@pages/wallet/WalletBase"
+
+import WalletHeader from "./WalletHeader"
 
 function Main() {
   const {

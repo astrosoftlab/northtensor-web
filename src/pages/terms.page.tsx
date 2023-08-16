@@ -1,8 +1,8 @@
 import { CheckCircleIcon } from "@heroicons/react/20/solid"
 
-import Divider from "./Divider"
+import Divider from "@components/ui/Divider"
 
-export default function Index() {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen px-6 py-32 bg-white lg:px-8">
       <div className="max-w-3xl mx-auto text-base leading-7 text-slate-700">

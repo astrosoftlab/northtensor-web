@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react"
 
 import Stack from "@mui/material/Stack"
 
-import { useSubstrateState } from "../../lib/substrate-lib"
-import { TxButton } from "../../lib/substrate-lib/components"
-import CopyToClipboardButton from "./CopyButton"
+import CopyToClipboardButton from "@components/ui/CopyButton"
+import { useSubstrateState } from "@lib/substrate-lib"
+import { TxButton } from "@lib/substrate-lib/components"
 
 export default function Main() {
   const [status, setStatus] = useState<string>()
