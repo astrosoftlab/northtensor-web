@@ -69,6 +69,8 @@ export interface Database {
           ss58_coldkeys: Json[] | null
           updated_at: string | null
           username: string | null
+          first_name: string | null
+          last_name: string | null
           website: string | null
         }
         Insert: {
