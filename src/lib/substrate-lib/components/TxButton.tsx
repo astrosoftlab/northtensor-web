@@ -1,12 +1,29 @@
-import PropTypes from "prop-types"
-import { Button } from "semantic-ui-react"
+import { Button, SemanticCOLORS } from "semantic-ui-react"
 
 import { useEffect, useState } from "react"
 
 import { web3FromSource } from "@polkadot/extension-dapp"
 
-import { useSubstrateState } from "../"
+import { useSubstrateState } from ".."
 import utils from "../utils"
+
+interface Attrs {
+  palletRpc: string
+  callable: string
+  inputParams: string[]
+  paramFields: any[]
+}
+
+interface Props {
+  attrs: Attrs
+  color?: SemanticCOLORS
+  disabled?: boolean
+  label: string
+  style?: React.CSSProperties
+  type?: "QUERY" | "RPC" | "SIGNED-TX" | "UNSIGNED-TX" | "SUDO-TX" | "UNCHECKED-SUDO-TX" | "CONSTANT"
+  setStatus: (status: string) => void
+  txOnClickHandler?: (unsub: any) => void
+}
 
 function TxButton({
   attrs,
@@ -14,13 +31,13 @@ function TxButton({
   disabled = false,
   label,
   setStatus,
-  style = null,
+  style,
   type = "QUERY",
-  txOnClickHandler = null,
-}) {
+  txOnClickHandler,
+}: Props) {
   // Hooks
   const { api, currentAccount } = useSubstrateState()
-  const [unsub, setUnsub] = useState(null)
+  const [unsub, setUnsub] = useState<(() => void) | null>(null)
   const [sudoKey, setSudoKey] = useState(null)
 
   const { palletRpc, callable, inputParams, paramFields } = attrs
@@ -61,13 +78,13 @@ function TxButton({
     return [address, { signer: injector.signer }]
   }
 
-  const txResHandler = ({ status }) =>
+  const txResHandler = ({ status }: { status: any }) =>
     // Original code
     status.isFinalized
       ? setStatus(`😉 Finalized. Block hash: ${status.asFinalized.toString()}`)
       : setStatus(`Current transaction status: ${status.type}`)
 
-  const txErrHandler = (err) => setStatus(`😞 Transaction Failed: ${err.toString()}`)
+  const txErrHandler = (err: Error) => setStatus(`😞 Transaction Failed: ${err.toString()}`)
 
   const sudoTx = async () => {
     const fromAcct = await getFromAcct()
@@ -112,7 +129,7 @@ function TxButton({
     setUnsub(() => unsub)
   }
 
-  const queryResHandler = (result) => (result.isNone ? setStatus("None") : setStatus(result.toString()))
+  const queryResHandler = (result: any) => (result.isNone ? setStatus("None") : setStatus(result.toString()))
 
   const query = async () => {
     const transformed = transformParams(paramFields, inputParams)
@@ -151,12 +168,14 @@ function TxButton({
       (isRpc() && rpc) ||
       (isConstant() && constant)
 
-    await asyncFunc()
+    if (asyncFunc !== false) {
+      await asyncFunc()
+    }
 
     return txOnClickHandler && typeof txOnClickHandler === "function" ? txOnClickHandler(unsub) : null
   }
 
-  const transformParams = (paramFields, inputParams, opts = { emptyAsNull: true }) => {
+  const transformParams = (paramFields: any[], inputParams: any[], opts = { emptyAsNull: true }) => {
     // if `opts.emptyAsNull` is true, empty param value will be added to res as `null`.
     //   Otherwise, it will not be added
     const paramVal = inputParams.map((inputParam) => {
@@ -180,8 +199,8 @@ function TxButton({
 
       // Deal with a vector
       if (type.indexOf("Vec<") >= 0) {
-        converted = converted.split(",").map((e) => e.trim())
-        converted = converted.map((single) =>
+        converted = converted.split(",").map((e: any) => e.trim())
+        converted = converted.map((single: any) =>
           isNumType(type) ? (single.indexOf(".") >= 0 ? Number.parseFloat(single) : Number.parseInt(single)) : single,
         )
         return [...memo, converted]
@@ -195,7 +214,7 @@ function TxButton({
     }, [])
   }
 
-  const isNumType = (type) => utils.paramConversion.num.some((el) => type.indexOf(el) >= 0)
+  const isNumType = (type: any) => utils.paramConversion.num.some((el) => type.indexOf(el) >= 0)
 
   const allParamsFilled = () => {
     if (paramFields.length === 0) {
@@ -203,7 +222,7 @@ function TxButton({
     }
 
     return paramFields.every((paramField, ind) => {
-      const param = inputParams[ind]
+      const param: any = inputParams[ind]
       if (paramField.optional) {
         return true
       }
@@ -216,7 +235,7 @@ function TxButton({
     })
   }
 
-  const isSudoer = (acctPair) => {
+  const isSudoer = (acctPair: any) => {
     if (!sudoKey || !acctPair) {
       return false
     }
@@ -228,7 +247,7 @@ function TxButton({
       className="px-4 py-2 font-semibold text-gray-100 bg-gray-500 rounded hover:bg-gray-600"
       basic
       color={color}
-      style={style}
+      style={style || {}}
       type="submit"
       onClick={transaction}
       disabled={
@@ -246,20 +265,7 @@ function TxButton({
   )
 }
 
-// prop type checking
-TxButton.propTypes = {
-  setStatus: PropTypes.func.isRequired,
-  type: PropTypes.oneOf(["QUERY", "RPC", "SIGNED-TX", "UNSIGNED-TX", "SUDO-TX", "UNCHECKED-SUDO-TX", "CONSTANT"])
-    .isRequired,
-  attrs: PropTypes.shape({
-    palletRpc: PropTypes.string,
-    callable: PropTypes.string,
-    inputParams: PropTypes.array,
-    paramFields: PropTypes.array,
-  }).isRequired,
-}
-
-function TxGroupButton(props) {
+function TxGroupButton(props: any) {
   return (
     <Button.Group>
       <TxButton label="Unsigned" type="UNSIGNED-TX" color="grey" {...props} />
