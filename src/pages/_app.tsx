@@ -7,7 +7,7 @@ import Head from "next/head"
 import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs"
 import { Session, SessionContextProvider } from "@supabase/auth-helpers-react"
 
-import Layout from "@components//Layout"
+import Layout from "@components/layout"
 import "@styles/globals.css"
 
 // import landing from "@/tailwindui/Landing.tsx"
@@ -30,7 +30,7 @@ export default function App({
       <Head>
         <title>NorthTensor</title>
       </Head>
-      <div className={`${inter.variable} font-sans`}>
+      <div className={`${inter.variable} font-sans flex flex-col min-h-screen`}>
         <Layout>
           <Component {...pageProps} />
         </Layout>

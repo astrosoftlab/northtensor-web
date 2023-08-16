@@ -1,14 +1,22 @@
-import {
-  BarsArrowUpIcon,
-  EyeIcon,
-  EyeSlashIcon,
-  PencilSquareIcon,
-} from "@heroicons/react/20/solid"
-import { useState } from "react"
-import ColdkeyModal from "@components/tailwindui/ColdkeyModal"
 import Modal from "react-modal"
 
-export default function Example({
+import { useState } from "react"
+
+import { EyeIcon, EyeSlashIcon, PencilSquareIcon } from "@heroicons/react/20/solid"
+
+import ColdkeyModal from "./ColdkeyModal"
+
+interface Props {
+  name: string
+  coldkey: string
+  watched: boolean
+  validated: boolean
+  index: number
+  onInputChange: (index: number, name: string, coldkey: string, watched: boolean) => void
+  onDelete: (index: number) => void
+}
+
+export default function ColdkeyInput({
   onInputChange,
   name,
   coldkey,
@@ -16,23 +24,23 @@ export default function Example({
   validated,
   index,
   onDelete = () => {},
-}) {
+}: Props) {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
-  function handleColdkeyUpdate(Name, Coldkey, Watched) {
-    onInputChange(index, Name, Coldkey, Watched)
+  function handleColdkeyUpdate(name: string, coldkey: string, watched: boolean) {
+    onInputChange(index, name, coldkey, watched)
   }
 
-  function handleColdkeyChange(updatedName, updatedColdkey) {
+  function handleColdkeyChange(updatedName: string, updatedColdkey: string) {
     handleColdkeyUpdate(updatedName, updatedColdkey, watched)
   }
 
-  function handleWatchedChange(getNewValue) {
+  function handleWatchedChange(getNewValue: () => boolean) {
     const newValue = getNewValue()
     handleColdkeyUpdate(name, coldkey, newValue)
   }
 
-  function formatString(str) {
+  function formatString(str: string) {
     const firstFive = str.slice(0, 15)
     const lastFive = str.slice(-5)
     return `${firstFive}...${lastFive}`
@@ -44,19 +52,16 @@ export default function Example({
 
   return (
     <div>
-      <div className="rounded-md px-3 pb-1.5 pt-2.5 shadow-sm ring-1 ring-inset ring-slate-300">
-        <label
-          htmlFor="name"
-          className="block text-xs font-medium text-slate-900"
-        >
+      <div className="px-3 pt-4 pb-3 shadow-sm rounded-xl ring-1 ring-inset ring-slate-300">
+        <label htmlFor="name" className="block mb-1 text-xs font-medium text-slate-900">
           {name}
         </label>
-        <div className="relative flex flex-grow items-stretch focus-within:z-10">
+        <div className="relative flex items-stretch flex-grow focus-within:z-10">
           <input
             type="text"
             name="coldkey"
             id="coldkey"
-            className="block w-full rounded-l-md border-0 py-1.5 pl-2 bg-slate-100 text-slate-900 ring-1 ring-inset ring-slate-400 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-slate-600 sm:text-sm sm:leading-6"
+            className="block w-full rounded-l-full border-0 py-1.5 pl-2 bg-gray-100 text-slate-900 ring-1 ring-inset ring-slate-400 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-slate-600 sm:text-sm sm:leading-6"
             defaultValue={formatString(coldkey)}
             readOnly
           />
@@ -66,31 +71,23 @@ export default function Example({
             onClick={() => handleWatchedChange(() => !watched)}
           >
             {watched ? (
-              <EyeIcon
-                className="-ml-0.5 h-5 w-5 text-slate-400"
-                aria-hidden="true"
-              />
+              <EyeIcon className="-ml-0.5 h-5 w-5 text-slate-400" aria-hidden="true" />
             ) : (
-              <EyeSlashIcon
-                className="-ml-0.5 h-5 w-5 text-slate-400"
-                aria-hidden="true"
-              />
+              <EyeSlashIcon className="-ml-0.5 h-5 w-5 text-slate-400" aria-hidden="true" />
             )}
           </button>
 
           <button
             onClick={() => setIsModalOpen(true)}
             type="button"
-            className="relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-slate-900 ring-1 ring-inset ring-slate-400 hover:bg-slate-50"
+            className="relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-full px-3 py-2 text-sm font-semibold text-slate-900 ring-1 ring-inset ring-slate-400 hover:bg-slate-50"
           >
-            <PencilSquareIcon
-              className="-ml-0.5 h-5 w-5 text-slate-400"
-              aria-hidden="true"
-            />
+            <PencilSquareIcon className="-ml-0.5 h-5 w-5 text-slate-400" aria-hidden="true" />
           </button>
         </div>
       </div>
       <Modal
+        ariaHideApp={false}
         isOpen={isModalOpen}
         onRequestClose={() => setIsModalOpen(false)}
         style={{

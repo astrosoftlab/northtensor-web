@@ -2,19 +2,19 @@ import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react"
 import { Auth } from "@supabase/auth-ui-react"
 import { ThemeSupa } from "@supabase/auth-ui-shared"
 
-import Account from "@components//Account"
+import Account from "@components/Account"
 
 export default function Home() {
   const session = useSession()
   const supabase = useSupabaseClient()
 
   return (
-    <main className="min-h-body">
-      <div className="flex flex-col justify-center flex-1 min-h-full px-6 py-12 lg:px-8">
+    <main className="flex-1">
+      <div className="flex flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           {!session && (
             <>
-              <h2 className="mt-10 text-2xl font-bold leading-9 tracking-tight text-center text-slate-900">
+              <h2 className="mt-10 text-3xl font-bold leading-9 tracking-tight text-center sm:text-4xl text-slate-900">
                 Sign in to your account
               </h2>
             </>
@@ -27,13 +27,13 @@ export default function Home() {
               supabaseClient={supabase}
               appearance={{
                 theme: ThemeSupa,
-                variables: {
-                  default: {
-                    colors: {
-                      brand: "#0f172a",
-                      brandAccent: "#475569",
-                    },
-                  },
+                className: {
+                  input:
+                    "block w-full border-gray-300 shadow-sm focus:ring-primary focus:!border-primary sm:text-sm !rounded-full !font-sans",
+                  button:
+                    "w-full relative flex items-center justify-center before:absolute before:inset-0 !rounded-full before:transition before:duration-300 active:duration-75 font-semibold !bg-primary text-white !border-primary !font-sans",
+                  anchor: "!font-sans hover:!text-primary",
+                  message: "!font-sans",
                 },
               }}
               providers={[]}

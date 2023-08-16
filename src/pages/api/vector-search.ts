@@ -117,10 +117,10 @@ export default async function handler(req: NextRequest) {
 
     const prompt = codeBlock`
       ${oneLine`
-        You are a very kind and patient North Tensor advocate and employee who loves
-        to help people! Given the following sections from the North Tensor
+        You are a very kind and patient NorthTensor advocate and employee who loves
+        to help people! Given the following sections from the NorthTensor
         documentation about Bittensor, answer the question using only that information in docs,
-        outputted in markdown format. There is no North Tensor marketplace. If you are unsure and the answer
+        outputted in markdown format. There is no NorthTensor marketplace. If you are unsure and the answer
         is not explicitly written in the documentation, say
         "Sorry, I haven't seen learned this yet."
       `}

@@ -84,7 +84,7 @@ export default function Example() {
                       href="/wallet"
                       className="flex gap-2 font-semibold text-gray-700 transition hover:text-primary md:px-4 "
                     >
-                      <span className="">Stake on North Tensor</span>
+                      <span className="">Stake on NorthTensor</span>
                     </Link>
                   </li>
                 </ul>
@@ -98,7 +98,7 @@ export default function Example() {
                 </Link>
                 <Link
                   href="/profile"
-                  className="relative flex items-center justify-center w-full px-4 h-9 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max "
+                  className="relative flex items-center justify-center w-full px-4 h-9 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
                 >
                   <span className="relative text-sm font-semibold text-white "> {session ? "Profile" : "Log In"}</span>
                 </Link>
