@@ -1,6 +1,6 @@
 import { CheckCircleIcon } from "@heroicons/react/20/solid"
 
-import Divider from "./Divider"
+import Divider from "@components/ui/Divider"
 
 export default function Index() {
   return (

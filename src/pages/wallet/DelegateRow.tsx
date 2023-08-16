@@ -5,9 +5,10 @@ import Box from "@mui/material/Box"
 import Stack from "@mui/material/Stack"
 import Typography from "@mui/material/Typography"
 
-import { useSubstrate } from "../../lib/substrate-lib"
-import { DelegateColumn, DelegateExtra, DelegateInfo, DelegateInfoRow } from "../../lib/utils/types"
-import { Accordion, AccordionDetails, AccordionSummary } from "./Accordion"
+import { Accordion, AccordionDetails, AccordionSummary } from "@components/ui/Accordion"
+import { useSubstrate } from "@lib/substrate-lib"
+import { DelegateColumn, DelegateExtra, DelegateInfo, DelegateInfoRow } from "@lib/utils/types"
+
 import DelegateCard from "./DelegateCard"
 
 // import { Theme, Typography, makeStyles } from "@material-ui/core"

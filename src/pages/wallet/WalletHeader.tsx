@@ -1,4 +1,5 @@
-import { useSubstrateState } from "../../lib/substrate-lib"
+import { useSubstrateState } from "@lib/substrate-lib"
+
 import AccountSelector from "./AccountSelector"
 
 function Main() {

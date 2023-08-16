@@ -7,7 +7,8 @@ import Select, { SelectChangeEvent } from "@mui/material/Select"
 import { useSession, useSupabaseClient, useUser } from "@supabase/auth-helpers-react"
 
 // import HeaderPathing from './HeaderPathing'
-import { useSubstrate, useSubstrateState } from "../../lib/substrate-lib"
+import { useSubstrate, useSubstrateState } from "@lib/substrate-lib"
+
 import AccountCard from "./AccountCard"
 
 type Account = {
