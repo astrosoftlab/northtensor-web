@@ -17,6 +17,8 @@ export default function Account({ session }: { session: Session }) {
   const user = useUser()
   const [loading, setLoading] = useState(true)
   const [username, setUsername] = useState<Profiles["username"]>(null)
+  const [first_name, setFirstName] = useState<Profiles["first_name"]>(null)
+  const [last_name, setLastName] = useState<Profiles["last_name"]>(null)
   const [website, setWebsite] = useState<Profiles["website"]>(null)
   const [avatar_url, setAvatarUrl] = useState<Profiles["avatar_url"]>(null)
   const [ss58_coldkeys, setSS58Coldkeys] = useState<Profiles["ss58_coldkeys"]>(null)
@@ -90,7 +92,7 @@ export default function Account({ session }: { session: Session }) {
 
       let { data, error, status } = await supabase
         .from("profiles")
-        .select(`username, website, avatar_url, ss58_coldkeys`)
+        .select(`username, first_name, last_name, website, avatar_url, ss58_coldkeys`)
         .eq("id", user.id)
         .single()
 
@@ -100,6 +102,8 @@ export default function Account({ session }: { session: Session }) {
 
       if (data) {
         setUsername(data.username)
+        setFirstName(data.first_name)
+        setLastName(data.last_name)
         setWebsite(data.website)
         setAvatarUrl(data.avatar_url)
         setSS58Coldkeys(data.ss58_coldkeys)
@@ -114,11 +118,15 @@ export default function Account({ session }: { session: Session }) {
 
   async function updateProfile({
     username,
+    first_name,
+    last_name,
     website,
     avatar_url,
     ss58_coldkeys,
   }: {
     username: Profiles["username"]
+    first_name: Profiles["first_name"]
+    last_name: Profiles["last_name"]
     website: Profiles["website"]
     avatar_url: Profiles["avatar_url"]
     ss58_coldkeys: Profiles["ss58_coldkeys"]
@@ -130,6 +138,8 @@ export default function Account({ session }: { session: Session }) {
       const updates = {
         id: user.id,
         username,
+        first_name,
+        last_name,
         website,
         avatar_url,
         ss58_coldkeys,
@@ -168,8 +178,18 @@ export default function Account({ session }: { session: Session }) {
           </div>
           <div className="pb-8">
             <InputGroup rounded>
-              <TextInput label="First name" placeholder="john" />
-              <TextInput label="Last name" placeholder="doe" />
+              <TextInput
+                label="First name"
+                placeholder="john"
+                value={first_name || ""}
+                onChange={(e) => setFirstName(e.target.value)}
+              />
+              <TextInput
+                label="Last name"
+                placeholder="doe"
+                value={last_name || ""}
+                onChange={(e) => setLastName(e.target.value)}
+              />
             </InputGroup>
           </div>
           <div className="pb-8">
@@ -218,7 +238,7 @@ export default function Account({ session }: { session: Session }) {
           <Button
             className="min-w-[100px]"
             disabled={loading}
-            onClick={() => updateProfile({ username, website, avatar_url, ss58_coldkeys })}
+            onClick={() => updateProfile({ username, first_name, last_name, website, avatar_url, ss58_coldkeys })}
           >
             Save
           </Button>
