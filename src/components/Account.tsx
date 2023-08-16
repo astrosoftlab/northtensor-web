@@ -190,7 +190,7 @@ export default function Account({ session }: { session: Session }) {
                 Add Coldkey
               </Button>
             </div>
-            <ul>
+            <ul className="flex flex-col gap-2">
               {ss58_coldkeys?.map((key, index) => {
                 if (typeof key !== "object" || Array.isArray(key)) return null
                 return (

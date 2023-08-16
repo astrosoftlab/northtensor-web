@@ -2,7 +2,12 @@ import { useState } from "react"
 
 import { Button, Snackbar } from "@mui/material"
 
-const CopyToClipboardButton = ({ copyText, displayText = null }) => {
+interface Props {
+  copyText: string
+  displayText?: string | null
+}
+
+const CopyToClipboardButton = ({ copyText, displayText = null }: Props) => {
   const [open, setOpen] = useState(false)
   const handleClick = () => {
     setOpen(true)

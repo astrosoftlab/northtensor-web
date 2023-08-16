@@ -1,25 +1,44 @@
-import MenuItem from "@mui/material/MenuItem"
-import Select from "@mui/material/Select"
-import {
-  useSession,
-  useSupabaseClient,
-  useUser
-} from "@supabase/auth-helpers-react"
-import Link from "next/link"
 import { useEffect, useState } from "react"
-import AccountCard from "./AccountCard"
+
+import Link from "next/link"
+
+import MenuItem from "@mui/material/MenuItem"
+import Select, { SelectChangeEvent } from "@mui/material/Select"
+import { useSession, useSupabaseClient, useUser } from "@supabase/auth-helpers-react"
 
 // import HeaderPathing from './HeaderPathing'
 import { useSubstrate, useSubstrateState } from "../../lib/substrate-lib"
+import AccountCard from "./AccountCard"
+
+type Account = {
+  address: string
+  coldkey_array: string[]
+  icon: string
+  key: string
+  source: string
+  text: string
+  value: string
+  meta: {
+    genesisHash?: string
+    isInjected: boolean
+    name?: string
+    source?: string
+  }
+  watched: boolean
+}
+
+type SS58ColdKey = {
+  coldkey: string
+  name1: string
+  validated: boolean
+  watched: boolean
+}
 
 const CHROME_EXT_URL =
   "https://chrome.google.com/webstore/detail/polkadot%7Bjs%7D-extension/mopnmbcafieddcagagdcbnhejhlodfdd"
-const FIREFOX_ADDON_URL =
-  "https://addons.mozilla.org/en-US/firefox/addon/polkadot-js-extension/"
+const FIREFOX_ADDON_URL = "https://addons.mozilla.org/en-US/firefox/addon/polkadot-js-extension/"
 
-const acctAddr = (acct) => (acct ? acct.address : "")
-
-function Main(props) {
+function Main() {
   const {
     setCurrentAccount,
     state: { keyring, currentAccount },
@@ -29,12 +48,12 @@ function Main(props) {
   const supabase = useSupabaseClient()
 
   // Get the list of accounts we possess the private key for
-  const keyringOptions = keyring.getPairs().map((account) => ({
+  const keyringOptions = keyring.getPairs().map((account: Account) => ({
     key: account.address,
     value: account.address,
     address: account.address,
     meta: account.meta,
-    text: account.meta.name.toUpperCase(),
+    text: account.meta.name?.toUpperCase() || "",
     coldkey_array: [account.address],
     icon: "user",
     source: "polkadot",
@@ -42,12 +61,11 @@ function Main(props) {
 
   const session = useSession()
 
-  const [ss58_coldkeys, setSS58Coldkeys] = useState([])
+  const [ss58_coldkeys, setSS58Coldkeys] = useState<SS58ColdKey[]>([])
   const [accountColdkeyRetrieved, setAccountColdkeyRetrieved] = useState(false)
-  const [ss58_coldkeys_processed, setSS58ColdkeysProcessed] = useState([])
+  const [ss58_coldkeys_processed, setSS58ColdkeysProcessed] = useState<Account[]>([])
   const [newSS58keys, setNewSS58Keys] = useState(false)
-  const [accountColdkeysUpdateMessage, setAccountColdkeysUpdateMessage] =
-    useState("")
+  const [accountColdkeysUpdateMessage, setAccountColdkeysUpdateMessage] = useState("")
   const user = useUser()
 
   useEffect(() => {
@@ -61,11 +79,7 @@ function Main(props) {
       setLoading(true)
       if (!user) throw new Error("No user")
 
-      let { data, error, status } = await supabase
-        .from("profiles")
-        .select(`ss58_coldkeys`)
-        .eq("id", user.id)
-        .single()
+      let { data, error, status } = await supabase.from("profiles").select(`ss58_coldkeys`).eq("id", user.id).single()
 
       if (error && status !== 406) {
         throw error
@@ -84,7 +98,7 @@ function Main(props) {
     }
   }
 
-  async function updateProfile({ ss58_coldkeys }) {
+  async function updateProfile(ss58_coldkeys: SS58ColdKey[]) {
     try {
       setLoading(true)
       if (!user) throw new Error("No user")
@@ -113,10 +127,7 @@ function Main(props) {
       let new_coldkeys = []
       for (const keyringOption of keyringOptions) {
         //Check if the keyringOption is not in the ss58_coldkeys array
-        if (
-          ss58_coldkeys &&
-          !ss58_coldkeys.some((item) => item.coldkey === keyringOption.value)
-        ) {
+        if (ss58_coldkeys && !ss58_coldkeys.some((item) => item.coldkey === keyringOption.value)) {
           // create a new coldkey object
           const newColdkey = {
             name1: keyringOption.text,
@@ -137,18 +148,14 @@ function Main(props) {
         setNewSS58Keys(true)
         const newColdkeyNames = new_coldkeys.map((coldkey) => coldkey.name1)
         // console.log('newColdkeyNames', newColdkeyNames)
-        setAccountColdkeysUpdateMessage(
-          `Added the following coldkeys to your account: ${newColdkeyNames.join(
-            ", ",
-          )}`,
-        )
+        setAccountColdkeysUpdateMessage(`Added the following coldkeys to your account: ${newColdkeyNames.join(", ")}`)
       }
     }
   }, [keyringOptions, session]) // <-- added setSS58Coldkeys to the dependency array
 
   useEffect(() => {
     if (ss58_coldkeys) {
-      const processed = ss58_coldkeys.map((coldkey) => ({
+      const processed: Account[] = ss58_coldkeys.map((coldkey) => ({
         key: coldkey.coldkey,
         value: coldkey.coldkey,
         text: coldkey.name1,
@@ -167,10 +174,8 @@ function Main(props) {
   // console.log("ss58_coldkeys", ss58_coldkeys)
   // console.log("keyringOptions", keyringOptions)
 
-  const updatedKeyringOptions = keyringOptions.map((keyringOption) => {
-    const matchingColdkey = ss58_coldkeys_processed.find(
-      (coldkey) => coldkey.value === keyringOption.value,
-    )
+  const updatedKeyringOptions = keyringOptions.map((keyringOption: Account) => {
+    const matchingColdkey = ss58_coldkeys_processed.find((coldkey) => coldkey.value === keyringOption.value)
     if (matchingColdkey) {
       return {
         ...keyringOption,
@@ -184,15 +189,11 @@ function Main(props) {
 
   const completeColdkeyOptions = [
     ...updatedKeyringOptions,
-    ...ss58_coldkeys_processed.filter(
-      (item) => !keyringOptions.some((other) => other.key === item.key),
-    ),
+    ...ss58_coldkeys_processed.filter((item) => !keyringOptions.some((other: Account) => other.key === item.key)),
   ]
   if (completeColdkeyOptions.length > 1) {
     const watchedColdkeys = completeColdkeyOptions.filter((obj) => obj.watched)
-    const allAccountsBeforeWatched = completeColdkeyOptions.map(
-      (obj) => obj.value,
-    )
+    const allAccountsBeforeWatched = completeColdkeyOptions.map((obj) => obj.value)
     if (watchedColdkeys.length > 0) {
       completeColdkeyOptions.unshift({
         key: "Watched Accounts",
@@ -219,8 +220,7 @@ function Main(props) {
 
   // console.log("completeColdkeyOptions", completeColdkeyOptions)
 
-  const initialAddress =
-    completeColdkeyOptions.length > 0 ? completeColdkeyOptions[0].value : ""
+  const initialAddress = completeColdkeyOptions.length > 0 ? completeColdkeyOptions[0].value : ""
 
   // console.log('inistailasdadress', initialAddress)
   // console.log('currentAccount', currentAccount)
@@ -228,9 +228,7 @@ function Main(props) {
   // Set the initial address
   useEffect(() => {
     if (!currentAccount && initialAddress.length > 0) {
-      let acc_match = completeColdkeyOptions.find(
-        (obj) => obj.key === initialAddress,
-      )
+      let acc_match = completeColdkeyOptions.find((obj) => obj.key === initialAddress)
       setCurrentAccount(acc_match)
       // console.log('setcurrentaccount', currentAccount)
       // console.log('should be', completeColdkeyOptions.find((obj) => obj.key === initialAddress))
@@ -241,15 +239,13 @@ function Main(props) {
   //   console.log('currentAccount updated:', currentAccount);
   // }, [currentAccount]);
 
-  const onChange = (addr) => {
+  const onChange = (addr: SelectChangeEvent<any>) => {
     // console.log("onchange", addr)
     if (addr.target.value === "Coldkey") {
       console.log("Coldkey")
     } else {
       // console.log("findign match result", completeColdkeyOptions.find((obj) => obj.key === addr.target.value))
-      setCurrentAccount(
-        completeColdkeyOptions.find((obj) => obj.key === addr.target.value),
-      )
+      setCurrentAccount(completeColdkeyOptions.find((obj) => obj.key === addr.target.value))
       // console.log("setnewcurrentaccount", currentAccount)
     }
   }
@@ -294,7 +290,7 @@ function Main(props) {
       {newSS58keys ? (
         <button
           className="px-3 py-2 mt-2 ml-2 text-sm font-semibold text-white rounded-md shadow-sm bg-slate-600 hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
-          onClick={() => updateProfile({ ss58_coldkeys })}
+          onClick={() => updateProfile(ss58_coldkeys)}
         >
           Save Coldkeys to Account
         </button>
@@ -303,7 +299,7 @@ function Main(props) {
   )
 }
 
-export default function AccountSelector(props) {
+export default function AccountSelector() {
   const { api, keyring } = useSubstrateState()
-  return keyring.getPairs && api.query ? <Main {...props} /> : null
+  return keyring.getPairs && api.query ? <Main /> : null
 }

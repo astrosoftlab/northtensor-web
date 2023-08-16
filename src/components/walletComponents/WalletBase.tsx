@@ -1,16 +1,15 @@
+import axios from "axios"
+
 import { useEffect, useState } from "react"
+
 import { useSubstrateState } from "../../lib/substrate-lib"
 import { TxButton } from "../../lib/substrate-lib/components"
-
-import axios from "axios"
 import CopyToClipboardButton from "./CopyButton"
 
-const acctAddr = (acct) => (acct ? acct.value : "")
-function Main(props) {
+function Main() {
   const [status, setStatus] = useState(null)
 
-  const { api, keyring, currentAccount, storedMNRVHotkey, balanceSigFigures } =
-    useSubstrateState()
+  const { api, keyring, currentAccount, storedMNRVHotkey, balanceSigFigures } = useSubstrateState()
 
   // Account Balance
   const [accountBalance, setAccountBalance] = useState(0)
@@ -19,8 +18,7 @@ function Main(props) {
 
   // TAO Conversion Rate
   const [taoConversionRate, setTaoConversionRate] = useState(0)
-  const [taoConversionRateUpdated, setTaoConversionRateUpdated] =
-    useState(false)
+  const [taoConversionRateUpdated, setTaoConversionRateUpdated] = useState(false)
 
   const [unstakeAmount, setUnstakeAmount] = useState(0.0)
   const [stakeAmount, setStakeAmount] = useState(0.0)
@@ -31,13 +29,10 @@ function Main(props) {
     if (!currentAccount) {
       return () => {}
     }
-    let unsubscribe
+    let unsubscribe: any
 
-    async function getStake(specificColdkey) {
-      const res = await api.query.subtensorModule.stake(
-        MNRVHotkey,
-        specificColdkey,
-      )
+    async function getStake(specificColdkey: string) {
+      const res = await api.query.subtensorModule.stake(MNRVHotkey, specificColdkey)
       return parseFloat(res.toString())
     }
 
@@ -69,34 +64,22 @@ function Main(props) {
     }
   }, [api, currentAccount])
 
-  const accountBalanceTao =
-    parseFloat(accountBalance.toString().replace(/,/g, "")) / 10 ** 9
-  const roundedAccountBalanceTao = parseFloat(
-    accountBalanceTao.toFixed(balanceSigFigures),
-  )
+  const accountBalanceTao = parseFloat(accountBalance.toString().replace(/,/g, "")) / 10 ** 9
+  const roundedAccountBalanceTao = parseFloat(accountBalanceTao.toFixed(balanceSigFigures))
   const accountBalanceUSD = (accountBalanceTao * taoConversionRate).toFixed(2)
 
-  const fullStakeAmount =
-    parseFloat(accountBalance.toString().replace(/,/g, "")) - 1000
+  const fullStakeAmount = parseFloat(accountBalance.toString().replace(/,/g, "")) - 1000
 
   const amountCurrentlyStakedTao = amountCurrentlyStaked / 10 ** 9
-  const roundedCurrentlyStakedTao = parseFloat(
-    amountCurrentlyStakedTao.toFixed(balanceSigFigures),
-  )
+  const roundedCurrentlyStakedTao = parseFloat(amountCurrentlyStakedTao.toFixed(balanceSigFigures))
 
-  const amountCurrentlyStakedUSD = (
-    amountCurrentlyStakedTao * taoConversionRate
-  ).toFixed(2)
+  const amountCurrentlyStakedUSD = (amountCurrentlyStakedTao * taoConversionRate).toFixed(2)
 
   const totalWalletBalance = accountBalanceTao + amountCurrentlyStakedTao
-  const roundedTotalWalletBalance = parseFloat(
-    totalWalletBalance.toFixed(balanceSigFigures),
-  )
-  const totalWalletBalanceUSD = (
-    totalWalletBalance * taoConversionRate
-  ).toFixed(2)
+  const roundedTotalWalletBalance = parseFloat(totalWalletBalance.toFixed(balanceSigFigures))
+  const totalWalletBalanceUSD = (totalWalletBalance * taoConversionRate).toFixed(2)
 
-  function isValidFloat(value) {
+  function isValidFloat(value: any) {
     return !isNaN(parseFloat(value)) && isFinite(value)
   }
 
@@ -105,9 +88,7 @@ function Main(props) {
 
   if (!taoConversionRateUpdated) {
     axios
-      .get(
-        `https://api.coingecko.com/api/v3/simple/price?ids=${token_id}&vs_currencies=usd`,
-      )
+      .get(`https://api.coingecko.com/api/v3/simple/price?ids=${token_id}&vs_currencies=usd`)
       .then((response) => {
         const price = response.data[token_id].usd
         setTaoConversionRate(price)
@@ -125,19 +106,13 @@ function Main(props) {
   // }, [currentAccount])
   return (
     <>
-      <div
-        className="relative"
-        style={{ display: "flex", justifyContent: "space-evenly" }}
-      >
+      <div className="relative" style={{ display: "flex", justifyContent: "space-evenly" }}>
         {currentAccount != null && currentAccount.source != "group" ? (
           <CopyToClipboardButton
             copyText={currentAccount.address}
             displayText={
               currentAccount.address.length > 10
-                ? `${currentAccount.address.substring(
-                    0,
-                    5,
-                  )}...${currentAccount.address.substring(
+                ? `${currentAccount.address.substring(0, 5)}...${currentAccount.address.substring(
                     currentAccount.address.length - 5,
                   )}`
                 : currentAccount.address
@@ -159,9 +134,7 @@ function Main(props) {
                 <div className="flex items-center justify-end w-1/2">
                   <div className="flex flex-col items-end">
                     <h1 className="">{roundedTotalWalletBalance} Tao</h1>
-                    <p className="text-xs text-slate-400 ">
-                      ${totalWalletBalanceUSD} USD
-                    </p>
+                    <p className="text-xs text-slate-400 ">${totalWalletBalanceUSD} USD</p>
                   </div>
                 </div>
               </div>
@@ -175,9 +148,7 @@ function Main(props) {
                 <div className="flex items-center justify-end w-1/2">
                   <div className="flex flex-col items-end">
                     <h1 className="">{roundedAccountBalanceTao} Tao</h1>
-                    <p className="text-xs text-slate-400 ">
-                      ${accountBalanceUSD} USD
-                    </p>
+                    <p className="text-xs text-slate-400 ">${accountBalanceUSD} USD</p>
                   </div>
                 </div>
               </button>
@@ -191,9 +162,7 @@ function Main(props) {
                   <div className="flex flex-col items-end">
                     <div className="flex flex-col items-end">
                       <h1 className="">{roundedCurrentlyStakedTao} Tao</h1>
-                      <p className="text-xs text-slate-400 ">
-                        ${amountCurrentlyStakedUSD} USD
-                      </p>
+                      <p className="text-xs text-slate-400 ">${amountCurrentlyStakedUSD} USD</p>
                     </div>
                   </div>
                 </div>
@@ -216,23 +185,15 @@ function Main(props) {
         </div>
       </div>
 
-      {currentAccount != null &&
-      currentAccount.source == "polkadot" &&
-      fullStakeAmount > 0 ? (
+      {currentAccount != null && currentAccount.source == "polkadot" && fullStakeAmount > 0 ? (
         <div className="relative">
-          <div
-            className="absolute inset-0 flex items-center"
-            aria-hidden="true"
-          >
+          <div className="absolute inset-0 flex items-center" aria-hidden="true">
             {/* <div className="w-full border-t border-slate-300" /> */}
           </div>
           <div className="relative flex justify-center">
             <span className="px-2 text-sm text-slate-500">&nbsp;</span>
           </div>
-          <div
-            className="relative"
-            style={{ display: "flex", justifyContent: "space-evenly" }}
-          >
+          <div className="relative" style={{ display: "flex", justifyContent: "space-evenly" }}>
             <button
               onClick={(e) => e.preventDefault()}
               style={{
@@ -266,9 +227,7 @@ function Main(props) {
           null
         } */}
 
-      {currentAccount != null &&
-      currentAccount.source == "polkadot" &&
-      fullStakeAmount > 0 ? (
+      {currentAccount != null && currentAccount.source == "polkadot" && fullStakeAmount > 0 ? (
         <div style={{ display: "flex", alignItems: "center" }}>
           <input
             type="number"
@@ -283,14 +242,9 @@ function Main(props) {
         </div>
       ) : null}
 
-      {currentAccount != null &&
-      currentAccount.source == "polkadot" &&
-      fullStakeAmount > 0 ? (
+      {currentAccount != null && currentAccount.source == "polkadot" && fullStakeAmount > 0 ? (
         <div className="relative">
-          <div
-            className="absolute inset-0 flex items-center"
-            aria-hidden="true"
-          >
+          <div className="absolute inset-0 flex items-center" aria-hidden="true">
             {/* <div className="w-full border-t border-slate-300" /> */}
           </div>
           <div className="relative flex justify-center">
@@ -299,16 +253,11 @@ function Main(props) {
         </div>
       ) : null}
 
-      {currentAccount != null &&
-      currentAccount.source == "polkadot" &&
-      fullStakeAmount > 0 ? (
-        <div
-          className="relative"
-          style={{ display: "flex", justifyContent: "space-evenly" }}
-        >
+      {currentAccount != null && currentAccount.source == "polkadot" && fullStakeAmount > 0 ? (
+        <div className="relative" style={{ display: "flex", justifyContent: "space-evenly" }}>
           {isValidFloat(stakeAmount) &&
-          parseFloat(stakeAmount) > 0 &&
-          parseFloat(stakeAmount) / 10 ** 9 < fullStakeAmount / 10 ** 9 ? (
+          parseFloat(stakeAmount.toString()) > 0 &&
+          parseFloat(stakeAmount.toString()) / 10 ** 9 < fullStakeAmount / 10 ** 9 ? (
             <TxButton
               label="Stake"
               type="SIGNED-TX"
@@ -352,36 +301,23 @@ function Main(props) {
         </div>
       ) : null}
 
-      {currentAccount != null &&
-      currentAccount.source == "polkadot" &&
-      amountCurrentlyStaked > 0 ? (
+      {currentAccount != null && currentAccount.source == "polkadot" && amountCurrentlyStaked > 0 ? (
         <div className="relative">
           <div className="relative">
-            <div
-              className="absolute inset-0 flex items-center"
-              aria-hidden="true"
-            >
+            <div className="absolute inset-0 flex items-center" aria-hidden="true">
               {/* <div className="w-full border-t border-slate-300" /> */}
             </div>
             <div className="relative flex justify-center">
               <span className="px-2 text-sm text-slate-500">&nbsp;</span>
             </div>
           </div>
-          <div
-            className="absolute inset-0 flex items-center"
-            aria-hidden="true"
-          >
-            {fullStakeAmount > 0 ? (
-              <div className="w-full border-t border-slate-300" />
-            ) : null}
+          <div className="absolute inset-0 flex items-center" aria-hidden="true">
+            {fullStakeAmount > 0 ? <div className="w-full border-t border-slate-300" /> : null}
           </div>
           <div className="relative flex justify-center">
             <span className="px-2 text-sm text-slate-500">&nbsp;</span>
           </div>
-          <div
-            className="relative"
-            style={{ display: "flex", justifyContent: "space-evenly" }}
-          >
+          <div className="relative" style={{ display: "flex", justifyContent: "space-evenly" }}>
             <button
               onClick={(e) => e.preventDefault()}
               style={{
@@ -400,9 +336,7 @@ function Main(props) {
         </div>
       ) : null}
 
-      {currentAccount != null &&
-      currentAccount.source == "polkadot" &&
-      amountCurrentlyStaked > 0 ? (
+      {currentAccount != null && currentAccount.source == "polkadot" && amountCurrentlyStaked > 0 ? (
         <div style={{ display: "flex", alignItems: "center" }}>
           <input
             type="number"
@@ -417,14 +351,9 @@ function Main(props) {
         </div>
       ) : null}
 
-      {currentAccount != null &&
-      currentAccount.source == "polkadot" &&
-      amountCurrentlyStaked > 0 ? (
+      {currentAccount != null && currentAccount.source == "polkadot" && amountCurrentlyStaked > 0 ? (
         <div className="relative">
-          <div
-            className="absolute inset-0 flex items-center"
-            aria-hidden="true"
-          >
+          <div className="absolute inset-0 flex items-center" aria-hidden="true">
             {/* <div className="w-full border-t border-slate-300" /> */}
           </div>
           <div className="relative flex justify-center">
@@ -433,17 +362,11 @@ function Main(props) {
         </div>
       ) : null}
 
-      {currentAccount != null &&
-      currentAccount.source == "polkadot" &&
-      amountCurrentlyStaked > 0 ? (
-        <div
-          className="relative"
-          style={{ display: "flex", justifyContent: "space-evenly" }}
-        >
+      {currentAccount != null && currentAccount.source == "polkadot" && amountCurrentlyStaked > 0 ? (
+        <div className="relative" style={{ display: "flex", justifyContent: "space-evenly" }}>
           {isValidFloat(unstakeAmount) &&
-          parseFloat(unstakeAmount) > 0 &&
-          parseFloat(unstakeAmount) / 10 ** 9 <
-            amountCurrentlyStaked / 10 ** 9 ? (
+          parseFloat(unstakeAmount.toString()) > 0 &&
+          parseFloat(unstakeAmount.toString()) / 10 ** 9 < amountCurrentlyStaked / 10 ** 9 ? (
             <TxButton
               label="Un-Stake"
               type="SIGNED-TX"
@@ -494,16 +417,10 @@ function Main(props) {
           <div className="flex flex-col items-center text-center">
             {" "}
             {/* Add 'items-center' and 'text-center' here */}
-            <span
-              className="px-2 text-sm text-slate-500"
-              style={{ whiteSpace: "normal", wordWrap: "break-word" }}
-            >
+            <span className="px-2 text-sm text-slate-500" style={{ whiteSpace: "normal", wordWrap: "break-word" }}>
               Make Account available through
             </span>
-            <span
-              className="px-2 text-sm text-slate-500"
-              style={{ whiteSpace: "normal", wordWrap: "break-word" }}
-            >
+            <span className="px-2 text-sm text-slate-500" style={{ whiteSpace: "normal", wordWrap: "break-word" }}>
               a Polkadot Wallet to Stake or Un-Stake
             </span>
           </div>
@@ -513,6 +430,6 @@ function Main(props) {
   )
 }
 
-export default function Navigation(props) {
-  return <Main {...props} />
+export default function Navigation() {
+  return <Main />
 }

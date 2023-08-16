@@ -1,53 +1,46 @@
-import Stack from "@mui/material/Stack"
 import React, { useEffect, useState } from "react"
+
+import Stack from "@mui/material/Stack"
+
 import { useSubstrateState } from "../../lib/substrate-lib"
 import { TxButton } from "../../lib/substrate-lib/components"
 import CopyToClipboardButton from "./CopyButton"
 
-export default function Main(props) {
-  const [status, setStatus] = useState(null)
+export default function Main() {
+  const [status, setStatus] = useState<string>()
 
-  const { api, keyring, currentAccount, storedMNRVHotkey, balanceSigFigures } =
-    useSubstrateState()
+  const { api, keyring, currentAccount, storedMNRVHotkey, balanceSigFigures } = useSubstrateState()
   const MNRVHotkey = storedMNRVHotkey
   const accounts = keyring.getPairs()
   const [accountBalance, setAccountBalance] = useState(0)
 
-  const acctAddr = (acct) => (acct ? acct.address : "")
+  const acctAddr = (acct: any) => (acct ? acct.address : "")
   // const [ActiveAccountAvailableBalance, setActiveAccountBalance] = useState(0.0)
   // When account address changes, update subscriptions
   useEffect(() => {
-    let unsubscribe
+    let unsubscribe: any
 
     // If the user has selected an address, create a new subscription
     currentAccount &&
       api.query.system
-        .account(acctAddr(currentAccount), (balance) =>
-          setAccountBalance(balance.data.free.toHuman()),
-        )
-        .then((unsub) => (unsubscribe = unsub))
+        .account(acctAddr(currentAccount), (balance: any) => setAccountBalance(balance.data.free.toHuman()))
+        .then((unsub: any) => (unsubscribe = unsub))
         .catch(console.error)
 
     return () => unsubscribe && unsubscribe()
   }, [api, currentAccount])
 
   //Convert AccountBalance to Tao
-  const fullStakeAmount =
-    parseFloat(accountBalance.toString().replace(/,/g, "")) - 1000
+  const fullStakeAmount = parseFloat(accountBalance.toString().replace(/,/g, "")) - 1000
 
   const [stakeType, setStakeType] = useState("addStake")
   const [sendAmount, setSendAmount] = useState(0)
 
   const [amountCurrentlyStaked, setAmountCurrentlyStaked] = useState(0)
   const amountCurrentlyStakedTao = amountCurrentlyStaked / 10 ** 9
-  const roundedCurrentlyStakedTao = parseFloat(
-    amountCurrentlyStakedTao.toFixed(balanceSigFigures),
-  )
+  const roundedCurrentlyStakedTao = parseFloat(amountCurrentlyStakedTao.toFixed(balanceSigFigures))
   async function getStake() {
-    const res = await api.query.subtensorModule.stake(
-      MNRVHotkey,
-      acctAddr(currentAccount),
-    )
+    const res = await api.query.subtensorModule.stake(MNRVHotkey, acctAddr(currentAccount))
     setAmountCurrentlyStaked(parseFloat(res.toString()))
   }
 
@@ -57,7 +50,7 @@ export default function Main(props) {
 
   const availableAccounts = []
 
-  accounts.map((account) => {
+  accounts.map((account: any) => {
     return availableAccounts.push({
       key: account.meta.name,
       text: account.meta.name,
@@ -65,17 +58,15 @@ export default function Main(props) {
     })
   })
 
-  const onAmountChange = (event) => {
-    setSendAmount(event.target.value)
+  const onAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSendAmount(Number(e.target.value))
   }
 
   // const delegateStakeCLI = "btcli delegate --delegate_ss58key "
   return (
     <>
       {/* Page Title */}
-      <h1 className="text-3xl font-thin text-slate-800 sm:text-3xl">
-        Delegated Staking
-      </h1>
+      <h1 className="text-3xl font-thin text-slate-800 sm:text-3xl">Delegated Staking</h1>
       <br />
       {/* Staked Balance Notice */}
       <form className="space-y-4">
@@ -181,10 +172,7 @@ export default function Main(props) {
           {/* Main Transaction Button */}
           {/* If there isn't enough Tao, notify the user to avoid confusion and remove buttons otherwise show the button*/}
           {fullStakeAmount < 1 && stakeType === "addStake" ? (
-            <label
-              htmlFor="send-to-account"
-              className="block lg:px-12 text-slate-700"
-            >
+            <label htmlFor="send-to-account" className="block lg:px-12 text-slate-700">
               No Available Tao to Stake
             </label>
           ) : (
@@ -231,10 +219,8 @@ export default function Main(props) {
         </Stack>
         {/* BTCLI Command */}
         <CopyToClipboardButton
-          copyText={`btcli ${
-            stakeType === "addStake" ? "delegate" : "undelegate"
-          } --delegate_ss58key ${MNRVHotkey} ${
-            parseFloat(sendAmount) === 0 ? "--all" : sendAmount
+          copyText={`btcli ${stakeType === "addStake" ? "delegate" : "undelegate"} --delegate_ss58key ${MNRVHotkey} ${
+            sendAmount === 0 ? "--all" : sendAmount
           }`}
         />
       </Stack>
