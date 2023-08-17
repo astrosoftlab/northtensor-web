@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 
 import { Button } from "@components/ui/Button"
-import { TextInput } from "@components/ui/Inputs"
+import { Input } from "@components/ui/Input"
 
 interface Props {
   name: string
@@ -73,11 +73,11 @@ export default function ColdkeyModal({ name, coldkey, onSave, onClose, newBool =
             </div>
 
             <div className="mt-5">
-              <TextInput rounded label="Name" value={newName} onChange={handleNameChange} />
+              <Input rounded label="Name" value={newName} onChange={handleNameChange} />
             </div>
 
             <div className="mt-5">
-              <TextInput rounded label="Coldkey" value={newColdkey} onChange={handleColdkeyChange} />
+              <Input rounded label="Coldkey" value={newColdkey} onChange={handleColdkeyChange} />
             </div>
 
             <div className="mt-9 sm:mt-12">

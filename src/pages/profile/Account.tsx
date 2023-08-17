@@ -5,7 +5,7 @@ import { useEffect, useState } from "react"
 import { Session, useSupabaseClient, useUser } from "@supabase/auth-helpers-react"
 
 import { Button } from "@components/ui/Button"
-import { InputGroup, TextInput } from "@components/ui/Inputs"
+import { Input, InputGroup } from "@components/ui/Input"
 import { Database } from "@lib/utils/database.type"
 
 import ColdkeyInput from "./ColdkeyInput"
@@ -170,7 +170,7 @@ export default function Account({ session }: { session: Session }) {
           <h3 className="mb-6 font-semibold leading-9">Profile</h3>
 
           <div className="pb-8">
-            <TextInput
+            <Input
               rounded
               label="User name"
               placeholder="johndoe"
@@ -180,13 +180,13 @@ export default function Account({ session }: { session: Session }) {
           </div>
           <div className="pb-8">
             <InputGroup rounded>
-              <TextInput
+              <Input
                 label="First name"
                 placeholder="john"
                 value={first_name || ""}
                 onChange={(e) => setFirstName(e.target.value)}
               />
-              <TextInput
+              <Input
                 label="Last name"
                 placeholder="doe"
                 value={last_name || ""}
@@ -195,7 +195,7 @@ export default function Account({ session }: { session: Session }) {
             </InputGroup>
           </div>
           <div className="pb-8">
-            <TextInput
+            <Input
               rounded
               label="Email address"
               placeholder="johndoe@example.com"
