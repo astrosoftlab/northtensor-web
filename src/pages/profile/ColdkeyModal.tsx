@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-import { Button } from "@components/ui/Buttons"
+import { Button } from "@components/ui/Button"
 import { TextInput } from "@components/ui/Inputs"
 
 interface Props {

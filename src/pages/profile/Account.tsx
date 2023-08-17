@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 
 import { Session, useSupabaseClient, useUser } from "@supabase/auth-helpers-react"
 
-import { Button } from "@components/ui/Buttons"
+import { Button } from "@components/ui/Button"
 import { InputGroup, TextInput } from "@components/ui/Inputs"
 import { Database } from "@lib/utils/database.type"
 
