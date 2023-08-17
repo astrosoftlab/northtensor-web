@@ -12,13 +12,7 @@ export default function Home() {
     <main className="flex-1">
       <div className="flex flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          {!session && (
-            <>
-              <h2 className="mt-10 text-3xl font-bold leading-9 tracking-tight text-center sm:text-4xl text-slate-900">
-                Sign in to your account
-              </h2>
-            </>
-          )}
+          {!session && <h3 className="mt-10 font-semibold">Sign in to your account</h3>}
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">

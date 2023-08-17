@@ -167,7 +167,8 @@ export default function Account({ session }: { session: Session }) {
     <>
       <form onSubmit={handleSubmit} method="POST">
         <div>
-          <h2 className="mb-6 text-3xl font-semibold leading-9 sm:text-4xl text-slate-900">Profile</h2>
+          <h3 className="mb-6 font-semibold leading-9">Profile</h3>
+
           <div className="pb-8">
             <TextInput
               rounded
@@ -233,7 +234,7 @@ export default function Account({ session }: { session: Session }) {
         </div>
 
         <div className="flex items-center justify-end mt-6 gap-x-3">
-          <Button className="min-w-[100px]" color="secondary" onClick={() => supabase.auth.signOut()}>
+          <Button className="min-w-[100px]" color="light" onClick={() => supabase.auth.signOut()}>
             Log Out
           </Button>
           <Button

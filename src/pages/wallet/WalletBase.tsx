@@ -126,42 +126,42 @@ function Main() {
       <div className="flex items-center justify-center flex-grow">
         <div className="card lg:w-96 sm:w-full">
           <ul role="list" className="divide-y divide-slate-200">
-            <li key={"balance1"} className="px-4 py-4 sm:px-6">
+            <li key={"balance1"} className="p-2 sm:p-3">
               <div className="flex items-center justify-between w-full px-4 py-2 rounded-md">
                 <div className="flex items-center w-1/2">
-                  <h1 className="mr-2 ">Total</h1>
+                  <h6 className="mr-2 ">Total</h6>
                 </div>
                 <div className="flex items-center justify-end w-1/2">
                   <div className="flex flex-col items-end">
-                    <h1 className="">{roundedTotalWalletBalance} Tao</h1>
+                    <h6 className="">{roundedTotalWalletBalance} Tao</h6>
                     <p className="text-xs text-slate-400 ">${totalWalletBalanceUSD} USD</p>
                   </div>
                 </div>
               </div>
             </li>
 
-            <li key={"balance2"} className="px-4 py-4 sm:px-6">
+            <li key={"balance2"} className="p-2 sm:p-3">
               <button className="flex items-center justify-between w-full px-4 py-2 rounded-md hover:bg-slate-200">
                 <div className="flex items-center w-1/2">
-                  <h1 className="mr-2 ">Un-Staked</h1>
+                  <h6 className="mr-2 ">Un-Staked</h6>
                 </div>
                 <div className="flex items-center justify-end w-1/2">
                   <div className="flex flex-col items-end">
-                    <h1 className="">{roundedAccountBalanceTao} Tao</h1>
+                    <h6 className="">{roundedAccountBalanceTao} Tao</h6>
                     <p className="text-xs text-slate-400 ">${accountBalanceUSD} USD</p>
                   </div>
                 </div>
               </button>
             </li>
-            <li key={"balance3"} className="px-4 py-4 sm:px-6">
+            <li key={"balance3"} className="p-2 sm:p-3">
               <button className="flex items-center justify-between w-full px-4 py-2 rounded-md hover:bg-slate-200">
                 <div className="flex items-center w-1/2">
-                  <h1 className="mr-2 ">Staked</h1>
+                  <h6 className="mr-2 ">Staked</h6>
                 </div>
                 <div className="flex items-center justify-end w-1/2">
                   <div className="flex flex-col items-end">
                     <div className="flex flex-col items-end">
-                      <h1 className="">{roundedCurrentlyStakedTao} Tao</h1>
+                      <h6 className="">{roundedCurrentlyStakedTao} Tao</h6>
                       <p className="text-xs text-slate-400 ">${amountCurrentlyStakedUSD} USD</p>
                     </div>
                   </div>

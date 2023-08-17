@@ -40,7 +40,7 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
         <div className="mt-1">
           <input
             className={cn(
-              "block w-full border-gray-300 shadow-sm focus:ring-primary focus:border-primary sm:text-sm",
+              "block w-full border-gray-300 shadow-sm hover:border-gray-500 focus:ring-primary focus:border-primary sm:text-sm",
               props.readOnly || props.disabled ? "bg-gray-100" : "",
               parent === INPUT_GROUP
                 ? index === 0
