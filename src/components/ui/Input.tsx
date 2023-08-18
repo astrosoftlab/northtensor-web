@@ -16,30 +16,29 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     const parent = React.useContext(InputGroupContext)
 
     return (
-      <div ref={ref} className={`w-full ${className}`}>
+      <div className={`w-full ${className}`}>
         {props.label!! && (
-          <label htmlFor="email" className={`block text-sm font-medium text-gray-700 ${rounded ? "pl-2" : ""}`}>
+          <label htmlFor="email" className={`block mb-1 text-sm font-medium text-gray-700 ${rounded ? "pl-2" : ""}`}>
             {props.label}
           </label>
         )}
-        <div className="mt-1">
-          <input
-            className={cn(
-              "block w-full border-gray-300 shadow-sm hover:border-gray-500 focus:ring-primary focus:border-primary sm:text-sm",
-              props.readOnly || props.disabled ? "bg-gray-100" : "",
-              parent === INPUT_GROUP
-                ? index === 0
-                  ? "rounded-l-full"
-                  : siblings && index === siblings - 1
-                  ? "rounded-r-full border-l-0"
-                  : "border-l-0"
-                : rounded
-                ? "rounded-full"
-                : "rounded-md",
-            )}
-            {...props}
-          />
-        </div>
+        <input
+          ref={ref}
+          className={cn(
+            "block w-full border-gray-300 shadow-sm hover:border-gray-500 focus:ring-primary focus:border-primary sm:text-sm",
+            props.readOnly || props.disabled ? "bg-gray-100" : "",
+            parent === INPUT_GROUP
+              ? index === 0
+                ? "rounded-l-full"
+                : siblings && index === siblings - 1
+                ? "rounded-r-full border-l-0"
+                : "border-l-0"
+              : rounded
+              ? "rounded-full"
+              : "rounded-md",
+          )}
+          {...props}
+        />
       </div>
     )
   },

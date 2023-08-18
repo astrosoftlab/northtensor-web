@@ -2,14 +2,10 @@ import { useEffect, useState } from "react"
 
 import Link from "next/link"
 
-import MenuItem from "@mui/material/MenuItem"
-import Select, { SelectChangeEvent } from "@mui/material/Select"
 import { useSession, useSupabaseClient, useUser } from "@supabase/auth-helpers-react"
 
-// import HeaderPathing from './HeaderPathing'
+import { Select } from "@components/ui/Select"
 import { useSubstrate, useSubstrateState } from "@lib/substrate-lib"
-
-import AccountCard from "./AccountCard"
 
 type Account = {
   address: string
@@ -219,56 +215,32 @@ function Main() {
     })
   }
 
-  // console.log("completeColdkeyOptions", completeColdkeyOptions)
-
   const initialAddress = completeColdkeyOptions.length > 0 ? completeColdkeyOptions[0].value : ""
-
-  // console.log('inistailasdadress', initialAddress)
-  // console.log('currentAccount', currentAccount)
 
   // Set the initial address
   useEffect(() => {
     if (!currentAccount && initialAddress.length > 0) {
       let acc_match = completeColdkeyOptions.find((obj) => obj.key === initialAddress)
       setCurrentAccount(acc_match)
-      // console.log('setcurrentaccount', currentAccount)
-      // console.log('should be', completeColdkeyOptions.find((obj) => obj.key === initialAddress))
     }
-  }, [initialAddress])
+  }, [initialAddress, completeColdkeyOptions, currentAccount, setCurrentAccount])
 
-  // useEffect(() => {
-  //   console.log('currentAccount updated:', currentAccount);
-  // }, [currentAccount]);
-
-  const onChange = (addr: SelectChangeEvent<any>) => {
-    // console.log("onchange", addr)
-    if (addr.target.value === "Coldkey") {
+  const onChange = (newValue: any) => {
+    if (newValue.value === "Coldkey") {
       console.log("Coldkey")
     } else {
-      // console.log("findign match result", completeColdkeyOptions.find((obj) => obj.key === addr.target.value))
-      setCurrentAccount(completeColdkeyOptions.find((obj) => obj.key === addr.target.value))
-      // console.log("setnewcurrentaccount", currentAccount)
+      setCurrentAccount(completeColdkeyOptions.find((obj) => obj.key === newValue.value))
     }
   }
 
   return (
-    <div className="p-8 card">
+    <div className="p-6 card">
       {completeColdkeyOptions.length > 0 && currentAccount ? (
         <Select
-          labelId="account-selection-label"
-          id="account-selection"
-          value={currentAccount.value}
-          className="w-full"
-          onChange={(event) => onChange(event)}
-        >
-          {completeColdkeyOptions.map((temp_account) => {
-            return (
-              <MenuItem key={temp_account.key} value={temp_account.key}>
-                <AccountCard accountName={temp_account.text} />
-              </MenuItem>
-            )
-          })}
-        </Select>
+          onChange={onChange}
+          value={{ label: currentAccount.text, value: currentAccount.key }}
+          options={completeColdkeyOptions.map((tempAccount) => ({ label: tempAccount.text, value: tempAccount.key }))}
+        />
       ) : (
         <div className="text-center">
           <h1 className="mb-2 text-xl font-bold ">No Accounts Detected</h1>

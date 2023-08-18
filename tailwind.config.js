@@ -20,6 +20,7 @@ module.exports = {
       info: "#0C63E7",
       black: colors.black,
       white: colors.white,
+      light: colors.purple[200],
       slate: colors.slate,
       gray: {
         50: "#FAFAFC",
