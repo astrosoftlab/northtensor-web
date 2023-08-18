@@ -38,6 +38,7 @@ export const Select = React.forwardRef(
         <ReactSelect
           value={value}
           options={options}
+          className="react-select"
           classNames={{
             control: (state) =>
               cn(
