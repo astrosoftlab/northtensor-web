@@ -175,23 +175,13 @@ export default function Account({ session }: { session: Session }) {
               label="User name"
               placeholder="johndoe"
               value={username || ""}
-              onChange={(e) => setUsername(e.target.value)}
+              onChange={(v) => setUsername(v)}
             />
           </div>
           <div className="pb-8">
             <InputGroup rounded>
-              <Input
-                label="First name"
-                placeholder="john"
-                value={first_name || ""}
-                onChange={(e) => setFirstName(e.target.value)}
-              />
-              <Input
-                label="Last name"
-                placeholder="doe"
-                value={last_name || ""}
-                onChange={(e) => setLastName(e.target.value)}
-              />
+              <Input label="First name" placeholder="john" value={first_name || ""} onChange={(v) => setFirstName(v)} />
+              <Input label="Last name" placeholder="doe" value={last_name || ""} onChange={(v) => setLastName(v)} />
             </InputGroup>
           </div>
           <div className="pb-8">

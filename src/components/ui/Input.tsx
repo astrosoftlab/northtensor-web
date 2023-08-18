@@ -4,15 +4,16 @@ import { cn } from "@lib/utils"
 
 const INPUT_GROUP = "INPUT_GROUP"
 
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+type InputProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange"> & {
   label?: string
   rounded?: boolean
   index?: number
   siblings?: number
+  onChange?: (v: string) => void | Promise<void>
 }
 
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, rounded, index, siblings, ...props }, ref) => {
+  ({ className, rounded, index, siblings, onChange, ...props }, ref) => {
     const parent = React.useContext(InputGroupContext)
 
     return (
@@ -24,6 +25,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         )}
         <input
           ref={ref}
+          onChange={(e) => (onChange ? onChange(e.target.value) : false)}
           className={cn(
             "block w-full border-gray-300 shadow-sm hover:border-gray-500 focus:ring-primary focus:border-primary sm:text-sm",
             props.readOnly || props.disabled ? "bg-gray-100" : "",

@@ -21,13 +21,13 @@ export default function ColdkeyModal({ name, coldkey, onSave, onClose, newBool =
     setColdkeyIsValid(/^([1-9]|[A-HJ-NP-Za-km-z]){0,48}$/.test(coldkey) && coldkey.length === 48)
   }, [coldkey])
 
-  function handleNameChange(event: React.ChangeEvent<HTMLInputElement>) {
-    setNewName(event.target.value)
+  function handleNameChange(v: string) {
+    setNewName(v)
   }
 
-  function handleColdkeyChange(event: React.ChangeEvent<HTMLInputElement>) {
-    setNewColdkey(event.target.value)
-    setColdkeyIsValid(/^([1-9]|[A-HJ-NP-Za-km-z]){0,48}$/.test(event.target.value) && event.target.value.length === 48)
+  function handleColdkeyChange(v: string) {
+    setNewColdkey(v)
+    setColdkeyIsValid(/^([1-9]|[A-HJ-NP-Za-km-z]){0,48}$/.test(v) && v.length === 48)
   }
 
   function handleSave() {

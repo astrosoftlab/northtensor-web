@@ -234,7 +234,7 @@ export function SearchDialog() {
                   placeholder="Ask a question..."
                   name="search"
                   value={search}
-                  onChange={(e) => setSearch(e.target.value)}
+                  onChange={(v) => setSearch(v)}
                   className="col-span-3"
                 />
                 <CornerDownLeft
