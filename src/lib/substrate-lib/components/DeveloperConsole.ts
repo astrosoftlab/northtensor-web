@@ -1,10 +1,10 @@
 // This component will simply add utility functions to your developer console.
-import { ApiPromise } from "@polkadot/api"
-import { Keyring } from "@polkadot/keyring"
-import * as util from "@polkadot/util"
-import * as utilCrypto from "@polkadot/util-crypto"
+import { ApiPromise } from '@polkadot/api'
+import { Keyring } from '@polkadot/keyring'
+import * as util from '@polkadot/util'
+import * as utilCrypto from '@polkadot/util-crypto'
 
-import { useSubstrateState } from ".."
+import { useSubstrateState } from '..'
 
 interface SubstrateState {
   api: ApiPromise
@@ -24,10 +24,10 @@ declare global {
 
 export default function DeveloperConsole(): null {
   const { api, apiState, keyring, keyringState }: SubstrateState = useSubstrateState()
-  if (apiState === "READY") {
+  if (apiState === 'READY') {
     window.api = api
   }
-  if (keyringState === "READY") {
+  if (keyringState === 'READY') {
     window.keyring = keyring
   }
 

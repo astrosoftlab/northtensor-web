@@ -1,10 +1,10 @@
-import * as React from "react"
+import * as React from 'react'
 
-import { cn } from "@lib/utils"
+import { cn } from '@lib/utils'
 
-const INPUT_GROUP = "INPUT_GROUP"
+const INPUT_GROUP = 'INPUT_GROUP'
 
-type InputProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange"> & {
+type InputProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'> & {
   label?: string
   rounded?: boolean
   index?: number
@@ -19,7 +19,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     return (
       <div className={`w-full ${className}`}>
         {props.label!! && (
-          <label htmlFor="email" className={`block mb-1 text-sm font-medium text-gray-700 ${rounded ? "pl-2" : ""}`}>
+          <label htmlFor="email" className={`block mb-1 text-sm font-medium text-gray-700 ${rounded ? 'pl-2' : ''}`}>
             {props.label}
           </label>
         )}
@@ -27,17 +27,17 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
           ref={ref}
           onChange={(e) => (onChange ? onChange(e.target.value) : false)}
           className={cn(
-            "block w-full border-gray-300 shadow-sm hover:border-gray-500 focus:ring-primary focus:border-primary sm:text-sm",
-            props.readOnly || props.disabled ? "bg-gray-100" : "",
+            'block w-full border-gray-300 shadow-sm hover:border-gray-500 focus:ring-primary focus:border-primary sm:text-sm',
+            props.readOnly || props.disabled ? 'bg-gray-100' : '',
             parent === INPUT_GROUP
               ? index === 0
-                ? "rounded-l-full"
+                ? 'rounded-l-full'
                 : siblings && index === siblings - 1
-                ? "rounded-r-full border-l-0"
-                : "border-l-0"
+                ? 'rounded-r-full border-l-0'
+                : 'border-l-0'
               : rounded
-              ? "rounded-full"
-              : "rounded-md",
+              ? 'rounded-full'
+              : 'rounded-md',
           )}
           {...props}
         />

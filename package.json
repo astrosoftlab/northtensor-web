@@ -55,7 +55,6 @@
     "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "18.2.0",
     "react-modal": "^3.16.1",
-    "react-select": "^5.7.4",
     "remark": "^14.0.2",
     "remark-heading-id": "^1.0.0",
     "remark-html": "^15.0.2",
@@ -64,6 +63,7 @@
     "store": "^2.0.12",
     "tailwind-merge": "^1.12.0",
     "tsx": "^3.12.7",
+    "tw-elements": "1.0.0-beta3",
     "typescript": "5.0.4",
     "unist-builder": "^3.0.1",
     "unist-util-filter": "^4.0.1"

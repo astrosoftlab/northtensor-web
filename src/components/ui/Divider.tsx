@@ -1,4 +1,4 @@
-import { PlusIcon } from "@heroicons/react/20/solid"
+import { PlusIcon } from '@heroicons/react/20/solid'
 
 export default function Index() {
   return (

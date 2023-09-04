@@ -1,31 +1,31 @@
-import Modal from "react-modal"
+import { useEffect, useState } from 'react'
 
-import { useEffect, useState } from "react"
+import { Session, useSupabaseClient, useUser } from '@supabase/auth-helpers-react'
 
-import { Session, useSupabaseClient, useUser } from "@supabase/auth-helpers-react"
+import { Button } from '@components/ui/Button'
+import { Input, InputGroup } from '@components/ui/Input'
+import { Database } from '@lib/utils/database.type'
 
-import { Button } from "@components/ui/Button"
-import { Input, InputGroup } from "@components/ui/Input"
-import { Database } from "@lib/utils/database.type"
+import ColdkeyInput from './ColdkeyInput'
+import ColdkeyModal from './ColdkeyModal'
 
-import ColdkeyInput from "./ColdkeyInput"
-import ColdkeyModal from "./ColdkeyModal"
+import Modal from 'react-modal'
 
-type Profiles = Database["public"]["Tables"]["profiles"]["Row"]
+type Profiles = Database['public']['Tables']['profiles']['Row']
 
 export default function Account({ session }: { session: Session }) {
   const supabase = useSupabaseClient<Database>()
   const user = useUser()
   const [loading, setLoading] = useState(true)
-  const [username, setUsername] = useState<Profiles["username"]>(null)
-  const [first_name, setFirstName] = useState<Profiles["first_name"]>(null)
-  const [last_name, setLastName] = useState<Profiles["last_name"]>(null)
-  const [website, setWebsite] = useState<Profiles["website"]>(null)
-  const [avatar_url, setAvatarUrl] = useState<Profiles["avatar_url"]>(null)
-  const [ss58_coldkeys, setSS58Coldkeys] = useState<Profiles["ss58_coldkeys"]>(null)
+  const [username, setUsername] = useState<Profiles['username']>(null)
+  const [first_name, setFirstName] = useState<Profiles['first_name']>(null)
+  const [last_name, setLastName] = useState<Profiles['last_name']>(null)
+  const [website, setWebsite] = useState<Profiles['website']>(null)
+  const [avatar_url, setAvatarUrl] = useState<Profiles['avatar_url']>(null)
+  const [ss58_coldkeys, setSS58Coldkeys] = useState<Profiles['ss58_coldkeys']>(null)
   const [showModal, setShowModal] = useState(false)
-  const [newColdkeyName, setNewColdkeyName] = useState("")
-  const [newColdkeyValue, setNewColdkeyValue] = useState("")
+  const [newColdkeyName, setNewColdkeyName] = useState('')
+  const [newColdkeyValue, setNewColdkeyValue] = useState('')
   const [isAddColdkeyModalOpen, setIsAddColdkeyModalOpen] = useState(false)
 
   useEffect(() => {
@@ -37,7 +37,7 @@ export default function Account({ session }: { session: Session }) {
       if (prevColdkeys === null) return prevColdkeys
       if (prevColdkeys[index] === null) return prevColdkeys
       const coldkey = prevColdkeys[index]
-      if (typeof coldkey !== "object") return prevColdkeys
+      if (typeof coldkey !== 'object') return prevColdkeys
       const updatedColdkey = {
         ...coldkey,
         name1: newName,
@@ -89,12 +89,12 @@ export default function Account({ session }: { session: Session }) {
   async function getProfile() {
     try {
       setLoading(true)
-      if (!user) throw new Error("No user")
+      if (!user) throw new Error('No user')
 
       let { data, error, status } = await supabase
-        .from("profiles")
+        .from('profiles')
         .select(`username, first_name, last_name, website, avatar_url, ss58_coldkeys`)
-        .eq("id", user.id)
+        .eq('id', user.id)
         .single()
 
       if (error && status !== 406) {
@@ -110,7 +110,7 @@ export default function Account({ session }: { session: Session }) {
         setSS58Coldkeys(data.ss58_coldkeys)
       }
     } catch (error) {
-      alert("Error loading user data!")
+      alert('Error loading user data!')
       console.log(error)
     } finally {
       setLoading(false)
@@ -125,16 +125,16 @@ export default function Account({ session }: { session: Session }) {
     avatar_url,
     ss58_coldkeys,
   }: {
-    username: Profiles["username"]
-    first_name: Profiles["first_name"]
-    last_name: Profiles["last_name"]
-    website: Profiles["website"]
-    avatar_url: Profiles["avatar_url"]
-    ss58_coldkeys: Profiles["ss58_coldkeys"]
+    username: Profiles['username']
+    first_name: Profiles['first_name']
+    last_name: Profiles['last_name']
+    website: Profiles['website']
+    avatar_url: Profiles['avatar_url']
+    ss58_coldkeys: Profiles['ss58_coldkeys']
   }) {
     try {
       setLoading(true)
-      if (!user) throw new Error("No user")
+      if (!user) throw new Error('No user')
 
       const updates = {
         id: user.id,
@@ -147,11 +147,11 @@ export default function Account({ session }: { session: Session }) {
         updated_at: new Date().toISOString(),
       }
 
-      let { error } = await supabase.from("profiles").upsert(updates)
+      let { error } = await supabase.from('profiles').upsert(updates)
       if (error) throw error
-      alert("Profile updated!")
+      alert('Profile updated!')
     } catch (error) {
-      alert("Error updating the data!")
+      alert('Error updating the data!')
       console.log(error)
     } finally {
       setLoading(false)
@@ -174,14 +174,14 @@ export default function Account({ session }: { session: Session }) {
               rounded
               label="User name"
               placeholder="johndoe"
-              value={username || ""}
+              value={username || ''}
               onChange={(v) => setUsername(v)}
             />
           </div>
           <div className="pb-8">
             <InputGroup rounded>
-              <Input label="First name" placeholder="john" value={first_name || ""} onChange={(v) => setFirstName(v)} />
-              <Input label="Last name" placeholder="doe" value={last_name || ""} onChange={(v) => setLastName(v)} />
+              <Input label="First name" placeholder="john" value={first_name || ''} onChange={(v) => setFirstName(v)} />
+              <Input label="Last name" placeholder="doe" value={last_name || ''} onChange={(v) => setLastName(v)} />
             </InputGroup>
           </div>
           <div className="pb-8">
@@ -204,7 +204,7 @@ export default function Account({ session }: { session: Session }) {
             </div>
             <ul className="flex flex-col gap-2">
               {ss58_coldkeys?.map((key, index) => {
-                if (typeof key !== "object" || Array.isArray(key)) return null
+                if (typeof key !== 'object' || Array.isArray(key)) return null
                 return (
                   <li id={key?.coldkey as string} key={index}>
                     <ColdkeyInput
@@ -241,16 +241,16 @@ export default function Account({ session }: { session: Session }) {
         isOpen={isAddColdkeyModalOpen}
         onRequestClose={() => setIsAddColdkeyModalOpen(false)}
         style={{
-          overlay: { backgroundColor: "rgba(0, 0, 0, 0.5)" },
+          overlay: { backgroundColor: 'rgba(0, 0, 0, 0.5)' },
           content: {
-            backgroundColor: "rgba(0, 0, 0, 0)",
-            border: "rgba(0, 0, 0, 0)",
+            backgroundColor: 'rgba(0, 0, 0, 0)',
+            border: 'rgba(0, 0, 0, 0)',
           },
         }}
       >
         <ColdkeyModal
           name={`New Coldkey ${ss58_coldkeys ? ss58_coldkeys.length : 1}`}
-          coldkey={""}
+          coldkey={''}
           onSave={addNewColdkey}
           onClose={() => setIsAddColdkeyModalOpen(false)}
           newBool={true}

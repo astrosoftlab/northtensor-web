@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from 'react'
 
-import Link from "next/link"
+import Link from 'next/link'
 
-import { useSession, useSupabaseClient, useUser } from "@supabase/auth-helpers-react"
+import { useSession, useSupabaseClient, useUser } from '@supabase/auth-helpers-react'
 
-import { Select } from "@components/ui/Select"
-import { useSubstrate, useSubstrateState } from "@lib/substrate-lib"
+import { Select } from '@components/ui/Select'
+import { useSubstrate, useSubstrateState } from '@lib/substrate-lib'
 
 type Account = {
   address: string
@@ -32,8 +32,8 @@ type SS58ColdKey = {
 }
 
 const CHROME_EXT_URL =
-  "https://chrome.google.com/webstore/detail/polkadot%7Bjs%7D-extension/mopnmbcafieddcagagdcbnhejhlodfdd"
-const FIREFOX_ADDON_URL = "https://addons.mozilla.org/en-US/firefox/addon/polkadot-js-extension/"
+  'https://chrome.google.com/webstore/detail/polkadot%7Bjs%7D-extension/mopnmbcafieddcagagdcbnhejhlodfdd'
+const FIREFOX_ADDON_URL = 'https://addons.mozilla.org/en-US/firefox/addon/polkadot-js-extension/'
 
 function Main() {
   const {
@@ -50,10 +50,10 @@ function Main() {
     value: account.address,
     address: account.address,
     meta: account.meta,
-    text: account.meta.name?.toUpperCase() || "",
+    text: account.meta.name?.toUpperCase() || '',
     coldkey_array: [account.address],
-    icon: "user",
-    source: "polkadot",
+    icon: 'user',
+    source: 'polkadot',
   }))
 
   const session = useSession()
@@ -62,7 +62,7 @@ function Main() {
   const [accountColdkeyRetrieved, setAccountColdkeyRetrieved] = useState(false)
   const [ss58_coldkeys_processed, setSS58ColdkeysProcessed] = useState<Account[]>([])
   const [newSS58keys, setNewSS58Keys] = useState(false)
-  const [accountColdkeysUpdateMessage, setAccountColdkeysUpdateMessage] = useState("")
+  const [accountColdkeysUpdateMessage, setAccountColdkeysUpdateMessage] = useState('')
   const user = useUser()
 
   useEffect(() => {
@@ -74,9 +74,9 @@ function Main() {
   async function getProfile() {
     try {
       setLoading(true)
-      if (!user) throw new Error("No user")
+      if (!user) throw new Error('No user')
 
-      let { data, error, status } = await supabase.from("profiles").select(`ss58_coldkeys`).eq("id", user.id).single()
+      let { data, error, status } = await supabase.from('profiles').select(`ss58_coldkeys`).eq('id', user.id).single()
 
       if (error && status !== 406) {
         throw error
@@ -88,7 +88,7 @@ function Main() {
         setAccountColdkeyRetrieved(true)
       }
     } catch (error) {
-      alert("Error loading user data!")
+      alert('Error loading user data!')
       console.log(error)
     } finally {
       setLoading(false)
@@ -98,7 +98,7 @@ function Main() {
   async function updateProfile(ss58_coldkeys: SS58ColdKey[]) {
     try {
       setLoading(true)
-      if (!user) throw new Error("No user")
+      if (!user) throw new Error('No user')
 
       const updates = {
         id: user.id,
@@ -106,12 +106,12 @@ function Main() {
         updated_at: new Date().toISOString(),
       }
 
-      let { error } = await supabase.from("profiles").upsert(updates)
+      let { error } = await supabase.from('profiles').upsert(updates)
       if (error) throw error
       alert(accountColdkeysUpdateMessage)
       setNewSS58Keys(false)
     } catch (error) {
-      alert("Error updating the data!")
+      alert('Error updating the data!')
       console.log(error)
     } finally {
       setLoading(false)
@@ -145,7 +145,7 @@ function Main() {
         setNewSS58Keys(true)
         const newColdkeyNames = new_coldkeys.map((coldkey) => coldkey.name1)
         // console.log('newColdkeyNames', newColdkeyNames)
-        setAccountColdkeysUpdateMessage(`Added the following coldkeys to your account: ${newColdkeyNames.join(", ")}`)
+        setAccountColdkeysUpdateMessage(`Added the following coldkeys to your account: ${newColdkeyNames.join(', ')}`)
       }
     }
   }, [keyringOptions, session]) // <-- added setSS58Coldkeys to the dependency array
@@ -157,10 +157,10 @@ function Main() {
         value: coldkey.coldkey,
         text: coldkey.name1,
         address: coldkey.coldkey,
-        meta: { source: "account", isInjected: false },
+        meta: { source: 'account', isInjected: false },
         coldkey_array: [coldkey.coldkey],
-        icon: "user",
-        source: "account",
+        icon: 'user',
+        source: 'account',
         watched: coldkey.watched,
       }))
 
@@ -193,29 +193,29 @@ function Main() {
     const allAccountsBeforeWatched = completeColdkeyOptions.map((obj) => obj.value)
     if (watchedColdkeys.length > 0) {
       completeColdkeyOptions.unshift({
-        key: "Watched Accounts",
-        value: "Watched Accounts",
-        text: "Watched Accounts",
-        address: "Watched Accounts",
-        meta: { source: "group", isInjected: false },
+        key: 'Watched Accounts',
+        value: 'Watched Accounts',
+        text: 'Watched Accounts',
+        address: 'Watched Accounts',
+        meta: { source: 'group', isInjected: false },
         coldkey_array: watchedColdkeys.map((obj) => obj.value),
-        icon: "user",
-        source: "group",
+        icon: 'user',
+        source: 'group',
       })
     }
     completeColdkeyOptions.unshift({
-      key: "All Accounts",
-      value: "All Accounts",
-      text: "All Accounts",
-      address: "All Accounts",
-      meta: { source: "group", isInjected: false },
+      key: 'All Accounts',
+      value: 'All Accounts',
+      text: 'All Accounts',
+      address: 'All Accounts',
+      meta: { source: 'group', isInjected: false },
       coldkey_array: allAccountsBeforeWatched,
-      icon: "user",
-      source: "group",
+      icon: 'user',
+      source: 'group',
     })
   }
 
-  const initialAddress = completeColdkeyOptions.length > 0 ? completeColdkeyOptions[0].value : ""
+  const initialAddress = completeColdkeyOptions.length > 0 ? completeColdkeyOptions[0].value : ''
 
   // Set the initial address
   useEffect(() => {
@@ -226,8 +226,8 @@ function Main() {
   }, [initialAddress, completeColdkeyOptions, currentAccount, setCurrentAccount])
 
   const onChange = (newValue: any) => {
-    if (newValue.value === "Coldkey") {
-      console.log("Coldkey")
+    if (newValue.value === 'Coldkey') {
+      console.log('Coldkey')
     } else {
       setCurrentAccount(completeColdkeyOptions.find((obj) => obj.key === newValue.value))
     }
@@ -248,7 +248,7 @@ function Main() {
           <p className="mb-2 text-ml ">or</p>
           <h2 className="text-l ">
             {session ? (
-              "add Coldkeys to your account"
+              'add Coldkeys to your account'
             ) : (
               <Link
                 href="profile"

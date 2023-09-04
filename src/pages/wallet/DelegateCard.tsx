@@ -1,7 +1,7 @@
-import { useState } from "react"
+import { useState } from 'react'
 
-import { Button, Snackbar } from "@mui/material"
-import Stack from "@mui/material/Stack"
+import { Button, Snackbar } from '@mui/material'
+import Stack from '@mui/material/Stack'
 
 interface Props {
   accountName: string

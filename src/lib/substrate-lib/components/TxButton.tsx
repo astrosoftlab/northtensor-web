@@ -1,11 +1,11 @@
-import { Button, SemanticCOLORS } from "semantic-ui-react"
+import { useEffect, useState } from 'react'
 
-import { useEffect, useState } from "react"
+import { web3FromSource } from '@polkadot/extension-dapp'
 
-import { web3FromSource } from "@polkadot/extension-dapp"
+import { useSubstrateState } from '..'
+import utils from '../utils'
 
-import { useSubstrateState } from ".."
-import utils from "../utils"
+import { Button, SemanticCOLORS } from 'semantic-ui-react'
 
 interface Attrs {
   palletRpc: string
@@ -20,19 +20,19 @@ interface Props {
   disabled?: boolean
   label: string
   style?: React.CSSProperties
-  type?: "QUERY" | "RPC" | "SIGNED-TX" | "UNSIGNED-TX" | "SUDO-TX" | "UNCHECKED-SUDO-TX" | "CONSTANT"
+  type?: 'QUERY' | 'RPC' | 'SIGNED-TX' | 'UNSIGNED-TX' | 'SUDO-TX' | 'UNCHECKED-SUDO-TX' | 'CONSTANT'
   setStatus: any
   txOnClickHandler?: (unsub: any) => void
 }
 
 function TxButton({
   attrs,
-  color = "blue",
+  color = 'blue',
   disabled = false,
   label,
   setStatus,
   style,
-  type = "QUERY",
+  type = 'QUERY',
   txOnClickHandler,
 }: Props) {
   // Hooks
@@ -42,13 +42,13 @@ function TxButton({
 
   const { palletRpc, callable, inputParams, paramFields } = attrs
   // console.log(attrs)
-  const isQuery = () => type === "QUERY"
-  const isSudo = () => type === "SUDO-TX"
-  const isUncheckedSudo = () => type === "UNCHECKED-SUDO-TX"
-  const isUnsigned = () => type === "UNSIGNED-TX"
-  const isSigned = () => type === "SIGNED-TX"
-  const isRpc = () => type === "RPC"
-  const isConstant = () => type === "CONSTANT"
+  const isQuery = () => type === 'QUERY'
+  const isSudo = () => type === 'SUDO-TX'
+  const isUncheckedSudo = () => type === 'UNCHECKED-SUDO-TX'
+  const isUnsigned = () => type === 'UNSIGNED-TX'
+  const isSigned = () => type === 'SIGNED-TX'
+  const isRpc = () => type === 'RPC'
+  const isConstant = () => type === 'CONSTANT'
 
   const loadSudoKey = () => {
     ;(async function () {
@@ -129,7 +129,7 @@ function TxButton({
     setUnsub(() => unsub)
   }
 
-  const queryResHandler = (result: any) => (result.isNone ? setStatus("None") : setStatus(result.toString()))
+  const queryResHandler = (result: any) => (result.isNone ? setStatus('None') : setStatus(result.toString()))
 
   const query = async () => {
     const transformed = transformParams(paramFields, inputParams)
@@ -148,16 +148,16 @@ function TxButton({
 
   const constant = () => {
     const result = api.consts[palletRpc][callable]
-    result.isNone ? setStatus("None") : setStatus(result.toString())
+    result.isNone ? setStatus('None') : setStatus(result.toString())
   }
 
   const transaction = async () => {
-    if (typeof unsub === "function") {
+    if (typeof unsub === 'function') {
       unsub()
       setUnsub(null)
     }
 
-    setStatus("Sending... Please approve transaction in browser extension.")
+    setStatus('Sending... Please approve transaction in browser extension.')
 
     const asyncFunc =
       (isSudo() && sudoTx) ||
@@ -172,7 +172,7 @@ function TxButton({
       await asyncFunc()
     }
 
-    return txOnClickHandler && typeof txOnClickHandler === "function" ? txOnClickHandler(unsub) : null
+    return txOnClickHandler && typeof txOnClickHandler === 'function' ? txOnClickHandler(unsub) : null
   }
 
   const transformParams = (paramFields: any[], inputParams: any[], opts = { emptyAsNull: true }) => {
@@ -180,9 +180,9 @@ function TxButton({
     //   Otherwise, it will not be added
     const paramVal = inputParams.map((inputParam) => {
       // To cater the js quirk that `null` is a type of `object`.
-      if (typeof inputParam === "object" && inputParam !== null && typeof inputParam.value === "string") {
+      if (typeof inputParam === 'object' && inputParam !== null && typeof inputParam.value === 'string') {
         return inputParam.value.trim()
-      } else if (typeof inputParam === "string") {
+      } else if (typeof inputParam === 'string') {
         return inputParam.trim()
       }
       return inputParam
@@ -192,23 +192,23 @@ function TxButton({
       value: paramVal[ind] || null,
     }))
 
-    return params.reduce((memo, { type = "string", value }) => {
-      if (value == null || value === "") return opts.emptyAsNull ? [...memo, null] : memo
+    return params.reduce((memo, { type = 'string', value }) => {
+      if (value == null || value === '') return opts.emptyAsNull ? [...memo, null] : memo
 
       let converted = value
 
       // Deal with a vector
-      if (type.indexOf("Vec<") >= 0) {
-        converted = converted.split(",").map((e: any) => e.trim())
+      if (type.indexOf('Vec<') >= 0) {
+        converted = converted.split(',').map((e: any) => e.trim())
         converted = converted.map((single: any) =>
-          isNumType(type) ? (single.indexOf(".") >= 0 ? Number.parseFloat(single) : Number.parseInt(single)) : single,
+          isNumType(type) ? (single.indexOf('.') >= 0 ? Number.parseFloat(single) : Number.parseInt(single)) : single,
         )
         return [...memo, converted]
       }
 
       // Deal with a single value
       if (isNumType(type)) {
-        converted = converted.indexOf(".") >= 0 ? Number.parseFloat(converted) : Number.parseInt(converted)
+        converted = converted.indexOf('.') >= 0 ? Number.parseFloat(converted) : Number.parseInt(converted)
       }
       return [...memo, converted]
     }, [])
@@ -230,8 +230,8 @@ function TxButton({
         return false
       }
 
-      const value = typeof param === "object" ? param.value : param
-      return value !== null && value !== ""
+      const value = typeof param === 'object' ? param.value : param
+      return value !== null && value !== ''
     })
   }
 

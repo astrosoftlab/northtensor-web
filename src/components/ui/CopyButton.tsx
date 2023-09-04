@@ -1,6 +1,6 @@
-import { useState } from "react"
+import { useState } from 'react'
 
-import { Button, Snackbar } from "@mui/material"
+import { Button, Snackbar } from '@mui/material'
 
 interface Props {
   copyText: string
@@ -17,8 +17,8 @@ const CopyToClipboardButton = ({ copyText, displayText = null }: Props) => {
   return (
     <>
       <Button onClick={handleClick}>
-        <div style={{ display: "flex", alignItems: "center" }}>
-          {displayText !== null ? displayText : copyText}{" "}
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          {displayText !== null ? displayText : copyText}{' '}
           {
             <svg
               xmlns="http://www.w3.org/2000/svg"

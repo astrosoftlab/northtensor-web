@@ -1,5 +1,5 @@
-import Image from "next/image"
-import Link from "next/link"
+import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Example() {
   return (
@@ -11,13 +11,13 @@ export default function Example() {
             <span>NorthTensor © 2023</span>
           </div>
           <div className="flex flex-col gap-4 sm:flex-row">
-            <Link href={"/terms"} className="hover:text-purple-400">
+            <Link href={'/terms'} className="hover:text-purple-400">
               Terms of Use
             </Link>
-            <Link href={"/privacy"} className="hover:text-purple-400">
+            <Link href={'/privacy'} className="hover:text-purple-400">
               Privacy Policy
             </Link>
-            <Link href={"/contact"} className="hover:text-purple-400">
+            <Link href={'/contact'} className="hover:text-purple-400">
               Contact Us
             </Link>
             <div className="flex flex-row gap-4 sm:flex-row">

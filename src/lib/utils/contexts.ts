@@ -1,4 +1,4 @@
-import { createContext } from "react"
+import { createContext } from 'react'
 
 import {
   AdminCtx,
@@ -8,7 +8,7 @@ import {
   EvtMgrCtx,
   EvtTxCtx,
   LocalStorageAccountCtx,
-} from "./types"
+} from './types'
 
 const BalanceVisibleContext = createContext<BalanceVisibilityCtx>({
   balanceVisibility: true,

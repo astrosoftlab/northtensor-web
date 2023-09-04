@@ -1,6 +1,6 @@
-import { CheckCircleIcon } from "@heroicons/react/20/solid"
+import { CheckCircleIcon } from '@heroicons/react/20/solid'
 
-import Divider from "@components/ui/Divider"
+import Divider from '@components/ui/Divider'
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -38,7 +38,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <Divider />
         <p>
           We employ the use of cookies. By accessing NorthTensor, you agreed to use cookies in agreement with the
-          NorthTensor&apos;s Privacy Policy.{" "}
+          NorthTensor&apos;s Privacy Policy.{' '}
         </p>
         <p>
           Most interactive websites use cookies to let us retrieve the user&apos;s details for each visit. Cookies are

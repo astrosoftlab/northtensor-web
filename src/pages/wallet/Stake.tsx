@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState } from 'react'
 
-import Stack from "@mui/material/Stack"
+import Stack from '@mui/material/Stack'
 
-import CopyToClipboardButton from "@components/ui/CopyButton"
-import { useSubstrateState } from "@lib/substrate-lib"
-import { TxButton } from "@lib/substrate-lib/components"
+import CopyToClipboardButton from '@components/ui/CopyButton'
+import { useSubstrateState } from '@lib/substrate-lib'
+import { TxButton } from '@lib/substrate-lib/components'
 
 export default function Main() {
   const [status, setStatus] = useState<string>()
@@ -14,7 +14,7 @@ export default function Main() {
   const accounts = keyring.getPairs()
   const [accountBalance, setAccountBalance] = useState(0)
 
-  const acctAddr = (acct: any) => (acct ? acct.address : "")
+  const acctAddr = (acct: any) => (acct ? acct.address : '')
   // const [ActiveAccountAvailableBalance, setActiveAccountBalance] = useState(0.0)
   // When account address changes, update subscriptions
   useEffect(() => {
@@ -31,9 +31,9 @@ export default function Main() {
   }, [api, currentAccount])
 
   //Convert AccountBalance to Tao
-  const fullStakeAmount = parseFloat(accountBalance.toString().replace(/,/g, "")) - 1000
+  const fullStakeAmount = parseFloat(accountBalance.toString().replace(/,/g, '')) - 1000
 
-  const [stakeType, setStakeType] = useState("addStake")
+  const [stakeType, setStakeType] = useState('addStake')
   const [sendAmount, setSendAmount] = useState(0)
 
   const [amountCurrentlyStaked, setAmountCurrentlyStaked] = useState(0)
@@ -46,7 +46,7 @@ export default function Main() {
 
   getStake()
 
-  const btcliStakeAmount = " --amount " + sendAmount
+  const btcliStakeAmount = ' --amount ' + sendAmount
 
   const availableAccounts = []
 
@@ -111,7 +111,7 @@ export default function Main() {
           {/* Staking Button */}
           <label
             className={`bg-slate-200   hover:bg-slate-400  px-4 py-2 lg:px-12 rounded-lg ${
-              stakeType === "addStake" ? "bg-slate-300 " : ""
+              stakeType === 'addStake' ? 'bg-slate-300 ' : ''
             }`}
           >
             <input
@@ -119,9 +119,9 @@ export default function Main() {
               className="sr-only"
               name="stakeType"
               value="addStake"
-              checked={stakeType === "addStake"}
+              checked={stakeType === 'addStake'}
               onChange={() => {
-                setStakeType("addStake")
+                setStakeType('addStake')
               }}
             />
             <span className="font-semibold">{`Staking`}</span>
@@ -129,7 +129,7 @@ export default function Main() {
           {/* Unstaking Button */}
           <label
             className={`bg-slate-200   hover:bg-slate-400  px-4 py-2 rounded-lg ${
-              stakeType != "addStake" ? "bg-slate-300 " : ""
+              stakeType != 'addStake' ? 'bg-slate-300 ' : ''
             }`}
           >
             <input
@@ -137,9 +137,9 @@ export default function Main() {
               className="sr-only"
               name="stakeType"
               value="removeStake"
-              checked={stakeType != "addStake"}
+              checked={stakeType != 'addStake'}
               onChange={() => {
-                setStakeType("removeStake")
+                setStakeType('removeStake')
               }}
             />
             <span className="font-semibold">{`Un-Staking`}</span>
@@ -149,7 +149,7 @@ export default function Main() {
         <div className="space-y-1">
           {/* Staking Amount Input - Title*/}
           <label htmlFor="standard-number" className="block text-slate-700 ">
-            Amount of Tao to {stakeType === "addStake" ? "Stake" : "Un-Stake"}
+            Amount of Tao to {stakeType === 'addStake' ? 'Stake' : 'Un-Stake'}
           </label>
           {/* Staking Amount Input - Field*/}
           <input
@@ -171,17 +171,17 @@ export default function Main() {
         <Stack sx={{ m: 2 }} spacing={2} direction="row">
           {/* Main Transaction Button */}
           {/* If there isn't enough Tao, notify the user to avoid confusion and remove buttons otherwise show the button*/}
-          {fullStakeAmount < 1 && stakeType === "addStake" ? (
+          {fullStakeAmount < 1 && stakeType === 'addStake' ? (
             <label htmlFor="send-to-account" className="block lg:px-12 text-slate-700">
               No Available Tao to Stake
             </label>
           ) : (
             <TxButton
-              label={stakeType === "addStake" ? "Stake" : "Un-Stake"}
+              label={stakeType === 'addStake' ? 'Stake' : 'Un-Stake'}
               type="SIGNED-TX"
               setStatus={setStatus}
               attrs={{
-                palletRpc: "subtensorModule",
+                palletRpc: 'subtensorModule',
                 callable: stakeType,
                 inputParams: [MNRVHotkey, sendAmount * 10 ** 9],
                 paramFields: [true, true],
@@ -189,14 +189,14 @@ export default function Main() {
             />
           )}
           {/* Same thing again but for "all" version*/}
-          {stakeType === "addStake" ? (
+          {stakeType === 'addStake' ? (
             fullStakeAmount > 0 ? (
               <TxButton
                 label="Stake All"
                 type="SIGNED-TX"
                 setStatus={setStatus}
                 attrs={{
-                  palletRpc: "subtensorModule",
+                  palletRpc: 'subtensorModule',
                   callable: stakeType,
                   inputParams: [MNRVHotkey, fullStakeAmount],
                   paramFields: [true, true],
@@ -209,7 +209,7 @@ export default function Main() {
               type="SIGNED-TX"
               setStatus={setStatus}
               attrs={{
-                palletRpc: "subtensorModule",
+                palletRpc: 'subtensorModule',
                 callable: stakeType,
                 inputParams: [MNRVHotkey, amountCurrentlyStaked],
                 paramFields: [true, true],
@@ -219,8 +219,8 @@ export default function Main() {
         </Stack>
         {/* BTCLI Command */}
         <CopyToClipboardButton
-          copyText={`btcli ${stakeType === "addStake" ? "delegate" : "undelegate"} --delegate_ss58key ${MNRVHotkey} ${
-            sendAmount === 0 ? "--all" : sendAmount
+          copyText={`btcli ${stakeType === 'addStake' ? 'delegate' : 'undelegate'} --delegate_ss58key ${MNRVHotkey} ${
+            sendAmount === 0 ? '--all' : sendAmount
           }`}
         />
       </Stack>

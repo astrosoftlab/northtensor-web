@@ -1,8 +1,8 @@
-import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react"
-import { Auth } from "@supabase/auth-ui-react"
-import { ThemeSupa } from "@supabase/auth-ui-shared"
+import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react'
+import { Auth } from '@supabase/auth-ui-react'
+import { ThemeSupa } from '@supabase/auth-ui-shared'
 
-import Account from "./Account"
+import Account from './Account'
 
 export default function Home() {
   const session = useSession()
@@ -23,11 +23,11 @@ export default function Home() {
                 theme: ThemeSupa,
                 className: {
                   input:
-                    "block w-full border-gray-300 shadow-sm focus:ring-primary focus:!border-primary sm:text-sm !rounded-full !font-sans",
+                    'block w-full border-gray-300 shadow-sm focus:ring-primary focus:!border-primary sm:text-sm !rounded-full !font-sans',
                   button:
-                    "w-full relative flex items-center justify-center before:absolute before:inset-0 !rounded-full before:transition before:duration-300 active:duration-75 font-semibold !bg-primary text-white !border-primary !font-sans",
-                  anchor: "!font-sans hover:!text-primary",
-                  message: "!font-sans",
+                    'w-full relative flex items-center justify-center before:absolute before:inset-0 !rounded-full before:transition before:duration-300 active:duration-75 font-semibold !bg-primary text-white !border-primary !font-sans',
+                  anchor: '!font-sans hover:!text-primary',
+                  message: '!font-sans',
                 },
               }}
               providers={[]}

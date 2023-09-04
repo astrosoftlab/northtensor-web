@@ -1,7 +1,7 @@
-import Head from "next/head"
-import Link from "next/link"
+import Head from 'next/head'
+import Link from 'next/link'
 
-import { PostData, getSortedPostsData } from "@lib/docs"
+import { PostData, getSortedPostsData } from '@lib/docs'
 
 export default function Home({ postData }: { postData: PostData[] }) {
   return (
@@ -16,7 +16,7 @@ export default function Home({ postData }: { postData: PostData[] }) {
         <br />
 
         <div className="justify-center block grid-cols-3 gap-8 md:grid md:gap-8">
-          {" "}
+          {' '}
           {/* Added block class for mobile stacking */}
           {/* Wallet Panel */}
           <div className="px-4 py-5 card sm:p-8">
@@ -32,7 +32,7 @@ export default function Home({ postData }: { postData: PostData[] }) {
           </div>
           {/* Buy Panel */}
           <div className="px-4 py-5 card sm:p-8">
-            {" "}
+            {' '}
             {/* Added margin for mobile spacing */}
             <h2 className="mb-6 text-3xl font-semibold sm:text-4xl text-slate-800">Buy</h2>
             <h5 className="mt-4 mb-2 text-xs font-semibold text-gray-400 sm:text-sm">Centralized Exchange (CEX):</h5>
@@ -49,7 +49,7 @@ export default function Home({ postData }: { postData: PostData[] }) {
           </div>
           {/* Stake Panel */}
           <div className="px-4 py-5 card sm:p-8">
-            {" "}
+            {' '}
             {/* Added margin for mobile spacing */}
             <h2 className="mb-6 text-3xl font-semibold sm:text-4xl text-slate-800">Stake</h2>
             <div className="flex flex-col gap-2">

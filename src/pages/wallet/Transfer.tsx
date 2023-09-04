@@ -1,18 +1,18 @@
-import classNames from "classnames"
-
-import React, { useState } from "react"
+import React, { useState } from 'react'
 
 // import { Form, Input, Grid, Label, Icon, Dropdown } from 'semantic-ui-react'
-import Stack from "@mui/material/Stack"
+import Stack from '@mui/material/Stack'
 
-import CopyToClipboardButton from "@components/ui/CopyButton"
-import { useSubstrateState } from "@lib/substrate-lib"
-import { TxButton } from "@lib/substrate-lib/components"
+import CopyToClipboardButton from '@components/ui/CopyButton'
+import { useSubstrateState } from '@lib/substrate-lib'
+import { TxButton } from '@lib/substrate-lib/components'
+
+import classNames from 'classnames'
 
 export default function Main() {
   const [status, setStatus] = useState(null)
-  const [sendToAccount, setSendToAccount] = useState("")
-  const [sendToAddress, setSendToAddress] = useState("")
+  const [sendToAccount, setSendToAccount] = useState('')
+  const [sendToAddress, setSendToAddress] = useState('')
   const [sendAmount, setSendAmount] = useState(0)
 
   const onAddressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -43,8 +43,8 @@ export default function Main() {
       })
     }
   })
-  console.log("Send to account", sendToAccount)
-  console.log("Available accounts", availableAccounts)
+  console.log('Send to account', sendToAccount)
+  console.log('Available accounts', availableAccounts)
 
   return (
     <>
@@ -69,8 +69,8 @@ export default function Main() {
                 {option.text}
               </option>
             ))}
-            <option key={"Custom"} value={""}>
-              {"Custom"}
+            <option key={'Custom'} value={''}>
+              {'Custom'}
             </option>
           </select>
         </div>
@@ -84,21 +84,21 @@ export default function Main() {
             value={sendToAddress}
             onChange={onAddressChange}
             className={classNames(
-              "block",
-              "w-full",
-              "px-4",
-              "py-2",
-              "leading-tight",
-              "bg-white",
-              "border",
-              "border-slate-300",
-              "rounded",
-              "focus:outline-none",
-              "focus:bg-white",
-              "focus:border-slate-500",
-              sendToAccount !== "" && "bg-slate-200 cursor-not-allowed",
+              'block',
+              'w-full',
+              'px-4',
+              'py-2',
+              'leading-tight',
+              'bg-white',
+              'border',
+              'border-slate-300',
+              'rounded',
+              'focus:outline-none',
+              'focus:bg-white',
+              'focus:border-slate-500',
+              sendToAccount !== '' && 'bg-slate-200 cursor-not-allowed',
             )}
-            readOnly={sendToAccount !== ""}
+            readOnly={sendToAccount !== ''}
           />
         </div>
         <div className="space-y-1">
@@ -120,8 +120,8 @@ export default function Main() {
           type="SIGNED-TX"
           setStatus={setStatus}
           attrs={{
-            palletRpc: "balances",
-            callable: "transfer",
+            palletRpc: 'balances',
+            callable: 'transfer',
             inputParams: [sendToAddress, sendAmount * 10 ** 9],
             paramFields: [true, true],
           }}
@@ -129,7 +129,7 @@ export default function Main() {
 
         <CopyToClipboardButton
           copyText={`btcli transfer --dest ${
-            sendToAddress === "" ? "DESTINATION_WALLET_KEY" : sendToAddress
+            sendToAddress === '' ? 'DESTINATION_WALLET_KEY' : sendToAddress
           } --amount ${sendAmount}`}
         />
       </Stack>

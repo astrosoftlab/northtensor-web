@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from 'react'
 
-import { Button } from "@components/ui/Button"
-import { Input } from "@components/ui/Input"
+import { Button } from '@components/ui/Button'
+import { Input } from '@components/ui/Input'
 
 interface Props {
   name: string
@@ -82,7 +82,7 @@ export default function ColdkeyModal({ name, coldkey, onSave, onClose, newBool =
 
             <div className="mt-9 sm:mt-12">
               <Button className="mb-4" full onClick={handleSave} disabled={!coldkeyIsValid}>
-                {coldkeyIsValid ? "Save" : "Invalid Coldkey"}
+                {coldkeyIsValid ? 'Save' : 'Invalid Coldkey'}
               </Button>
 
               <Button full color="light" onClick={handleClose}>

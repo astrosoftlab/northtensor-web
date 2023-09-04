@@ -1,14 +1,14 @@
-import { Grid, Message } from "semantic-ui-react"
+import { createRef, useEffect, useState } from 'react'
 
-import { createRef, useEffect, useState } from "react"
+import { useRouter } from 'next/router'
 
-import { useRouter } from "next/router"
+import { Loader } from '@components/ui/Loaders'
+import { SubstrateContextProvider, useSubstrate } from '@lib/substrate-lib'
+import WalletBase from '@pages/wallet/WalletBase'
 
-import { Loader } from "@components/ui/Loaders"
-import { SubstrateContextProvider, useSubstrate } from "@lib/substrate-lib"
-import WalletBase from "@pages/wallet/WalletBase"
+import WalletHeader from './WalletHeader'
 
-import WalletHeader from "./WalletHeader"
+import { Grid, Message } from 'semantic-ui-react'
 
 function Main() {
   const {
@@ -23,17 +23,17 @@ function Main() {
       setRefresh(true)
     }
 
-    router.events.on("routeChangeComplete", handleRouteChange)
+    router.events.on('routeChangeComplete', handleRouteChange)
 
     return () => {
-      router.events.off("routeChangeComplete", handleRouteChange)
+      router.events.off('routeChangeComplete', handleRouteChange)
     }
   }, [router.events])
 
   useEffect(() => {
     if (refresh) {
       // Perform any actions you need to do when the page "refreshes"
-      console.log("refreshed")
+      console.log('refreshed')
       window.location.reload()
       setRefresh(false)
     }
@@ -55,13 +55,13 @@ function Main() {
     </Grid>
   )
 
-  if (apiState === "ERROR") {
+  if (apiState === 'ERROR') {
     return message(apiError)
-  } else if (apiState !== "READY") {
-    return loader("Connecting to Substrate")
+  } else if (apiState !== 'READY') {
+    return loader('Connecting to Substrate')
   }
 
-  if (keyringState !== "READY") {
+  if (keyringState !== 'READY') {
     return loader("Loading accounts (please review any extension's authorization) and/or refresh the page")
   }
 

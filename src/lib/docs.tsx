@@ -1,12 +1,12 @@
-import fs from "fs"
-import matter from "gray-matter"
-import path from "path"
-import { remark } from "remark"
-import remarkHeadingId from "remark-heading-id"
-import html from "remark-html"
+import fs from 'fs'
+import matter from 'gray-matter'
+import path from 'path'
+import { remark } from 'remark'
+import remarkHeadingId from 'remark-heading-id'
+import html from 'remark-html'
 
-const miscDirectory = path.join(process.cwd(), "documentation/misc")
-const postsDirectory = path.join(process.cwd(), "documentation/guides")
+const miscDirectory = path.join(process.cwd(), 'documentation/misc')
+const postsDirectory = path.join(process.cwd(), 'documentation/guides')
 
 export interface PostData {
   id: string
@@ -20,11 +20,11 @@ export function getSortedPostsData(): PostData[] {
   const fileNames = fs.readdirSync(postsDirectory)
   const allPostsData: PostData[] = fileNames.map((fileName) => {
     // Remove ".mdx" from file name to get id
-    const id = fileName.replace(/\.mdx$/, "")
+    const id = fileName.replace(/\.mdx$/, '')
 
     // Read markdown file as string
     const fullPath = path.join(postsDirectory, fileName)
-    const fileContents = fs.readFileSync(fullPath, "utf8")
+    const fileContents = fs.readFileSync(fullPath, 'utf8')
 
     // Use gray-matter to parse the post metadata section
     const matterResult = matter(fileContents)
@@ -65,7 +65,7 @@ export function getAllPostIds(): { params: { id: string } }[] {
   return fileNames.map((fileName) => {
     return {
       params: {
-        id: fileName.replace(/\.mdx$/, ""),
+        id: fileName.replace(/\.mdx$/, ''),
       },
     }
   })
@@ -73,7 +73,7 @@ export function getAllPostIds(): { params: { id: string } }[] {
 
 export async function getPostData(id: string): Promise<PostData & { contentHtml: string }> {
   const fullPath = path.join(postsDirectory, `${id}.mdx`)
-  const fileContents = fs.readFileSync(fullPath, "utf8")
+  const fileContents = fs.readFileSync(fullPath, 'utf8')
 
   // Use gray-matter to parse the post metadata section
   const matterResult = matter(fileContents)
@@ -92,7 +92,7 @@ export async function getPostData(id: string): Promise<PostData & { contentHtml:
 
 export async function getMiscPage(id: string): Promise<PostData & { contentHtml: string }> {
   const fullPath = path.join(miscDirectory, `${id}.mdx`)
-  const fileContents = await fs.promises.readFile(fullPath, "utf8")
+  const fileContents = await fs.promises.readFile(fullPath, 'utf8')
 
   const matterResult = matter(fileContents)
 
