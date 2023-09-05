@@ -3,7 +3,7 @@ interface Props {
 }
 
 function AccountCard({ accountName }: Props) {
-  return accountName === "No Accounts" ? (
+  return accountName === 'No Accounts' ? (
     <h1>No Available Accounts</h1>
   ) : (
     <div>

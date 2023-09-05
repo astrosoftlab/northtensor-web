@@ -1,5 +1,5 @@
-import Image from "next/image"
-import Link from "next/link"
+import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Example() {
   return (
@@ -11,19 +11,19 @@ export default function Example() {
             <span>NorthTensor © 2023</span>
           </div>
           <div className="flex flex-col gap-4 sm:flex-row">
-            <Link href={"/terms"} className="hover:text-secondary">
+            <Link href={'/terms'} className="hover:text-purple-400">
               Terms of Use
             </Link>
-            <Link href={"/privacy"} className="hover:text-secondary">
+            <Link href={'/privacy'} className="hover:text-purple-400">
               Privacy Policy
             </Link>
-            <Link href={"/contact"} className="hover:text-secondary">
+            <Link href={'/contact'} className="hover:text-purple-400">
               Contact Us
             </Link>
             <div className="flex flex-row gap-4 sm:flex-row">
               <Link
                 href="https://discordapp.com/channels/1086368192521318472/1087797623924195408"
-                className="flex items-center space-x-3 transition hover:text-secondary"
+                className="flex items-center space-x-3 transition hover:text-purple-400"
               >
                 <svg fill="currentColor" viewBox="0 0 24 24" className="w-5">
                   <path
@@ -35,7 +35,7 @@ export default function Example() {
               </Link>
               <Link
                 href="https://twitter.com/NorthTensorAI"
-                className="flex items-center space-x-3 transition hover:text-secondary"
+                className="flex items-center space-x-3 transition hover:text-purple-400"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="w-5" viewBox="0 0 16 16">
                   <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z" />

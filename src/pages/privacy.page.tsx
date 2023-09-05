@@ -1,6 +1,6 @@
-import { CheckCircleIcon } from "@heroicons/react/20/solid"
+import { CheckCircleIcon } from '@heroicons/react/20/solid'
 
-import Divider from "@components/ui/Divider"
+import Divider from '@components/ui/Divider'
 
 export default function Index() {
   return (
@@ -11,7 +11,7 @@ export default function Index() {
           Privacy Policy for NorthTensor
         </h1>
         <p className="mt-6 text-xl leading-8">
-          At NorthTensor, accessible from northtensor.ai, one of our main priorities is the privacy of our visitors.{" "}
+          At NorthTensor, accessible from northtensor.ai, one of our main priorities is the privacy of our visitors.{' '}
         </p>
         <p>
           This Privacy Policy document contains types of information that is collected and recorded by NorthTensor and
@@ -135,7 +135,7 @@ export default function Index() {
         <p>
           NorthTensor&apos;s Privacy Policy does not apply to other advertisers or websites. Thus, we are advising you
           to consult the respective Privacy Policies of these third-party ad servers for more detailed information. It
-          may include their practices and instructions about how to opt-out of certain options.{" "}
+          may include their practices and instructions about how to opt-out of certain options.{' '}
         </p>
 
         <p>

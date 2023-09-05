@@ -5,6 +5,7 @@
   "semi": false,
   "bracketSpacing": true,
   "requirePragma": false,
+  "singleQuote": true,
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true,
   "importOrder": [
@@ -16,7 +17,8 @@
     "^@pages(.*)$",
     "^@styles/(.*)$",
     "^@types(.*)$",
-    "^[./]"
+    "^\\.[./]",
+    ".*"
   ],
   "plugins": [
     "@trivago/prettier-plugin-sort-imports"

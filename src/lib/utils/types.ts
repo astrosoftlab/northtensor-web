@@ -1,9 +1,9 @@
-import { ApiPromise } from "@polkadot/api/promise/Api"
-import { KeyringPair } from "@polkadot/keyring/types"
-import { u32 } from "@polkadot/types"
-import { AccountId, Balance, Hash, Index, RefCount } from "@polkadot/types/interfaces"
-import { Codec } from "@polkadot/types/types"
-import { HexString } from "@polkadot/util/types"
+import { ApiPromise } from '@polkadot/api/promise/Api'
+import { KeyringPair } from '@polkadot/keyring/types'
+import { u32 } from '@polkadot/types'
+import { AccountId, Balance, Hash, Index, RefCount } from '@polkadot/types/interfaces'
+import { Codec } from '@polkadot/types/types'
+import { HexString } from '@polkadot/util/types'
 
 export interface Option {
   network: string
@@ -116,16 +116,16 @@ export interface Data extends ExtrinsicInfo {
 }
 
 export interface SizeScale {
-  size?: "large" | "medium" | "small"
+  size?: 'large' | 'medium' | 'small'
 }
 
 export interface Column {
-  id: "withWhom" | "extrinsic" | "value" | "status" | "blockHash"
+  id: 'withWhom' | 'extrinsic' | 'value' | 'status' | 'blockHash'
   label: string
   minWidth?: number
   maxWidth?: number
   width?: number
-  align?: "right"
+  align?: 'right'
 }
 
 export interface StakeInfo {
@@ -137,21 +137,21 @@ export interface StakeData {
 }
 
 export interface StakeColumn {
-  id: "address" | "stake"
+  id: 'address' | 'stake'
   label: string
   minWidth?: number
   maxWidth?: number
   width?: number
-  align?: "right"
+  align?: 'right'
 }
 
 export interface DelegateColumn {
-  id: "delegate_ss58" | "owner_ss58" | "nominators" | "total_stake" | "take" | "stake"
+  id: 'delegate_ss58' | 'owner_ss58' | 'nominators' | 'total_stake' | 'take' | 'stake'
   label: string
   minWidth?: number
   maxWidth?: number
   width?: number
-  align?: "right"
+  align?: 'right'
 }
 
 export interface DelegateInfoRow {

@@ -1,0 +1,27 @@
+a {
+  @apply text-inherit no-underline hover:text-primary;
+}
+
+.container {
+  @apply sm:px-0 px-[20px];
+}
+
+.container-sm {
+  @apply container xl:max-w-[1200px];
+}
+
+#toggle_nav:checked ~ div #hamburger #line {
+  @apply rotate-45 translate-y-1.5;
+}
+
+#toggle_nav:checked ~ div #hamburger #line2 {
+  @apply -rotate-45 -translate-y-1;
+}
+
+.card {
+  @apply rounded-lg shadow bg-white;
+}
+
+.ReactModal__Overlay {
+  @apply z-50;
+}

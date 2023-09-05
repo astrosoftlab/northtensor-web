@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from 'react'
 
-import Image from "next/image"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { useRouter } from "next/router"
+import Image from 'next/image'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { useRouter } from 'next/router'
 
-import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react"
+import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react'
 
 export default function Example() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -17,9 +17,9 @@ export default function Example() {
   }
 
   useEffect(() => {
-    router.events.on("routeChangeStart", closeMenu)
+    router.events.on('routeChangeStart', closeMenu)
 
-    return () => router.events.off("routeChangeStart", closeMenu)
+    return () => router.events.off('routeChangeStart', closeMenu)
   }, [router.events])
 
   const session = useSession()
@@ -27,7 +27,7 @@ export default function Example() {
 
   return (
     <header>
-      <nav className={`${pathName === "/" ? "" : "bg-white"} z-10 w-full border-b border-b-gray-100 border-solid`}>
+      <nav className={`${pathName === '/' ? '' : 'bg-white'} z-10 w-full border-b border-b-gray-100 border-solid`}>
         <div className="container">
           <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 md:gap-0 md:py-4 ">
             <div className="relative z-20 flex justify-between w-full md:px-0 lg:w-max ">
@@ -66,7 +66,7 @@ export default function Example() {
             <div
               id="navlinks"
               className={`absolute left-0 z-20 flex-col flex-wrap justify-end sm:visible ${
-                mobileMenuOpen ? "" : "invisible opacity-0"
+                mobileMenuOpen ? '' : 'invisible opacity-0'
               } w-full gap-6 p-8 transition-all duration-300 origin-top-right translate-y-1 bg-white border border-gray-100 shadow-2xl top-full rounded-3xl shadow-gray-600/10  lg:relative lg:flex lg:w-7/12 lg:translate-y-0 lg:flex-row lg:items-center lg:gap-0 lg:border-none lg:bg-transparent lg:p-0 lg:opacity-100 lg:shadow-none`}
             >
               <div className="w-full text-gray-600 lg:w-auto lg:pr-4 lg:pt-0 ">
@@ -100,7 +100,7 @@ export default function Example() {
                   href="/profile"
                   className="relative flex items-center justify-center w-full px-4 h-9 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
                 >
-                  <span className="relative text-sm font-semibold text-white "> {session ? "Profile" : "Log In"}</span>
+                  <span className="relative text-sm font-semibold text-white "> {session ? 'Profile' : 'Log In'}</span>
                 </Link>
               </div>
             </div>

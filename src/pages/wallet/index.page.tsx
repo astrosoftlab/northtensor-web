@@ -1,6 +1,6 @@
-import dynamic from "next/dynamic"
+import dynamic from 'next/dynamic'
 
-const WalletApp = dynamic(() => import("@pages/wallet/WalletApp"), {
+const WalletApp = dynamic(() => import('@pages/wallet/WalletApp'), {
   ssr: false,
 })
 

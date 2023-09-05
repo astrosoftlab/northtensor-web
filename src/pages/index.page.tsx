@@ -1,5 +1,7 @@
-import Image from "next/image"
-import Link from "next/link"
+import Image from 'next/image'
+import Link from 'next/link'
+
+import { Button } from '@components/ui/Button'
 
 export default function Index() {
   return (
@@ -14,7 +16,7 @@ export default function Index() {
             <div className="mx-auto lg:w-4/5">
               <div className="flex flex-col-reverse justify-between sm:flex-row">
                 <div className="w-full sm:w-3/5">
-                  <h1 className="text-5xl font-bold leading-tight text-gray-900 md:text-6xl xl:text-7xl">
+                  <h1 className="text-5xl font-bold leading-tight md:text-6xl xl:text-7xl">
                     Build Your Project
                     <br />
                     on
@@ -26,17 +28,13 @@ export default function Index() {
                     scale and support basic transformer-driven data extraction to Artificial General Intelligence.
                   </p>
                   <div className="flex flex-wrap mt-16 gap-y-4 gap-x-6">
-                    <Link
-                      href="/resources"
-                      className="relative flex items-center justify-center w-full px-6 h-11 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
-                    >
-                      <span className="relative text-base font-semibold text-white">Get started</span>
+                    <Link href="/resources">
+                      <Button size="lg">Get started</Button>
                     </Link>
-                    <a
-                      href="#"
-                      className="relative flex items-center justify-center w-full px-6 h-11 before:absolute before:inset-0 before:rounded-full before:border before:border-transparent before:bg-primary/10 before:bg-gradient-to-b before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
-                    >
-                      <span className="relative text-base font-semibold text-primary">Learn more</span>
+                    <a href="#">
+                      <Button size="lg" color="light">
+                        Learn more
+                      </Button>
                     </a>
                   </div>
                 </div>

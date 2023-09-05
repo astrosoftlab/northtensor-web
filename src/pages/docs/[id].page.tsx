@@ -1,7 +1,7 @@
-import Head from "next/head"
+import Head from 'next/head'
 
-import Date from "@components/ui/Date"
-import { PostData, getAllPostIds, getPostData } from "@lib/docs"
+import Date from '@components/ui/Date'
+import { PostData, getAllPostIds, getPostData } from '@lib/docs'
 
 export async function getStaticPaths() {
   const paths = getAllPostIds()

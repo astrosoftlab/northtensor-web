@@ -1,10 +1,10 @@
-import Modal from "react-modal"
+import { useState } from 'react'
 
-import { useState } from "react"
+import { EyeIcon, EyeSlashIcon, PencilSquareIcon } from '@heroicons/react/20/solid'
 
-import { EyeIcon, EyeSlashIcon, PencilSquareIcon } from "@heroicons/react/20/solid"
+import ColdkeyModal from './ColdkeyModal'
 
-import ColdkeyModal from "./ColdkeyModal"
+import Modal from 'react-modal'
 
 interface Props {
   name: string
@@ -91,10 +91,10 @@ export default function ColdkeyInput({
         isOpen={isModalOpen}
         onRequestClose={() => setIsModalOpen(false)}
         style={{
-          overlay: { backgroundColor: "rgba(0, 0, 0, 0.5)" },
+          overlay: { backgroundColor: 'rgba(0, 0, 0, 0.5)' },
           content: {
-            backgroundColor: "rgba(0, 0, 0, 0)",
-            border: "rgba(0, 0, 0, 0)",
+            backgroundColor: 'rgba(0, 0, 0, 0)',
+            border: 'rgba(0, 0, 0, 0)',
           },
         }}
       >

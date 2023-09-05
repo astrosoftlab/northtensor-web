@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from 'react'
 
-import { Button } from "@components/ui/Buttons"
-import { TextInput } from "@components/ui/Inputs"
+import { Button } from '@components/ui/Button'
+import { Input } from '@components/ui/Input'
 
 interface Props {
   name: string
@@ -21,13 +21,13 @@ export default function ColdkeyModal({ name, coldkey, onSave, onClose, newBool =
     setColdkeyIsValid(/^([1-9]|[A-HJ-NP-Za-km-z]){0,48}$/.test(coldkey) && coldkey.length === 48)
   }, [coldkey])
 
-  function handleNameChange(event: React.ChangeEvent<HTMLInputElement>) {
-    setNewName(event.target.value)
+  function handleNameChange(v: string) {
+    setNewName(v)
   }
 
-  function handleColdkeyChange(event: React.ChangeEvent<HTMLInputElement>) {
-    setNewColdkey(event.target.value)
-    setColdkeyIsValid(/^([1-9]|[A-HJ-NP-Za-km-z]){0,48}$/.test(event.target.value) && event.target.value.length === 48)
+  function handleColdkeyChange(v: string) {
+    setNewColdkey(v)
+    setColdkeyIsValid(/^([1-9]|[A-HJ-NP-Za-km-z]){0,48}$/.test(v) && v.length === 48)
   }
 
   function handleSave() {
@@ -66,26 +66,26 @@ export default function ColdkeyModal({ name, coldkey, onSave, onClose, newBool =
             )}
 
             <div className="mt-3 text-center sm:mt-5">
-              <h3 className="text-2xl font-medium leading-6 text-gray-900">{name}</h3>
+              <h4 className="font-medium">{name}</h4>
               <div className="mt-2">
                 <p className="text-sm text-gray-500">Edit the name and coldkey below:</p>
               </div>
             </div>
 
             <div className="mt-5">
-              <TextInput rounded label="Name" value={newName} onChange={handleNameChange} />
+              <Input rounded label="Name" value={newName} onChange={handleNameChange} />
             </div>
 
             <div className="mt-5">
-              <TextInput rounded label="Coldkey" value={newColdkey} onChange={handleColdkeyChange} />
+              <Input rounded label="Coldkey" value={newColdkey} onChange={handleColdkeyChange} />
             </div>
 
             <div className="mt-9 sm:mt-12">
               <Button className="mb-4" full onClick={handleSave} disabled={!coldkeyIsValid}>
-                {coldkeyIsValid ? "Save" : "Invalid Coldkey"}
+                {coldkeyIsValid ? 'Save' : 'Invalid Coldkey'}
               </Button>
 
-              <Button full color="secondary" onClick={handleClose}>
+              <Button full color="light" onClick={handleClose}>
                 Close
               </Button>
             </div>

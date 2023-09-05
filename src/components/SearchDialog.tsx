@@ -1,10 +1,6 @@
-"use client"
+'use client'
 
-import { CornerDownLeft, Frown, Loader, Search, User, Wand, X } from "lucide-react"
-import type { CreateCompletionResponse } from "openai"
-import { SSE } from "sse.js"
-
-import * as React from "react"
+import * as React from 'react'
 
 // import { Button } from '@components/ui/button'
 import {
@@ -14,8 +10,12 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@components/ui/Dialog"
-import { Input } from "@components/ui/Inputs"
+} from '@components/ui/Dialog'
+import { Input } from '@components/ui/Input'
+
+import { CornerDownLeft, Frown, Loader, Search, User, Wand, X } from 'lucide-react'
+import type { CreateCompletionResponse } from 'openai'
+import { SSE } from 'sse.js'
 
 function promptDataReducer(
   state: any[],
@@ -24,7 +24,7 @@ function promptDataReducer(
     answer?: string | undefined
     status?: string
     query?: string | undefined
-    type?: "remove-last-item" | string
+    type?: 'remove-last-item' | string
   },
 ) {
   // set a standard state to use later
@@ -32,7 +32,7 @@ function promptDataReducer(
 
   if (action.type) {
     switch (action.type) {
-      case "remove-last-item":
+      case 'remove-last-item':
         current.pop()
         return [...current]
       default:
@@ -44,7 +44,7 @@ function promptDataReducer(
   if (action.index === undefined) return [...state]
 
   if (!current[action.index]) {
-    current[action.index] = { query: "", answer: "", status: "" }
+    current[action.index] = { query: '', answer: '', status: '' }
   }
 
   current[action.index].answer = action.answer
@@ -61,9 +61,9 @@ function promptDataReducer(
 
 export function SearchDialog() {
   const [open, setOpen] = React.useState(false)
-  const [search, setSearch] = React.useState<string>("")
-  const [question, setQuestion] = React.useState<string>("")
-  const [answer, setAnswer] = React.useState<string | undefined>("")
+  const [search, setSearch] = React.useState<string>('')
+  const [question, setQuestion] = React.useState<string>('')
+  const [answer, setAnswer] = React.useState<string | undefined>('')
   const eventSourceRef = React.useRef<SSE>()
   const [isLoading, setIsLoading] = React.useState(false)
   const [hasError, setHasError] = React.useState(false)
@@ -74,27 +74,27 @@ export function SearchDialog() {
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
-      if (e.key === "k" && e.metaKey) {
+      if (e.key === 'k' && e.metaKey) {
         setOpen(true)
       }
 
-      if (e.key === "Escape") {
-        console.log("esc")
+      if (e.key === 'Escape') {
+        console.log('esc')
         handleModalToggle()
       }
     }
 
-    document.addEventListener("keydown", down)
-    return () => document.removeEventListener("keydown", down)
+    document.addEventListener('keydown', down)
+    return () => document.removeEventListener('keydown', down)
   }, [])
 
   function handleModalToggle() {
     setOpen(!open)
-    setSearch("")
-    setQuestion("")
+    setSearch('')
+    setQuestion('')
     setAnswer(undefined)
     setPromptIndex(0)
-    dispatchPromptData({ type: "remove-last-item" })
+    dispatchPromptData({ type: 'remove-last-item' })
     setHasError(false)
     setIsLoading(false)
   }
@@ -103,16 +103,16 @@ export function SearchDialog() {
     async (query: string) => {
       setAnswer(undefined)
       setQuestion(query)
-      setSearch("")
+      setSearch('')
       dispatchPromptData({ index: promptIndex, answer: undefined, query })
       setHasError(false)
       setIsLoading(true)
 
       const eventSource = new SSE(`api/vector-search`, {
         headers: {
-          apikey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? "",
+          apikey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? '',
           Authorization: `Bearer ${process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY}`,
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         payload: JSON.stringify({ query }),
       })
@@ -123,12 +123,12 @@ export function SearchDialog() {
         console.error(err)
       }
 
-      eventSource.addEventListener("error", handleError)
-      eventSource.addEventListener("message", (e: any) => {
+      eventSource.addEventListener('error', handleError)
+      eventSource.addEventListener('message', (e: any) => {
         try {
           setIsLoading(false)
 
-          if (e.data === "[DONE]") {
+          if (e.data === '[DONE]') {
             setPromptIndex((x) => {
               return x + 1
             })
@@ -139,14 +139,14 @@ export function SearchDialog() {
           const text = completionResponse.choices[0].text
 
           setAnswer((answer) => {
-            const currentAnswer = answer ?? ""
+            const currentAnswer = answer ?? ''
 
             dispatchPromptData({
               index: promptIndex,
               answer: currentAnswer + text,
             })
 
-            return (answer ?? "") + text
+            return (answer ?? '') + text
           })
         } catch (err) {
           handleError(err)
@@ -198,7 +198,7 @@ export function SearchDialog() {
               {question && (
                 <div className="flex gap-4">
                   <span className="flex items-center justify-center w-8 h-8 p-2 text-center rounded-full bg-slate-100 ">
-                    <User width={18} />{" "}
+                    <User width={18} />{' '}
                   </span>
                   <p className="mt-0.5 font-semibold text-slate-700 ">{question}</p>
                 </div>
@@ -234,17 +234,17 @@ export function SearchDialog() {
                   placeholder="Ask a question..."
                   name="search"
                   value={search}
-                  onChange={(e) => setSearch(e.target.value)}
+                  onChange={(v) => setSearch(v)}
                   className="col-span-3"
                 />
                 <CornerDownLeft
                   className={`absolute top-3 right-5 h-4 w-4 text-slate-300 transition-opacity ${
-                    search ? "opacity-100" : "opacity-0"
+                    search ? 'opacity-100' : 'opacity-0'
                   }`}
                 />
               </div>
               <div className="text-xs text-slate-500 ">
-                Or try:{" "}
+                Or try:{' '}
                 <button
                   type="button"
                   className="px-1.5 py-0.5
@@ -252,7 +252,7 @@ export function SearchDialog() {
                   hover:bg-slate-100 
                   rounded border border-slate-200 
                   transition-colors"
-                  onClick={(_) => setSearch("What is Bittensor?")}
+                  onClick={(_) => setSearch('What is Bittensor?')}
                 >
                   What is Bittensor?
                 </button>
@@ -263,7 +263,7 @@ export function SearchDialog() {
                   hover:bg-slate-100 
                   rounded border border-slate-200 
                   transition-colors"
-                  onClick={(_) => setSearch("How do I stake?")}
+                  onClick={(_) => setSearch('How do I stake?')}
                 >
                   How do I stake?
                 </button>
