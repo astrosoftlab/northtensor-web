@@ -3,7 +3,7 @@ a {
 }
 
 .container {
-  @apply sm:px-0 px-[20px];
+  @apply xl:max-w-[1328px];
 }
 
 .container-sm {

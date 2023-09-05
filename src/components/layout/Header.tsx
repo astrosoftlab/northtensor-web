@@ -32,7 +32,7 @@ export default function Example() {
           <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 md:gap-0 md:py-4 ">
             <div className="relative z-20 flex justify-between w-full md:px-0 lg:w-max ">
               <Link href="/" aria-label="logo" className="flex items-center gap-1 space-x-2 hover:text-inherit">
-                <Image width={40} height={40} src="/images/solo.png" alt="" />
+                <Image width={40} height={40} src="/images/logo.svg" alt="" />
                 <div className="flex text-2xl font-bold">
                   <span className="text-primary">NORTH</span>
                   <span>TENSOR</span>
