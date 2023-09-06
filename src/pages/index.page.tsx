@@ -7,10 +7,6 @@ export default function Index() {
   return (
     <main className="">
       <section className="relative" id="home">
-        <div aria-hidden="true" className="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40 ">
-          <div className="blur-[106px] h-56 bg-gradient-to-br from-primary to-purple-400 " />
-          <div className="blur-[106px] h-32 bg-gradient-to-r from-cyan-400 to-sky-300 " />
-        </div>
         <div className="container">
           <div className="relative ml-auto py-44">
             <div className="mx-auto lg:w-4/5">

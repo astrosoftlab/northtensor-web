@@ -38,7 +38,7 @@ export default function Example() {
                   <span>TENSOR</span>
                 </div>
               </Link>
-              <div className="relative flex items-center max-h-10 lg:hidden ">
+              <div className="relative flex items-center max-h-10 lg:hidden">
                 <button
                   aria-label="humburger"
                   id="hamburger"
