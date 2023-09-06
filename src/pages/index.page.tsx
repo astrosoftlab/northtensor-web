@@ -25,10 +25,12 @@ export default function Index() {
                   </p>
                   <div className="flex flex-wrap mt-16 gap-y-4 gap-x-6">
                     <Link href="/resources">
-                      <Button size="lg">Get started</Button>
+                      <Button size="lg" weight="semibold" color="opacity">
+                        Get started
+                      </Button>
                     </Link>
                     <a href="#">
-                      <Button size="lg" color="light">
+                      <Button size="lg" color="white" weight="semibold">
                         Learn more
                       </Button>
                     </a>

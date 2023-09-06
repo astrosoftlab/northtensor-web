@@ -75,7 +75,7 @@
 
 html,
 body {
-  @apply max-w-[100vw] bg-black text-[rgb(var(--foreground-rgb))] overflow-x-hidden overflow-y-auto;
+  @apply max-w-[100vw] bg-black text-[rgb(var(--foreground-rgb))] text-base overflow-x-hidden overflow-y-auto;
 }
 
 main {
