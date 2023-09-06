@@ -25,3 +25,7 @@ a {
 .ReactModal__Overlay {
   @apply z-50;
 }
+
+.only-desktop {
+  @apply hidden lg:block;
+}

@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Link from 'next/link'
 
 import { Button } from '@components/ui/Button'
@@ -8,22 +7,24 @@ export default function Index() {
     <main className="">
       <section className="relative" id="home">
         <div className="container">
-          <div className="relative ml-auto py-44">
+          <div className="relative ml-auto py-[16px]">
             <div className="mx-auto lg:w-4/5">
-              <div className="flex flex-col-reverse justify-between sm:flex-row">
-                <div className="w-full sm:w-3/5">
-                  <h1 className="text-5xl font-bold leading-tight md:text-6xl xl:text-7xl">
-                    Build Your Project
-                    <br />
-                    on
-                    <span className="text-primary "> Bittensor</span>
+              <div className="flex flex-col-reverse justify-between text-center sm:flex-row">
+                <div className="flex flex-col items-center w-full gap-8">
+                  <div className="flex w-full justify-center border border-solid border-[#ffffff20] rounded-full text-white py-[10px] max-w-[480px]">
+                    <span className="font-bold text-primary">NEW</span>&nbsp; • &nbsp;Bittensor-first AI Firm
+                  </div>
+                  <h1 className="text-5xl font-bold leading-tight text-white md:text-6xl xl:text-7xl">
+                    Build Your Project on
+                    <br className="only-desktop" />
+                    Bittensor
                   </h1>
-                  <p className="mt-8 text-gray-700">
-                    We are a Bittensor-first AI Firm aiming to utilize the inevitable union of economic efficiencies
-                    provided through cryptocurrency technologies. Our focus is to create infrastructure required to
-                    scale and support basic transformer-driven data extraction to Artificial General Intelligence.
+                  <p className="text-gray-200">
+                    Our focus is to create infrastructure required to scale and support basic
+                    <br className="only-desktop" />
+                    transformer-driven data extraction to Artificial General Intelligence.
                   </p>
-                  <div className="flex flex-wrap mt-16 gap-y-4 gap-x-6">
+                  <div className="flex justify-center gap-y-4 gap-x-6">
                     <Link href="/resources">
                       <Button size="lg" weight="semibold" color="opacity">
                         Get started
@@ -35,9 +36,6 @@ export default function Index() {
                       </Button>
                     </a>
                   </div>
-                </div>
-                <div className="relative flex-1 mb-16 sm:mb-0">
-                  <Image src="/images/viking-ship.png" alt="" fill className="object-contain !relative sm:absolute" />
                 </div>
               </div>
             </div>
