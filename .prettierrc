@@ -11,12 +11,8 @@
   "importOrder": [
     "^react$",
     "^next*",
-    "^@(?!components|lib|pages|styles|types).*$",
-    "^@(components|lib|pages|styles|types).*$",
-    "^@lib/(.*)$",
-    "^@pages(.*)$",
-    "^@styles/(.*)$",
-    "^@types(.*)$",
+    "^@(?!components|lib|pages|styles|types|assets).*$",
+    "^@(components|lib|pages|styles|types|assets).*$",
     "^\\.[./]",
     ".*"
   ],

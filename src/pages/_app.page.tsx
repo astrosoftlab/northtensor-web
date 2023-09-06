@@ -1,7 +1,6 @@
 import { useState } from 'react'
 
 import type { AppProps } from 'next/app'
-import { Inter } from 'next/font/google'
 import Head from 'next/head'
 
 import { createPagesBrowserClient } from '@supabase/auth-helpers-nextjs'
@@ -9,11 +8,6 @@ import { Session, SessionContextProvider } from '@supabase/auth-helpers-react'
 
 import Layout from '@components/layout'
 import '@styles/globals.css'
-
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-})
 
 export default function App({
   Component,
@@ -28,7 +22,7 @@ export default function App({
       <Head>
         <title>NorthTensor</title>
       </Head>
-      <div className={`${inter.variable} font-sans flex flex-col min-h-screen`}>
+      <div className={`flex flex-col min-h-screen`}>
         <Layout>
           <Component {...pageProps} />
         </Layout>
