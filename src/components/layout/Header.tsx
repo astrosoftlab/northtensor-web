@@ -80,7 +80,7 @@ export default function Example() {
               </div>
               <div className="flex gap-2 mt-12 lg:mt-0 ">
                 <Link href="/wallet">
-                  <Button color="opacity">Wallet</Button>
+                  <Button color="blur">Wallet</Button>
                 </Link>
                 <Link href="/profile">
                   <Button color="white">{session ? 'Profile' : 'Log In'}</Button>

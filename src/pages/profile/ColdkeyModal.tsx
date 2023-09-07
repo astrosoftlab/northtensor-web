@@ -85,7 +85,7 @@ export default function ColdkeyModal({ name, coldkey, onSave, onClose, newBool =
                 {coldkeyIsValid ? 'Save' : 'Invalid Coldkey'}
               </Button>
 
-              <Button full color="opacity" onClick={handleClose}>
+              <Button full color="blur" onClick={handleClose}>
                 Close
               </Button>
             </div>

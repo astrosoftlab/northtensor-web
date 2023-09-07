@@ -8,7 +8,7 @@ const COLOR_CONFIG = {
     bgColor: 'bg-primary hover:bg-primary-dark',
     textColor: 'text-white',
   },
-  opacity: {
+  blur: {
     bgColor: 'bg-[#ffffff20] border border-solid border-[#ffffff25] hover:bg-[#ffffff30]',
     textColor: 'text-white',
   },

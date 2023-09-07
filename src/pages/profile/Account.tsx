@@ -224,7 +224,7 @@ export default function Account({ session }: { session: Session }) {
         </div>
 
         <div className="flex items-center justify-end mt-6 gap-x-3">
-          <Button className="min-w-[100px]" color="opacity" onClick={() => supabase.auth.signOut()}>
+          <Button className="min-w-[100px]" color="blur" onClick={() => supabase.auth.signOut()}>
             Log Out
           </Button>
           <Button

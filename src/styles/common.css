@@ -29,3 +29,7 @@ a {
 .only-desktop {
   @apply hidden lg:block;
 }
+
+.absolute-center {
+  @apply absolute left-1/2 top-1/2;
+}
