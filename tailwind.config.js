@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 
 module.exports = {
+  darkMode: 'class',
   content: ['./src/**/*.{js,ts,jsx,tsx}', './node_modules/tw-elements/dist/js/**/*.js'],
   plugins: [require('@tailwindcss/typography'), require('@tailwindcss/forms')],
   theme: {
@@ -960,5 +961,4 @@ module.exports = {
     'disabled',
   ],
   plugins: [require('tw-elements/dist/plugin.cjs')],
-  darkMode: 'class',
 }
