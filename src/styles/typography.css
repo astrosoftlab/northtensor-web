@@ -9,26 +9,31 @@
   }
 
   h1 {
-    @apply text-5xl sm:text-6xl;
+    /* 60px 48px */
+    @apply sm:text-6xl text-5xl;
   }
 
   h2 {
-    @apply text-4xl sm:text-5xl;
+    /* 48px 36px */
+    @apply sm:text-5xl text-4xl;
   }
 
   h3 {
-    @apply text-3xl sm:text-4xl;
+    @apply sm:text-[38px] text-[30px];
   }
 
   h4 {
-    @apply text-2xl sm:text-3xl;
+    /* 30px 24px */
+    @apply sm:text-3xl text-2xl;
   }
 
   h5 {
-    @apply text-xl sm:text-2xl;
+    /* 24px 20px */
+    @apply sm:text-2xl text-xl;
   }
 
   h6 {
-    @apply text-lg sm:text-xl;
+    /* 20px 18px */
+    @apply sm:text-xl text-lg;
   }
 }
