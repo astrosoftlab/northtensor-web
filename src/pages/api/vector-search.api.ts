@@ -10,7 +10,7 @@ import { CreateCompletionRequest } from 'openai'
 
 // OpenAIApi does currently not work in Vercel Edge Functions as it uses Axios under the hood.
 export const config = {
-  runtime: 'edge',
+  runtime: 'edge'
 }
 
 const openAiKey = process.env.OPENAI_KEY
@@ -51,11 +51,11 @@ export default async function handler(req: NextRequest) {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${openAiKey}`,
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        input: sanitizedQuery,
-      }),
+        input: sanitizedQuery
+      })
     }).then((res) => res.json())
 
     const [results] = moderationResponse.results
@@ -63,7 +63,7 @@ export default async function handler(req: NextRequest) {
     if (results.flagged) {
       throw new UserError('Flagged content', {
         flagged: true,
-        categories: results.categories,
+        categories: results.categories
       })
     }
 
@@ -71,12 +71,12 @@ export default async function handler(req: NextRequest) {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${openAiKey}`,
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         model: 'text-embedding-ada-002',
-        input: sanitizedQuery.replaceAll('\n', ' '),
-      }),
+        input: sanitizedQuery.replaceAll('\n', ' ')
+      })
     })
 
     if (embeddingResponse.status !== 200) {
@@ -84,14 +84,14 @@ export default async function handler(req: NextRequest) {
     }
 
     const {
-      data: [{ embedding }],
+      data: [{ embedding }]
     } = await embeddingResponse.json()
 
     const { error: matchError, data: pageSections } = await supabaseClient.rpc('match_page_sections', {
       embedding,
       match_threshold: 0.78,
       match_count: 10,
-      min_content_length: 50,
+      min_content_length: 50
     })
 
     if (matchError) {
@@ -140,16 +140,16 @@ export default async function handler(req: NextRequest) {
       prompt,
       max_tokens: 512,
       temperature: 0,
-      stream: true,
+      stream: true
     }
 
     const response = await fetch('https://api.openai.com/v1/completions', {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${openAiKey}`,
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
-      body: JSON.stringify(completionOptions),
+      body: JSON.stringify(completionOptions)
     })
 
     if (!response.ok) {
@@ -160,20 +160,20 @@ export default async function handler(req: NextRequest) {
     // Proxy the streamed SSE response from OpenAI
     return new Response(response.body, {
       headers: {
-        'Content-Type': 'text/event-stream',
-      },
+        'Content-Type': 'text/event-stream'
+      }
     })
   } catch (err: unknown) {
     if (err instanceof UserError) {
       return new Response(
         JSON.stringify({
           error: err.message,
-          data: err.data,
+          data: err.data
         }),
         {
           status: 400,
-          headers: { 'Content-Type': 'application/json' },
-        },
+          headers: { 'Content-Type': 'application/json' }
+        }
       )
     } else if (err instanceof ApplicationError) {
       // Print out application errors with their additional data
@@ -186,12 +186,12 @@ export default async function handler(req: NextRequest) {
     // TODO: include more response info in debug environments
     return new Response(
       JSON.stringify({
-        error: 'There was an error processing your request',
+        error: 'There was an error processing your request'
       }),
       {
         status: 500,
-        headers: { 'Content-Type': 'application/json' },
-      },
+        headers: { 'Content-Type': 'application/json' }
+      }
     )
   }
 }

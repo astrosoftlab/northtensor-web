@@ -70,7 +70,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      postData,
-    },
+      postData
+    }
   }
 }

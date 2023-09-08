@@ -52,7 +52,7 @@ export const Select = forwardRef(
         </select>
       </div>
     )
-  },
+  }
 )
 
 const SelectGroupContext = createContext<string | null>(null)

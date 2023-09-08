@@ -30,7 +30,7 @@ export default function Account({ session }: { session: Session }) {
 
   useEffect(() => {
     getProfile()
-  }, [session])
+  }, [session, getProfile])
 
   function handleColdkeyInputChange(index: number, newName: string, newColdkey: string, newWatched: boolean) {
     setSS58Coldkeys((prevColdkeys) => {
@@ -42,7 +42,7 @@ export default function Account({ session }: { session: Session }) {
         ...coldkey,
         name1: newName,
         coldkey: newColdkey,
-        watched: newWatched,
+        watched: newWatched
       }
       const updatedColdkeys = [...prevColdkeys]
       updatedColdkeys[index] = updatedColdkey
@@ -58,8 +58,8 @@ export default function Account({ session }: { session: Session }) {
             name1: newName,
             coldkey: newColdkey,
             watched: true,
-            validated: false,
-          },
+            validated: false
+          }
         ]
         return updatedColdkeys
       } else {
@@ -69,8 +69,8 @@ export default function Account({ session }: { session: Session }) {
             name1: newName,
             coldkey: newColdkey,
             watched: true,
-            validated: false,
-          },
+            validated: false
+          }
         ]
         return updatedColdkeys
       }
@@ -123,7 +123,7 @@ export default function Account({ session }: { session: Session }) {
     last_name,
     website,
     avatar_url,
-    ss58_coldkeys,
+    ss58_coldkeys
   }: {
     username: Profiles['username']
     first_name: Profiles['first_name']
@@ -144,7 +144,7 @@ export default function Account({ session }: { session: Session }) {
         website,
         avatar_url,
         ss58_coldkeys,
-        updated_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
       }
 
       let { error } = await supabase.from('profiles').upsert(updates)
@@ -170,13 +170,7 @@ export default function Account({ session }: { session: Session }) {
           <h3 className="mb-6 font-semibold leading-9">Profile</h3>
 
           <div className="pb-8">
-            <Input
-              rounded
-              label="User name"
-              placeholder="johndoe"
-              value={username || ''}
-              onChange={(v) => setUsername(v)}
-            />
+            <Input label="User name" placeholder="johndoe" value={username || ''} onChange={(v) => setUsername(v)} />
           </div>
           <div className="pb-8">
             <InputGroup rounded>
@@ -185,13 +179,7 @@ export default function Account({ session }: { session: Session }) {
             </InputGroup>
           </div>
           <div className="pb-8">
-            <Input
-              rounded
-              label="Email address"
-              placeholder="johndoe@example.com"
-              value={session.user.email}
-              readOnly
-            />
+            <Input label="Email address" placeholder="johndoe@example.com" value={session.user.email} readOnly />
           </div>
           <div className="py-0.5 rounded-md shadow-sm isolate">
             <div className="flex items-center justify-between mb-2">
@@ -244,8 +232,8 @@ export default function Account({ session }: { session: Session }) {
           overlay: { backgroundColor: 'rgba(0, 0, 0, 0.5)' },
           content: {
             backgroundColor: 'rgba(0, 0, 0, 0)',
-            border: 'rgba(0, 0, 0, 0)',
-          },
+            border: 'rgba(0, 0, 0, 0)'
+          }
         }}
       >
         <ColdkeyModal

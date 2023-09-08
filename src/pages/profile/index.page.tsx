@@ -27,8 +27,8 @@ export default function Home() {
                   button:
                     'w-full relative flex items-center justify-center before:absolute before:inset-0 !rounded-full before:transition before:duration-300 active:duration-75 font-semibold !bg-primary text-white !border-primary ',
                   anchor: ' hover:!text-primary',
-                  message: '',
-                },
+                  message: ''
+                }
               }}
               providers={[]}
             />

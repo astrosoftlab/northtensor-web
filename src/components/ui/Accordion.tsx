@@ -9,11 +9,11 @@ export const Accordion = styled((props: AccordionProps) => (
 ))(({ theme }) => ({
   border: `1px solid ${theme.palette.divider}`,
   '&:not(:last-child)': {
-    borderBottom: 0,
+    borderBottom: 0
   },
   '&:before': {
-    display: 'none',
-  },
+    display: 'none'
+  }
 }))
 
 export const AccordionSummary = styled((props: AccordionSummaryProps) => (
@@ -22,14 +22,14 @@ export const AccordionSummary = styled((props: AccordionSummaryProps) => (
   backgroundColor: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, .05)' : 'rgba(0, 0, 0, .03)',
   flexDirection: 'row-reverse',
   '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
-    transform: 'rotate(90deg)',
+    transform: 'rotate(90deg)'
   },
   '& .MuiAccordionSummary-content': {
-    marginLeft: theme.spacing(1),
-  },
+    marginLeft: theme.spacing(1)
+  }
 }))
 
 export const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   padding: theme.spacing(1),
-  borderTop: '1px solid rgba(0, 0, 0, .125)',
+  borderTop: '1px solid rgba(0, 0, 0, .125)'
 }))

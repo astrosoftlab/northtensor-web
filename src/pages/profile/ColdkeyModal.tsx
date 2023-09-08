@@ -59,7 +59,7 @@ export default function ColdkeyModal({ name, coldkey, onSave, onClose, newBool =
           <div>
             {newBool ? null : (
               <div className="flex justify-end">
-                <Button color="red" onClick={handleDelete}>
+                <Button color="blur" onClick={handleDelete}>
                   DELETE
                 </Button>
               </div>
@@ -73,11 +73,11 @@ export default function ColdkeyModal({ name, coldkey, onSave, onClose, newBool =
             </div>
 
             <div className="mt-5">
-              <Input rounded label="Name" value={newName} onChange={handleNameChange} />
+              <Input label="Name" value={newName} onChange={handleNameChange} />
             </div>
 
             <div className="mt-5">
-              <Input rounded label="Coldkey" value={newColdkey} onChange={handleColdkeyChange} />
+              <Input label="Coldkey" value={newColdkey} onChange={handleColdkeyChange} />
             </div>
 
             <div className="mt-9 sm:mt-12">

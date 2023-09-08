@@ -12,7 +12,7 @@ import { Grid, Message } from 'semantic-ui-react'
 
 function Main() {
   const {
-    state: { apiState, apiError, keyringState },
+    state: { apiState, apiError, keyringState }
   } = useSubstrate()
 
   const [refresh, setRefresh] = useState(false)

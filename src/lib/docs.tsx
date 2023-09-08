@@ -32,7 +32,7 @@ export function getSortedPostsData(): PostData[] {
     // Combine the data with the id
     return {
       id,
-      ...matterResult.data,
+      ...matterResult.data
     } as PostData // Asserting that the resulting object has the PostData type
   })
 
@@ -65,8 +65,8 @@ export function getAllPostIds(): { params: { id: string } }[] {
   return fileNames.map((fileName) => {
     return {
       params: {
-        id: fileName.replace(/\.mdx$/, ''),
-      },
+        id: fileName.replace(/\.mdx$/, '')
+      }
     }
   })
 }
@@ -86,7 +86,7 @@ export async function getPostData(id: string): Promise<PostData & { contentHtml:
   return {
     id,
     contentHtml,
-    ...matterResult.data,
+    ...matterResult.data
   } as PostData & { contentHtml: string }
 }
 
@@ -102,6 +102,6 @@ export async function getMiscPage(id: string): Promise<PostData & { contentHtml:
   return {
     id,
     contentHtml,
-    ...matterResult.data,
+    ...matterResult.data
   } as PostData & { contentHtml: string }
 }

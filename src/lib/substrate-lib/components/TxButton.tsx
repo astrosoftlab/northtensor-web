@@ -33,7 +33,7 @@ function TxButton({
   setStatus,
   style,
   type = 'QUERY',
-  txOnClickHandler,
+  txOnClickHandler
 }: Props) {
   // Hooks
   const { api, currentAccount } = useSubstrateState()
@@ -65,7 +65,7 @@ function TxButton({
   const getFromAcct = async () => {
     const {
       address,
-      meta: { source, isInjected },
+      meta: { source, isInjected }
     } = currentAccount
 
     if (!isInjected) {
@@ -140,7 +140,7 @@ function TxButton({
 
   const rpc = async () => {
     const transformed = transformParams(paramFields, inputParams, {
-      emptyAsNull: false,
+      emptyAsNull: false
     })
     const unsub = await api.rpc[palletRpc][callable](...transformed, queryResHandler)
     setUnsub(() => unsub)
@@ -189,7 +189,7 @@ function TxButton({
     })
     const params = paramFields.map((field, ind) => ({
       ...field,
-      value: paramVal[ind] || null,
+      value: paramVal[ind] || null
     }))
 
     return params.reduce((memo, { type = 'string', value }) => {
@@ -201,7 +201,7 @@ function TxButton({
       if (type.indexOf('Vec<') >= 0) {
         converted = converted.split(',').map((e: any) => e.trim())
         converted = converted.map((single: any) =>
-          isNumType(type) ? (single.indexOf('.') >= 0 ? Number.parseFloat(single) : Number.parseInt(single)) : single,
+          isNumType(type) ? (single.indexOf('.') >= 0 ? Number.parseFloat(single) : Number.parseInt(single)) : single
         )
         return [...memo, converted]
       }

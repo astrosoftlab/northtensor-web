@@ -31,7 +31,7 @@ const initialState: any = {
   currentAccount: null,
   storedMNRVHotkey: MNRVHotkey,
   storedMNRVColdkey: MNRVColdkey,
-  balanceSigFigures: 6,
+  balanceSigFigures: 6
 }
 const registry = new TypeRegistry()
 
@@ -82,7 +82,7 @@ const connect = (state: any, dispatch: any) => {
         version: 'u32', // --- Prometheus version.
         ip: 'u128', // --- Prometheus u128 encoded ip address of type v6 or v4. serialized to string.
         port: 'u16', // --- Prometheus u16 encoded port.
-        ip_type: 'u8', // --- Prometheus ip type, 4 for ipv4 and 6 for ipv6.
+        ip_type: 'u8' // --- Prometheus ip type, 4 for ipv4 and 6 for ipv6.
       },
       AxonInfo: {
         block: 'u64', // --- Axon serving block.
@@ -92,7 +92,7 @@ const connect = (state: any, dispatch: any) => {
         ip_type: 'u8', // --- Axon ip type, 4 for ipv4 and 6 for ipv6.
         protocol: 'u8', // --- Axon protocol. TCP, UDP, other.
         placeholder1: 'u8', // --- Axon proto placeholder 1.
-        placeholder2: 'u8', // --- Axon proto placeholder 1.
+        placeholder2: 'u8' // --- Axon proto placeholder 1.
       },
       NeuronInfo: {
         hotkey: 'AccountId',
@@ -114,7 +114,7 @@ const connect = (state: any, dispatch: any) => {
         validator_permit: 'bool',
         weights: 'Vec<(Compact<u16>, Compact<u16>)>', // Vec of (uid, weight)
         bonds: 'Vec<(Compact<u16>, Compact<u16>)>', // Vec of (uid, bond)
-        pruning_score: 'Compact<u16>',
+        pruning_score: 'Compact<u16>'
       },
       NeuronInfoLite: {
         hotkey: 'AccountId',
@@ -134,7 +134,7 @@ const connect = (state: any, dispatch: any) => {
         dividends: 'Compact<u16>',
         last_update: 'Compact<u64>',
         validator_permit: 'bool',
-        pruning_score: 'Compact<u16>',
+        pruning_score: 'Compact<u16>'
       },
       DelegateInfo: {
         delegate_ss58: 'AccountId',
@@ -144,7 +144,7 @@ const connect = (state: any, dispatch: any) => {
         registrations: 'Vec<Compact<u16>>', // Vec of netuid this delegate is registered on
         validator_permits: 'Vec<Compact<u16>>', // Vec of netuid this delegate has validator permit on
         return_per_1000: 'Compact<u64>', // Delegators current daily return per 1000 TAO staked minus take fee
-        total_daily_return: 'Compact<u64>', // Delegators current daily return
+        total_daily_return: 'Compact<u64>' // Delegators current daily return
       },
       SubnetInfo: {
         netuid: 'Compact<u16>',
@@ -168,8 +168,8 @@ const connect = (state: any, dispatch: any) => {
         network_modality: 'Compact<u16>',
         network_connect: 'Vec<[u16; 2]>',
         emission_values: 'Compact<u64>',
-        burn: 'Compact<u64>',
-      },
+        burn: 'Compact<u64>'
+      }
     },
     rpc: {
       neuronInfo: {
@@ -178,76 +178,76 @@ const connect = (state: any, dispatch: any) => {
           params: [
             {
               name: 'netuid',
-              type: 'u16',
-            },
+              type: 'u16'
+            }
           ],
-          type: 'Vec<u8>',
+          type: 'Vec<u8>'
         },
         getNeuronLite: {
           description: 'Get neuron lite',
           params: [
             {
               name: 'netuid',
-              type: 'u16',
+              type: 'u16'
             },
             {
               name: 'uid',
-              type: 'u16',
-            },
+              type: 'u16'
+            }
           ],
-          type: 'Vec<u8>',
+          type: 'Vec<u8>'
         },
         getNeurons: {
           description: 'Get neurons',
           params: [
             {
               name: 'netuid',
-              type: 'u16',
-            },
+              type: 'u16'
+            }
           ],
-          type: 'Vec<u8>',
+          type: 'Vec<u8>'
         },
         getNeuron: {
           description: 'Get neuron',
           params: [
             {
               name: 'netuid',
-              type: 'u16',
+              type: 'u16'
             },
             {
               name: 'uid',
-              type: 'u16',
-            },
+              type: 'u16'
+            }
           ],
-          type: 'Vec<u8>',
-        },
+          type: 'Vec<u8>'
+        }
       },
       delegateInfo: {
         getDelegates: {
           description: 'Get delegates info',
           params: [],
-          type: 'Vec<u8>',
-        },
+          type: 'Vec<u8>'
+        }
       },
       subnetInfo: {
         getSubnetsInfo: {
           description: 'Get subnets info',
           params: [],
-          type: 'Vec<u8>',
+          type: 'Vec<u8>'
         },
         getSubnetInfo: {
           description: 'Get subnet info',
           params: [
             {
               name: 'netuid',
-              type: 'u16',
-            },
+              type: 'u16'
+            }
           ],
-          type: 'Vec<u8>',
-        },
-      },
+          type: 'Vec<u8>'
+        }
+      }
     },
-    provider: provider,
+    provider: provider
   })
 
   // Set listeners for disconnection and reconnection event.
@@ -263,12 +263,12 @@ const connect = (state: any, dispatch: any) => {
 const retrieveChainInfo = async (api: any) => {
   const [systemChain, systemChainType] = await Promise.all([
     api.rpc.system.chain(),
-    api.rpc.system.chainType ? api.rpc.system.chainType() : Promise.resolve(registry.createType('ChainType', 'Live')),
+    api.rpc.system.chainType ? api.rpc.system.chainType() : Promise.resolve(registry.createType('ChainType', 'Live'))
   ])
 
   return {
     systemChain: (systemChain || '<unknown>').toString(),
-    systemChainType,
+    systemChainType
   }
 }
 
@@ -285,7 +285,7 @@ const loadAccounts = (state: any, dispatch: any) => {
 
       allAccounts = allAccounts.map(({ address, meta }) => ({
         address,
-        meta: { ...meta, name: `${meta.name} (${meta.source})` },
+        meta: { ...meta, name: `${meta.name} (${meta.source})` }
       }))
 
       // Logics to check if the connecting chain is a dev chain, coming from polkadot-js Apps
@@ -344,7 +344,7 @@ const SubstrateContextProvider = (props: any) => {
 
 // prop typechecking
 SubstrateContextProvider.propTypes = {
-  socket: PropTypes.string,
+  socket: PropTypes.string
 }
 
 const useSubstrate = () => useContext<any>(SubstrateContext)

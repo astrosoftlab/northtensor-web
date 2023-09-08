@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic'
 
 const WalletApp = dynamic(() => import('@pages/wallet/WalletApp'), {
-  ssr: false,
+  ssr: false
 })
 
 export default function Home() {

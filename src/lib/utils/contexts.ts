@@ -7,16 +7,16 @@ import {
   CreateAccountCtx,
   EvtMgrCtx,
   EvtTxCtx,
-  LocalStorageAccountCtx,
+  LocalStorageAccountCtx
 } from './types'
 
 const BalanceVisibleContext = createContext<BalanceVisibilityCtx>({
   balanceVisibility: true,
-  setBalanceVisibility: () => console.log(),
+  setBalanceVisibility: () => console.log()
 })
 const AccountContext = createContext<CreateAccountCtx>({
   account: {} as LocalStorageAccountCtx,
-  setCurrentAccount: (t: LocalStorageAccountCtx) => console.log(t),
+  setCurrentAccount: (t: LocalStorageAccountCtx) => console.log(t)
 })
 const AdminContext = createContext<AdminCtx>({} as AdminCtx)
 const ApiContext = createContext<ApiCtx>({} as ApiCtx)

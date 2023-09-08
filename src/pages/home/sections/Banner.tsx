@@ -59,7 +59,7 @@ const NorthTensorOrbitalMotion = () => {
         className="absolute-center w-[1200px] h-[1200px] -ml-[600px] -mt-[600px] lg:scale-100 scale-50"
         style={{
           background:
-            'radial-gradient(50% 50% at 50% 50%, rgba(217, 175, 255, 0.97) 0%, rgba(180, 116, 237, 0.79) 22%, rgba(138, 55, 214, 0.60) 45%, rgba(104, 44, 177, 0.30) 73%, rgba(0, 34, 144, 0.00) 100%)',
+            'radial-gradient(50% 50% at 50% 50%, rgba(217, 175, 255, 0.97) 0%, rgba(180, 116, 237, 0.79) 22%, rgba(138, 55, 214, 0.60) 45%, rgba(104, 44, 177, 0.30) 73%, rgba(0, 34, 144, 0.00) 100%)'
         }}
       >
         <div className="absolute-center w-[1060px] h-[1060px] -ml-[530px] -mt-[530px] animate-spin-slow-90">

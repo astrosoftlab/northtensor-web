@@ -54,7 +54,7 @@ export default function Main() {
     return availableAccounts.push({
       key: account.meta.name,
       text: account.meta.name,
-      value: account.address,
+      value: account.address
     })
   })
 
@@ -184,7 +184,7 @@ export default function Main() {
                 palletRpc: 'subtensorModule',
                 callable: stakeType,
                 inputParams: [MNRVHotkey, sendAmount * 10 ** 9],
-                paramFields: [true, true],
+                paramFields: [true, true]
               }}
             />
           )}
@@ -199,7 +199,7 @@ export default function Main() {
                   palletRpc: 'subtensorModule',
                   callable: stakeType,
                   inputParams: [MNRVHotkey, fullStakeAmount],
-                  paramFields: [true, true],
+                  paramFields: [true, true]
                 }}
               />
             ) : null
@@ -212,7 +212,7 @@ export default function Main() {
                 palletRpc: 'subtensorModule',
                 callable: stakeType,
                 inputParams: [MNRVHotkey, amountCurrentlyStaked],
-                paramFields: [true, true],
+                paramFields: [true, true]
               }}
             />
           )}

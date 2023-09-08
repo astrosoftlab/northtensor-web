@@ -23,7 +23,7 @@ export default function ColdkeyInput({
   watched,
   validated,
   index,
-  onDelete = () => {},
+  onDelete = () => {}
 }: Props) {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -94,8 +94,8 @@ export default function ColdkeyInput({
           overlay: { backgroundColor: 'rgba(0, 0, 0, 0.5)' },
           content: {
             backgroundColor: 'rgba(0, 0, 0, 0)',
-            border: 'rgba(0, 0, 0, 0)',
-          },
+            border: 'rgba(0, 0, 0, 0)'
+          }
         }}
       >
         <ColdkeyModal

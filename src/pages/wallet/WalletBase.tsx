@@ -113,7 +113,7 @@ function Main() {
             displayText={
               currentAccount.address.length > 10
                 ? `${currentAccount.address.substring(0, 5)}...${currentAccount.address.substring(
-                    currentAccount.address.length - 5,
+                    currentAccount.address.length - 5
                   )}`
                 : currentAccount.address
             }
@@ -178,7 +178,7 @@ function Main() {
           style={{
             whiteSpace: 'normal',
             wordWrap: 'break-word',
-            color: 'black',
+            color: 'black'
           }}
         >
           {status}
@@ -203,7 +203,7 @@ function Main() {
                 color: 'rgba(0, 0, 0, 0.7)', // Applying 70% opacity to the text
                 fontSize: '16px',
                 padding: '8px 12px',
-                borderRadius: '4px',
+                borderRadius: '4px'
               }}
             >
               Staking
@@ -266,7 +266,7 @@ function Main() {
                 palletRpc: 'subtensorModule',
                 callable: 'addStake',
                 inputParams: [MNRVHotkey, stakeAmount * 10 ** 9],
-                paramFields: [true, true],
+                paramFields: [true, true]
               }}
             />
           ) : (
@@ -280,7 +280,7 @@ function Main() {
                 color: 'rgba(0, 0, 0, 0.7)', // Applying 70% opacity to the text
                 fontSize: '16px',
                 padding: '8px 12px',
-                borderRadius: '4px',
+                borderRadius: '4px'
               }}
             >
               Enter a Valid Tao Amount
@@ -295,7 +295,7 @@ function Main() {
               palletRpc: 'subtensorModule',
               callable: 'addStake',
               inputParams: [MNRVHotkey, fullStakeAmount],
-              paramFields: [true, true],
+              paramFields: [true, true]
             }}
           />
         </div>
@@ -327,7 +327,7 @@ function Main() {
                 color: 'rgba(0, 0, 0, 0.7)', // Applying 70% opacity to the text
                 fontSize: '16px',
                 padding: '8px 12px',
-                borderRadius: '4px',
+                borderRadius: '4px'
               }}
             >
               Un-Staking
@@ -375,7 +375,7 @@ function Main() {
                 palletRpc: 'subtensorModule',
                 callable: 'removeStake',
                 inputParams: [MNRVHotkey, unstakeAmount * 10 ** 9],
-                paramFields: [true, true],
+                paramFields: [true, true]
               }}
             />
           ) : (
@@ -389,7 +389,7 @@ function Main() {
                 color: 'rgba(0, 0, 0, 0.7)', // Applying 70% opacity to the text
                 fontSize: '16px',
                 padding: '8px 12px',
-                borderRadius: '4px',
+                borderRadius: '4px'
               }}
             >
               Enter a Valid Tao Amount
@@ -404,7 +404,7 @@ function Main() {
               palletRpc: 'subtensorModule',
               callable: 'removeStake',
               inputParams: [MNRVHotkey, amountCurrentlyStaked],
-              paramFields: [true, true],
+              paramFields: [true, true]
             }}
           />
         </div>
