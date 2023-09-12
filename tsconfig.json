@@ -15,11 +15,12 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "@components/*": ["./src/components/*"],
-      "@lib/*": ["./src/lib/*"],
       "@pages/*": ["./src/pages/*"],
-      "@styles/*": ["./src/styles/*"],
+      "@components/*": ["./src/components/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@lib/*": ["./src/lib/*"],
       "@types/*": ["./src/types/*"],
+      "@styles/*": ["./src/styles/*"],
       "@assets/*": ["./src/assets/*"]
     },
     "plugins": [

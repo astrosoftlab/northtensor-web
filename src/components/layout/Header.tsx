@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -8,9 +8,11 @@ import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react'
 
 import { Button } from '@components/ui/Button'
 import { Logo } from '@components/ui/Logo'
+import { useOnClickOutside } from '@hooks/utils/useClickOutside'
 import { cn } from '@lib/utils'
 
 export default function Example() {
+  const node = useRef<any>()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const router = useRouter()
   const pathName = usePathname()
@@ -18,6 +20,10 @@ export default function Example() {
   const closeMenu = () => {
     setMobileMenuOpen(false)
   }
+
+  useOnClickOutside(node, () => {
+    setMobileMenuOpen(false)
+  })
 
   useEffect(() => {
     router.events.on('routeChangeStart', closeMenu)
@@ -56,6 +62,7 @@ export default function Example() {
               </div>
             </div>
             <div
+              ref={node}
               id="navlinks"
               className={cn(
                 'absolute lg:relative left-0 z-20 flex-col flex-wrap justify-between sm:visible',
