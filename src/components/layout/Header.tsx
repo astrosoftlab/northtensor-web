@@ -36,7 +36,7 @@ export default function Example() {
 
   return (
     <header>
-      <nav className={`${pathName === '/' ? '' : 'bg-white'} z-10 w-full`}>
+      <nav className={`z-10 w-full`}>
         <div className="container">
           <div className="relative flex items-center py-3 md:py-4">
             <div className="relative z-20 flex justify-between w-full lg:hidden md:px-0 lg:w-max ">

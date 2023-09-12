@@ -19,7 +19,7 @@ a {
 }
 
 .card {
-  @apply rounded-lg shadow bg-white;
+  @apply rounded-lg shadow border;
 }
 
 .ReactModal__Overlay {
