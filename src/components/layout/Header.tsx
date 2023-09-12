@@ -66,7 +66,7 @@ export default function Example() {
               id="navlinks"
               className={cn(
                 'absolute lg:relative left-0 z-20 flex-col flex-wrap justify-between sm:visible',
-                'w-full gap-6 p-8 transition-all duration-300 origin-top-right translate-y-1 bg-gray-800 border border-gray-200 shadow-2xl top-full rounded-3xl shadow-gray-600/10  lg:flex lg:grow lg:translate-y-0 lg:flex-row lg:items-center lg:gap-0 lg:border-none lg:bg-transparent lg:p-0 lg:opacity-100 lg:shadow-none',
+                'w-full gap-6 p-8 transition-all duration-300 origin-top-right translate-y-1 bg-gray-950 border border-solid border-gray-200 shadow-2xl top-full rounded-3xl shadow-gray-600/10  lg:flex lg:grow lg:translate-y-0 lg:flex-row lg:items-center lg:gap-0 lg:border-none lg:bg-transparent lg:p-0 lg:opacity-100 lg:shadow-none',
                 mobileMenuOpen ? '' : 'invisible opacity-0'
               )}
             >
