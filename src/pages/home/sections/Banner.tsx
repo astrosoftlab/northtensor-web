@@ -32,12 +32,12 @@ export const BannerSection = () => (
                 transformer-driven data extraction to Artificial General Intelligence.
               </p>
               <div className="flex justify-center gap-y-4 gap-x-6">
-                <Link href="/resources">
+                <Link href="/wallet">
                   <Button size="lg" weight="semibold" color="blur">
                     Get started
                   </Button>
                 </Link>
-                <a href="#">
+                <a href="/resources">
                   <Button size="lg" color="white" weight="semibold">
                     Learn more
                   </Button>
