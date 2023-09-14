@@ -88,8 +88,7 @@ function Main() {
         setAccountColdkeyRetrieved(true)
       }
     } catch (error) {
-      alert('Error loading user data!')
-      console.log(error)
+      console.error(error)
     } finally {
       setLoading(false)
     }

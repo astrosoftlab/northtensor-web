@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 import { Session, useSupabaseClient, useUser } from '@supabase/auth-helpers-react'
 
@@ -27,10 +27,6 @@ export default function Account({ session }: { session: Session }) {
   const [newColdkeyName, setNewColdkeyName] = useState('')
   const [newColdkeyValue, setNewColdkeyValue] = useState('')
   const [isAddColdkeyModalOpen, setIsAddColdkeyModalOpen] = useState(false)
-
-  useEffect(() => {
-    getProfile()
-  }, [session, getProfile])
 
   function handleColdkeyInputChange(index: number, newName: string, newColdkey: string, newWatched: boolean) {
     setSS58Coldkeys((prevColdkeys) => {
@@ -86,7 +82,7 @@ export default function Account({ session }: { session: Session }) {
     })
   }
 
-  async function getProfile() {
+  const getProfile = useCallback(async () => {
     try {
       setLoading(true)
       if (!user) throw new Error('No user')
@@ -110,12 +106,11 @@ export default function Account({ session }: { session: Session }) {
         setSS58Coldkeys(data.ss58_coldkeys)
       }
     } catch (error) {
-      alert('Error loading user data!')
-      console.log(error)
+      console.error(error)
     } finally {
       setLoading(false)
     }
-  }
+  }, [supabase, user])
 
   async function updateProfile({
     username,
@@ -163,6 +158,10 @@ export default function Account({ session }: { session: Session }) {
     // Handle form submission
   }
 
+  useEffect(() => {
+    getProfile()
+  }, [session, getProfile])
+
   return (
     <>
       <form onSubmit={handleSubmit} method="POST">
@@ -183,7 +182,7 @@ export default function Account({ session }: { session: Session }) {
           </div>
           <div className="py-0.5 rounded-md shadow-sm isolate">
             <div className="flex items-center justify-between mb-2">
-              <label htmlFor="email" className="block text-sm font-medium leading-6 text-slate-900">
+              <label htmlFor="email" className="block text-sm font-medium leading-6">
                 Coldkeys
               </label>
               <Button size="sm" onClick={() => setIsAddColdkeyModalOpen(true)}>

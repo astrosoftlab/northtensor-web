@@ -9,7 +9,7 @@ export default function Home() {
   const supabase = useSupabaseClient()
 
   return (
-    <main className="flex-1">
+    <main className="relative flex-1">
       <div className="flex flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           {!session && <h3 className="mt-10 font-semibold">Sign in to your account</h3>}
