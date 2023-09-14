@@ -50,5 +50,5 @@ body {
 }
 
 main {
-  @apply flex-1;
+  @apply relative flex-1;
 }

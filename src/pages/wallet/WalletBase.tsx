@@ -125,7 +125,7 @@ function Main() {
 
       <div className="flex items-center justify-center flex-grow">
         <div className="card lg:w-96 sm:w-full">
-          <ul role="list" className="divide-y divide-slate-200">
+          <ul role="list" className="divide-y divide-blur-light">
             <li key={'balance1'} className="p-2 sm:p-3">
               <div className="flex items-center justify-between w-full px-4 py-2 rounded-md">
                 <div className="flex items-center w-1/2">
@@ -141,7 +141,7 @@ function Main() {
             </li>
 
             <li key={'balance2'} className="p-2 sm:p-3">
-              <button className="flex items-center justify-between w-full px-4 py-2 rounded-md hover:bg-slate-200">
+              <button className="flex items-center justify-between w-full px-4 py-2 rounded-md hover:bg-blur">
                 <div className="flex items-center w-1/2">
                   <h6 className="mr-2 ">Un-Staked</h6>
                 </div>
@@ -154,7 +154,7 @@ function Main() {
               </button>
             </li>
             <li key={'balance3'} className="p-2 sm:p-3">
-              <button className="flex items-center justify-between w-full px-4 py-2 rounded-md hover:bg-slate-200">
+              <button className="flex items-center justify-between w-full px-4 py-2 rounded-md hover:bg-blur">
                 <div className="flex items-center w-1/2">
                   <h6 className="mr-2 ">Staked</h6>
                 </div>
