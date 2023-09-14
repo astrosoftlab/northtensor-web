@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 
 import CopyToClipboardButton from '@components/ui/CopyButton'
+import { Input } from '@components/ui/Input'
 import { useSubstrateState } from '@lib/substrate-lib'
 import { TxButton } from '@lib/substrate-lib/components'
 
@@ -124,7 +125,7 @@ function Main() {
       <div style={{ height: '10px' }}></div>
 
       <div className="flex items-center justify-center flex-grow">
-        <div className="card lg:w-96 sm:w-full">
+        <div className="card sm:w-full">
           <ul role="list" className="divide-y divide-blur-light">
             <li key={'balance1'} className="p-2 sm:p-3">
               <div className="flex items-center justify-between w-full px-4 py-2 rounded-md">
@@ -212,32 +213,16 @@ function Main() {
         </div>
       ) : null}
 
-      {/* {(currentAccount != null && currentAccount.source == 'polkadot' && fullStakeAmount > 0) ? <TxButton
-          label="Stake"
-          type="SIGNED-TX"
-          setStatus={setStatus}
-          attrs={{
-            palletRpc: 'subtensorModule',
-            callable: 'addStake',
-            inputParams: [MNRVHotkey, fullStakeAmount],
-            paramFields: [true, true],
-          }} 
-          /> 
-          :
-          null
-        } */}
-
       {currentAccount != null && currentAccount.source == 'polkadot' && fullStakeAmount > 0 ? (
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-          <input
+        <div className="flex items-center">
+          <Input
             type="number"
             step="0.000001"
             placeholder="Enter Tao value to Stake"
-            onChange={(e) => {
+            onChange={(v) => {
               // Assuming you have a state variable named 'setUnstakeAmount' to store the input value
-              setStakeAmount(parseFloat(e.target.value))
+              setStakeAmount(parseFloat(v))
             }}
-            style={{ width: '100%', color: 'black' }}
           />
         </div>
       ) : null}
@@ -338,15 +323,14 @@ function Main() {
 
       {currentAccount != null && currentAccount.source == 'polkadot' && amountCurrentlyStaked > 0 ? (
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <input
+          <Input
             type="number"
             step="0.000001"
             placeholder="Enter Tao value to Un-Stake"
-            onChange={(e) => {
+            onChange={(v) => {
               // Assuming you have a state variable named 'setUnstakeAmount' to store the input value
-              setUnstakeAmount(parseFloat(e.target.value))
+              setUnstakeAmount(parseFloat(v))
             }}
-            style={{ width: '100%', color: 'black' }}
           />
         </div>
       ) : null}
