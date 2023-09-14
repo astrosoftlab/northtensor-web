@@ -3,6 +3,7 @@
   "tabWidth": 2,
   "useTabs": false,
   "semi": false,
+  "trailingComma": "none",
   "bracketSpacing": true,
   "requirePragma": false,
   "singleQuote": true,
@@ -11,12 +12,8 @@
   "importOrder": [
     "^react$",
     "^next*",
-    "^@(?!components|lib|pages|styles|types).*$",
-    "^@(components|lib|pages|styles|types).*$",
-    "^@lib/(.*)$",
-    "^@pages(.*)$",
-    "^@styles/(.*)$",
-    "^@types(.*)$",
+    "^@(?!components|lib|pages|hooks|styles|types|assets).*$",
+    "^@(components|lib|pages|hooks|styles|types|assets).*$",
     "^\\.[./]",
     ".*"
   ],

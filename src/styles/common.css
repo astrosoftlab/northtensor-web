@@ -3,7 +3,7 @@ a {
 }
 
 .container {
-  @apply sm:px-0 px-[20px];
+  @apply xl:max-w-[1328px];
 }
 
 .container-sm {
@@ -19,9 +19,17 @@ a {
 }
 
 .card {
-  @apply rounded-lg shadow bg-white;
+  @apply rounded-lg shadow border border-blur-light;
 }
 
 .ReactModal__Overlay {
   @apply z-50;
+}
+
+.only-desktop {
+  @apply hidden lg:block;
+}
+
+.absolute-center {
+  @apply absolute left-1/2 top-1/2;
 }

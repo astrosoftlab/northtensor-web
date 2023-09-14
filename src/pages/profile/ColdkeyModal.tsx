@@ -55,11 +55,11 @@ export default function ColdkeyModal({ name, coldkey, onSave, onClose, newBool =
           &#8203;
         </span>
 
-        <div className="inline-block px-4 pt-5 pb-4 overflow-hidden text-left align-bottom transition-all transform bg-white rounded-lg shadow-xl sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-8">
+        <div className="inline-block px-4 pt-5 pb-4 overflow-hidden text-left align-bottom transition-all transform border rounded-lg shadow-xl border-blur backdrop-blur sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-8">
           <div>
             {newBool ? null : (
               <div className="flex justify-end">
-                <Button color="red" onClick={handleDelete}>
+                <Button color="blur" onClick={handleDelete}>
                   DELETE
                 </Button>
               </div>
@@ -68,16 +68,16 @@ export default function ColdkeyModal({ name, coldkey, onSave, onClose, newBool =
             <div className="mt-3 text-center sm:mt-5">
               <h4 className="font-medium">{name}</h4>
               <div className="mt-2">
-                <p className="text-sm text-gray-500">Edit the name and coldkey below:</p>
+                <p className="text-sm text-gray-200">Edit the name and coldkey below:</p>
               </div>
             </div>
 
             <div className="mt-5">
-              <Input rounded label="Name" value={newName} onChange={handleNameChange} />
+              <Input label="Name" value={newName} onChange={handleNameChange} />
             </div>
 
             <div className="mt-5">
-              <Input rounded label="Coldkey" value={newColdkey} onChange={handleColdkeyChange} />
+              <Input label="Coldkey" value={newColdkey} onChange={handleColdkeyChange} />
             </div>
 
             <div className="mt-9 sm:mt-12">
@@ -85,7 +85,7 @@ export default function ColdkeyModal({ name, coldkey, onSave, onClose, newBool =
                 {coldkeyIsValid ? 'Save' : 'Invalid Coldkey'}
               </Button>
 
-              <Button full color="light" onClick={handleClose}>
+              <Button full color="blur" onClick={handleClose}>
                 Close
               </Button>
             </div>

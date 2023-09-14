@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 
 import CopyToClipboardButton from '@components/ui/CopyButton'
+import { Input } from '@components/ui/Input'
 import { useSubstrateState } from '@lib/substrate-lib'
 import { TxButton } from '@lib/substrate-lib/components'
 
@@ -113,7 +114,7 @@ function Main() {
             displayText={
               currentAccount.address.length > 10
                 ? `${currentAccount.address.substring(0, 5)}...${currentAccount.address.substring(
-                    currentAccount.address.length - 5,
+                    currentAccount.address.length - 5
                   )}`
                 : currentAccount.address
             }
@@ -124,8 +125,8 @@ function Main() {
       <div style={{ height: '10px' }}></div>
 
       <div className="flex items-center justify-center flex-grow">
-        <div className="card lg:w-96 sm:w-full">
-          <ul role="list" className="divide-y divide-slate-200">
+        <div className="card sm:w-full">
+          <ul role="list" className="divide-y divide-blur-light">
             <li key={'balance1'} className="p-2 sm:p-3">
               <div className="flex items-center justify-between w-full px-4 py-2 rounded-md">
                 <div className="flex items-center w-1/2">
@@ -141,7 +142,7 @@ function Main() {
             </li>
 
             <li key={'balance2'} className="p-2 sm:p-3">
-              <button className="flex items-center justify-between w-full px-4 py-2 rounded-md hover:bg-slate-200">
+              <button className="flex items-center justify-between w-full px-4 py-2 rounded-md hover:bg-blur">
                 <div className="flex items-center w-1/2">
                   <h6 className="mr-2 ">Un-Staked</h6>
                 </div>
@@ -154,7 +155,7 @@ function Main() {
               </button>
             </li>
             <li key={'balance3'} className="p-2 sm:p-3">
-              <button className="flex items-center justify-between w-full px-4 py-2 rounded-md hover:bg-slate-200">
+              <button className="flex items-center justify-between w-full px-4 py-2 rounded-md hover:bg-blur">
                 <div className="flex items-center w-1/2">
                   <h6 className="mr-2 ">Staked</h6>
                 </div>
@@ -178,7 +179,7 @@ function Main() {
           style={{
             whiteSpace: 'normal',
             wordWrap: 'break-word',
-            color: 'black',
+            color: 'black'
           }}
         >
           {status}
@@ -203,7 +204,7 @@ function Main() {
                 color: 'rgba(0, 0, 0, 0.7)', // Applying 70% opacity to the text
                 fontSize: '16px',
                 padding: '8px 12px',
-                borderRadius: '4px',
+                borderRadius: '4px'
               }}
             >
               Staking
@@ -212,32 +213,16 @@ function Main() {
         </div>
       ) : null}
 
-      {/* {(currentAccount != null && currentAccount.source == 'polkadot' && fullStakeAmount > 0) ? <TxButton
-          label="Stake"
-          type="SIGNED-TX"
-          setStatus={setStatus}
-          attrs={{
-            palletRpc: 'subtensorModule',
-            callable: 'addStake',
-            inputParams: [MNRVHotkey, fullStakeAmount],
-            paramFields: [true, true],
-          }} 
-          /> 
-          :
-          null
-        } */}
-
       {currentAccount != null && currentAccount.source == 'polkadot' && fullStakeAmount > 0 ? (
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-          <input
+        <div className="flex items-center">
+          <Input
             type="number"
             step="0.000001"
             placeholder="Enter Tao value to Stake"
-            onChange={(e) => {
+            onChange={(v) => {
               // Assuming you have a state variable named 'setUnstakeAmount' to store the input value
-              setStakeAmount(parseFloat(e.target.value))
+              setStakeAmount(parseFloat(v))
             }}
-            style={{ width: '100%', color: 'black' }}
           />
         </div>
       ) : null}
@@ -266,7 +251,7 @@ function Main() {
                 palletRpc: 'subtensorModule',
                 callable: 'addStake',
                 inputParams: [MNRVHotkey, stakeAmount * 10 ** 9],
-                paramFields: [true, true],
+                paramFields: [true, true]
               }}
             />
           ) : (
@@ -280,7 +265,7 @@ function Main() {
                 color: 'rgba(0, 0, 0, 0.7)', // Applying 70% opacity to the text
                 fontSize: '16px',
                 padding: '8px 12px',
-                borderRadius: '4px',
+                borderRadius: '4px'
               }}
             >
               Enter a Valid Tao Amount
@@ -295,7 +280,7 @@ function Main() {
               palletRpc: 'subtensorModule',
               callable: 'addStake',
               inputParams: [MNRVHotkey, fullStakeAmount],
-              paramFields: [true, true],
+              paramFields: [true, true]
             }}
           />
         </div>
@@ -327,7 +312,7 @@ function Main() {
                 color: 'rgba(0, 0, 0, 0.7)', // Applying 70% opacity to the text
                 fontSize: '16px',
                 padding: '8px 12px',
-                borderRadius: '4px',
+                borderRadius: '4px'
               }}
             >
               Un-Staking
@@ -338,15 +323,14 @@ function Main() {
 
       {currentAccount != null && currentAccount.source == 'polkadot' && amountCurrentlyStaked > 0 ? (
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <input
+          <Input
             type="number"
             step="0.000001"
             placeholder="Enter Tao value to Un-Stake"
-            onChange={(e) => {
+            onChange={(v) => {
               // Assuming you have a state variable named 'setUnstakeAmount' to store the input value
-              setUnstakeAmount(parseFloat(e.target.value))
+              setUnstakeAmount(parseFloat(v))
             }}
-            style={{ width: '100%', color: 'black' }}
           />
         </div>
       ) : null}
@@ -375,7 +359,7 @@ function Main() {
                 palletRpc: 'subtensorModule',
                 callable: 'removeStake',
                 inputParams: [MNRVHotkey, unstakeAmount * 10 ** 9],
-                paramFields: [true, true],
+                paramFields: [true, true]
               }}
             />
           ) : (
@@ -389,7 +373,7 @@ function Main() {
                 color: 'rgba(0, 0, 0, 0.7)', // Applying 70% opacity to the text
                 fontSize: '16px',
                 padding: '8px 12px',
-                borderRadius: '4px',
+                borderRadius: '4px'
               }}
             >
               Enter a Valid Tao Amount
@@ -404,7 +388,7 @@ function Main() {
               palletRpc: 'subtensorModule',
               callable: 'removeStake',
               inputParams: [MNRVHotkey, amountCurrentlyStaked],
-              paramFields: [true, true],
+              paramFields: [true, true]
             }}
           />
         </div>

@@ -38,7 +38,7 @@ const FIREFOX_ADDON_URL = 'https://addons.mozilla.org/en-US/firefox/addon/polkad
 function Main() {
   const {
     setCurrentAccount,
-    state: { keyring, currentAccount },
+    state: { keyring, currentAccount }
   } = useSubstrate()
   const [nodeInfo, setNodeInfo] = useState({})
   const [loading, setLoading] = useState(true)
@@ -53,7 +53,7 @@ function Main() {
     text: account.meta.name?.toUpperCase() || '',
     coldkey_array: [account.address],
     icon: 'user',
-    source: 'polkadot',
+    source: 'polkadot'
   }))
 
   const session = useSession()
@@ -88,8 +88,7 @@ function Main() {
         setAccountColdkeyRetrieved(true)
       }
     } catch (error) {
-      alert('Error loading user data!')
-      console.log(error)
+      console.error(error)
     } finally {
       setLoading(false)
     }
@@ -103,7 +102,7 @@ function Main() {
       const updates = {
         id: user.id,
         ss58_coldkeys: ss58_coldkeys,
-        updated_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
       }
 
       let { error } = await supabase.from('profiles').upsert(updates)
@@ -130,7 +129,7 @@ function Main() {
             name1: keyringOption.text,
             coldkey: keyringOption.value,
             validated: false,
-            watched: false,
+            watched: false
           }
           // Call setSS58Coldkeys to update ss58_coldkeys
           new_coldkeys.push(newColdkey)
@@ -161,7 +160,7 @@ function Main() {
         coldkey_array: [coldkey.coldkey],
         icon: 'user',
         source: 'account',
-        watched: coldkey.watched,
+        watched: coldkey.watched
       }))
 
       setSS58ColdkeysProcessed(processed)
@@ -177,7 +176,7 @@ function Main() {
       return {
         ...keyringOption,
         text: matchingColdkey.text,
-        watched: matchingColdkey.watched,
+        watched: matchingColdkey.watched
       }
     } else {
       return { ...keyringOption, watched: false }
@@ -186,7 +185,7 @@ function Main() {
 
   const completeColdkeyOptions = [
     ...updatedKeyringOptions,
-    ...ss58_coldkeys_processed.filter((item) => !keyringOptions.some((other: Account) => other.key === item.key)),
+    ...ss58_coldkeys_processed.filter((item) => !keyringOptions.some((other: Account) => other.key === item.key))
   ]
   if (completeColdkeyOptions.length > 1) {
     const watchedColdkeys = completeColdkeyOptions.filter((obj) => obj.watched)
@@ -200,7 +199,7 @@ function Main() {
         meta: { source: 'group', isInjected: false },
         coldkey_array: watchedColdkeys.map((obj) => obj.value),
         icon: 'user',
-        source: 'group',
+        source: 'group'
       })
     }
     completeColdkeyOptions.unshift({
@@ -211,7 +210,7 @@ function Main() {
       meta: { source: 'group', isInjected: false },
       coldkey_array: allAccountsBeforeWatched,
       icon: 'user',
-      source: 'group',
+      source: 'group'
     })
   }
 
@@ -226,6 +225,7 @@ function Main() {
   }, [initialAddress, completeColdkeyOptions, currentAccount, setCurrentAccount])
 
   const onChange = (newValue: any) => {
+    console.debug(`---  newValue:`, newValue)
     if (newValue.value === 'Coldkey') {
       console.log('Coldkey')
     } else {

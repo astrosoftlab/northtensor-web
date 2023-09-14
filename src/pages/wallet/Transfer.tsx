@@ -39,7 +39,7 @@ export default function Main() {
       return availableAccounts.push({
         key: account.meta.name,
         text: account.meta.name,
-        value: account.address,
+        value: account.address
       })
     }
   })
@@ -96,7 +96,7 @@ export default function Main() {
               'focus:outline-none',
               'focus:bg-white',
               'focus:border-slate-500',
-              sendToAccount !== '' && 'bg-slate-200 cursor-not-allowed',
+              sendToAccount !== '' && 'bg-slate-200 cursor-not-allowed'
             )}
             readOnly={sendToAccount !== ''}
           />
@@ -123,7 +123,7 @@ export default function Main() {
             palletRpc: 'balances',
             callable: 'transfer',
             inputParams: [sendToAddress, sendAmount * 10 ** 9],
-            paramFields: [true, true],
+            paramFields: [true, true]
           }}
         />
 
