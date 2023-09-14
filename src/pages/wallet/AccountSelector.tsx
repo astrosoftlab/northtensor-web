@@ -225,6 +225,7 @@ function Main() {
   }, [initialAddress, completeColdkeyOptions, currentAccount, setCurrentAccount])
 
   const onChange = (newValue: any) => {
+    console.debug(`---  newValue:`, newValue)
     if (newValue.value === 'Coldkey') {
       console.log('Coldkey')
     } else {
