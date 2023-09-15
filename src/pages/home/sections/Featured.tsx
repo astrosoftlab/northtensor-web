@@ -83,7 +83,7 @@ export const FeaturedSection = () => {
           </div>
           <div className="max-w-[960px] w-full rounded-lg p-[1px] bg-[linear-gradient(0deg,rgba(159,111,203,1)0%,rgba(107,56,152,1)50%,rgba(62,29,96,1)100%)]">
             <div className="relative lg:p-[48px] p-[36px] rounded-[7px] bg-[#060606]">
-              <div className="lg:grid grid-cols-12 lg:gap-[10px] gap-[8px]">
+              <div className="lg:grid grid-cols-12 lg:gap-[10px] gap-[8px] lg:py-[20px] py-[15px]">
                 <div className="relative z-10 flex items-center col-span-6">
                   <div className="flex flex-col lg:gap-[10px] gap-[8px]">
                     <h3 className="font-semibold">Development</h3>
