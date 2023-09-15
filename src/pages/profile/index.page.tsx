@@ -2,6 +2,8 @@ import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react'
 import { Auth } from '@supabase/auth-ui-react'
 import { ThemeSupa } from '@supabase/auth-ui-shared'
 
+import { PageLabel } from '@components/ui/PageLabel'
+
 import Account from './Account'
 
 export default function Home() {
@@ -9,25 +11,27 @@ export default function Home() {
   const supabase = useSupabaseClient()
 
   return (
-    <main className="flex-1">
-      <div className="flex flex-col justify-center px-6 py-12 lg:px-8">
-        <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          {!session && <h3 className="mt-10 font-semibold">Sign in to your account</h3>}
+    <main className="container flex-1">
+      <div className="flex flex-col items-center justify-center lg:py-[44px] py-[33px] lg:px-8">
+        <PageLabel label="MOST" text="Promising Projects" />
+        <div className="lg:mx-auto lg:mb-[75px] mb-[56px]">
+          {!session && <h1 className="mt-10 lg:max-w-[966px] text-center">Sign in to Your Account</h1>}
         </div>
 
-        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+        <div className="lg:w-full lg:max-w-[654px] lg:p-[40px] p-[30px] bg-card border border-blur lg:rounded-[8px] rounded-[6px]">
           {!session ? (
             <Auth
               supabaseClient={supabase}
               appearance={{
                 theme: ThemeSupa,
                 className: {
+                  label: 'lg:!text-[16px] !text-[12px] !text-white !font-inter',
                   input:
-                    'block w-full border-gray-300 shadow-sm focus:ring-primary focus:!border-primary sm:text-sm !rounded-full ',
+                    'text-input !block !w-full lg:!px-[25px] !px-[18px] lg:!py-[17px] !py-[12px] !border !border-blur hover:!border-blur-light !bg-[#FFFFFF10] lg:!rounded-lg rounded-md !text-white',
                   button:
-                    'w-full relative flex items-center justify-center before:absolute before:inset-0 !rounded-full before:transition before:duration-300 active:duration-75 font-semibold !bg-primary text-white !border-primary ',
-                  anchor: ' hover:!text-primary',
-                  message: ''
+                    'w-full relative flex items-center justify-center lg:!py-[17px] !py-[12px] lg:!text-[20px] !text-[15px] !font-inter before:absolute before:inset-0 lg:!rounded-lg rounded-md before:transition before:duration-300 active:duration-75 !bg-primary text-white !border-primary ',
+                  anchor: 'lg:!text-[14px] !text-[11px] !text-white !font-inter hover:!text-primary',
+                  message: '!font-inter'
                 }
               }}
               providers={[]}

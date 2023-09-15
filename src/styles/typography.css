@@ -26,4 +26,8 @@
   .text-body-lg {
     @apply lg:text-[19px] text-[14px] lg:leading-[27px] leading-[20px] break-words;
   }
+
+  .text-input {
+    @apply lg:!text-[18px] !text-[13px] !font-inter;
+  }
 }

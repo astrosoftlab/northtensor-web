@@ -10,6 +10,7 @@ import Orbital640 from '@assets/icons/orbital.x640.svg'
 import Orbital860 from '@assets/icons/orbital.x860.svg'
 import Orbital1060 from '@assets/icons/orbital.x1060.svg'
 import { Button } from '@components/ui/Button'
+import { PageLabel } from '@components/ui/PageLabel'
 
 export const BannerSection = () => (
   <section className="relative" id="home">
