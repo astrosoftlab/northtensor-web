@@ -26,6 +26,7 @@ module.exports = {
         light: colors.purple[200],
         slate: colors.slate,
         gray: {
+          DEFAULT: '#CDCDCD',
           50: '#FAFAFC',
           100: '#E9E9EC',
           200: '#C6C8CD',

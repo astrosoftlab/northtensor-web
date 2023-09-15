@@ -1,16 +1,12 @@
-import Link from 'next/link'
-
 import tensorGradian from '@assets/images/cropped-tensor-gradian.png'
-import { Button } from '@components/ui/Button'
-import { Input, Textarea } from '@components/ui/Input'
 
 export const ContactSection = () => {
   return (
     <section className="relative">
       <div className="container">
-        <h1 className="lg:mt-0 mt-[40px] font-bold text-center lg:mb-[16px] mb-[12px]">How we’re developing</h1>
+        <h2 className="lg:mt-0 mt-[40px] text-center lg:mb-[16px] mb-[12px]">How we’re developing</h2>
         <div className="flex justify-center">
-          <div className="lg:max-w-[654px] w-full lg:text-[19px] text-[14px] text-gray-400 text-center lg:mb-[50px] mb-[36px]">
+          <div className="text-body-lg text-gray lg:max-w-[654px] w-full text-center lg:mb-[50px] mb-[36px]">
             We’re constantly thinking of new ways to properly utilize decentralized to create unique products. Not only
             are we building our own integrations, but we’re always on the lookout for other teams that are also building
             enhancements to the network, and strive to support them in their endeavors.
