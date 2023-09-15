@@ -33,3 +33,7 @@ a {
 .absolute-center {
   @apply absolute left-1/2 top-1/2;
 }
+
+.supabase-auth-ui_ui-button {
+  @apply lg:mt-[20px] mt-[15px];
+}

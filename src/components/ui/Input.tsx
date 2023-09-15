@@ -22,7 +22,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
           ref={ref}
           onChange={(e) => (onChange ? onChange(e.target.value) : false)}
           className={cn(
-            'block w-full lg:px-[25px] px-[18px] lg:py-[17px] py-[12px] border border-solid border-blur hover:border-blur-light sm:text-sm bg-[#FFFFFF10] rounded-lg'
+            'text-input block w-full lg:px-[25px] px-[18px] lg:py-[17px] py-[12px] border border-solid border-blur hover:border-blur-light bg-[#FFFFFF10] rounded-lg'
           )}
           {...props}
         />

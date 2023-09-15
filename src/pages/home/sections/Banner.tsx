@@ -10,6 +10,7 @@ import Orbital640 from '@assets/icons/orbital.x640.svg'
 import Orbital860 from '@assets/icons/orbital.x860.svg'
 import Orbital1060 from '@assets/icons/orbital.x1060.svg'
 import { Button } from '@components/ui/Button'
+import { PageLabel } from '@components/ui/PageLabel'
 
 export const BannerSection = () => (
   <section className="relative" id="home">
@@ -18,9 +19,7 @@ export const BannerSection = () => (
         <div className="mx-auto lg:w-4/5">
           <div className="flex flex-col-reverse justify-between text-center sm:flex-row">
             <div className="flex flex-col items-center w-full gap-8">
-              <div className="flex w-full justify-center border border-solid border-[#ffffff20] rounded-full text-white py-[10px] max-w-[480px]">
-                <span className="font-bold text-primary">NEW</span>&nbsp; • &nbsp;Bittensor-first AI Firm
-              </div>
+              <PageLabel transparent label="NEW" text="Bittensor-First AI Firm" />
               <h1 className="text-white lg:max-w-[966px]">Leading the Forefront of Fecentralized AI.</h1>
               <p className="text-gray text-body-lg">
                 Our focus is to create infrastructure required to scale and support basic
