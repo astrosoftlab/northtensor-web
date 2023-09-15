@@ -8,9 +8,9 @@ export const FeaturedSection = () => {
   return (
     <section className="relative lg:mb-[120px] mb-[90px]">
       <div className="container">
-        <h1 className="lg:mt-0 mt-[40px] font-bold text-center lg:mb-[16px] mb-[12px]">What is Decentralized AI?</h1>
+        <h2 className="lg:mt-0 mt-[40px] text-center lg:mb-[16px] mb-[12px]">What is Decentralized AI?</h2>
         <div className="flex justify-center">
-          <div className="lg:text-[19px] text-[14px] text-gray-400 text-center lg:mb-[50px] mb-[36px] lg:max-w-[620px] w-full">
+          <div className="text-body-lg text-gray text-center lg:mb-[50px] mb-[36px] lg:max-w-[620px] w-full">
             Decentralized AI refers to AI systems that are not controlled by a single entity. This means AI that is
             built, owned, and utilized by the people, instead of an AI that only serves the interests of the elite.
           </div>
@@ -26,7 +26,7 @@ export const FeaturedSection = () => {
                       Decentralized AI <BRD />
                       Important?
                     </h3>
-                    <div className="lg:text-[15px] text-[14px] text-gray-200">
+                    <div className="lg:text-[15px] text-[14px] text-gray">
                       AI has the potential to be the most powerful technology ever created. We&apos;re at the inflection
                       point of AI, now is the time to ensure that AI is used for the benefit of all.
                     </div>
@@ -51,7 +51,7 @@ export const FeaturedSection = () => {
                 <div className="flex items-center col-span-5">
                   <div className="flex flex-col lg:gap-[10px] gap-[8px]">
                     <h3 className="font-semibold">Bittensor:</h3>
-                    <div className="lg:text-[15px] text-[14px] text-gray-200">
+                    <div className="lg:text-[15px] text-[14px] text-gray">
                       Bittensor is the Bitcoin of Decentralized AI. Instead of compute power to run hashing algorithms,
                       Bittensor uses compute power to run AI algorithms. We&apos;re excited to be a part of the
                       Bittensor community and help grow the network. Show your support by buying Bittensor on MEXC.
@@ -68,7 +68,7 @@ export const FeaturedSection = () => {
                 <div className="flex items-center col-span-5">
                   <div className="flex flex-col lg:gap-[10px] gap-[8px]">
                     <h3 className="font-semibold">Investment</h3>
-                    <div className="lg:text-[15px] text-[14px] text-gray-200">
+                    <div className="lg:text-[15px] text-[14px] text-gray">
                       We support and invest in Decentralized AI projects.
                     </div>
                   </div>
@@ -87,7 +87,7 @@ export const FeaturedSection = () => {
                 <div className="relative z-10 flex items-center col-span-6">
                   <div className="flex flex-col lg:gap-[10px] gap-[8px]">
                     <h3 className="font-semibold">Development</h3>
-                    <div className="lg:text-[15px] text-[14px] text-gray-200">
+                    <div className="lg:text-[15px] text-[14px] text-gray">
                       We aim to demonstrate the potential of decentralized AI through innovation and development.Sign-up
                       to our newsletter to stay up to date and get early access to new AI products. We have some new
                       exciting products in the works.

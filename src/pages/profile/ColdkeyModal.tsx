@@ -68,7 +68,7 @@ export default function ColdkeyModal({ name, coldkey, onSave, onClose, newBool =
             <div className="mt-3 text-center sm:mt-5">
               <h4 className="font-medium">{name}</h4>
               <div className="mt-2">
-                <p className="text-sm text-gray-200">Edit the name and coldkey below:</p>
+                <p className="text-sm text-gray">Edit the name and coldkey below:</p>
               </div>
             </div>
 

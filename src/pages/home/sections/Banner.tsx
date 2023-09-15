@@ -21,12 +21,8 @@ export const BannerSection = () => (
               <div className="flex w-full justify-center border border-solid border-[#ffffff20] rounded-full text-white py-[10px] max-w-[480px]">
                 <span className="font-bold text-primary">NEW</span>&nbsp; • &nbsp;Bittensor-first AI Firm
               </div>
-              <h1 className="text-5xl font-bold leading-tight text-white md:text-6xl xl:text-7xl">
-                Build Your Project on
-                <br className="only-desktop" />
-                Bittensor
-              </h1>
-              <p className="text-gray-200">
+              <h1 className="text-white lg:max-w-[966px]">Leading the Forefront of Fecentralized AI.</h1>
+              <p className="text-gray text-body-lg">
                 Our focus is to create infrastructure required to scale and support basic
                 <br className="only-desktop" />
                 transformer-driven data extraction to Artificial General Intelligence.
