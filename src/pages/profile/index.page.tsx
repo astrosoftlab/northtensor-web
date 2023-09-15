@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <main className="container flex-1">
       <div className="flex flex-col items-center justify-center lg:py-[44px] py-[33px] lg:px-8">
-        <PageLabel label="MOST" text="Promising Projects" />
+        {!session && <PageLabel label="MOST" text="Promising Projects" />}
         <div className="lg:mx-auto lg:mb-[75px] mb-[56px]">
           {!session && <h1 className="mt-10 lg:max-w-[966px] text-center">Sign in to Your Account</h1>}
         </div>
