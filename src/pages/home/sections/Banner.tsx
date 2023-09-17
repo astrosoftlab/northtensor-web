@@ -18,23 +18,20 @@ export const BannerSection = () => (
         <div className="mx-auto lg:w-4/5">
           <div className="flex flex-col-reverse justify-between text-center sm:flex-row">
             <div className="flex flex-col items-center w-full gap-8">
-              <div className="flex w-full justify-center border border-solid border-[#ffffff20] rounded-full text-white py-[10px] max-w-[480px]">
-                <span className="font-bold text-primary">NEW</span>&nbsp; • &nbsp;Bittensor-first AI Firm
-              </div>
+            <br />
               <h1 className="text-5xl font-bold leading-tight text-white md:text-6xl xl:text-7xl">
-                Build Your Project on
-                <br className="only-desktop" />
-                Bittensor
+                NorthTensor
               </h1>
+              <h3 className="text-3xl text-gray-200 font-bold leading-tight md:text-4xl xl:text-5xl">
+                Leading the forefront of Decentralized AI
+              </h3>
               <p className="text-gray-200">
-                Our focus is to create infrastructure required to scale and support basic
-                <br className="only-desktop" />
-                transformer-driven data extraction to Artificial General Intelligence.
+                Our mission is to catalyze the decentralized AI movement by strategically investing in and developing on the most promising projects in the space.
               </p>
               <div className="flex justify-center gap-y-4 gap-x-6">
                 <Link href="/wallet">
                   <Button size="lg" weight="semibold" color="blur">
-                    Get started
+                    Start Staking
                   </Button>
                 </Link>
                 <a href="/resources">
@@ -54,7 +51,7 @@ export const BannerSection = () => (
 
 const NorthTensorOrbitalMotion = () => {
   return (
-    <div className="relative lg:aspect-square text-white lg:h-auto h-[600px]">
+    <div className="relative lg:aspect-square text-gray lg:h-auto h-[600px]">
       <div
         className="absolute-center w-[1200px] h-[1200px] -ml-[600px] -mt-[600px] lg:scale-100 scale-50"
         style={{
@@ -66,7 +63,7 @@ const NorthTensorOrbitalMotion = () => {
           <Orbital1060 />
           <Atom4 className="absolute left-1/2 -ml-[60px] -mt-[60px]" />
         </div>
-        <div className="absolute-center w-[860px] h-[860px] -ml-[430px] -mt-[430px] animate-spin-slow-55">
+        <div className="absolute-center w-[860px] h-[860px] -ml-[430px] -mt-[430px] animate-spin-slow-90">
           <Orbital860 />
           <Atom3 className="absolute top-0 left-1/2 -ml-[52px] -mt-[52px]" />
         </div>
