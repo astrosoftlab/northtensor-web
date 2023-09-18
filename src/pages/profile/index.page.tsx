@@ -18,7 +18,7 @@ export default function Home() {
           {!session && <h1 className="mt-10 lg:max-w-[966px] text-center">Sign in to Your Account</h1>}
         </div>
 
-        <div className="lg:w-full lg:max-w-[654px] lg:p-[40px] p-[30px] bg-card border border-blur lg:rounded-[8px] rounded-[6px]">
+        <div className="card lg:w-full lg:max-w-[654px] lg:p-[40px] p-[30px]">
           {!session ? (
             <Auth
               supabaseClient={supabase}
