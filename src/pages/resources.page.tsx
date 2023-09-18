@@ -86,7 +86,7 @@ export default function Home({ postData }: { postData: PostData[] }) {
           </div>
         </div>
         <h1 className="lg:mb-[32px] mb-[24px] lg:max-w-[966px] text-center">
-          Leading the Forefront of Fecentralized AI.
+          Leading the Forefront of Decentralized AI.
         </h1>
         <div className="flex justify-center">
           <Link href="/wallet">
