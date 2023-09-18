@@ -88,9 +88,9 @@ export const FeaturedSection = () => {
                   <div className="flex flex-col lg:gap-[10px] gap-[8px]">
                     <h3 className="font-semibold">Development</h3>
                     <div className="lg:text-[15px] text-[14px] text-gray">
-                      We aim to demonstrate the potential of decentralized AI through innovation and development.Sign-up
-                      to our newsletter to stay up to date and get early access to new AI products. We have some new
-                      exciting products in the works.
+                      We aim to demonstrate the potential of decentralized AI through innovation and development.
+                      Sign-up to our newsletter to stay up to date and get early access to new AI products. We have some
+                      new exciting products in the works.
                     </div>
                   </div>
                 </div>

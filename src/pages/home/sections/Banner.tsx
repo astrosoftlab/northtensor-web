@@ -20,7 +20,7 @@ export const BannerSection = () => (
           <div className="flex flex-col-reverse justify-between text-center sm:flex-row">
             <div className="flex flex-col items-center w-full gap-8">
               <PageLabel transparent label="NEW" text="Bittensor-First AI Firm" />
-              <h1 className="text-white lg:max-w-[966px]">Leading the Forefront of Fecentralized AI.</h1>
+              <h1 className="text-white lg:max-w-[966px]">Leading the Forefront of Decentralized AI.</h1>
               <p className="text-gray text-body-lg lg:max-w-[568px]">
                 Our mission is to catalyze the decentralized AI movement by strategically investing in and developing on
                 the most promising projects in the space.
