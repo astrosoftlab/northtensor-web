@@ -28,7 +28,7 @@ export const BannerSection = () => (
               <div className="flex justify-center gap-y-4 gap-x-6">
                 <Link href="/wallet">
                   <Button size="lg" weight="semibold" color="blur">
-                    Get started
+                    Start staking
                   </Button>
                 </Link>
                 <a href="/resources">
