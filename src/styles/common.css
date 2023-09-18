@@ -19,7 +19,7 @@ a {
 }
 
 .card {
-  @apply rounded-lg shadow border border-blur-light;
+  @apply lg:rounded-lg rounded-md shadow border border-blur bg-card;
 }
 
 .ReactModal__Overlay {
