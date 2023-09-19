@@ -26,6 +26,7 @@ module.exports = {
         light: colors.purple[200],
         slate: colors.slate,
         gray: {
+          DEFAULT: '#CDCDCD',
           50: '#FAFAFC',
           100: '#E9E9EC',
           200: '#C6C8CD',
@@ -60,7 +61,9 @@ module.exports = {
         purple: colors.purple,
         fuchsia: colors.fuchsia,
         pink: colors.pink,
-        rose: colors.rose
+        rose: colors.rose,
+
+        card: '#14141480'
       }),
       columns: {
         auto: 'auto',
@@ -173,7 +176,10 @@ module.exports = {
         'gradient-to-b': 'linear-gradient(to bottom, var(--tw-gradient-stops))',
         'gradient-to-bl': 'linear-gradient(to bottom left, var(--tw-gradient-stops))',
         'gradient-to-l': 'linear-gradient(to left, var(--tw-gradient-stops))',
-        'gradient-to-tl': 'linear-gradient(to top left, var(--tw-gradient-stops))'
+        'gradient-to-tl': 'linear-gradient(to top left, var(--tw-gradient-stops))',
+
+        'gradient-layout-header':
+          'radial-gradient(95.2% 90.39% at 50% 3.74%, rgba(217, 175, 255, 0.97) 0%, rgba(180, 116, 237, 0.79) 22%, rgba(138, 55, 214, 0.60) 45%, rgba(104, 44, 177, 0.30) 73%, rgba(0, 34, 144, 0.00) 100%)'
       },
       backgroundOpacity: ({ theme }) => theme('opacity'),
       backgroundPosition: {

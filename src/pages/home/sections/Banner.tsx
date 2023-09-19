@@ -10,31 +10,25 @@ import Orbital640 from '@assets/icons/orbital.x640.svg'
 import Orbital860 from '@assets/icons/orbital.x860.svg'
 import Orbital1060 from '@assets/icons/orbital.x1060.svg'
 import { Button } from '@components/ui/Button'
+import { PageLabel } from '@components/ui/PageLabel'
 
 export const BannerSection = () => (
   <section className="relative" id="home">
     <div className="container">
-      <div className="relative ml-auto py-[16px]">
+      <div className="relative ml-auto py-[16px] z-[2]">
         <div className="mx-auto lg:w-4/5">
           <div className="flex flex-col-reverse justify-between text-center sm:flex-row">
             <div className="flex flex-col items-center w-full gap-8">
-              <div className="flex w-full justify-center border border-solid border-[#ffffff20] rounded-full text-white py-[10px] max-w-[480px]">
-                <span className="font-bold text-primary">NEW</span>&nbsp; • &nbsp;Bittensor-first AI Firm
-              </div>
-              <h1 className="text-5xl font-bold leading-tight text-white md:text-6xl xl:text-7xl">
-                Build Your Project on
-                <br className="only-desktop" />
-                Bittensor
-              </h1>
-              <p className="text-gray-200">
-                Our focus is to create infrastructure required to scale and support basic
-                <br className="only-desktop" />
-                transformer-driven data extraction to Artificial General Intelligence.
+              <PageLabel transparent label="NEW" text="Bittensor-First AI Firm" />
+              <h1 className="text-white lg:max-w-[966px]">Leading the Forefront of Decentralized AI.</h1>
+              <p className="text-gray text-body-lg lg:max-w-[568px]">
+                Our mission is to catalyze the decentralized AI movement by strategically investing in and developing on
+                the most promising projects in the space.
               </p>
               <div className="flex justify-center gap-y-4 gap-x-6">
                 <Link href="/wallet">
                   <Button size="lg" weight="semibold" color="blur">
-                    Get started
+                    Start staking
                   </Button>
                 </Link>
                 <a href="/resources">
@@ -54,7 +48,7 @@ export const BannerSection = () => (
 
 const NorthTensorOrbitalMotion = () => {
   return (
-    <div className="relative lg:aspect-square text-white lg:h-auto h-[600px]">
+    <div className="relative lg:aspect-square text-white lg:h-auto h-[600px] z-[1]">
       <div
         className="absolute-center w-[1200px] h-[1200px] -ml-[600px] -mt-[600px] lg:scale-100 scale-50"
         style={{

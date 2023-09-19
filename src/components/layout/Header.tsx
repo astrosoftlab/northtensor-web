@@ -36,7 +36,8 @@ export default function Example() {
 
   return (
     <header>
-      <nav className={`z-10 w-full`}>
+      {pathName !== '/' && <div className="bg-gradient-layout-header absolute w-full h-[468px] top-[-106px]" />}
+      <nav className={`relative z-10 w-full ${pathName === '/' ? '' : 'bg-card'}`}>
         <div className="container">
           <div className="relative flex items-center py-3 md:py-4">
             <div className="relative z-20 flex justify-between w-full lg:hidden md:px-0 lg:w-max ">

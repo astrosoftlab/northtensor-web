@@ -1,39 +1,33 @@
 @layer base {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply leading-normal;
-  }
-
   h1 {
-    /* 60px 48px */
-    @apply sm:text-6xl text-5xl;
+    @apply lg:text-[87px] md:text-[65px] text-[56px] lg:leading-[95px] leading-[71px] font-black break-words;
   }
 
   h2 {
-    /* 48px 36px */
-    @apply sm:text-5xl text-4xl;
+    @apply lg:text-[61px] text-[45px] lg:leading-[72px] leading-[54px] font-bold break-words;
   }
 
   h3 {
-    @apply sm:text-[38px] text-[30px];
+    @apply lg:text-[38px] text-[28px] lg:leading-[46px] leading-[34px] font-bold break-words;
   }
 
   h4 {
-    /* 30px 24px */
-    @apply sm:text-3xl text-2xl;
+    @apply lg:text-[24px] text-[18px] leading-normal font-bold break-words;
   }
 
   h5 {
-    /* 24px 20px */
-    @apply sm:text-2xl text-xl;
+    @apply lg:text-[22px] text-[16px] leading-normal font-semibold break-words;
   }
 
   h6 {
-    /* 20px 18px */
-    @apply sm:text-xl text-lg;
+    @apply lg:text-[20px] text-[15px] leading-normal font-medium break-words;
+  }
+
+  .text-body-lg {
+    @apply lg:text-[19px] text-[14px] lg:leading-[27px] leading-[20px] break-words;
+  }
+
+  .text-input {
+    @apply lg:!text-[18px] !text-[13px] !font-inter;
   }
 }

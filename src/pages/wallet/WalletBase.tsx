@@ -125,7 +125,7 @@ function Main() {
       <div style={{ height: '10px' }}></div>
 
       <div className="flex items-center justify-center flex-grow">
-        <div className="card sm:w-full">
+        <div className="w-full card">
           <ul role="list" className="divide-y divide-blur-light">
             <li key={'balance1'} className="p-2 sm:p-3">
               <div className="flex items-center justify-between w-full px-4 py-2 rounded-md">

@@ -19,7 +19,7 @@ a {
 }
 
 .card {
-  @apply rounded-lg shadow border border-blur-light;
+  @apply lg:rounded-lg rounded-md shadow border border-blur bg-card;
 }
 
 .ReactModal__Overlay {
@@ -32,4 +32,8 @@ a {
 
 .absolute-center {
   @apply absolute left-1/2 top-1/2;
+}
+
+.supabase-auth-ui_ui-button {
+  @apply lg:mt-[20px] mt-[15px];
 }
