@@ -28,6 +28,7 @@ export const BannerSection = () => (
               </h3>
               <p className="text-gray-200">
                 Our mission is to catalyze the decentralized AI movement by strategically investing in and developing on the most promising projects in the space.
+
               </p>
               <div className="flex justify-center gap-y-4 gap-x-6">
                 <Link href="/wallet">
