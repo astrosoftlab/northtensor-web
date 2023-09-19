@@ -15,7 +15,7 @@ import { PageLabel } from '@components/ui/PageLabel'
 export const BannerSection = () => (
   <section className="relative" id="home">
     <div className="container">
-      <div className="relative ml-auto py-[16px]">
+      <div className="relative ml-auto py-[16px] z-[2]">
         <div className="mx-auto lg:w-4/5">
           <div className="flex flex-col-reverse justify-between text-center sm:flex-row">
             <div className="flex flex-col items-center w-full gap-8">
@@ -52,7 +52,7 @@ export const BannerSection = () => (
 
 const NorthTensorOrbitalMotion = () => {
   return (
-    <div className="relative lg:aspect-square text-gray lg:h-auto h-[600px]">
+    <div className="relative lg:aspect-square text-gray lg:h-auto h-[600px] z-[1]">
       <div
         className="absolute-center w-[1200px] h-[1200px] -ml-[600px] -mt-[600px] lg:scale-100 scale-50"
         style={{
