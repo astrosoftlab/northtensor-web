@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { Session, useSupabaseClient, useUser } from '@supabase/auth-helpers-react'
 
 import { Button } from '@components/ui/Button'
-import { Input, InputGroup } from '@components/ui/Input'
+import { Input } from '@components/ui/Input'
 import { Database } from '@lib/utils/database.type'
 
 import ColdkeyInput from './ColdkeyInput'
@@ -166,16 +166,14 @@ export default function Account({ session }: { session: Session }) {
     <>
       <form onSubmit={handleSubmit} method="POST">
         <div>
-          <h3 className="mb-6 font-semibold leading-9">Profile</h3>
-
           <div className="pb-8">
             <Input label="User name" placeholder="johndoe" value={username || ''} onChange={(v) => setUsername(v)} />
           </div>
           <div className="pb-8">
-            <InputGroup rounded>
-              <Input label="First name" placeholder="john" value={first_name || ''} onChange={(v) => setFirstName(v)} />
-              <Input label="Last name" placeholder="doe" value={last_name || ''} onChange={(v) => setLastName(v)} />
-            </InputGroup>
+            <Input label="First name" placeholder="john" value={first_name || ''} onChange={(v) => setFirstName(v)} />
+          </div>
+          <div className="pb-8">
+            <Input label="Last name" placeholder="doe" value={last_name || ''} onChange={(v) => setLastName(v)} />
           </div>
           <div className="pb-8">
             <Input label="Email address" placeholder="johndoe@example.com" value={session.user.email} readOnly />
