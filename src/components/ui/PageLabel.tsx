@@ -1,8 +1,8 @@
 import { cn } from '@lib/utils'
 
 interface Props {
-  label?: string
-  text?: string
+  label?: string | JSX.Element
+  text?: string | JSX.Element
   transparent?: boolean
 }
 export const PageLabel = ({ label, text, transparent = false }: Props) => {

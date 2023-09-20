@@ -1,39 +1,86 @@
-a {
-  @apply text-inherit no-underline hover:text-primary;
-}
+@layer base {
+  a {
+    @apply text-inherit no-underline hover:text-primary;
+  }
 
-.container {
-  @apply xl:max-w-[1328px];
-}
+  .container {
+    @apply xl:max-w-[1328px];
+  }
 
-.container-sm {
-  @apply container xl:max-w-[1200px];
-}
+  .container-sm {
+    @apply container xl:max-w-[1200px];
+  }
 
-#toggle_nav:checked ~ div #hamburger #line {
-  @apply rotate-45 translate-y-1.5;
-}
+  #toggle_nav:checked ~ div #hamburger #line {
+    @apply rotate-45 translate-y-1.5;
+  }
 
-#toggle_nav:checked ~ div #hamburger #line2 {
-  @apply -rotate-45 -translate-y-1;
-}
+  #toggle_nav:checked ~ div #hamburger #line2 {
+    @apply -rotate-45 -translate-y-1;
+  }
 
-.card {
-  @apply lg:rounded-lg rounded-md shadow border border-blur bg-card;
-}
+  .card {
+    @apply lg:rounded-lg rounded-md shadow border border-blur bg-card;
+  }
 
-.ReactModal__Overlay {
-  @apply z-50;
-}
+  .ReactModal__Overlay {
+    @apply z-50;
+  }
 
-.only-desktop {
-  @apply hidden lg:block;
-}
+  .only-desktop {
+    @apply hidden lg:block;
+  }
 
-.absolute-center {
-  @apply absolute left-1/2 top-1/2;
-}
+  .absolute-center {
+    @apply absolute left-1/2 top-1/2;
+  }
 
-.supabase-auth-ui_ui-button {
-  @apply lg:mt-[20px] mt-[15px];
+  .supabase-auth-ui_ui-button {
+    @apply lg:mt-[20px] mt-[15px];
+  }
+
+  .mdx-container h1 {
+    @apply lg:text-[38px] text-[28px] leading-normal font-black break-words;
+  }
+
+  .mdx-container h2 {
+    @apply lg:text-[38px] text-[28px] lg:my-[16px] my-[12px] leading-normal font-bold break-words;
+  }
+
+  .mdx-container h3 {
+    @apply lg:text-[32px] text-[24px] lg:my-[16px] my-[12px] leading-normal font-bold break-words;
+  }
+
+  .mdx-container h4 {
+    @apply lg:text-[24px] text-[18px] lg:my-[16px] my-[12px] leading-normal font-bold break-words;
+  }
+
+  .mdx-container h5 {
+    @apply lg:text-[22px] text-[16px] leading-normal font-semibold break-words;
+  }
+
+  .mdx-container h6 {
+    @apply lg:text-[20px] text-[15px] leading-normal font-medium break-words;
+  }
+
+  .mdx-container ol {
+    @apply list-decimal;
+  }
+
+  .mdx-container p,
+  li {
+    @apply lg:text-[19px] text-[14px] lg:mb-[20px] mb-[15px] text-gray;
+  }
+
+  .mdx-container ol li {
+    @apply ml-[30px];
+  }
+
+  .mdx-container ::marker {
+    @apply font-bold whitespace-nowrap;
+  }
+
+  .mdx-container img {
+    @apply rounded-[8px] border border-[#FFFFFF10];
+  }
 }

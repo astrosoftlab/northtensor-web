@@ -46,7 +46,7 @@
 
 html,
 body {
-  @apply max-w-[100vw] bg-black text-[rgb(var(--foreground-rgb))] lg:text-[15px] text-[12px] overflow-x-hidden overflow-y-auto font-inter;
+  @apply max-w-[100vw] bg-black text-[rgb(var(--foreground-rgb))] lg:text-[15px] text-[12px] overflow-x-hidden overflow-y-auto font-inter font-light;
 }
 
 main {

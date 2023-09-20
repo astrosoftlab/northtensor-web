@@ -1,6 +1,7 @@
 import Head from 'next/head'
 
 import Date from '@components/ui/Date'
+import { PageLabel } from '@components/ui/PageLabel'
 import { PostData, getAllPostIds, getPostData } from '@lib/docs'
 
 export async function getStaticPaths() {
@@ -13,20 +14,24 @@ export async function getStaticPaths() {
 
 export default function Post({ postData }: { postData: PostData & { contentHtml: string } }) {
   return (
-    <>
+    <main>
       <Head>
         <title>{postData.title} </title>
       </Head>
-      <div className="flex items-center justify-center min-h-screen">
-        <main className="flex flex-col items-center max-w-3xl px-4 py-10 md:px-20 ">
-          <article className="prose">
-            <h1 className="text-3xl font-thin sm:text-5xl ">{postData.title}</h1>
-            <Date dateString={postData.date} />
-            <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
-          </article>
-        </main>
+      <div className="container">
+        <div className="lg:mt-[44px] mt-[33px]">
+          <PageLabel label="Tailsman" text={<Date dateString={postData.date} />} />
+        </div>
+
+        <h1 className="text-center">{postData.title}</h1>
+        <div className="grid grid-cols-8 lg:gap-[92px]">
+          <div className="col-span-6">
+            <div className="mdx-container" dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+          </div>
+          <div>Content list</div>
+        </div>
       </div>
-    </>
+    </main>
   )
 }
 

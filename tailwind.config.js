@@ -274,7 +274,10 @@ module.exports = {
         200: '2'
       },
       container: {
-        center: true
+        center: true,
+        screens: {
+          DEFAULT: '1328px'
+        }
       },
       content: {
         none: 'none'

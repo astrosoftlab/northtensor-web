@@ -2,7 +2,7 @@ import tensorGradian from '@assets/images/cropped-tensor-gradian.png'
 
 export const ContactSection = () => {
   return (
-    <section className="relative">
+    <section className="">
       <div className="container">
         <h2 className="lg:mt-0 mt-[40px] text-center lg:mb-[16px] mb-[12px]">How we’re developing</h2>
         <div className="flex justify-center">
