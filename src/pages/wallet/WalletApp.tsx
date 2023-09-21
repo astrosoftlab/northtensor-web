@@ -2,13 +2,13 @@ import { createRef, useEffect, useState } from 'react'
 
 import { useRouter } from 'next/router'
 
+import { Grid, Message } from 'semantic-ui-react'
+
 import { Loader } from '@components/ui/Loaders'
 import { SubstrateContextProvider, useSubstrate } from '@lib/substrate-lib'
 import WalletBase from '@pages/wallet/WalletBase'
 
 import WalletHeader from './WalletHeader'
-
-import { Grid, Message } from 'semantic-ui-react'
 
 function Main() {
   const {

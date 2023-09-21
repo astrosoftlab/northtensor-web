@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
+import Modal from 'react-modal'
 
 import { Session, useSupabaseClient, useUser } from '@supabase/auth-helpers-react'
 
@@ -8,8 +9,6 @@ import { Database } from '@lib/utils/database.type'
 
 import ColdkeyInput from './ColdkeyInput'
 import ColdkeyModal from './ColdkeyModal'
-
-import Modal from 'react-modal'
 
 type Profiles = Database['public']['Tables']['profiles']['Row']
 

@@ -1,10 +1,9 @@
 import { useState } from 'react'
+import Modal from 'react-modal'
 
 import { EyeIcon, EyeSlashIcon, PencilSquareIcon } from '@heroicons/react/20/solid'
 
 import ColdkeyModal from './ColdkeyModal'
-
-import Modal from 'react-modal'
 
 interface Props {
   name: string
