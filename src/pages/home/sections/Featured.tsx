@@ -6,7 +6,7 @@ import { BRD } from '@components/ui/BRD'
 
 export const FeaturedSection = () => {
   return (
-    <section className="relative lg:mb-[120px] mb-[90px]">
+    <section className="lg:mb-[120px] mb-[90px]">
       <div className="container">
         <h2 className="lg:mt-0 mt-[40px] text-center lg:mb-[16px] mb-[12px]">What is Decentralized AI?</h2>
         <div className="flex justify-center">

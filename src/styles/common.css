@@ -1,39 +1,131 @@
-a {
-  @apply text-inherit no-underline hover:text-primary;
-}
+@layer base {
+  a {
+    @apply text-inherit no-underline hover:text-primary;
+  }
 
-.container {
-  @apply xl:max-w-[1328px];
-}
+  .container {
+    @apply xl:px-0 px-[20px];
+  }
 
-.container-sm {
-  @apply container xl:max-w-[1200px];
-}
+  .container-sm {
+    @apply container xl:max-w-[1200px];
+  }
 
-#toggle_nav:checked ~ div #hamburger #line {
-  @apply rotate-45 translate-y-1.5;
-}
+  #toggle_nav:checked ~ div #hamburger #line {
+    @apply rotate-45 translate-y-1.5;
+  }
 
-#toggle_nav:checked ~ div #hamburger #line2 {
-  @apply -rotate-45 -translate-y-1;
-}
+  #toggle_nav:checked ~ div #hamburger #line2 {
+    @apply -rotate-45 -translate-y-1;
+  }
 
-.card {
-  @apply lg:rounded-lg rounded-md shadow border border-blur bg-card;
-}
+  .card {
+    @apply lg:rounded-lg rounded-md shadow border border-blur bg-card;
+  }
 
-.ReactModal__Overlay {
-  @apply z-50;
-}
+  .ReactModal__Overlay {
+    @apply z-50;
+  }
 
-.only-desktop {
-  @apply hidden lg:block;
-}
+  .only-desktop {
+    @apply hidden lg:block;
+  }
 
-.absolute-center {
-  @apply absolute left-1/2 top-1/2;
-}
+  .absolute-center {
+    @apply absolute left-1/2 top-1/2;
+  }
 
-.supabase-auth-ui_ui-button {
-  @apply lg:mt-[20px] mt-[15px];
+  .supabase-auth-ui_ui-button {
+    @apply lg:mt-[20px] mt-[15px];
+  }
+
+  .mdx-container h1 {
+    @apply lg:text-[38px] text-[28px] leading-normal font-black break-words;
+  }
+
+  .mdx-container h2 {
+    @apply lg:text-[38px] text-[28px] lg:my-[16px] my-[12px] leading-normal font-bold break-words;
+  }
+
+  .mdx-container h3 {
+    @apply lg:text-[32px] text-[24px] lg:my-[16px] my-[12px] leading-normal font-bold break-words;
+  }
+
+  .mdx-container h4 {
+    @apply lg:text-[24px] text-[18px] lg:my-[16px] my-[12px] font-light leading-tight break-words;
+  }
+
+  .mdx-container h5 {
+    @apply lg:text-[22px] text-[16px] leading-normal font-semibold break-words;
+  }
+
+  .mdx-container h6 {
+    @apply lg:text-[20px] text-[15px] leading-normal font-medium break-words;
+  }
+
+  .mdx-container ol {
+    @apply list-decimal;
+  }
+
+  .mdx-container p,
+  .mdx-container li,
+  .mdx-container pre code {
+    @apply lg:text-[19px] text-[14px] lg:mb-[20px] mb-[15px] text-gray font-inter;
+  }
+
+  .mdx-container ol li {
+    @apply ml-[30px];
+  }
+
+  .mdx-container ::marker {
+    @apply font-bold whitespace-nowrap;
+  }
+
+  .mdx-container img {
+    @apply rounded-[8px] border border-[#FFFFFF10];
+  }
+
+  /* width */
+  .slick-scroll::-webkit-scrollbar {
+    @apply w-[8px] px-[1px] bg-transparent;
+  }
+
+  /* Track */
+  .slick-scroll::-webkit-scrollbar-track {
+    @apply rounded-[10px] bg-[#FFFFFF40];
+  }
+
+  /* Handle */
+  .slick-scroll::-webkit-scrollbar-thumb {
+    @apply bg-[#FFFFFF90] rounded-[10px];
+  }
+
+  /* Handle on hover */
+  .slick-scroll::-webkit-scrollbar-thumb:hover {
+    @apply bg-white;
+  }
+
+  .gap-d-24 {
+    @apply lg:gap-[24px] gap-[18px];
+  }
+
+  .gap-d-16 {
+    @apply lg:gap-[16px] gap-[12px];
+  }
+
+  .gap-d-12 {
+    @apply lg:gap-[12px] gap-[8px];
+  }
+
+  .gap-d-10 {
+    @apply lg:gap-[10px] gap-[7px];
+  }
+
+  .rounded-d-8 {
+    @apply lg:rounded-[8px] rounded-[6px];
+  }
+
+  .rounded-d-6 {
+    @apply lg:rounded-[6px] rounded-[5px];
+  }
 }

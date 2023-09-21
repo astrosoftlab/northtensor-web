@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 
+import axios from 'axios'
+
 import CopyToClipboardButton from '@components/ui/CopyButton'
 import { Input } from '@components/ui/Input'
 import { useSubstrateState } from '@lib/substrate-lib'
 import { TxButton } from '@lib/substrate-lib/components'
-
-import axios from 'axios'
 
 function Main() {
   const [status, setStatus] = useState(null)

@@ -1,5 +1,7 @@
 import React, { useContext, useEffect, useReducer } from 'react'
 
+import PropTypes from 'prop-types'
+
 import { ApiPromise, WsProvider } from '@polkadot/api'
 import { web3Accounts, web3Enable } from '@polkadot/extension-dapp'
 import { TypeRegistry } from '@polkadot/types/create'
@@ -8,8 +10,6 @@ import { keyring as Keyring } from '@polkadot/ui-keyring'
 import { isTestChain } from '@polkadot/util'
 
 import config from '../config'
-
-import PropTypes from 'prop-types'
 
 const parsedQuery = new URLSearchParams(window.location.search)
 const connectedSocket = parsedQuery.get('rpc') || config.PROVIDER_SOCKET

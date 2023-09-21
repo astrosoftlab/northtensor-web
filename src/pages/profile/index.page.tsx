@@ -15,7 +15,11 @@ export default function Home() {
       <div className="flex flex-col items-center justify-center lg:py-[44px] py-[33px] lg:px-8">
         {!session && <PageLabel label="MOST" text="Promising Projects" />}
         <div className="lg:mx-auto lg:mb-[75px] mb-[56px]">
-          {!session && <h1 className="mt-10 lg:max-w-[966px] text-center">Sign in to Your Account</h1>}
+          {session ? (
+            <h1 className="mt-10 lg:max-w-[966px] text-center">My Profile</h1>
+          ) : (
+            <h1 className="mt-10 lg:max-w-[966px] text-center">Sign in to Your Account</h1>
+          )}
         </div>
 
         <div className="card lg:w-full lg:max-w-[654px] lg:p-[40px] p-[30px]">

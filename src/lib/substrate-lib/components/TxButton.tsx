@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 
+import { Button, SemanticCOLORS } from 'semantic-ui-react'
+
 import { web3FromSource } from '@polkadot/extension-dapp'
 
 import { useSubstrateState } from '..'
 import utils from '../utils'
-
-import { Button, SemanticCOLORS } from 'semantic-ui-react'
 
 interface Attrs {
   palletRpc: string
