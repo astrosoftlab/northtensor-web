@@ -52,7 +52,7 @@
   }
 
   .mdx-container h4 {
-    @apply lg:text-[24px] text-[18px] lg:my-[16px] my-[12px] leading-normal font-bold break-words;
+    @apply lg:text-[24px] text-[18px] lg:my-[16px] my-[12px] font-light leading-tight break-words;
   }
 
   .mdx-container h5 {
@@ -68,8 +68,9 @@
   }
 
   .mdx-container p,
-  li {
-    @apply lg:text-[19px] text-[14px] lg:mb-[20px] mb-[15px] text-gray;
+  .mdx-container li,
+  .mdx-container pre code {
+    @apply lg:text-[19px] text-[14px] lg:mb-[20px] mb-[15px] text-gray font-inter;
   }
 
   .mdx-container ol li {
@@ -82,5 +83,49 @@
 
   .mdx-container img {
     @apply rounded-[8px] border border-[#FFFFFF10];
+  }
+
+  /* width */
+  .slick-scroll::-webkit-scrollbar {
+    @apply w-[8px] px-[1px] bg-transparent;
+  }
+
+  /* Track */
+  .slick-scroll::-webkit-scrollbar-track {
+    @apply rounded-[10px] bg-[#FFFFFF40];
+  }
+
+  /* Handle */
+  .slick-scroll::-webkit-scrollbar-thumb {
+    @apply bg-[#FFFFFF90] rounded-[10px];
+  }
+
+  /* Handle on hover */
+  .slick-scroll::-webkit-scrollbar-thumb:hover {
+    @apply bg-white;
+  }
+
+  .gap-d-24 {
+    @apply lg:gap-[24px] gap-[18px];
+  }
+
+  .gap-d-16 {
+    @apply lg:gap-[16px] gap-[12px];
+  }
+
+  .gap-d-12 {
+    @apply lg:gap-[12px] gap-[8px];
+  }
+
+  .gap-d-10 {
+    @apply lg:gap-[10px] gap-[7px];
+  }
+
+  .rounded-d-8 {
+    @apply lg:rounded-[8px] rounded-[6px];
+  }
+
+  .rounded-d-6 {
+    @apply lg:rounded-[6px] rounded-[5px];
   }
 }
