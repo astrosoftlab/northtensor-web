@@ -4,7 +4,7 @@
   }
 
   .container {
-    @apply xl:max-w-[1328px];
+    @apply xl:px-0 px-[20px];
   }
 
   .container-sm {
