@@ -86,10 +86,11 @@ export default function Example() {
                   <span className="">Document</span>
                 </Link>
               </div>
-              <div className="flex gap-2 mt-12 lg:mt-0 ">
+              <div className="flex mt-12 gap-d-16 lg:mt-0 ">
                 <Link href="/wallet">
                   <Button color="blur">Wallet</Button>
                 </Link>
+                <div className="w-[1px] flex-1 bg-[#D9DDE920]" />
                 <Link href="/profile">
                   <Button color="white">{session ? 'Profile' : 'Log In'}</Button>
                 </Link>
