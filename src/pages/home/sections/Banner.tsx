@@ -21,14 +21,12 @@ export const BannerSection = () => (
           <div className="flex flex-col-reverse justify-between text-center sm:flex-row">
             <div className="flex flex-col items-center w-full gap-8">
               <br />
-              <h1 className="text-5xl font-bold leading-tight text-white md:text-6xl xl:text-7xl">NorthTensor</h1>
-              <h3 className="text-3xl font-bold leading-tight text-gray-200 md:text-4xl xl:text-5xl">
-                Leading the forefront of Decentralized AI
-              </h3>
-              <p className="text-gray-200">
+              <h1 className="text-white ">NorthTensor</h1>
+              <h3 className="text-gray">Leading the forefront of Decentralized AI</h3>
+              <div className="text-gray text-body-lg">
                 Our mission is to catalyze the decentralized AI movement by strategically investing in and developing on
                 the most promising projects in the space.
-              </p>
+              </div>
               <div className="flex justify-center gap-y-4 gap-x-6">
                 <Link href="/wallet">
                   <Button size="lg" weight="semibold" color="blur">
