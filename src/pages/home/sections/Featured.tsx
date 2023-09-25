@@ -1,12 +1,9 @@
-import AiBrain from '@assets/icons/ai-brain.svg'
-import Server from '@assets/icons/server.svg'
-import Tensor from '@assets/icons/tensor.svg'
-import rocketBoost from '@assets/images/rocket-boost.png'
-import { BRD } from '@components/ui/BRD'
+import tensorCoins from '@assets/images/tensor-coins.png'
+import wireframeCoin from '@assets/images/wireframe-coin.png'
 
 export const FeaturedSection = () => {
   return (
-    <section className="lg:mb-[120px] mb-[90px]">
+    <section className="lg:mb-[80px] mb-[60px]">
       <div className="container">
         <h2 className="lg:mt-0 mt-[40px] text-center lg:mb-[16px] mb-[12px]">What is Decentralized AI?</h2>
         <div className="flex justify-center">
@@ -18,84 +15,40 @@ export const FeaturedSection = () => {
         <div className="flex flex-col items-center lg:gap-[50px] gap-[36px]">
           <div className="max-w-[960px] w-full rounded-lg p-[1px] bg-[linear-gradient(0deg,rgba(159,111,203,1)0%,rgba(107,56,152,1)50%,rgba(62,29,96,1)100%)]">
             <div className="lg:p-[48px] p-[36px] rounded-[7px] bg-[#060606]">
-              <div className="lg:grid lg:grid-cols-12 flex flex-col-reverse lg:gap-[10px] gap-[8px]">
-                <div className="flex items-center col-span-5">
-                  <div className="flex flex-col lg:gap-[10px] gap-[8px]">
-                    <h3 className="font-semibold">
-                      Why is <BRD />
-                      Decentralized AI <BRD />
-                      Important?
-                    </h3>
-                    <div className="lg:text-[15px] text-[14px] text-gray">
-                      AI has the potential to be the most powerful technology ever created. We&apos;re at the inflection
-                      point of AI, now is the time to ensure that AI is used for the benefit of all.
-                    </div>
-                  </div>
-                </div>
-                <div className="flex justify-start col-span-7 lg:mb-0 mb-[40px]">
-                  <div className="lg:ml-[24px] lg:px-[30px] px-[24px] lg:py-[30px] py-[22px] border border-solid border-[#FFFFFF10] rounded-lg">
-                    <Server width="100%" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="max-w-[960px] w-full rounded-lg p-[1px] bg-[linear-gradient(0deg,rgba(159,111,203,1)0%,rgba(107,56,152,1)50%,rgba(62,29,96,1)100%)]">
-            <div className="lg:p-[48px] p-[36px] rounded-[7px] bg-[#060606]">
-              <div className="lg:grid grid-cols-12 lg:gap-[10px] gap-[8px]">
-                <div className="flex justify-start col-span-7 lg:mb-0 mb-[40px]">
-                  <div className="lg:px-[30px] px-[24px] lg:py-[30px] py-[22px] border border-solid border-[#FFFFFF10] rounded-lg">
-                    <Tensor width="100%" />
-                  </div>
-                </div>
-                <div className="flex items-center col-span-5">
-                  <div className="flex flex-col lg:gap-[10px] gap-[8px]">
-                    <h3 className="font-semibold">Bittensor:</h3>
-                    <div className="lg:text-[15px] text-[14px] text-gray">
-                      Bittensor is the Bitcoin of Decentralized AI. Instead of compute power to run hashing algorithms,
-                      Bittensor uses compute power to run AI algorithms. We&apos;re excited to be a part of the
-                      Bittensor community and help grow the network. Show your support by buying Bittensor on MEXC.
-                      Stake with NorthTensor to get 20% APY.
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="max-w-[960px] w-full rounded-lg p-[1px] bg-[linear-gradient(0deg,rgba(159,111,203,1)0%,rgba(107,56,152,1)50%,rgba(62,29,96,1)100%)]">
-            <div className="lg:p-[48px] p-[36px] rounded-[7px] bg-[#060606]">
-              <div className="lg:grid lg:grid-cols-12 flex flex-col-reverse lg:gap-[10px] gap-[8px]">
-                <div className="flex items-center col-span-5">
+              <div className="lg:grid lg:grid-cols-2 flex flex-col-reverse lg:gap-[76px] gap-[57px]">
+                <div className="flex items-center">
                   <div className="flex flex-col lg:gap-[10px] gap-[8px]">
                     <h3 className="font-semibold">Investment</h3>
                     <div className="lg:text-[15px] text-[14px] text-gray">
-                      We support and invest in Decentralized AI projects.
+                      North Tensor invests in higher potential ground-breaking decentralized AI projects that will lead
+                      the next generation of disruption & innovation.
                     </div>
                   </div>
                 </div>
-                <div className="flex justify-start col-span-7 lg:mb-0 mb-[40px]">
-                  <div className="lg:ml-[24px] lg:px-[30px] px-[24px] lg:py-[30px] py-[22px] border border-solid border-[#FFFFFF10] rounded-lg">
-                    <AiBrain width="100%" />
+                <div className="flex justify-start">
+                  <div className="border border-solid border-[#FFFFFF10] rounded-lg">
+                    <img src={tensorCoins.src} />
                   </div>
                 </div>
               </div>
             </div>
           </div>
           <div className="max-w-[960px] w-full rounded-lg p-[1px] bg-[linear-gradient(0deg,rgba(159,111,203,1)0%,rgba(107,56,152,1)50%,rgba(62,29,96,1)100%)]">
-            <div className="relative lg:p-[48px] p-[36px] rounded-[7px] bg-[#060606]">
-              <div className="lg:grid grid-cols-12 lg:gap-[10px] gap-[8px] lg:py-[20px] py-[15px]">
-                <div className="relative z-10 flex items-center col-span-6">
+            <div className="lg:p-[48px] p-[36px] rounded-[7px] bg-[#060606]">
+              <div className="lg:grid lg:grid-cols-2 lg:flex-row-reverse flex flex-col-reverse lg:gap-[76px] gap-[57px]">
+                <div className="flex items-center">
                   <div className="flex flex-col lg:gap-[10px] gap-[8px]">
                     <h3 className="font-semibold">Development</h3>
                     <div className="lg:text-[15px] text-[14px] text-gray">
-                      We aim to demonstrate the potential of decentralized AI through innovation and development.
-                      Sign-up to our newsletter to stay up to date and get early access to new AI products. We have some
-                      new exciting products in the works.
+                      North Tensor leverages our investments to flywheel return by incubating &amp; developing products
+                      that utilize the decentralized solutions we invest in&quot;
                     </div>
                   </div>
                 </div>
-                <div className="z-0 flex justify-start col-span-6 lg:h-auto h-[224px]">
-                  <img src={rocketBoost.src} alt="" className="absolute bottom-0 right-0" />
+                <div className="flex justify-start">
+                  <div className="border border-solid border-[#FFFFFF10] rounded-lg">
+                    <img src={wireframeCoin.src} />
+                  </div>
                 </div>
               </div>
             </div>

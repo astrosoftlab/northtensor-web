@@ -1,5 +1,3 @@
-import Link from 'next/link'
-
 import Atom1 from '@assets/icons/atom1.svg'
 import Atom2 from '@assets/icons/atom2.svg'
 import Atom3 from '@assets/icons/atom3.svg'
@@ -9,7 +7,7 @@ import Orbital440 from '@assets/icons/orbital.x440.svg'
 import Orbital640 from '@assets/icons/orbital.x640.svg'
 import Orbital860 from '@assets/icons/orbital.x860.svg'
 import Orbital1060 from '@assets/icons/orbital.x1060.svg'
-import { Button } from '@components/ui/Button'
+import { BRD } from '@components/ui/BRD'
 import { PageLabel } from '@components/ui/PageLabel'
 
 export const BannerSection = () => (
@@ -21,36 +19,26 @@ export const BannerSection = () => (
           <div className="flex flex-col-reverse justify-between text-center sm:flex-row">
             <div className="flex flex-col items-center w-full gap-8">
               <br />
-              <h1 className="text-white ">NorthTensor</h1>
+              <h1 className="text-white lg:max-w-[966px]">
+                North Tensor <BRD />
+              </h1>
               <h3 className="text-gray">Leading the forefront of Decentralized AI</h3>
-              <div className="text-gray text-body-lg">
+              <div className="text-gray text-body-lg lg:max-w-[568px]">
                 Our mission is to catalyze the decentralized AI movement by strategically investing in and developing on
                 the most promising projects in the space.
-              </div>
-              <div className="flex justify-center gap-y-4 gap-x-6">
-                <Link href="/wallet">
-                  <Button size="lg" weight="semibold" color="blur">
-                    Start Staking
-                  </Button>
-                </Link>
-                <a href="/resources">
-                  <Button size="lg" color="white" weight="semibold">
-                    Learn more
-                  </Button>
-                </a>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <NorthTensorOrbitalMotion />
     </div>
+    <NorthTensorOrbitalMotion />
   </section>
 )
 
 const NorthTensorOrbitalMotion = () => {
   return (
-    <div className="relative lg:aspect-square text-gray lg:h-auto h-[600px] z-[1]">
+    <div className="relative lg:aspect-square text-gray lg:h-auto h-[600px] z-[1] lg:mt-[-560px] mt-[-200px] lg:mb-[-140px]">
       <div
         className="absolute-center w-[1200px] h-[1200px] -ml-[600px] -mt-[600px] lg:scale-100 scale-50"
         style={{
@@ -77,6 +65,16 @@ const NorthTensorOrbitalMotion = () => {
         <div className="absolute-center w-[240px] h-[240px] -ml-[120px] -mt-[120px]">
           <NorthTensorElectron />
         </div>
+      </div>
+      <div className="absolute top-0 left-0 w-full">
+        <div className="bg-black lg:h-[560px] h-[180px]"></div>
+        <div
+          className="w-full h-[200px]"
+          style={{
+            background:
+              'linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7063200280112045) 30%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0) 100%)'
+          }}
+        />
       </div>
     </div>
   )
