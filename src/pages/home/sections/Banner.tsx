@@ -21,7 +21,6 @@ export const BannerSection = () => (
               <br />
               <h1 className="text-white lg:max-w-[966px]">
                 North Tensor <BRD />
-                Leading the forefront of Decentralized AI
               </h1>
               <h3 className="text-gray">Leading the forefront of Decentralized AI</h3>
               <div className="text-gray text-body-lg lg:max-w-[568px]">
