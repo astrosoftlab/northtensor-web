@@ -20,9 +20,9 @@ export const BannerSection = () => (
             <div className="flex flex-col items-center w-full gap-8">
               <br />
               <h1 className="text-white lg:max-w-[966px]">
-                North Tensor <BRD />
+                NorthTensor <BRD />
               </h1>
-              <h3 className="text-gray">Leading the forefront of Decentralized AI</h3>
+              <h3 className="text-gray">Leading the Forefront of Decentralized AI</h3>
               <div className="text-gray text-body-lg lg:max-w-[568px]">
                 Our mission is to catalyze the decentralized AI movement by strategically investing in and developing on
                 the most promising projects in the space.

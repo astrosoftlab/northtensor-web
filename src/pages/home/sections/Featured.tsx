@@ -41,7 +41,7 @@ export const FeaturedSection = () => {
                     <h3 className="font-semibold">Development</h3>
                     <div className="lg:text-[15px] text-[14px] text-gray">
                       North Tensor leverages our investments to flywheel return by incubating &amp; developing products
-                      that utilize the decentralized solutions we invest in&quot;
+                      that utilize the decentralized solutions we invest in. 
                     </div>
                   </div>
                 </div>
