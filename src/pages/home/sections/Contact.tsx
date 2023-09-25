@@ -2,14 +2,14 @@ import tensorGradian from '@assets/images/cropped-tensor-gradian.png'
 
 export const ContactSection = () => {
   return (
-    <section className="">
-      <div className="container">
-        <h2 className="lg:mt-0 mt-[40px] text-center lg:mb-[16px] mb-[12px]">How we’re developing</h2>
+    <section>
+      <div className="container flex flex-col items-center text-center">
+        <h2 className="lg:mt-0 mt-[40px] text-center lg:mb-[16px] mb-[12px] lg:max-w-[767px]">
+          Deliver an optimized User Experience
+        </h2>
         <div className="flex justify-center">
           <div className="text-body-lg text-gray lg:max-w-[654px] w-full text-center lg:mb-[50px] mb-[36px]">
-            We’re constantly thinking of new ways to properly utilize decentralized AI to create unique products. Not
-            only are we building our own integrations, but we’re always on the lookout for other teams that are also
-            building enhancements to the network, and strive to support them in their endeavors.
+            Northtensor helps you reach the right person at your dream company.
           </div>
         </div>
         {/* <div className="flex flex-col items-center lg:gap-[50px] gap-[36px]">
