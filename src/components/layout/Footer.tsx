@@ -7,7 +7,7 @@ import { Logo } from '@components/ui/Logo'
 export default function Example() {
   return (
     <>
-      <footer className="relative flex flex-col items-center gap-16 py-16 overflow-hidden 2xl:py-[55px] md:py-[59px]">
+      <footer className="relative flex flex-col items-center gap-16 py-16 overflow-hidden 2sm:py-[55px] md:py-[59px]">
         <div className="container">
           <div className="flex flex-col sm:flex-row gap-8 relative z-[1] text-white">
             <Logo />
@@ -31,7 +31,7 @@ export default function Example() {
               </div>
             </div>
           </div>
-          <div className="text-center text-white lg:text-[11px] text-[10px] lg:mt-[54px] mt-[40px]">
+          <div className="text-center text-white sm:text-[11px] text-[10px] sm:mt-[54px] mt-[40px]">
             <div className="leading-tight">© 2023 NorthTensor. All rights reserved.</div>
             <div className="flex justify-center">
               <Link href={'/privacy'} className="hover:text-primary">

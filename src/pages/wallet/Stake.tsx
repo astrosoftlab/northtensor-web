@@ -74,7 +74,7 @@ export default function Main() {
           Balance Staked: {amountCurrentlyStakedTao} Tao&nbsp;
         </h1>
         {/* Radio Buttons with the blue thing, but the styling is all messed up */}
-        {/* <Stack direction="row" spacing={2} className="flex items-center justify-center space-x-4 text-3xl font-thin rounded-lg text-slate-800 sm:text-2xl lg:px-24">
+        {/* <Stack direction="row" spacing={2} className="flex items-center justify-center space-x-4 text-3xl font-thin rounded-lg text-slate-800 sm:text-2xl sm:px-24">
         <div className="flex items-center pl-4 border rounded border-slate-200 ">
             <input 
               checked={stakeType === 'addStake'} 
@@ -107,10 +107,10 @@ export default function Main() {
         </div>
       </Stack> */}
         {/* Staking - Unstaking Radio Buttons */}
-        <div className="flex items-center justify-center space-x-4 text-3xl font-thin rounded-lg text-slate-800 sm:text-2xl lg:px-24">
+        <div className="flex items-center justify-center space-x-4 text-3xl font-thin rounded-lg text-slate-800 sm:text-2xl sm:px-24">
           {/* Staking Button */}
           <label
-            className={`bg-slate-200   hover:bg-slate-400  px-4 py-2 lg:px-12 rounded-lg ${
+            className={`bg-slate-200   hover:bg-slate-400  px-4 py-2 sm:px-12 rounded-lg ${
               stakeType === 'addStake' ? 'bg-slate-300 ' : ''
             }`}
           >
@@ -172,7 +172,7 @@ export default function Main() {
           {/* Main Transaction Button */}
           {/* If there isn't enough Tao, notify the user to avoid confusion and remove buttons otherwise show the button*/}
           {fullStakeAmount < 1 && stakeType === 'addStake' ? (
-            <label htmlFor="send-to-account" className="block lg:px-12 text-slate-700">
+            <label htmlFor="send-to-account" className="block sm:px-12 text-slate-700">
               No Available Tao to Stake
             </label>
           ) : (

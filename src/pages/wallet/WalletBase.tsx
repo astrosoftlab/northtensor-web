@@ -175,7 +175,7 @@ function Main() {
 
       <div className="flex items-center justify-center pt-4">
         <div
-          className="w-full text-center bg-gray-200 shadow sm:rounded-md lg:w-96 sm:w-full"
+          className="w-full text-center bg-gray-200 shadow sm:rounded-md sm:w-96 sm:w-full"
           style={{
             whiteSpace: 'normal',
             wordWrap: 'break-word',

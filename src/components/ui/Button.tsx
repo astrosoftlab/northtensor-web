@@ -30,9 +30,12 @@ const COLOR_CONFIG = {
   }
 }
 const SIZE_CONFIG = {
-  sm: { padding: 'lg:px-[12px] lg:py-[8px] px-[9px] py-[6px]', font: 'lg:text-[9px] text-[6px]' },
-  md: { padding: 'lg:px-[24px] lg:py-[12px] px-[18px] py-[9px]', font: 'lg:text-[15px] text-[12px]' },
-  lg: { padding: 'lg:px-[25px] lg:py-[17px] px-[18px] py-[12px]', font: 'lg:text-[18px] text-[14px]' }
+  sm: { padding: 'sm:px-[12px] sm:py-[8px] px-[9px] py-[6px]', font: 'sm:text-[9px] text-[6px]' },
+  md: { padding: 'sm:px-[24px] sm:py-[12px] px-[18px] py-[9px]', font: 'sm:text-[15px] text-[12px]' },
+  lg: {
+    padding: 'sm:px-[25px] sm:py-[17px] px-[18px] py-[12px]',
+    font: 'sm:text-[18px] text-[14px]'
+  }
 }
 
 interface StyledProps {
@@ -50,20 +53,17 @@ interface ButtonProps extends NativeButtonProps, StyledProps {
 }
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  (
-    { children, className, disabled, color = 'primary', size = 'md', weight = 'normal', full = false, ...props },
-    ref
-  ) => {
+  ({ children, className, disabled, color = 'primary', size = 'md', weight = 'normal', full, ...props }, ref) => {
     const { bgColor, textColor } = COLOR_CONFIG[color]
     const { padding, font } = SIZE_CONFIG[size]
 
-    const width = full ? '' : 'sm:w-max'
+    const width = full ? 'w-full' : ''
     const hoverActive = disabled ? '' : ''
 
     const classNames = useMemo(
       () =>
         cn(
-          'w-full relative flex items-center justify-center rounded-md transition duration-300 active:duration-75',
+          'relative flex items-center justify-center rounded-md transition duration-300 active:duration-75',
           className,
           width,
           bgColor,

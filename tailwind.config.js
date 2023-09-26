@@ -7,24 +7,36 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        sm: '640px',
-        md: '768px',
-        lg: '1024px',
-        xl: '1280px',
-        '2xl': '1536px'
+        sm: '768px',
+        md: '1024px',
+        lg: '1441px'
       },
       colors: ({ colors }) => ({
         inherit: colors.inherit,
-        current: colors.current,
-        transparent: colors.transparent,
-        primary: '#AC3CE1',
-        'primary-dark': '#8b33b5',
-        secondary: '#ff7e33',
-        info: '#0C63E7',
-        black: colors.black,
-        white: colors.white,
-        light: colors.purple[200],
-        slate: colors.slate,
+        white: {
+          DEFAULT: colors.white,
+          10: '#FFFFFF10',
+          20: '#FFFFFF20',
+          30: '#FFFFFF30',
+          40: '#FFFFFF40',
+          50: '#FFFFFF50',
+          60: '#FFFFFF60',
+          70: '#FFFFFF70',
+          80: '#FFFFFF80',
+          90: '#FFFFFF90'
+        },
+        black: {
+          DEFAULT: colors.black,
+          10: '#00000010',
+          20: '#00000020',
+          30: '#00000030',
+          40: '#00000040',
+          50: '#00000050',
+          60: '#00000060',
+          70: '#00000070',
+          80: '#00000080',
+          90: '#00000090'
+        },
         gray: {
           DEFAULT: '#CDCDCD',
           50: '#FAFAFC',
@@ -42,6 +54,14 @@ module.exports = {
           DEFAULT: '#FFFFFF20',
           light: '#FFFFFF40'
         },
+        current: colors.current,
+        transparent: colors.transparent,
+        primary: '#AC3CE1',
+        'primary-dark': '#8b33b5',
+        secondary: '#ff7e33',
+        info: '#0C63E7',
+        light: colors.purple[200],
+        slate: colors.slate,
         zinc: colors.zinc,
         neutral: colors.neutral,
         stone: colors.stone,

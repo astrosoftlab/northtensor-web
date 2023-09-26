@@ -179,10 +179,10 @@ export default function Account({ session }: { session: Session }) {
           </div>
           <div className="py-0.5 rounded-md shadow-sm isolate">
             <div className="flex items-center justify-between mb-2">
-              <label htmlFor="email" className="block text-sm font-medium leading-6">
+              <label htmlFor="email" className="block text-sm font-medium leading-6 shrink-0">
                 Coldkeys
               </label>
-              <Button size="sm" onClick={() => setIsAddColdkeyModalOpen(true)}>
+              <Button size="sm" className="max-w-[80px]" onClick={() => setIsAddColdkeyModalOpen(true)}>
                 Add Coldkey
               </Button>
             </div>

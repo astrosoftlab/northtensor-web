@@ -36,23 +36,23 @@ export const Select = React.forwardRef(({ className, options, value, onChange, p
 
   return (
     <div className={`relative w-full ${className}`} ref={selectNode}>
-      {props.label && <label className={`block lg:mb-[12px] mb-[8px] font-medium`}>{props.label}</label>}
+      {props.label && <label className={`block sm:mb-[12px] mb-[8px] font-medium`}>{props.label}</label>}
       <div
         onClick={() => setSelectOpen(!selectOpen)}
         className={cn(
-          'block w-full lg:px-[25px] px-[18px] lg:py-[17px] py-[12px] border lg:rounded-lg rounded-md border-blur placeholder:text-white',
+          'block w-full sm:px-[25px] px-[18px] sm:py-[17px] py-[12px] border sm:rounded-lg rounded-md border-blur placeholder:text-white',
           selectOpen ? 'border-primary' : 'border-blur hover:border-blur-light'
         )}
       >
         {currentLabel}
       </div>
       {selectOpen && (
-        <div className="absolute w-full z-10 bg-gradient-dialog backdrop-blur-md backdrop-opacity-100 flex flex-col gap-[1px] mt-[1px] border sm:text-sm lg:rounded-lg rounded-md overflow-hidden">
+        <div className="absolute w-full z-10 bg-gradient-dialog backdrop-blur-md backdrop-opacity-100 flex flex-col gap-[1px] mt-[1px] border sm:text-sm sm:rounded-lg rounded-md overflow-hidden">
           {options.map((option, key) => (
             <div
               key={key}
               className={cn(
-                ' lg:px-[25px] px-[18px] lg:py-[17px] py-[12px] hover:bg-primary',
+                ' sm:px-[25px] px-[18px] sm:py-[17px] py-[12px] hover:bg-primary',
                 value?.value === option.value ? 'bg-primary cursor-default' : 'cursor-pointer'
               )}
               onClick={() => handleOptionClick(option)}

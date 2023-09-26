@@ -15,15 +15,15 @@ export const BannerSection = () => (
     <div className="container">
       <div className="relative ml-auto py-[16px] z-[2]">
         <PageLabel label="NEW" text="Bittensor-First AI Firm" transparent />
-        <div className="mx-auto lg:w-4/5">
+        <div className="mx-auto sm:w-4/5">
           <div className="flex flex-col-reverse justify-between text-center sm:flex-row">
             <div className="flex flex-col items-center w-full gap-8">
               <br />
-              <h1 className="text-white lg:max-w-[966px]">
+              <h1 className="text-white sm:max-w-[966px]">
                 NorthTensor <BRD />
               </h1>
               <h3 className="text-gray">Leading the Forefront of Decentralized AI</h3>
-              <div className="text-gray text-body-lg lg:max-w-[568px]">
+              <div className="text-gray text-body-lg sm:max-w-[568px]">
                 Our mission is to catalyze the decentralized AI movement by strategically investing in and developing on
                 the most promising projects in the space.
               </div>
@@ -38,9 +38,9 @@ export const BannerSection = () => (
 
 const NorthTensorOrbitalMotion = () => {
   return (
-    <div className="relative lg:aspect-square text-gray lg:h-auto h-[600px] z-[1] lg:mt-[-560px] mt-[-200px] lg:mb-[-140px]">
+    <div className="relative sm:aspect-square text-gray sm:h-auto h-[600px] z-[1] lg:mt-[-740px] laptop:mt-[-500px] mt-[-200px] sm:mb-[-140px]">
       <div
-        className="absolute-center w-[1200px] h-[1200px] -ml-[600px] -mt-[600px] lg:scale-100 scale-50"
+        className="absolute-center w-[1200px] h-[1200px] -ml-[600px] -mt-[600px] sm:scale-100 scale-50"
         style={{
           background:
             'radial-gradient(50% 50% at 50% 50%, rgba(217, 175, 255, 0.97) 0%, rgba(180, 116, 237, 0.79) 22%, rgba(138, 55, 214, 0.60) 45%, rgba(104, 44, 177, 0.30) 73%, rgba(0, 34, 144, 0.00) 100%)'
@@ -67,7 +67,7 @@ const NorthTensorOrbitalMotion = () => {
         </div>
       </div>
       <div className="absolute top-0 left-0 w-full">
-        <div className="bg-black lg:h-[560px] h-[180px]"></div>
+        <div className="bg-black lg:h-[720px] sm:h-[500px] h-[180px]" />
         <div
           className="w-full h-[200px]"
           style={{

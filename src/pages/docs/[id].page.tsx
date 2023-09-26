@@ -39,24 +39,24 @@ export default function Post({ postData }: { postData: PostData & { contentHtml:
         <title>{postData.title} </title>
       </Head>
       <div className="container">
-        <div className="lg:mt-[44px] mt-[33px]">
+        <div className="sm:mt-[44px] mt-[33px]">
           <PageLabel label="Tailsman" text={<Date dateString={postData.date} />} />
         </div>
 
         <h1 className="text-center">{postData.title}</h1>
-        <div className="grid grid-cols-10 justify-start lg:gap-[92px]">
+        <div className="sm:grid sm:grid-cols-10 flex flex-col-reverse justify-start sm:gap-[92px]">
           <div className="col-span-7">
             <div className="mdx-container" dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
           </div>
           <div className="col-span-3">
-            <div className=" lg:px-[13px] px-[8px] lg:py-[20px] py-[15px] bg-[#0e0e0e80]">
-              <h4 className="lg:mb-[20px] mb-[15px]">On this page</h4>
+            <div className=" sm:px-[13px] px-[8px] sm:py-[20px] py-[15px] bg-[#0e0e0e80]">
+              <h4 className="sm:mb-[20px] mb-[15px]">On this page</h4>
               <div className="flex flex-col gap-d-16">
                 {contentList.map((el, index) => (
                   <div
                     key={index}
                     onClick={() => scrollToText(el)}
-                    className="cursor-pointer group flex lg:gap-[12px] gap-[8px]"
+                    className="cursor-pointer group flex sm:gap-[12px] gap-[8px]"
                   >
                     <IconBullet className="shrink-0" />
                     <div className="font-[500] group-hover:text-primary">{el}</div>

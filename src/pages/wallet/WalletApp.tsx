@@ -68,13 +68,15 @@ function Main() {
   const contextRef = createRef()
 
   return (
-    <div className="flex flex-col w-full max-w-screen-lg p-4 space-y-4 item-start sm:w-auto">
-      <div x-ref="contextRef">
-        <WalletHeader />
-      </div>
-      <div className="flex justify-center">
-        <div className="flex flex-col w-full">
-          <WalletBase />
+    <div className="flex flex-col w-full max-w-screen-lg space-y-4 item-start sm:w-auto">
+      <div className="container">
+        <div x-ref="contextRef">
+          <WalletHeader />
+        </div>
+        <div className="flex justify-center">
+          <div className="flex flex-col w-full">
+            <WalletBase />
+          </div>
         </div>
       </div>
     </div>

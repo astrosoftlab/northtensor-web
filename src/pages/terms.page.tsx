@@ -4,7 +4,7 @@ import Divider from '@components/ui/Divider'
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-screen px-6 py-32 bg-white lg:px-8">
+    <div className="min-h-screen px-6 py-32 bg-white sm:px-8">
       <div className="max-w-3xl mx-auto text-base leading-7 text-slate-700">
         <p className="text-base font-semibold leading-7 text-[#CC6B32]">Legal</p>
         <h1 className="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
