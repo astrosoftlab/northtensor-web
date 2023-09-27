@@ -5,7 +5,7 @@ export const FeaturedSection = () => {
   return (
     <section className="sm:mb-[80px] mb-[60px]">
       <div className="container">
-        <h2 className="sm:mt-0 mt-[40px] text-center sm:mb-[16px] mb-[12px]">What is Decentralized AI?</h2>
+        <h2 className="break-normal sm:mt-0 mt-[40px] text-center sm:mb-[16px] mb-[12px]">What is Decentralized AI?</h2>
         <div className="flex justify-center">
           <div className="break-normal text-body-lg text-gray text-center sm:mb-[50px] mb-[36px] sm:max-w-[620px] w-full">
             Decentralized AI refers to AI systems that are not controlled by a single entity. This means AI that is
