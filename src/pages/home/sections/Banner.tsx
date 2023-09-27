@@ -9,6 +9,7 @@ import Orbital860 from '@assets/icons/orbital.x860.svg'
 import Orbital1060 from '@assets/icons/orbital.x1060.svg'
 import { BRD } from '@components/ui/BRD'
 import { PageLabel } from '@components/ui/PageLabel'
+import Link from 'next/link'
 
 export const BannerSection = () => (
   <section className="" id="home">
