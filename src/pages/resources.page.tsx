@@ -21,7 +21,7 @@ export default function Home({ postData }: { postData: PostData[] }) {
         <div className="flex flex-col items-center justify-start">
           <PageLabel label="EMPOWER" text="Decentralized AI movement" />
           <h1 className="sm:mb-[32px] mb-[24px]">Get Started</h1>
-          <div className="text-center text-gray sm:max-w-[568px] sm:mb-[105px] mb-[78px]">
+          <div className="break-normal text-center text-gray sm:max-w-[568px] sm:mb-[105px] mb-[78px]">
             Make sure to understand the staking terms and risks before proceeding. With your wallet linked and tokens
             staked, you&apos;re on your way to participating in NorthTensor&apos;s network.
           </div>
@@ -86,9 +86,9 @@ export default function Home({ postData }: { postData: PostData[] }) {
               </div>
             </div>
           </div>
-          <h1 className="sm:mb-[32px] mb-[24px] sm:max-w-[966px] text-center">
+          <h2 className="break-normal sm:mb-[32px] mb-[24px] sm:max-w-[966px] text-center">
             Leading the Forefront of Decentralized AI.
-          </h1>
+          </h2>
           <div className="flex justify-center">
             <Link href="/wallet">
               <Button size="lg" weight="semibold" color="blur">

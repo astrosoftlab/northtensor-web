@@ -7,7 +7,7 @@ export const FeaturedSection = () => {
       <div className="container">
         <h2 className="sm:mt-0 mt-[40px] text-center sm:mb-[16px] mb-[12px]">What is Decentralized AI?</h2>
         <div className="flex justify-center">
-          <div className="text-body-lg text-gray text-center sm:mb-[50px] mb-[36px] sm:max-w-[620px] w-full">
+          <div className="break-normal text-body-lg text-gray text-center sm:mb-[50px] mb-[36px] sm:max-w-[620px] w-full">
             Decentralized AI refers to AI systems that are not controlled by a single entity. This means AI that is
             built, owned, and utilized by the people, instead of an AI that only serves the interests of the elite.
           </div>
@@ -19,7 +19,7 @@ export const FeaturedSection = () => {
                 <div className="flex items-center">
                   <div className="flex flex-col sm:gap-[10px] gap-[8px]">
                     <h3 className="font-semibold">Investment</h3>
-                    <div className="sm:text-[15px] text-[14px] text-gray">
+                    <div className="break-normal sm:text-[15px] text-[14px] text-gray">
                       NorthTensor invests in higher potential ground-breaking Decentralized AI projects that will lead
                       the next generation of disruption & innovation.
                     </div>
@@ -39,7 +39,7 @@ export const FeaturedSection = () => {
                 <div className="flex items-center">
                   <div className="flex flex-col sm:gap-[10px] gap-[8px]">
                     <h3 className="font-semibold">Development</h3>
-                    <div className="sm:text-[15px] text-[14px] text-gray">
+                    <div className="break-normal sm:text-[15px] text-[14px] text-gray">
                       NorthTensor leverages our investments to flywheel return by incubating &amp; developing products
                       that utilize the Decentralized AI solutions we invest in.
                     </div>
