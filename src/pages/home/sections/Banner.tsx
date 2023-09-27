@@ -19,7 +19,7 @@ export const BannerSection = () => (
           <div className="flex flex-col-reverse justify-between text-center sm:flex-row">
             <div className="flex flex-col items-center w-full gap-8">
               <br />
-              <h1 className="text-white sm:max-w-[966px]">
+              <h1 className="break-normal text-white sm:max-w-[966px]">
                 NorthTensor <BRD />
               </h1>
               <h3 className="text-gray">Leading the Forefront of Decentralized AI</h3>
