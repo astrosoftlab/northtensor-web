@@ -35,7 +35,7 @@ export const OrbitalMotion = () => {
             widths={['w-[120px]', 'w-[95px]', 'w-[70px]']}
             heights={['h-[120px]', 'h-[95px]', 'h-[70px]']}
             className="top-0 left-1/2 -ml-[60px] -mt-[60px] animate-reverse-spin-slow-90"
-            icon={<AtomIcon1 />}
+            icon={<AtomIcon1 className="w-[26px] h-[38px]" />}
           />
         </div>
         <div className="absolute-center w-[860px] h-[860px] -ml-[430px] -mt-[430px] animate-spin-slow-90">
