@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 import Modal from 'react-modal'
+import { toast } from 'react-toastify'
 
 import { Session, useSupabaseClient, useUser } from '@supabase/auth-helpers-react'
 
@@ -143,9 +144,9 @@ export default function Account({ session }: { session: Session }) {
 
       let { error } = await supabase.from('profiles').upsert(updates)
       if (error) throw error
-      alert('Profile updated!')
+      toast.success('Profile updated!')
     } catch (error) {
-      alert('Error updating the data!')
+      toast.error('Error updating the data!')
       console.log(error)
     } finally {
       setLoading(false)
@@ -177,42 +178,45 @@ export default function Account({ session }: { session: Session }) {
           <div className="pb-8">
             <Input label="Email address" placeholder="johndoe@example.com" value={session.user.email} readOnly />
           </div>
-          <div className="py-0.5 rounded-md shadow-sm isolate">
-            <div className="flex items-center justify-between mb-2">
-              <label htmlFor="email" className="block text-sm font-medium leading-6 shrink-0">
-                Coldkeys
-              </label>
-              <Button size="sm" className="max-w-[80px]" onClick={() => setIsAddColdkeyModalOpen(true)}>
-                Add Coldkey
-              </Button>
-            </div>
-            <ul className="flex flex-col gap-2">
+          <div className="rounded-md shadow-sm isolate md:mb-[25px] mb-[19px]">
+            <div className="flex flex-col">
               {ss58_coldkeys?.map((key, index) => {
                 if (typeof key !== 'object' || Array.isArray(key)) return null
                 return (
-                  <li id={key?.coldkey as string} key={index}>
-                    <ColdkeyInput
-                      onInputChange={handleColdkeyInputChange}
-                      name={key?.name1 as string}
-                      coldkey={key?.coldkey as string}
-                      watched={key?.watched as boolean}
-                      validated={key?.validated as boolean}
-                      index={index}
-                      onDelete={() => handleRemoveColdkey(index)}
-                    />
-                  </li>
+                  <ColdkeyInput
+                    key={index}
+                    onInputChange={handleColdkeyInputChange}
+                    name={key?.name1 as string}
+                    coldkey={key?.coldkey as string}
+                    watched={key?.watched as boolean}
+                    validated={key?.validated as boolean}
+                    index={index}
+                    totalLength={ss58_coldkeys.length}
+                    onDelete={() => handleRemoveColdkey(index)}
+                  />
                 )
               })}
-            </ul>
+            </div>
           </div>
+
+          <Button
+            full
+            size="lg"
+            color="white"
+            className="md:mb-[25px] mb-[19px]"
+            onClick={() => setIsAddColdkeyModalOpen(true)}
+          >
+            <div className="font-bold">Add Coldkey</div>
+          </Button>
         </div>
 
         <div className="flex items-center justify-end mt-6 gap-x-3">
-          <Button className="min-w-[100px]" color="blur" onClick={() => supabase.auth.signOut()}>
+          <Button full size="lg" color="blur" onClick={() => supabase.auth.signOut()}>
             Log Out
           </Button>
           <Button
-            className="min-w-[100px]"
+            full
+            size="lg"
             disabled={loading}
             onClick={() => updateProfile({ username, first_name, last_name, website, avatar_url, ss58_coldkeys })}
           >

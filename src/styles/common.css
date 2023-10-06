@@ -20,7 +20,7 @@
   }
 
   .card {
-    @apply lg:rounded-lg rounded-md shadow border border-blur bg-card;
+    @apply md:rounded-lg rounded-md shadow border border-blur bg-card md:max-w-[596px] w-full;
   }
 
   .ReactModal__Overlay {
@@ -28,7 +28,7 @@
   }
 
   .only-desktop {
-    @apply hidden lg:block;
+    @apply hidden md:block;
   }
 
   .absolute-center {
@@ -36,31 +36,31 @@
   }
 
   .supabase-auth-ui_ui-button {
-    @apply lg:mt-[20px] mt-[15px];
+    @apply md:mt-[20px] mt-[15px];
   }
 
   .mdx-container h1 {
-    @apply lg:text-[38px] text-[28px] leading-normal font-black break-words;
+    @apply md:text-[38px] text-[28px] leading-normal font-black break-words;
   }
 
   .mdx-container h2 {
-    @apply lg:text-[38px] text-[28px] lg:my-[16px] my-[12px] leading-normal font-bold break-words;
+    @apply md:text-[38px] text-[28px] md:my-[16px] my-[12px] leading-normal font-bold break-words;
   }
 
   .mdx-container h3 {
-    @apply lg:text-[32px] text-[24px] lg:my-[16px] my-[12px] leading-normal font-bold break-words;
+    @apply md:text-[32px] text-[24px] md:my-[16px] my-[12px] leading-normal font-bold break-words;
   }
 
   .mdx-container h4 {
-    @apply lg:text-[24px] text-[18px] lg:my-[16px] my-[12px] font-light leading-tight break-words;
+    @apply md:text-[24px] text-[18px] md:my-[16px] my-[12px] font-light leading-tight break-words;
   }
 
   .mdx-container h5 {
-    @apply lg:text-[22px] text-[16px] leading-normal font-semibold break-words;
+    @apply md:text-[22px] text-[16px] leading-normal font-semibold break-words;
   }
 
   .mdx-container h6 {
-    @apply lg:text-[20px] text-[15px] leading-normal font-medium break-words;
+    @apply md:text-[20px] text-[15px] leading-normal font-medium break-words;
   }
 
   .mdx-container ol {
@@ -70,7 +70,7 @@
   .mdx-container p,
   .mdx-container li,
   .mdx-container pre code {
-    @apply lg:text-[19px] text-[14px] lg:mb-[20px] mb-[15px] text-gray font-inter;
+    @apply md:text-[19px] text-[14px] md:mb-[20px] mb-[15px] text-gray font-inter;
   }
 
   .mdx-container ol li {
@@ -105,27 +105,43 @@
     @apply bg-white;
   }
 
+  .gap-d-25 {
+    @apply md:gap-[25px] gap-[19px];
+  }
+
   .gap-d-24 {
-    @apply lg:gap-[24px] gap-[18px];
+    @apply md:gap-[24px] gap-[18px];
+  }
+
+  .gap-d-20 {
+    @apply md:gap-[20px] gap-[15px];
   }
 
   .gap-d-16 {
-    @apply lg:gap-[16px] gap-[12px];
+    @apply md:gap-[16px] gap-[12px];
+  }
+
+  .gap-d-15 {
+    @apply md:gap-[15px] gap-[11px];
   }
 
   .gap-d-12 {
-    @apply lg:gap-[12px] gap-[8px];
+    @apply md:gap-[12px] gap-[8px];
   }
 
   .gap-d-10 {
-    @apply lg:gap-[10px] gap-[7px];
+    @apply md:gap-[10px] gap-[7px];
   }
 
   .rounded-d-8 {
-    @apply lg:rounded-[8px] rounded-[6px];
+    @apply md:rounded-[8px] rounded-[6px];
   }
 
   .rounded-d-6 {
-    @apply lg:rounded-[6px] rounded-[5px];
+    @apply md:rounded-[6px] rounded-[5px];
+  }
+
+  .Toastify__toast-container.adjusted-top-right {
+    @apply lg:!top-[90px] md:!top-[80px] sm:!top-[76px] lg:!right-[calc((100%-1328px)/2-4px)] md:!right-[22px] sm:!right-[15px];
   }
 }

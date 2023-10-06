@@ -14,7 +14,7 @@ const COLOR_CONFIG = {
   },
   white: {
     bgColor: 'bg-white hover:bg-gray-200',
-    textColor: 'text-black'
+    textColor: 'text-primary'
   },
   green: {
     bgColor: 'bg-green-400',
@@ -27,8 +27,13 @@ const COLOR_CONFIG = {
   yellow: {
     bgColor: 'bg-yellow-400',
     textColor: 'text-white'
+  },
+  red: {
+    bgColor: 'bg-red-500',
+    textColor: 'text-white'
   }
 }
+
 const SIZE_CONFIG = {
   sm: { padding: 'sm:px-[12px] sm:py-[8px] px-[9px] py-[6px]', font: 'sm:text-[9px] text-[6px]' },
   md: { padding: 'sm:px-[24px] sm:py-[12px] px-[18px] py-[9px]', font: 'sm:text-[15px] text-[12px]' },
@@ -44,6 +49,8 @@ interface StyledProps {
   size?: keyof typeof SIZE_CONFIG
   weight?: 'normal' | 'semibold' | 'bold'
 }
+
+export type Color = keyof typeof COLOR_CONFIG
 
 type NativeButtonProps = Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'color'>
 
@@ -64,7 +71,6 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       () =>
         cn(
           'relative flex items-center justify-center rounded-md transition duration-300 active:duration-75',
-          className,
           width,
           bgColor,
           padding,
@@ -72,7 +78,8 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           textColor,
           font,
           'font-' + weight,
-          disabled ? 'opacity-50' : ''
+          disabled ? 'opacity-50' : '',
+          className
         ),
       [className, width, bgColor, padding, hoverActive, textColor, font, weight, disabled]
     )

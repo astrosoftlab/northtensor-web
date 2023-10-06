@@ -4,12 +4,10 @@ import Divider from '@components/ui/Divider'
 
 export default function Index() {
   return (
-    <div className="px-6 py-32 bg-white sm:px-8">
-      <div className="max-w-3xl mx-auto text-base leading-7 text-slate-700">
-        <p className="text-base font-semibold leading-7 text-[#CC6B32]">Legal</p>
-        <h1 className="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-          Privacy Policy for NorthTensor
-        </h1>
+    <div className="px-6 py-32 sm:px-8">
+      <div className="max-w-3xl mx-auto text-base leading-7">
+        <p className="text-base font-semibold leading-7 ">Legal</p>
+        <h1 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">Privacy Policy for NorthTensor</h1>
         <p className="mt-6 text-xl leading-8">
           At NorthTensor, accessible from northtensor.ai, one of our main priorities is the privacy of our visitors.{' '}
         </p>
@@ -33,7 +31,7 @@ export default function Index() {
 
         <p>By using our website, you hereby consent to our Privacy Policy and agree to its terms.</p>
 
-        <h2 className="mt-16 text-2xl font-bold tracking-tight text-slate-900">Information we collect</h2>
+        <h2 className="mt-16 text-2xl font-bold tracking-tight">Information we collect</h2>
         <Divider />
 
         <p>
@@ -50,45 +48,45 @@ export default function Index() {
           company name, address, email address, and telephone number.
         </p>
 
-        <h2 className="mt-16 text-2xl font-bold tracking-tight text-slate-900">How we use your information</h2>
+        <h2 className="mt-16 text-2xl font-bold tracking-tight">How we use your information</h2>
         <Divider />
 
         <p>We use the information we collect in various ways, including to:</p>
 
         <ul>
           <li className="flex gap-x-3">
-            <CheckCircleIcon className="mt-1 h-5 w-5 flex-none text-[#CC6B32]" aria-hidden="true" />
+            <CheckCircleIcon className="flex-none w-5 h-5 mt-1" aria-hidden="true" />
             Provide, operate, and maintain our website
           </li>
           <li className="flex gap-x-3">
-            <CheckCircleIcon className="mt-1 h-5 w-5 flex-none text-[#CC6B32]" aria-hidden="true" />
+            <CheckCircleIcon className="flex-none w-5 h-5 mt-1" aria-hidden="true" />
             Improve, personalize, and expand our website
           </li>
           <li className="flex gap-x-3">
-            <CheckCircleIcon className="mt-1 h-5 w-5 flex-none text-[#CC6B32]" aria-hidden="true" />
+            <CheckCircleIcon className="flex-none w-5 h-5 mt-1" aria-hidden="true" />
             Understand and analyze how you use our website
           </li>
           <li className="flex gap-x-3">
-            <CheckCircleIcon className="mt-1 h-5 w-5 flex-none text-[#CC6B32]" aria-hidden="true" />
+            <CheckCircleIcon className="flex-none w-5 h-5 mt-1" aria-hidden="true" />
             Develop new products, services, features, and functionality
           </li>
           <li className="flex gap-x-3">
-            <CheckCircleIcon className="mt-1 h-5 w-5 flex-none text-[#CC6B32]" aria-hidden="true" />
+            <CheckCircleIcon className="flex-none w-5 h-5 mt-1" aria-hidden="true" />
             Communicate with you, either directly or through one of our partners, including for customer service, to
             provide you with updates and other information relating to the website, and for marketing and promotional
             purposes
           </li>
           <li className="flex gap-x-3">
-            <CheckCircleIcon className="mt-1 h-5 w-5 flex-none text-[#CC6B32]" aria-hidden="true" />
+            <CheckCircleIcon className="flex-none w-5 h-5 mt-1" aria-hidden="true" />
             Send you emails
           </li>
           <li className="flex gap-x-3">
-            <CheckCircleIcon className="mt-1 h-5 w-5 flex-none text-[#CC6B32]" aria-hidden="true" />
+            <CheckCircleIcon className="flex-none w-5 h-5 mt-1" aria-hidden="true" />
             Find and prevent fraud
           </li>
         </ul>
 
-        <h2 className="mt-16 text-2xl font-bold tracking-tight text-slate-900">Log Files</h2>
+        <h2 className="mt-16 text-2xl font-bold tracking-tight">Log Files</h2>
         <Divider />
 
         <p>
@@ -100,7 +98,7 @@ export default function Index() {
           administering the site, tracking users&apos; movement on the website, and gathering demographic information.
         </p>
 
-        <h2 className="mt-16 text-2xl font-bold tracking-tight text-slate-900">Cookies and Web Beacons</h2>
+        <h2 className="mt-16 text-2xl font-bold tracking-tight">Cookies and Web Beacons</h2>
         <Divider />
 
         <p>
@@ -110,9 +108,7 @@ export default function Index() {
           visitors&apos; browser type and/or other information.
         </p>
 
-        <h2 className="mt-16 text-2xl font-bold tracking-tight text-slate-900">
-          Advertising Partners Privacy Policies
-        </h2>
+        <h2 className="mt-16 text-2xl font-bold tracking-tight">Advertising Partners Privacy Policies</h2>
         <Divider />
 
         <p>You may consult this list to find the Privacy Policy for each of the advertising partners of NorthTensor.</p>
@@ -129,7 +125,7 @@ export default function Index() {
           Note that NorthTensor has no access to or control over these cookies that are used by third-party advertisers.
         </p>
 
-        <h2 className="mt-16 text-2xl font-bold tracking-tight text-slate-900">Third Party Privacy Policies</h2>
+        <h2 className="mt-16 text-2xl font-bold tracking-tight">Third Party Privacy Policies</h2>
         <Divider />
 
         <p>
@@ -143,7 +139,7 @@ export default function Index() {
           about cookie management with specific web browsers, it can be found at the browsers&apos; respective websites.
         </p>
 
-        <h2 className="mt-16 text-2xl font-bold tracking-tight text-slate-900">
+        <h2 className="mt-16 text-2xl font-bold tracking-tight">
           CCPA Privacy Rights (Do Not Sell My Personal Information)
         </h2>
         <Divider />
@@ -163,7 +159,7 @@ export default function Index() {
           please contact us.
         </p>
 
-        <h2 className="mt-16 text-2xl font-bold tracking-tight text-slate-900">GDPR Data Protection Rights</h2>
+        <h2 className="mt-16 text-2xl font-bold tracking-tight">GDPR Data Protection Rights</h2>
         <Divider />
 
         <p>
@@ -172,47 +168,47 @@ export default function Index() {
         </p>
         <ul>
           <li className="flex gap-x-3">
-            <CheckCircleIcon className="mt-1 h-5 w-5 flex-none text-[#CC6B32]" aria-hidden="true" />
+            <CheckCircleIcon className="flex-none w-5 h-5 mt-1" aria-hidden="true" />
             <span>
-              <strong className="font-semibold text-slate-900">The right to access - </strong> You have the right to
-              request copies of your personal data. We may charge you a small fee for this service.
+              <strong className="font-semibold">The right to access - </strong> You have the right to request copies of
+              your personal data. We may charge you a small fee for this service.
             </span>
           </li>
           <li className="flex gap-x-3">
-            <CheckCircleIcon className="mt-1 h-5 w-5 flex-none text-[#CC6B32]" aria-hidden="true" />
+            <CheckCircleIcon className="flex-none w-5 h-5 mt-1" aria-hidden="true" />
             <span>
-              <strong className="font-semibold text-slate-900">The right to rectification – </strong> You have the right
-              to request that we correct any information you believe is inaccurate. You also have the right to request
-              that we complete the information you believe is incomplete.
+              <strong className="font-semibold">The right to rectification – </strong> You have the right to request
+              that we correct any information you believe is inaccurate. You also have the right to request that we
+              complete the information you believe is incomplete.
             </span>
           </li>
           <li className="flex gap-x-3">
-            <CheckCircleIcon className="mt-1 h-5 w-5 flex-none text-[#CC6B32]" aria-hidden="true" />
+            <CheckCircleIcon className="flex-none w-5 h-5 mt-1" aria-hidden="true" />
             <span>
-              <strong className="font-semibold text-slate-900">The right to erasure – </strong> You have the right to
-              request that we erase your personal data, under certain conditions.
+              <strong className="font-semibold">The right to erasure – </strong> You have the right to request that we
+              erase your personal data, under certain conditions.
             </span>
           </li>
           <li className="flex gap-x-3">
-            <CheckCircleIcon className="mt-1 h-5 w-5 flex-none text-[#CC6B32]" aria-hidden="true" />
+            <CheckCircleIcon className="flex-none w-5 h-5 mt-1" aria-hidden="true" />
             <span>
-              <strong className="font-semibold text-slate-900">The right to restrict processing – </strong> You have the
-              right to request that we restrict the processing of your personal data, under certain conditions.
+              <strong className="font-semibold">The right to restrict processing – </strong> You have the right to
+              request that we restrict the processing of your personal data, under certain conditions.
             </span>
           </li>
           <li className="flex gap-x-3">
-            <CheckCircleIcon className="mt-1 h-5 w-5 flex-none text-[#CC6B32]" aria-hidden="true" />
+            <CheckCircleIcon className="flex-none w-5 h-5 mt-1" aria-hidden="true" />
             <span>
-              <strong className="font-semibold text-slate-900">The right to object to processing – </strong> You have
-              the right to object to our processing of your personal data, under certain conditions.
+              <strong className="font-semibold">The right to object to processing – </strong> You have the right to
+              object to our processing of your personal data, under certain conditions.
             </span>
           </li>
           <li className="flex gap-x-3">
-            <CheckCircleIcon className="mt-1 h-5 w-5 flex-none text-[#CC6B32]" aria-hidden="true" />
+            <CheckCircleIcon className="flex-none w-5 h-5 mt-1" aria-hidden="true" />
             <span>
-              <strong className="font-semibold text-slate-900">The right to data portability – </strong> You have the
-              right to request that we transfer the data that we have collected to another organization, or directly to
-              you, under certain conditions.
+              <strong className="font-semibold">The right to data portability – </strong> You have the right to request
+              that we transfer the data that we have collected to another organization, or directly to you, under
+              certain conditions.
             </span>
           </li>
         </ul>
@@ -221,7 +217,7 @@ export default function Index() {
           please contact us.
         </p>
 
-        <h2 className="mt-16 text-2xl font-bold tracking-tight text-slate-900">Children&apos;s Information</h2>
+        <h2 className="mt-16 text-2xl font-bold tracking-tight">Children&apos;s Information</h2>
         <Divider />
 
         <p>
@@ -236,7 +232,7 @@ export default function Index() {
           records.
         </p>
 
-        <h2 className="mt-16 text-2xl font-bold tracking-tight text-slate-900">Changes to This Privacy Policy</h2>
+        <h2 className="mt-16 text-2xl font-bold tracking-tight">Changes to This Privacy Policy</h2>
         <Divider />
 
         <p>
@@ -245,7 +241,7 @@ export default function Index() {
           are effective immediately, after they are posted on this page.
         </p>
 
-        <h2 className="mt-16 text-2xl font-bold tracking-tight text-slate-900">Contact Us</h2>
+        <h2 className="mt-16 text-2xl font-bold tracking-tight">Contact Us</h2>
         <Divider />
 
         <p>If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us.</p>

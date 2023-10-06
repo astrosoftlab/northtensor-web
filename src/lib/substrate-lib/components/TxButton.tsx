@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 
-import { Button, SemanticCOLORS } from 'semantic-ui-react'
-
 import { web3FromSource } from '@polkadot/extension-dapp'
+
+import { Button, Color } from '@components/ui/Button'
 
 import { useSubstrateState } from '..'
 import utils from '../utils'
@@ -16,7 +16,7 @@ interface Attrs {
 
 interface Props {
   attrs: Attrs
-  color?: SemanticCOLORS
+  color?: Color
   disabled?: boolean
   label: string
   style?: React.CSSProperties
@@ -25,16 +25,16 @@ interface Props {
   txOnClickHandler?: (unsub: any) => void
 }
 
-function TxButton({
+export const TxButton = ({
   attrs,
-  color = 'blue',
+  color,
   disabled = false,
   label,
   setStatus,
   style,
   type = 'QUERY',
   txOnClickHandler
-}: Props) {
+}: Props) => {
   // Hooks
   const { api, currentAccount } = useSubstrateState()
   const [unsub, setUnsub] = useState<(() => void) | null>(null)
@@ -244,11 +244,10 @@ function TxButton({
 
   return (
     <Button
-      className="px-4 py-2 font-semibold text-gray-100 bg-gray-500 rounded hover:bg-gray-600"
-      basic
+      className="flex-1"
+      type="submit"
       color={color}
       style={style || {}}
-      type="submit"
       onClick={transaction}
       disabled={
         disabled ||
@@ -264,17 +263,3 @@ function TxButton({
     </Button>
   )
 }
-
-function TxGroupButton(props: any) {
-  return (
-    <Button.Group>
-      <TxButton label="Unsigned" type="UNSIGNED-TX" color="grey" {...props} />
-      <Button.Or />
-      <TxButton label="Signed" type="SIGNED-TX" color="blue" {...props} />
-      <Button.Or />
-      <TxButton label="SUDO" type="SUDO-TX" color="red" {...props} />
-    </Button.Group>
-  )
-}
-
-export { TxButton, TxGroupButton }

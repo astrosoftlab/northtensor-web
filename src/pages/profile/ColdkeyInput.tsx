@@ -1,7 +1,11 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Modal from 'react-modal'
 
-import { EyeIcon, EyeSlashIcon, PencilSquareIcon } from '@heroicons/react/20/solid'
+import EditIcon from '@assets/icons/edit.svg'
+import EyeInvisibleIcon from '@assets/icons/eye-invisible.svg'
+import EyeVisibleIcon from '@assets/icons/eye-visible.svg'
+import CopyToClipboardButton from '@components/ui/CopyButton'
+import { cn } from '@lib/utils'
 
 import ColdkeyModal from './ColdkeyModal'
 
@@ -11,20 +15,23 @@ interface Props {
   watched: boolean
   validated: boolean
   index: number
+  totalLength: number
   onInputChange: (index: number, name: string, coldkey: string, watched: boolean) => void
   onDelete: (index: number) => void
 }
 
 export default function ColdkeyInput({
-  onInputChange,
   name,
   coldkey,
   watched,
   validated,
   index,
+  totalLength,
+  onInputChange,
   onDelete = () => {}
 }: Props) {
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const inputRef = useRef<HTMLInputElement>(null)
 
   function handleColdkeyUpdate(name: string, coldkey: string, watched: boolean) {
     onInputChange(index, name, coldkey, watched)
@@ -40,7 +47,7 @@ export default function ColdkeyInput({
   }
 
   function formatString(str: string) {
-    const firstFive = str.slice(0, 15)
+    const firstFive = str.slice(0, 5)
     const lastFive = str.slice(-5)
     return `${firstFive}...${lastFive}`
   }
@@ -49,54 +56,39 @@ export default function ColdkeyInput({
     onDelete(index)
   }
 
-  return (
-    <div>
-      <div className="px-3 pt-4 pb-3 shadow-sm rounded-xl ring-1 ring-inset ring-slate-300">
-        <label htmlFor="name" className="block mb-1 text-xs font-medium">
-          {name}
-        </label>
-        <div className="relative flex items-stretch flex-grow focus-within:z-10">
-          <input
-            type="text"
-            name="coldkey"
-            id="coldkey"
-            className="block w-full rounded-l-full border-0 py-1.5 pl-2 bg-transparent ring-1 ring-inset ring-slate-400 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-slate-600 sm:text-sm sm:leading-6"
-            defaultValue={formatString(coldkey)}
-            readOnly
-          />
-          <button
-            type="button"
-            className="relative -ml-px inline-flex items-center gap-x-1.5 px-3 py-2 text-sm font-semibold ring-1 ring-inset ring-slate-400 cursor-default"
-            onClick={() => handleWatchedChange(() => !watched)}
-          >
-            {watched ? (
-              <EyeIcon className="-ml-0.5 h-5 w-5 text-slate-400" aria-hidden="true" />
-            ) : (
-              <EyeSlashIcon className="-ml-0.5 h-5 w-5 text-slate-400" aria-hidden="true" />
-            )}
-          </button>
+  useEffect(() => {
+    if (inputRef.current) {
+      if (!watched) {
+        inputRef.current.focus()
+      }
+    }
+  }, [watched])
 
-          <button
-            onClick={() => setIsModalOpen(true)}
-            type="button"
-            className="relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-full px-3 py-2 text-sm font-semibold ring-1 ring-inset ring-slate-400 hover:bg-slate-50"
-          >
-            <PencilSquareIcon className="-ml-0.5 h-5 w-5 text-slate-400" aria-hidden="true" />
-          </button>
-        </div>
-      </div>
-      <Modal
-        ariaHideApp={false}
-        isOpen={isModalOpen}
-        onRequestClose={() => setIsModalOpen(false)}
-        style={{
-          overlay: { backgroundColor: 'rgba(0, 0, 0, 0.5)' },
-          content: {
-            backgroundColor: 'rgba(0, 0, 0, 0)',
-            border: 'rgba(0, 0, 0, 0)'
-          }
-        }}
+  return (
+    <div id={coldkey} className="flex gap-d-15">
+      <div
+        className={cn(
+          'flex flex-col justify-between gap-d-12 grow md:max-w-none max-w-[280px] truncate md:px-[25px] px-[19px] md:py-[22px] py-[16px] bg-[#FFFFFF10]',
+          index > 0 ? 'border-t border-t-[#FFFFFF20]' : '',
+          index === 0 ? 'md:rounded-t-lg rounded-t-md' : '',
+          index === totalLength - 1 ? 'md:rounded-b-lg rounded-b-md' : ''
+        )}
       >
+        <div className="text-body-lg truncate lg:max-w-[185px] md:max-w-[256px] shrink-0">{name}</div>
+        {/* <div className="text-body-sm">{formatString(coldkey)}</div> */}
+
+        <CopyToClipboardButton className="!text-body-sm" copyText={coldkey} displayText={formatString(coldkey)} />
+      </div>
+      <div className="flex items-center gap-d-15">
+        <button type="button" onClick={() => handleWatchedChange(() => !watched)}>
+          {watched ? <EyeVisibleIcon /> : <EyeInvisibleIcon />}
+        </button>
+
+        <button onClick={() => setIsModalOpen(true)} type="button">
+          <EditIcon />
+        </button>
+      </div>
+      <Modal ariaHideApp={false} isOpen={isModalOpen} onRequestClose={() => setIsModalOpen(false)}>
         <ColdkeyModal
           name={name}
           coldkey={coldkey}

@@ -43,12 +43,12 @@ export default function Post({ postData }: { postData: PostData & { contentHtml:
           <PageLabel label="Published" text={<Date dateString={postData.date} />} />
         </div>
 
-        <h1 className="break-normal text-center">{postData.title}</h1>
+        <h1 className="text-center break-normal">{postData.title}</h1>
         <div className="sm:grid sm:grid-cols-10 flex flex-col-reverse justify-start sm:gap-[92px]">
           <div className="col-span-7">
             <div className="break-normal mdx-container" dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
           </div>
-          <div className="col-span-3">
+          <div className="col-span-3 md:py-[24px] py-[18px]">
             <div className=" sm:px-[13px] px-[8px] sm:py-[20px] py-[15px] bg-[#0e0e0e80]">
               <h4 className="sm:mb-[20px] mb-[15px]">On this page</h4>
               <div className="flex flex-col gap-d-16">

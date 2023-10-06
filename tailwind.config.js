@@ -168,9 +168,59 @@ module.exports = {
         'spin-slow-90': 'spin 90s linear infinite',
         'spin-slow-95': 'spin 95s linear infinite',
         'spin-slow-100': 'spin 100s linear infinite',
+
+        'reverse-spin': 'spin 1s linear infinite',
+        'reverse-spin-slow-10': 'reverse-spin 10s linear infinite',
+        'reverse-spin-slow-20': 'reverse-spin 20s linear infinite',
+        'reverse-spin-slow-30': 'reverse-spin 30s linear infinite',
+        'reverse-spin-slow-40': 'reverse-spin 40s linear infinite',
+        'reverse-spin-slow-50': 'reverse-spin 50s linear infinite',
+        'reverse-spin-slow-55': 'reverse-spin 55s linear infinite',
+        'reverse-spin-slow-60': 'reverse-spin 60s linear infinite',
+        'reverse-spin-slow-65': 'reverse-spin 65s linear infinite',
+        'reverse-spin-slow-70': 'reverse-spin 70s linear infinite',
+        'reverse-spin-slow-75': 'reverse-spin 75s linear infinite',
+        'reverse-spin-slow-80': 'reverse-spin 80s linear infinite',
+        'reverse-spin-slow-85': 'reverse-spin 85s linear infinite',
+        'reverse-spin-slow-90': 'reverse-spin 90s linear infinite',
+        'reverse-spin-slow-95': 'reverse-spin 95s linear infinite',
+        'reverse-spin-slow-100': 'reverse-spin 100s linear infinite',
         ping: 'ping 1s cubic-bezier(0, 0, 0.2, 1) infinite',
         pulse: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         bounce: 'bounce 1s infinite'
+      },
+      keyframes: {
+        spin: {
+          to: {
+            transform: 'rotate(360deg)'
+          }
+        },
+        'reverse-spin': {
+          from: {
+            transform: 'rotate(360deg)'
+          }
+        },
+        ping: {
+          '75%, 100%': {
+            transform: 'scale(2)',
+            opacity: '0'
+          }
+        },
+        pulse: {
+          '50%': {
+            opacity: '.5'
+          }
+        },
+        bounce: {
+          '0%, 100%': {
+            transform: 'translateY(-25%)',
+            animationTimingFunction: 'cubic-bezier(0.8,0,1,1)'
+          },
+          '50%': {
+            transform: 'none',
+            animationTimingFunction: 'cubic-bezier(0,0,0.2,1)'
+          }
+        }
       },
       aspectRatio: {
         auto: 'auto',
@@ -594,34 +644,6 @@ module.exports = {
         '3/4': '75%',
         full: '100%'
       }),
-      keyframes: {
-        spin: {
-          to: {
-            transform: 'rotate(360deg)'
-          }
-        },
-        ping: {
-          '75%, 100%': {
-            transform: 'scale(2)',
-            opacity: '0'
-          }
-        },
-        pulse: {
-          '50%': {
-            opacity: '.5'
-          }
-        },
-        bounce: {
-          '0%, 100%': {
-            transform: 'translateY(-25%)',
-            animationTimingFunction: 'cubic-bezier(0.8,0,1,1)'
-          },
-          '50%': {
-            transform: 'none',
-            animationTimingFunction: 'cubic-bezier(0,0,0.2,1)'
-          }
-        }
-      },
       letterSpacing: {
         tighter: '-0.05em',
         tight: '-0.025em',

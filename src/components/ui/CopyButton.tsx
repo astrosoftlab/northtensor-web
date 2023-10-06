@@ -1,30 +1,24 @@
-import { useState } from 'react'
+import { toast } from 'react-toastify'
 
-import { Button, Snackbar } from '@mui/material'
+import { cn } from '@lib/utils'
 
 interface Props {
   copyText: string
   displayText?: string | null
+  className?: string
 }
 
-const CopyToClipboardButton = ({ copyText, displayText = null }: Props) => {
-  const [open, setOpen] = useState(false)
-  const handleClick = () => {
-    setOpen(true)
-    navigator.clipboard.writeText(copyText)
-  }
-
+const CopyToClipboardButton = ({ copyText, displayText = null, className }: Props) => {
   return (
     <>
-      <Button onClick={handleClick}>
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-          {displayText !== null ? displayText : copyText}{' '}
+      <button className={cn('text-body text-primary', className)} onClick={() => toast.success('Copied to clipboard')}>
+        <div className="flex items-center">
+          {displayText !== null ? displayText : copyText}&nbsp;
           {
             <svg
+              className="w-[20px] h-[20px]"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
-              width="12"
-              height="12"
               fill="none"
               stroke="currentColor"
               strokeWidth="2"
@@ -36,8 +30,7 @@ const CopyToClipboardButton = ({ copyText, displayText = null }: Props) => {
             </svg>
           }
         </div>
-      </Button>
-      <Snackbar open={open} onClose={() => setOpen(false)} autoHideDuration={2000} message="Copied to clipboard" />
+      </button>
     </>
   )
 }

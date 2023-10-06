@@ -8,7 +8,7 @@ import { useSubstrateState } from '@lib/substrate-lib'
 import { TxButton } from '@lib/substrate-lib/components'
 
 function Main() {
-  const [status, setStatus] = useState(null)
+  const [status, setStatus] = useState<string | null>(null)
 
   const { api, keyring, currentAccount, storedMNRVHotkey, balanceSigFigures } = useSubstrateState()
 
@@ -100,122 +100,74 @@ function Main() {
       })
   }
 
-  // useEffect(() => {
-  //   if (currentAccount == null || currentAccount.source != 'polkadot') {
-  //     setIsUnstakeModalOpen(false);
-  //   }
-  // }, [currentAccount])
+  const stakable =
+    isValidFloat(stakeAmount) &&
+    parseFloat(stakeAmount.toString()) > 0 &&
+    parseFloat(stakeAmount.toString()) / 10 ** 9 < fullStakeAmount / 10 ** 9
+
+  const unstakable =
+    isValidFloat(unstakeAmount) &&
+    parseFloat(unstakeAmount.toString()) > 0 &&
+    parseFloat(unstakeAmount.toString()) / 10 ** 9 < amountCurrentlyStaked / 10 ** 9
+
   return (
     <>
-      <div className="relative" style={{ display: 'flex', justifyContent: 'space-evenly' }}>
-        {currentAccount != null && currentAccount.source != 'group' ? (
-          <CopyToClipboardButton
-            copyText={currentAccount.address}
-            displayText={
-              currentAccount.address.length > 10
-                ? `${currentAccount.address.substring(0, 5)}...${currentAccount.address.substring(
-                    currentAccount.address.length - 5
-                  )}`
-                : currentAccount.address
-            }
-          />
-        ) : null}
-      </div>
-
-      <div style={{ height: '10px' }}></div>
-
-      <div className="flex items-center justify-center flex-grow">
-        <div className="w-full card">
-          <ul role="list" className="divide-y divide-blur-light">
-            <li key={'balance1'} className="p-2 sm:p-3">
-              <div className="flex items-center justify-between w-full px-4 py-2 rounded-md">
-                <div className="flex items-center w-1/2">
-                  <h6 className="mr-2 ">Total</h6>
-                </div>
-                <div className="flex items-center justify-end w-1/2">
-                  <div className="flex flex-col items-end">
-                    <h6 className="">{roundedTotalWalletBalance} Tao</h6>
-                    <p className="text-xs text-slate-400 ">${totalWalletBalanceUSD} USD</p>
-                  </div>
-                </div>
-              </div>
-            </li>
-
-            <li key={'balance2'} className="p-2 sm:p-3">
-              <button className="flex items-center justify-between w-full px-4 py-2 rounded-md hover:bg-blur">
-                <div className="flex items-center w-1/2">
-                  <h6 className="mr-2 ">Un-Staked</h6>
-                </div>
-                <div className="flex items-center justify-end w-1/2">
-                  <div className="flex flex-col items-end">
-                    <h6 className="">{roundedAccountBalanceTao} Tao</h6>
-                    <p className="text-xs text-slate-400 ">${accountBalanceUSD} USD</p>
-                  </div>
-                </div>
-              </button>
-            </li>
-            <li key={'balance3'} className="p-2 sm:p-3">
-              <button className="flex items-center justify-between w-full px-4 py-2 rounded-md hover:bg-blur">
-                <div className="flex items-center w-1/2">
-                  <h6 className="mr-2 ">Staked</h6>
-                </div>
-                <div className="flex items-center justify-end w-1/2">
-                  <div className="flex flex-col items-end">
-                    <div className="flex flex-col items-end">
-                      <h6 className="">{roundedCurrentlyStakedTao} Tao</h6>
-                      <p className="text-xs text-slate-400 ">${amountCurrentlyStakedUSD} USD</p>
-                    </div>
-                  </div>
-                </div>
-              </button>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div className="flex items-center justify-center pt-4">
-        <div
-          className="w-full text-center bg-gray-200 shadow sm:rounded-md sm:w-96 sm:w-full"
-          style={{
-            whiteSpace: 'normal',
-            wordWrap: 'break-word',
-            color: 'black'
-          }}
-        >
-          {status}
-        </div>
-      </div>
-
-      {currentAccount != null && currentAccount.source == 'polkadot' && fullStakeAmount > 0 ? (
-        <div className="relative">
-          <div className="absolute inset-0 flex items-center" aria-hidden="true">
-            {/* <div className="w-full border-t border-slate-300" /> */}
+      {currentAccount != null && currentAccount.source != 'group' ? (
+        <>
+          <div className="flex justify-between">
+            <div className="font-bold text-body">Wallet Address</div>
+            <CopyToClipboardButton
+              copyText={currentAccount.address}
+              displayText={
+                currentAccount.address.length > 10
+                  ? `${currentAccount.address.substring(0, 5)}...${currentAccount.address.substring(
+                      currentAccount.address.length - 5
+                    )}`
+                  : currentAccount.address
+              }
+            />
           </div>
-          <div className="relative flex justify-center">
-            <span className="px-2 text-sm text-slate-500">&nbsp;</span>
-          </div>
-          <div className="relative" style={{ display: 'flex', justifyContent: 'space-evenly' }}>
-            <button
-              onClick={(e) => e.preventDefault()}
-              style={{
-                border: 'none',
-                outline: 'none',
-                cursor: 'default',
-                color: 'rgba(0, 0, 0, 0.7)', // Applying 70% opacity to the text
-                fontSize: '16px',
-                padding: '8px 12px',
-                borderRadius: '4px'
-              }}
-            >
-              Staking
-            </button>
-          </div>
-        </div>
+          <div className="w-full h-[1px] bg-[#FFFFFF20]" />
+        </>
       ) : null}
+      <div>
+        <div className="font-bold text-body lg:mb-[5px] mb-[4px]">Total</div>
+        <div className="flex items-center justify-between w-full lg:px-[25px] px-[18px] lg:py-[17px] py-[12px] rounded-md border border-[#FFFFFF10] bg-[#FFFFFF05] lg:text-[18px] text-[14px]">
+          <div className="">{roundedTotalWalletBalance} Tao</div>
+          <div className="text-[#898989]">${totalWalletBalanceUSD} USD</div>
+        </div>
+      </div>
+      <div>
+        <div className="font-bold text-body lg:mb-[5px] mb-[4px]">Un-Staked</div>
+        <button className="flex items-center justify-between w-full lg:px-[25px] px-[18px] lg:py-[17px] py-[12px] rounded-md border border-[#FFFFFF10] bg-[#FFFFFF05] lg:text-[18px] text-[14px] hover:bg-blur">
+          <div className="">{roundedAccountBalanceTao} Tao</div>
+          <div className="text-[#898989]">${accountBalanceUSD} USD</div>
+        </button>
+      </div>
+      <div>
+        <div className="font-bold text-body lg:mb-[5px] mb-[4px]">Staked</div>
+        <button className="flex items-center justify-between w-full lg:px-[25px] px-[18px] lg:py-[17px] py-[12px] rounded-md border border-[#FFFFFF10] bg-[#FFFFFF05] lg:text-[18px] text-[14px] hover:bg-blur">
+          <div className="">{roundedCurrentlyStakedTao} Tao</div>
+          <div className="text-[#898989]">${amountCurrentlyStakedUSD} USD</div>
+        </button>
+      </div>
+      {status && (
+        <div className="flex items-center justify-center">
+          <div className="w-full flex flex-col gap-d-12 text-center break-words whitespace-normal shadow bg-white-20 sm:rounded-md sm:w-full lg:px-[25px] px-[18px] lg:py-[17px] py-[12px]">
+            <div>{status.split('Block hash:')[0]} Block hash:</div>
+            <div>{status.split('Block hash:')[1]}</div>
+          </div>
+        </div>
+      )}
+
+      {/* {currentAccount != null && currentAccount.source == 'polkadot' && fullStakeAmount > 0 ? (
+        <div className="font-bold text-body">Staking...</div>
+      ) : null} */}
 
       {currentAccount != null && currentAccount.source == 'polkadot' && fullStakeAmount > 0 ? (
         <div className="flex items-center">
           <Input
+            label="To Stake"
             type="number"
             step="0.000001"
             placeholder="Enter Tao value to Stake"
@@ -228,49 +180,19 @@ function Main() {
       ) : null}
 
       {currentAccount != null && currentAccount.source == 'polkadot' && fullStakeAmount > 0 ? (
-        <div className="relative">
-          <div className="absolute inset-0 flex items-center" aria-hidden="true">
-            {/* <div className="w-full border-t border-slate-300" /> */}
-          </div>
-          <div className="relative flex justify-center">
-            <span className="px-2 text-sm text-slate-500">&nbsp;</span>
-          </div>
-        </div>
-      ) : null}
-
-      {currentAccount != null && currentAccount.source == 'polkadot' && fullStakeAmount > 0 ? (
-        <div className="relative" style={{ display: 'flex', justifyContent: 'space-evenly' }}>
-          {isValidFloat(stakeAmount) &&
-          parseFloat(stakeAmount.toString()) > 0 &&
-          parseFloat(stakeAmount.toString()) / 10 ** 9 < fullStakeAmount / 10 ** 9 ? (
-            <TxButton
-              label="Stake"
-              type="SIGNED-TX"
-              setStatus={setStatus}
-              attrs={{
-                palletRpc: 'subtensorModule',
-                callable: 'addStake',
-                inputParams: [MNRVHotkey, stakeAmount * 10 ** 9],
-                paramFields: [true, true]
-              }}
-            />
-          ) : (
-            <button
-              onClick={(e) => e.preventDefault()}
-              style={{
-                background: '#f0f0f0',
-                border: 'none',
-                outline: 'none',
-                cursor: 'default',
-                color: 'rgba(0, 0, 0, 0.7)', // Applying 70% opacity to the text
-                fontSize: '16px',
-                padding: '8px 12px',
-                borderRadius: '4px'
-              }}
-            >
-              Enter a Valid Tao Amount
-            </button>
-          )}
+        <div className="relative grid lg:grid-cols-2 gap-d-12">
+          <TxButton
+            label={stakable ? 'Stake' : 'Enter a Valid Tao Amount'}
+            type="SIGNED-TX"
+            setStatus={setStatus}
+            disabled={!stakable}
+            attrs={{
+              palletRpc: 'subtensorModule',
+              callable: 'addStake',
+              inputParams: [MNRVHotkey, fullStakeAmount],
+              paramFields: [true, true]
+            }}
+          />
 
           <TxButton
             label="Stake All"
@@ -286,44 +208,14 @@ function Main() {
         </div>
       ) : null}
 
-      {currentAccount != null && currentAccount.source == 'polkadot' && amountCurrentlyStaked > 0 ? (
-        <div className="relative">
-          <div className="relative">
-            <div className="absolute inset-0 flex items-center" aria-hidden="true">
-              {/* <div className="w-full border-t border-slate-300" /> */}
-            </div>
-            <div className="relative flex justify-center">
-              <span className="px-2 text-sm text-slate-500">&nbsp;</span>
-            </div>
-          </div>
-          <div className="absolute inset-0 flex items-center" aria-hidden="true">
-            {fullStakeAmount > 0 ? <div className="w-full border-t border-slate-300" /> : null}
-          </div>
-          <div className="relative flex justify-center">
-            <span className="px-2 text-sm text-slate-500">&nbsp;</span>
-          </div>
-          <div className="relative" style={{ display: 'flex', justifyContent: 'space-evenly' }}>
-            <button
-              onClick={(e) => e.preventDefault()}
-              style={{
-                border: 'none',
-                outline: 'none',
-                cursor: 'default',
-                color: 'rgba(0, 0, 0, 0.7)', // Applying 70% opacity to the text
-                fontSize: '16px',
-                padding: '8px 12px',
-                borderRadius: '4px'
-              }}
-            >
-              Un-Staking
-            </button>
-          </div>
-        </div>
-      ) : null}
+      {/* {currentAccount != null && currentAccount.source == 'polkadot' && amountCurrentlyStaked > 0 ? (
+        <div className="font-bold text-body">Un-Staking...</div>
+      ) : null} */}
 
       {currentAccount != null && currentAccount.source == 'polkadot' && amountCurrentlyStaked > 0 ? (
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <Input
+            label="To Un-Stake"
             type="number"
             step="0.000001"
             placeholder="Enter Tao value to Un-Stake"
@@ -336,49 +228,19 @@ function Main() {
       ) : null}
 
       {currentAccount != null && currentAccount.source == 'polkadot' && amountCurrentlyStaked > 0 ? (
-        <div className="relative">
-          <div className="absolute inset-0 flex items-center" aria-hidden="true">
-            {/* <div className="w-full border-t border-slate-300" /> */}
-          </div>
-          <div className="relative flex justify-center">
-            <span className="px-2 text-sm text-slate-500">&nbsp;</span>
-          </div>
-        </div>
-      ) : null}
-
-      {currentAccount != null && currentAccount.source == 'polkadot' && amountCurrentlyStaked > 0 ? (
-        <div className="relative" style={{ display: 'flex', justifyContent: 'space-evenly' }}>
-          {isValidFloat(unstakeAmount) &&
-          parseFloat(unstakeAmount.toString()) > 0 &&
-          parseFloat(unstakeAmount.toString()) / 10 ** 9 < amountCurrentlyStaked / 10 ** 9 ? (
-            <TxButton
-              label="Un-Stake"
-              type="SIGNED-TX"
-              setStatus={setStatus}
-              attrs={{
-                palletRpc: 'subtensorModule',
-                callable: 'removeStake',
-                inputParams: [MNRVHotkey, unstakeAmount * 10 ** 9],
-                paramFields: [true, true]
-              }}
-            />
-          ) : (
-            <button
-              onClick={(e) => e.preventDefault()}
-              style={{
-                background: '#f0f0f0',
-                border: 'none',
-                outline: 'none',
-                cursor: 'default',
-                color: 'rgba(0, 0, 0, 0.7)', // Applying 70% opacity to the text
-                fontSize: '16px',
-                padding: '8px 12px',
-                borderRadius: '4px'
-              }}
-            >
-              Enter a Valid Tao Amount
-            </button>
-          )}
+        <div className="relative grid lg:grid-cols-2 gap-d-12">
+          <TxButton
+            label={unstakable ? 'Un-Stake' : 'Enter a Valid Tao Amount'}
+            type="SIGNED-TX"
+            setStatus={setStatus}
+            disabled={!unstakable}
+            attrs={{
+              palletRpc: 'subtensorModule',
+              callable: 'removeStake',
+              inputParams: [MNRVHotkey, unstakeAmount * 10 ** 9],
+              paramFields: [true, true]
+            }}
+          />
 
           <TxButton
             label="Un-Stake All"
@@ -401,10 +263,10 @@ function Main() {
           <div className="flex flex-col items-center text-center">
             {' '}
             {/* Add 'items-center' and 'text-center' here */}
-            <span className="px-2 text-sm text-slate-500" style={{ whiteSpace: 'normal', wordWrap: 'break-word' }}>
+            <span className="px-2 text-sm text-gray" style={{ whiteSpace: 'normal', wordWrap: 'break-word' }}>
               Make Account available through
             </span>
-            <span className="px-2 text-sm text-slate-500" style={{ whiteSpace: 'normal', wordWrap: 'break-word' }}>
+            <span className="px-2 text-sm text-gray" style={{ whiteSpace: 'normal', wordWrap: 'break-word' }}>
               a Polkadot Wallet to Stake or Un-Stake
             </span>
           </div>

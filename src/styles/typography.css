@@ -24,10 +24,18 @@
   }
 
   .text-body-lg {
-    @apply lg:text-[19px] text-[14px] lg:leading-[27px] leading-[20px] break-words;
+    @apply lg:text-[18px] text-[14px] lg:leading-[27px] leading-[20px] break-words;
+  }
+
+  .text-body {
+    @apply lg:text-[16px] text-[12px] lg:leading-[24px] leading-[18px];
+  }
+
+  .text-body-sm {
+    @apply lg:text-[14px] text-[10px] lg:leading-[24px] leading-[16px];
   }
 
   .text-input {
-    @apply lg:!text-[18px] !text-[13px] !font-inter;
+    @apply lg:!text-[18px] !text-[13px] !font-inter lg:leading-[22px] leading-[16px];
   }
 }

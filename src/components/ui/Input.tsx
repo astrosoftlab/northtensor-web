@@ -17,7 +17,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
     return (
       <div className={cn(`w-full`, className)}>
-        {props.label!! && <label className={`block mb-1 font-medium`}>{props.label}</label>}
+        {props.label!! && <label className={`block lg:mb-[5px] mb-[4px] text-body font-bold`}>{props.label}</label>}
         <input
           ref={ref}
           onChange={(e) => (onChange ? onChange(e.target.value) : false)}

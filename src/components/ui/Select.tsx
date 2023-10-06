@@ -1,5 +1,6 @@
 import * as React from 'react'
 
+import SelectDown from '@assets/icons/select-down.svg'
 import { useOnClickOutside } from '@hooks/utils/useClickOutside'
 import { cn } from '@lib/utils'
 
@@ -35,19 +36,20 @@ export const Select = React.forwardRef(({ className, options, value, onChange, p
   const currentLabel = value?.label || placeholder || 'Select...'
 
   return (
-    <div className={`relative w-full ${className}`} ref={selectNode}>
-      {props.label && <label className={`block sm:mb-[12px] mb-[8px] font-medium`}>{props.label}</label>}
+    <div className={`relative w-full select-none ${className}`} ref={selectNode}>
+      {props.label && <label className={`block text-body sm:mb-[5px] mb-[4px] font-bold`}>{props.label}</label>}
       <div
         onClick={() => setSelectOpen(!selectOpen)}
         className={cn(
-          'block w-full sm:px-[25px] px-[18px] sm:py-[17px] py-[12px] border sm:rounded-lg rounded-md border-blur placeholder:text-white',
+          'flex justify-between items-center w-full sm:px-[25px] px-[18px] sm:py-[17px] py-[12px] border sm:rounded-lg rounded-md border-blur placeholder:text-white cursor-default',
           selectOpen ? 'border-primary' : 'border-blur hover:border-blur-light'
         )}
       >
         {currentLabel}
+        <SelectDown />
       </div>
       {selectOpen && (
-        <div className="absolute w-full z-10 bg-gradient-dialog backdrop-blur-md backdrop-opacity-100 flex flex-col gap-[1px] mt-[1px] border sm:text-sm sm:rounded-lg rounded-md overflow-hidden">
+        <div className="absolute w-full z-10 bg-gradient-dialog bg-black border-white-20 flex flex-col gap-[1px] mt-[1px] border sm:text-sm sm:rounded-lg rounded-md overflow-hidden">
           {options.map((option, key) => (
             <div
               key={key}

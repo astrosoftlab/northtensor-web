@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
 
 import Link from 'next/link'
 
 import { useSession, useSupabaseClient, useUser } from '@supabase/auth-helpers-react'
 
+import walletNoAccount from '@assets/images/wallet-no-account.png'
+import { Button } from '@components/ui/Button'
 import { Select } from '@components/ui/Select'
 import { useSubstrate, useSubstrateState } from '@lib/substrate-lib'
 
@@ -30,10 +33,6 @@ type SS58ColdKey = {
   validated: boolean
   watched: boolean
 }
-
-const CHROME_EXT_URL =
-  'https://chrome.google.com/webstore/detail/polkadot%7Bjs%7D-extension/mopnmbcafieddcagagdcbnhejhlodfdd'
-const FIREFOX_ADDON_URL = 'https://addons.mozilla.org/en-US/firefox/addon/polkadot-js-extension/'
 
 function Main() {
   const {
@@ -107,10 +106,10 @@ function Main() {
 
       let { error } = await supabase.from('profiles').upsert(updates)
       if (error) throw error
-      alert(accountColdkeysUpdateMessage)
+      toast.success(accountColdkeysUpdateMessage)
       setNewSS58Keys(false)
     } catch (error) {
-      alert('Error updating the data!')
+      toast.error('Error updating the data!')
       console.log(error)
     } finally {
       setLoading(false)
@@ -225,7 +224,6 @@ function Main() {
   }, [initialAddress, completeColdkeyOptions, currentAccount, setCurrentAccount])
 
   const onChange = (newValue: any) => {
-    console.debug(`---  newValue:`, newValue)
     if (newValue.value === 'Coldkey') {
       console.log('Coldkey')
     } else {
@@ -234,39 +232,42 @@ function Main() {
   }
 
   return (
-    <div className="p-6 card">
+    <div className="">
       {completeColdkeyOptions.length > 0 && currentAccount ? (
         <Select
+          label="Selected Wallet"
           onChange={onChange}
           value={{ label: currentAccount.text, value: currentAccount.key }}
           options={completeColdkeyOptions.map((tempAccount) => ({ label: tempAccount.text, value: tempAccount.key }))}
         />
       ) : (
-        <div className="text-center">
-          <h1 className="mb-2 text-xl font-bold ">No Accounts Detected</h1>
-          <h2 className="text-l ">Connect a Talisman Wallet </h2>
-          <p className="mb-2 text-ml ">or</p>
-          <h2 className="text-l ">
-            {session ? (
-              'add Coldkeys to your account'
-            ) : (
-              <Link
-                href="profile"
-                className="px-3 py-2 ml-2 text-sm font-semibold text-white rounded-md shadow-sm bg-slate-600 hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600 hover:text-white"
-              >
-                Log in to your Account
-              </Link>
-            )}
-          </h2>
+        <div className="flex flex-col items-center">
+          <img
+            src={walletNoAccount.src}
+            className="lg:w-[369px] w-[276px] lg:h-[388px] h-[291px] lg:mb-[48px] mb-[36px]"
+          />
+          <div className="text-body font-normal lg:mb-[17px] mb-[12px]">No Accounts Detected</div>
+          <div className="relative flex justify-center gap-d-20">
+            <Link href="#" className="text-[#898989] hover:text-[#a1a1a1]">
+              Connect a Talisman Wallet{' '}
+            </Link>
+            <div className="w-[1px] flex-1 bg-[#FFFFFF20]" />
+            <div className="text-[#898989]">
+              {session ? (
+                'Add Coldkeys to your account'
+              ) : (
+                <Link href="profile" className="hover:text-[#909090]">
+                  Log in to your Account
+                </Link>
+              )}
+            </div>
+          </div>
         </div>
       )}
       {newSS58keys ? (
-        <button
-          className="px-3 py-2 mt-2 ml-2 text-sm font-semibold text-white rounded-md shadow-sm bg-slate-600 hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-600"
-          onClick={() => updateProfile(ss58_coldkeys)}
-        >
+        <Button full className="md:mt-[16px] mt-[12px]" onClick={() => updateProfile(ss58_coldkeys)}>
           Save Coldkeys to Account
-        </button>
+        </Button>
       ) : null}
     </div>
   )

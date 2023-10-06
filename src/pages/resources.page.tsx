@@ -6,7 +6,7 @@ import IconSoon from '@assets/icons/icon-soon.svg'
 import BuyIcon from '@assets/icons/resource-buy.svg'
 import StakeIcon from '@assets/icons/resource-stake.svg'
 import WalletIcon from '@assets/icons/resource-wallet.svg'
-import tensorGradian from '@assets/images/cropped-tensor-gradian.png'
+import { BottomGradientTensor } from '@components/ui/BottomGradientTensor'
 import { Button } from '@components/ui/Button'
 import { PageLabel } from '@components/ui/PageLabel'
 import { PostData, getSortedPostsData } from '@lib/docs'
@@ -96,11 +96,7 @@ export default function Home({ postData }: { postData: PostData[] }) {
               </Button>
             </Link>
           </div>
-
-          <div
-            className="w-full h-[350px] mt-[-40px]"
-            style={{ background: `url(${tensorGradian.src}) no-repeat center bottom` }}
-          ></div>
+          <BottomGradientTensor />
         </div>
       </div>
     </main>

@@ -23,7 +23,7 @@ export default function Home() {
             )}
           </div>
 
-          <div className="card w-full sm:max-w-[654px] sm:p-[40px] p-[30px]">
+          <div className="card lg:px-[50px] px-[36px] lg:py-[40px] py-[30px]">
             {!session ? (
               <Auth
                 supabaseClient={supabase}

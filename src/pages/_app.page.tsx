@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import 'react-toastify/dist/ReactToastify.css'
 
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
@@ -22,11 +23,9 @@ export default function App({
       <Head>
         <title>NorthTensor</title>
       </Head>
-      <div className={`flex flex-col min-h-screen`}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </div>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </SessionContextProvider>
   )
 }

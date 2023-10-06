@@ -4,10 +4,10 @@ import Divider from '@components/ui/Divider'
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-screen px-6 py-32 bg-white sm:px-8">
-      <div className="max-w-3xl mx-auto text-base leading-7 text-slate-700">
-        <p className="text-base font-semibold leading-7 text-[#CC6B32]">Legal</p>
-        <h1 className="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+    <div className="min-h-screen px-6 py-32 sm:px-8">
+      <div className="max-w-3xl mx-auto text-base leading-7">
+        <p className="text-base font-semibold leading-7">Legal</p>
+        <h1 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
           <strong>Terms and Conditions</strong>
         </h1>
 
@@ -32,7 +32,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           and/or he/she or they, are taken as interchangeable and therefore as referring to same.
         </p>
 
-        <h2 className="mt-16 text-2xl font-bold tracking-tight text-slate-900">
+        <h2 className="mt-16 text-2xl font-bold tracking-tight">
           <strong>Cookies</strong>
         </h2>
         <Divider />
@@ -46,7 +46,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           website. Some of our affiliate/advertising partners may also use cookies.
         </p>
 
-        <h2 className="mt-16 text-2xl font-bold tracking-tight text-slate-900">
+        <h2 className="mt-16 text-2xl font-bold tracking-tight">
           <strong>License</strong>
         </h2>
         <Divider />
@@ -60,19 +60,19 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <p>You must not:</p>
         <ul>
           <li className="flex gap-x-3">
-            <CheckCircleIcon className="mt-1 h-5 w-5 flex-none text-[#CC6B32]" aria-hidden="true" />
+            <CheckCircleIcon className="flex-none w-5 h-5 mt-1" aria-hidden="true" />
             Republish material from NorthTensor
           </li>
           <li className="flex gap-x-3">
-            <CheckCircleIcon className="mt-1 h-5 w-5 flex-none text-[#CC6B32]" aria-hidden="true" />
+            <CheckCircleIcon className="flex-none w-5 h-5 mt-1" aria-hidden="true" />
             Sell, rent or sub-license material from NorthTensor
           </li>
           <li className="flex gap-x-3">
-            <CheckCircleIcon className="mt-1 h-5 w-5 flex-none text-[#CC6B32]" aria-hidden="true" />
+            <CheckCircleIcon className="flex-none w-5 h-5 mt-1" aria-hidden="true" />
             Reproduce, duplicate or copy material from NorthTensor
           </li>
           <li className="flex gap-x-3">
-            <CheckCircleIcon className="mt-1 h-5 w-5 flex-none text-[#CC6B32]" aria-hidden="true" />
+            <CheckCircleIcon className="flex-none w-5 h-5 mt-1" aria-hidden="true" />
             Redistribute content from NorthTensor
           </li>
         </ul>
@@ -96,21 +96,21 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
         <ul>
           <li className="flex gap-x-3">
-            <CheckCircleIcon className="mt-1 h-5 w-5 flex-none text-[#CC6B32]" aria-hidden="true" />
+            <CheckCircleIcon className="flex-none w-5 h-5 mt-1" aria-hidden="true" />
             You are entitled to post the Comments on our website and have all necessary licenses and consents to do so;
           </li>
           <li className="flex gap-x-3">
-            <CheckCircleIcon className="mt-1 h-5 w-5 flex-none text-[#CC6B32]" aria-hidden="true" />
+            <CheckCircleIcon className="flex-none w-5 h-5 mt-1" aria-hidden="true" />
             The Comments do not invade any intellectual property right, including without limitation copyright, patent
             or trademark of any third party;
           </li>
           <li className="flex gap-x-3">
-            <CheckCircleIcon className="mt-1 h-5 w-5 flex-none text-[#CC6B32]" aria-hidden="true" />
+            <CheckCircleIcon className="flex-none w-5 h-5 mt-1" aria-hidden="true" />
             The Comments do not contain any defamatory, libelous, offensive, indecent or otherwise unlawful material
             which is an invasion of privacy
           </li>
           <li className="flex gap-x-3">
-            <CheckCircleIcon className="mt-1 h-5 w-5 flex-none text-[#CC6B32]" aria-hidden="true" />
+            <CheckCircleIcon className="flex-none w-5 h-5 mt-1" aria-hidden="true" />
             The Comments will not be used to solicit or promote business or custom or present commercial activities or
             unlawful activity.
           </li>
@@ -121,7 +121,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           reproduce and edit any of your Comments in any and all forms, formats or media.
         </p>
 
-        <h2 className="mt-16 text-2xl font-bold tracking-tight text-slate-900">
+        <h2 className="mt-16 text-2xl font-bold tracking-tight">
           <strong>Hyperlinking to our Content</strong>
         </h2>
         <Divider />
@@ -130,24 +130,24 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
         <ul>
           <li className="flex gap-x-3">
-            <CheckCircleIcon className="mt-1 h-5 w-5 flex-none text-[#CC6B32]" aria-hidden="true" />
+            <CheckCircleIcon className="flex-none w-5 h-5 mt-1" aria-hidden="true" />
             Government agencies;
           </li>
           <li className="flex gap-x-3">
-            <CheckCircleIcon className="mt-1 h-5 w-5 flex-none text-[#CC6B32]" aria-hidden="true" />
+            <CheckCircleIcon className="flex-none w-5 h-5 mt-1" aria-hidden="true" />
             Search engines;
           </li>
           <li className="flex gap-x-3">
-            <CheckCircleIcon className="mt-1 h-5 w-5 flex-none text-[#CC6B32]" aria-hidden="true" />
+            <CheckCircleIcon className="flex-none w-5 h-5 mt-1" aria-hidden="true" />
             News organizations;
           </li>
           <li className="flex gap-x-3">
-            <CheckCircleIcon className="mt-1 h-5 w-5 flex-none text-[#CC6B32]" aria-hidden="true" />
+            <CheckCircleIcon className="flex-none w-5 h-5 mt-1" aria-hidden="true" />
             Online directory distributors may link to our Website in the same manner as they hyperlink to the Websites
             of other listed businesses; and
           </li>
           <li className="flex gap-x-3">
-            <CheckCircleIcon className="mt-1 h-5 w-5 flex-none text-[#CC6B32]" aria-hidden="true" />
+            <CheckCircleIcon className="flex-none w-5 h-5 mt-1" aria-hidden="true" />
             System wide Accredited Businesses except soliciting non-profit organizations, charity shopping malls, and
             charity fundraising groups which may not hyperlink to our Web site.
           </li>
@@ -164,31 +164,31 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
         <ul>
           <li className="flex gap-x-3">
-            <CheckCircleIcon className="mt-1 h-5 w-5 flex-none text-[#CC6B32]" aria-hidden="true" />
+            <CheckCircleIcon className="flex-none w-5 h-5 mt-1" aria-hidden="true" />
             commonly-known consumer and/or business information sources;
           </li>
           <li className="flex gap-x-3">
-            <CheckCircleIcon className="mt-1 h-5 w-5 flex-none text-[#CC6B32]" aria-hidden="true" />
+            <CheckCircleIcon className="flex-none w-5 h-5 mt-1" aria-hidden="true" />
             dot.com community sites;
           </li>
           <li className="flex gap-x-3">
-            <CheckCircleIcon className="mt-1 h-5 w-5 flex-none text-[#CC6B32]" aria-hidden="true" />
+            <CheckCircleIcon className="flex-none w-5 h-5 mt-1" aria-hidden="true" />
             associations or other groups representing charities;
           </li>
           <li className="flex gap-x-3">
-            <CheckCircleIcon className="mt-1 h-5 w-5 flex-none text-[#CC6B32]" aria-hidden="true" />
+            <CheckCircleIcon className="flex-none w-5 h-5 mt-1" aria-hidden="true" />
             online directory distributors;
           </li>
           <li className="flex gap-x-3">
-            <CheckCircleIcon className="mt-1 h-5 w-5 flex-none text-[#CC6B32]" aria-hidden="true" />
+            <CheckCircleIcon className="flex-none w-5 h-5 mt-1" aria-hidden="true" />
             internet portals;
           </li>
           <li className="flex gap-x-3">
-            <CheckCircleIcon className="mt-1 h-5 w-5 flex-none text-[#CC6B32]" aria-hidden="true" />
+            <CheckCircleIcon className="flex-none w-5 h-5 mt-1" aria-hidden="true" />
             accounting, law and consulting firms; and
           </li>
           <li className="flex gap-x-3">
-            <CheckCircleIcon className="mt-1 h-5 w-5 flex-none text-[#CC6B32]" aria-hidden="true" />
+            <CheckCircleIcon className="flex-none w-5 h-5 mt-1" aria-hidden="true" />
             educational institutions and trade associations.
           </li>
         </ul>
@@ -217,15 +217,15 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
         <ul>
           <li className="flex gap-x-3">
-            <CheckCircleIcon className="mt-1 h-5 w-5 flex-none text-[#CC6B32]" aria-hidden="true" />
+            <CheckCircleIcon className="flex-none w-5 h-5 mt-1" aria-hidden="true" />
             By use of our corporate name; or
           </li>
           <li className="flex gap-x-3">
-            <CheckCircleIcon className="mt-1 h-5 w-5 flex-none text-[#CC6B32]" aria-hidden="true" />
+            <CheckCircleIcon className="flex-none w-5 h-5 mt-1" aria-hidden="true" />
             By use of the uniform resource locator being linked to; or
           </li>
           <li className="flex gap-x-3">
-            <CheckCircleIcon className="mt-1 h-5 w-5 flex-none text-[#CC6B32]" aria-hidden="true" />
+            <CheckCircleIcon className="flex-none w-5 h-5 mt-1" aria-hidden="true" />
             By use of any other description of our Website being linked to that makes sense within the context and
             format of content on the linking party&apos;s site.
           </li>
@@ -236,7 +236,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           agreement.
         </p>
 
-        <h2 className="mt-16 text-2xl font-bold tracking-tight text-slate-900">
+        <h2 className="mt-16 text-2xl font-bold tracking-tight">
           <strong>iFrames</strong>
         </h2>
         <Divider />
@@ -246,7 +246,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           way the visual presentation or appearance of our Website.
         </p>
 
-        <h2 className="mt-16 text-2xl font-bold tracking-tight text-slate-900">
+        <h2 className="mt-16 text-2xl font-bold tracking-tight">
           <strong>Content Liability</strong>
         </h2>
         <Divider />
@@ -258,7 +258,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           infringement or other violation of, any third party rights.
         </p>
 
-        <h2 className="mt-16 text-2xl font-bold tracking-tight text-slate-900">
+        <h2 className="mt-16 text-2xl font-bold tracking-tight">
           <strong>Reservation of Rights</strong>
         </h2>
         <Divider />
@@ -270,7 +270,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           bound to and follow these linking terms and conditions.
         </p>
 
-        <h2 className="mt-16 text-2xl font-bold tracking-tight text-slate-900">
+        <h2 className="mt-16 text-2xl font-bold tracking-tight">
           <strong>Removal of links from our website</strong>
         </h2>
         <Divider />
@@ -287,7 +287,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           is kept up to date.
         </p>
 
-        <h2 className="mt-16 text-2xl font-bold tracking-tight text-slate-900">
+        <h2 className="mt-16 text-2xl font-bold tracking-tight">
           <strong>Disclaimer</strong>
         </h2>
         <Divider />
@@ -299,19 +299,19 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
         <ul>
           <li className="flex gap-x-3">
-            <CheckCircleIcon className="mt-1 h-5 w-5 flex-none text-[#CC6B32]" aria-hidden="true" />
+            <CheckCircleIcon className="flex-none w-5 h-5 mt-1" aria-hidden="true" />
             limit or exclude our or your liability for death or personal injury;
           </li>
           <li className="flex gap-x-3">
-            <CheckCircleIcon className="mt-1 h-5 w-5 flex-none text-[#CC6B32]" aria-hidden="true" />
+            <CheckCircleIcon className="flex-none w-5 h-5 mt-1" aria-hidden="true" />
             limit or exclude our or your liability for fraud or fraudulent misrepresentation;
           </li>
           <li className="flex gap-x-3">
-            <CheckCircleIcon className="mt-1 h-5 w-5 flex-none text-[#CC6B32]" aria-hidden="true" />
+            <CheckCircleIcon className="flex-none w-5 h-5 mt-1" aria-hidden="true" />
             limit any of our or your liabilities in any way that is not permitted under applicable law; or
           </li>
           <li className="flex gap-x-3">
-            <CheckCircleIcon className="mt-1 h-5 w-5 flex-none text-[#CC6B32]" aria-hidden="true" />
+            <CheckCircleIcon className="flex-none w-5 h-5 mt-1" aria-hidden="true" />
             exclude any of our or your liabilities that may not be excluded under applicable law.
           </li>
         </ul>

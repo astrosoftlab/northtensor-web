@@ -1,4 +1,4 @@
 import DeveloperConsole from './DeveloperConsole'
-import { TxButton, TxGroupButton } from './TxButton'
+import { TxButton } from './TxButton'
 
-export { TxButton, TxGroupButton, DeveloperConsole }
+export { TxButton, DeveloperConsole }

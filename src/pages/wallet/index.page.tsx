@@ -6,7 +6,7 @@ const WalletApp = dynamic(() => import('@pages/wallet/WalletApp'), {
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center justify-center">
+    <main className="flex flex-col items-center">
       <WalletApp />
     </main>
   )

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 
+import Close from '@assets/icons/close.svg'
 import { Button } from '@components/ui/Button'
 import { Input } from '@components/ui/Input'
 
@@ -45,19 +46,17 @@ export default function ColdkeyModal({ name, coldkey, onSave, onClose, newBool =
   }
 
   return (
-    <div className="fixed inset-0 z-[1000] overflow-y-auto">
+    <div className="fixed inset-0 z-[1000] overflow-y-auto bg-black">
       <div className="flex items-end justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
         <div className="fixed inset-0 transition-opacity" aria-hidden="true">
-          <div className="container absolute inset-0 flex items-center justify-center backdrop-blur">
-            <div className="inline-block w-full px-4 pt-5 pb-4 overflow-hidden text-left align-bottom transition-all transform border rounded-lg shadow-xl bg-black-90 border-blur sm:my-8 sm:align-middle sm:max-w-lg sm:p-8">
-              <div>
-                {newBool ? null : (
-                  <div className="flex justify-end">
-                    <Button color="blur" onClick={handleDelete}>
-                      DELETE
-                    </Button>
-                  </div>
-                )}
+          <div className="container">
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="relative sm:max-w-[596px] w-full flex-1 shrink-0 md:px-[20px] px-[15px] md:py-[64px] py-[48px] overflow-hidden text-left align-bottom transition-all transform border rounded-lg shadow-xl bg-black-90 border-blur sm:my-8 sm:align-middle">
+                <div className="absolute top-0 right-0 md:p-[16px] p-[12px]">
+                  <Button color="white" className="sm:px-[12px] px-[9px]" onClick={handleClose}>
+                    <Close />
+                  </Button>
+                </div>
 
                 <div className="mt-3 text-center sm:mt-5">
                   <h4 className="font-medium">{name}</h4>
@@ -75,13 +74,14 @@ export default function ColdkeyModal({ name, coldkey, onSave, onClose, newBool =
                 </div>
 
                 <div className="mt-9 sm:mt-12">
-                  <Button className="mb-4" full onClick={handleSave} disabled={!coldkeyIsValid}>
+                  <Button full size="lg" onClick={handleSave} disabled={!coldkeyIsValid}>
                     {coldkeyIsValid ? 'Save' : 'Invalid Coldkey'}
                   </Button>
-
-                  <Button full color="blur" onClick={handleClose}>
-                    Close
-                  </Button>
+                  {newBool ? null : (
+                    <Button full size="lg" color="red" className="md:mt-[16px] mt-[12px]" onClick={handleDelete}>
+                      Delete
+                    </Button>
+                  )}
                 </div>
               </div>
             </div>
