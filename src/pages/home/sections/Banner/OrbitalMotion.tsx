@@ -6,7 +6,7 @@ import AtomIcon1 from '@assets/icons/atom-icon1.svg'
 import AtomIcon2 from '@assets/icons/atom-icon2.svg'
 import AtomIcon3 from '@assets/icons/atom-icon3.svg'
 import AtomIcon4 from '@assets/icons/atom-icon4.svg'
-import TensorIcon from '@assets/icons/northtensor-white.svg'
+import TensorIcon from '@assets/icons/northtensor-gray.svg'
 import Orbital440 from '@assets/icons/orbital.x440.svg'
 import Orbital640 from '@assets/icons/orbital.x640.svg'
 import Orbital860 from '@assets/icons/orbital.x860.svg'
@@ -22,13 +22,7 @@ export const OrbitalMotion = () => {
 
   return (
     <div className="relative sm:aspect-square text-gray sm:h-auto h-[600px] z-[1] lg:mt-[-760px] md:mt-[-500px] mt-[-200px] lg:mb-[-300px] md:mb-[-100px]">
-      <div
-        className="orbital-bg-gradient-transition absolute-center w-[1200px] h-[1200px] -ml-[600px] -mt-[600px] sm:scale-100 scale-50"
-        style={{
-          background:
-            'radial-gradient(50% 50% at 50% 50%, rgba(217, 175, 255, 0.97) 0%, rgba(180, 116, 237, 0.79) 22%, rgba(138, 55, 214, 0.60) 45%, rgba(104, 44, 177, 0.30) 73%, rgba(0, 34, 144, 0.00) 100%)'
-        }}
-      >
+      <div className="orbital-bg-gradient-transition absolute-center w-[1200px] h-[1200px] -ml-[600px] -mt-[600px] sm:scale-100 scale-50">
         <div className="absolute-center w-[1060px] h-[1060px] -ml-[530px] -mt-[530px] animate-spin-slow-90">
           <Orbital1060 />
           <Atom
@@ -66,7 +60,7 @@ export const OrbitalMotion = () => {
           />
         </div>
         <div className="orbital-nucleus-gradient-transition z-[1] absolute-center flex justify-center items-center w-[240px] h-[240px] -ml-[120px] -mt-[120px] rounded-full">
-          <TensorIcon className="lg:w-[180px] w-[130px] lg:h-[180px] h-[140px]" />
+          <TensorIcon className="lg:w-[180px] w-[140px] lg:h-[180px] h-[140px]" />
         </div>
       </div>
       <div className="absolute top-0 left-0 w-full">

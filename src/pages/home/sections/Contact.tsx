@@ -1,4 +1,4 @@
-import tensorGradian from '@assets/images/cropped-tensor-gradian.png'
+import TensorIcon from '@assets/icons/northtensor-gray.svg'
 
 export const ContactSection = () => {
   return (
@@ -29,7 +29,14 @@ export const ContactSection = () => {
           </div>
         </div> */}
       </div>
-      <div className="h-[350px]" style={{ background: `url(${tensorGradian.src}) no-repeat center bottom` }}></div>
+      <div className="relative flex justify-center overflow-hidden md:h-[400px] h-[140px]">
+        <div className="orbital-bg-gradient-transition relative md:w-[1200px] md:h-[1200px] w-[375px] h-[375px]" />
+        <div className="absolute w-full h-full md:top-[160px] top-[50px]">
+          <div className="absolute-center orbital-nucleus-gradient-transition flex justify-center items-center md:w-[240px] md:h-[240px] w-[120px] h-[120px] md:-ml-[120px] md:-mt-[120px] -ml-[60px] -mt-[60px] rounded-full">
+            <TensorIcon className="lg:w-[180px] w-[70px] lg:h-[180px] h-[70px]" />
+          </div>
+        </div>
+      </div>
     </section>
   )
 }
