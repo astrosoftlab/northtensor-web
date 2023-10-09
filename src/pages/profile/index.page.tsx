@@ -1,3 +1,7 @@
+import { useEffect } from 'react'
+
+import { useSearchParams } from 'next/navigation'
+
 import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react'
 import { Auth } from '@supabase/auth-ui-react'
 import { ThemeSupa } from '@supabase/auth-ui-shared'
@@ -9,6 +13,13 @@ import Account from './Account'
 export default function Home() {
   const session = useSession()
   const supabase = useSupabaseClient()
+  const redirectUrl = useSearchParams().get('redirectUrl')
+
+  useEffect(() => {
+    if (session && redirectUrl) {
+      location.href = redirectUrl
+    }
+  }, [session, redirectUrl])
 
   return (
     <main>

@@ -111,7 +111,7 @@ function Auth({
     setAuthView(view)
 
     return () => authListener.subscription.unsubscribe()
-  }, [view])
+  }, [view, supabaseClient.auth])
 
   const emailProp: Omit<EmailAuthProps, 'authView' | 'id'> = {
     supabaseClient,
