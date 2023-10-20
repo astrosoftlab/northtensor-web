@@ -1,4 +1,6 @@
-## Getting Started
+## NorthTensor Staking Web
+
+![image](https://github.com/jasonmz/northtensor-web/assets/48445639/f514ffe7-bea0-4d19-a7fc-ea1737afeafc)
 
 #### 1. Install required software using terminal
 Linux 
