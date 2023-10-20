@@ -75,7 +75,7 @@
     "@svgr/webpack": "^8.1.0",
     "@tailwindcss/typography": "^0.5.9",
     "@trivago/prettier-plugin-sort-imports": "^4.2.0",
-    "@types/common-tags": "^1.8.1",
+    "@types/common-tags": "^1.8.3",
     "@types/react-modal": "^3.16.0",
     "autoprefixer": "^10.4.14",
     "husky": "^8.0.0",
