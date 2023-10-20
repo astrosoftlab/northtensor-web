@@ -60,7 +60,7 @@
     "remark-heading-id": "^1.0.0",
     "remark-html": "^15.0.2",
     "semantic-ui-react": "^2.1.4",
-    "sse.js": "^0.6.1",
+    "sse.js": "^1.0.0",
     "store": "^2.0.12",
     "tailwind-merge": "^1.12.0",
     "tsparticles": "^2.12.0",
