@@ -65,7 +65,7 @@
     "tailwind-merge": "^1.12.0",
     "tsparticles": "^2.12.0",
     "tsparticles-engine": "^2.12.0",
-    "tsx": "^3.12.7",
+    "tsx": "^4.6.2",
     "typescript": "5.0.4",
     "unist-builder": "^3.0.1",
     "unist-util-filter": "^4.0.1",
